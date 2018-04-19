@@ -1,4 +1,5 @@
-#include "mainwindow.h"
+#include <Socle/IHM/mainwindow.h>
+
 #include <QApplication>
 
 int main(int argc, char *argv[])

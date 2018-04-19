@@ -3,4 +3,5 @@ SOURCES += \
 
 
 HEADERS += \
-    $$PWD/IHM/mainwindow.h
+    $$PWD/IHM/mainwindow.h \
+    $$PWD/constantes.h
