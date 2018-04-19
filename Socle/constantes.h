@@ -1,7 +1,7 @@
 #ifndef CONSTANTES_H
 #define CONSTANTES_H
 
-const QString VERSION = "3.3.0.0";
+const QString VERSION = "0.1";
 const QString VERSION_LIBELLE = "AnimaTool v" + VERSION;
 
 const int DEFAULT_WIDTH = 600;
