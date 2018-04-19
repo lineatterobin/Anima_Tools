@@ -22,10 +22,11 @@ protected:
     void paintEvent(QPaintEvent *) Q_DECL_OVERRIDE;
 
 private:
+
     /*!
-     * \brief _buttonslayout : grille du menu
+     * \brief _buttonsLayout : grille de boutons
      */
-    QGridLayout *_buttonslayout;
+    QGridLayout *_buttonsLayout;
 
     QPushButton *_btnTest;
 
