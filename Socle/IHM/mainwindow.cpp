@@ -30,7 +30,7 @@ MainWindow::MainWindow() : QMainWindow()
         // Grille de boutons
         QWidget* mainWidget = new QWidget;
         _buttonslayout = new QGridLayout(mainWidget);
-        _buttonslayout->addWidget(_btnTest, 8,8, Qt::AlignCenter);
+        _buttonslayout->addWidget(_btnTest, 13,7, Qt::AlignCenter);
 
         // Version
         QLabel* versionLabel = new QLabel(VERSION_LIBELLE, this);
