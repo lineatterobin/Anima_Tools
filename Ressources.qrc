@@ -1,0 +1,8 @@
+<RCC>
+    <qresource prefix="/IMG">
+        <file alias="ANIMA_LOGO">Ressources/Images/Anima_RPG_Collection_Content_logo.png</file>
+    </qresource>
+    <qresource prefix="/CSS">
+        <file alias="THEME_ACCUEIL">Ressources/CSS/Accueil.qss</file>
+    </qresource>
+</RCC>
