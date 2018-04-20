@@ -1,6 +1,8 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
+#include <SpellBook/IHM/spellbookmainwindow.h>
+
 #include <QMainWindow>
 #include <QGridLayout>
 #include <QPushButton>
@@ -21,14 +23,24 @@ protected:
      */
     void paintEvent(QPaintEvent *) Q_DECL_OVERRIDE;
 
+private slots:
+    /*!
+     * \brief lancerSpellBook : Lancement du module SpellBook
+     */
+    void lancerSpellBook();
+
 private:
+
+    QString _styleSheet;
 
     /*!
      * \brief _buttonsLayout : grille de boutons
      */
     QGridLayout *_buttonsLayout;
 
-    QPushButton *_btnTest;
+    QPushButton *_btnSpellBook;
+
+    SpellBookMainWindow *_spellBookWindow;
 
 };
 

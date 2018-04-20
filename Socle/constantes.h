@@ -7,5 +7,6 @@ const QString VERSION_LIBELLE = "AnimaTool v" + VERSION;
 const int DEFAULT_WIDTH = 500;
 const int DEFAULT_HEIGHT = 200;
 
+const QString SPELLBOOK_WINDOW_NAME = "SpellBook";
 
 #endif // CONSTANTES_H

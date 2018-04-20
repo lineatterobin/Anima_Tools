@@ -6,31 +6,32 @@
 #include <QLabel>
 #include <QFile>
 
-MainWindow::MainWindow() : QMainWindow()
+MainWindow::MainWindow() : QMainWindow(),
+    _spellBookWindow(NULL)
 {
     // Chargement du style graphique.
     QFile file(":/CSS/THEME_ACCUEIL");
     if(file.open(QFile::ReadOnly))
     {
-        QString styleSheet = QString::fromLatin1(file.readAll());
-        setStyleSheet(styleSheet);
+        _styleSheet = QString::fromLatin1(file.readAll());
+        setStyleSheet(_styleSheet);
 
         //On ferme le fichier
         file.close();
 
         // Boutons
-        _btnTest = new QPushButton();
-        _btnTest->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
-        _btnTest->setText("Spell Book Editor");
-        _btnTest->setToolTip("Test");
-        _btnTest->setObjectName("BTNTest");
+        _btnSpellBook= new QPushButton();
+        _btnSpellBook->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
+        _btnSpellBook->setText("Spell Book Editor");
+        _btnSpellBook->setToolTip("Test");
+        _btnSpellBook->setObjectName("BTNTest");
 
-        connect(_btnTest, SIGNAL(pressed()), this, SLOT(lower()));
+        connect(_btnSpellBook, SIGNAL(pressed()), this, SLOT(lancerSpellBook()));
 
         // Grille de boutons
         QWidget* mainWidget = new QWidget;
         _buttonsLayout = new QGridLayout(mainWidget);
-        _buttonsLayout->addWidget(_btnTest, 0,7, Qt::AlignCenter);
+        _buttonsLayout->addWidget(_btnSpellBook, 0,7, Qt::AlignCenter);
 
         // Version
         QLabel* versionLabel = new QLabel(VERSION_LIBELLE, this);
@@ -53,6 +54,10 @@ MainWindow::MainWindow() : QMainWindow()
 
 MainWindow::~MainWindow()
 {
+    if(_spellBookWindow != NULL)
+    {
+        delete _spellBookWindow;
+    }
 }
 
 void MainWindow::paintEvent(QPaintEvent *)
@@ -70,4 +75,18 @@ void MainWindow::paintEvent(QPaintEvent *)
     QImage labelScaled = titre.scaledToWidth(2*width()/3, Qt::SmoothTransformation);
     painter.drawImage(0*width()/2 - 0*labelScaled.width()/2 , 0*height()/2 - 0*labelScaled.height()/2, labelScaled);
 
+}
+
+void MainWindow::lancerSpellBook()
+{
+    if(_spellBookWindow == NULL || _spellBookWindow->isHidden())
+    {
+        delete _spellBookWindow;
+        _spellBookWindow = new SpellBookMainWindow(_styleSheet);
+        _spellBookWindow->show();
+    }
+
+    _spellBookWindow->raise();
+    _spellBookWindow->activateWindow();
+    _spellBookWindow->setWindowState(_spellBookWindow->windowState() & ~Qt::WindowMinimized);
 }

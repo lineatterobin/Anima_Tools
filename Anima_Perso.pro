@@ -26,5 +26,6 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 # Accueil
 include ($$PWD/Socle/Socle.pri)
+include ($$PWD/SpellBook/SpellBook.pri)
 
 RESOURCES += $$PWD/Ressources.qrc
