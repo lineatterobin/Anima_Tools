@@ -21,6 +21,8 @@ private:
     void initAllWidgets();
 
     void initAllConnections();
+
+    QToolBar *_toolBar;
 };
 
 #endif // SPELLBOOKMAINWINDOW_H

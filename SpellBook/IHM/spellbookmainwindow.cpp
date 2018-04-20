@@ -1,6 +1,7 @@
 #include "spellbookmainwindow.h"
 
 #include <Socle/constantes.h>
+#include <QToolBar>
 
 SpellBookMainWindow::SpellBookMainWindow(QString styleSheet_) : QMainWindow()
 {
@@ -27,7 +28,11 @@ void SpellBookMainWindow::setTheme(QString styleSheet_)
 
 void SpellBookMainWindow::initToolBar()
 {
-
+    // Création de la barre d'outils.
+    _toolBar= new QToolBar("ToolBar");
+    _toolBar->setObjectName(SPELLBOOK_TOOLBAR_NAME);
+    _toolBar->toggleViewAction()->setVisible(true);
+    _toolBar->setIconSize(QSize(TOOL_BUTTON_ICON_SIZE, TOOL_BUTTON_ICON_SIZE));
 }
 
 void SpellBookMainWindow::initAllWidgets()
