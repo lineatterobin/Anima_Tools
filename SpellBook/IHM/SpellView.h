@@ -7,6 +7,8 @@
 #include <QLineEdit>
 #include <QLabel>
 #include <QComboBox>
+#include <QFormLayout>
+#include <QGroupBox>
 
 class SpellView : public QWidget
 {
@@ -14,13 +16,16 @@ class SpellView : public QWidget
 public:
     explicit SpellView(QWidget *parent = nullptr);
 
-
+    ~SpellView();
 
 signals:
 
 public slots:
 
 private:
+
+    void initForm();
+
     // Libellés
     QLabel* _spellNameLabel;
     QLabel* _spellLevelLabel;

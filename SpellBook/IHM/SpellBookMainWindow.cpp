@@ -1,15 +1,20 @@
 #include "SpellBookMainWindow.h"
 
 #include <Socle/Constantes.h>
-#include <SpellBook/IHM/SpellView.h>
-#include <QToolBar>
-#include <QVBoxLayout>
 
-SpellBookMainWindow::SpellBookMainWindow(QString styleSheet_) : QMainWindow()
+SpellBookMainWindow::SpellBookMainWindow(QString styleSheet_) : QMainWindow(),
+    _centralWidget(NULL),
+    _mainLayout(NULL),
+    _toolBar(NULL),
+    _spellViewWidget(NULL),
+    _spellPreview(NULL)
 {
     setWindowTitle(SPELLBOOK_WINDOW_NAME);
 
     setTheme(styleSheet_);
+
+    //Initialisation du layout principal
+    _mainLayout = new QVBoxLayout;
 
     initToolBar();
 
@@ -21,6 +26,15 @@ SpellBookMainWindow::SpellBookMainWindow(QString styleSheet_) : QMainWindow()
     QPixmap pixmap(":/IMG/ANIMA_LOGO");
     QIcon icon(pixmap);
     setWindowIcon(icon);
+
+    _centralWidget = new QWidget;
+    _centralWidget->setLayout(_mainLayout);
+    setCentralWidget(_centralWidget);
+}
+
+SpellBookMainWindow::~SpellBookMainWindow()
+{
+
 }
 
 void SpellBookMainWindow::setTheme(QString styleSheet_)
@@ -35,29 +49,36 @@ void SpellBookMainWindow::initToolBar()
     _toolBar->setObjectName(SPELLBOOK_TOOLBAR_NAME);
     _toolBar->toggleViewAction()->setVisible(true);
     _toolBar->setIconSize(QSize(TOOL_BUTTON_ICON_SIZE, TOOL_BUTTON_ICON_SIZE));
+
+    _mainLayout->addWidget(_toolBar);
 }
 
 void SpellBookMainWindow::initAllWidgets()
 {
-//    QVBoxLayout *layout = new QVBoxLayout;
+    // SpellView
+    addSpellViewWidget();
 
-//    QTabWidget *onglets = new QTabWidget(this);
+    // SpellList
 
-//    SpellView *page1 = new SpellView;
-//    SpellView *page2 = new SpellView;
-
-//    onglets->addTab(page1, "Spell1");
-//    onglets->addTab(page2, "Spell2");
-
-//    layout->addWidget(onglets);
-//    setCentralWidget(new QWidget);
-//    centralWidget()->setLayout(layout);
-//    this->layout()->setSizeConstraint(QLayout::SetMinimumSize);
-
-//    onglets->setMaximumSize(this->size());
+    // SpellCustomList
 }
 
 void SpellBookMainWindow::initAllConnections()
 {
+
+}
+
+void SpellBookMainWindow::addSpellViewWidget()
+{
+    _spellViewWidget = new QTabWidget(this);
+
+    _spellViewWidget->setObjectName(SPELLVIEWTAB);
+    _spellViewWidget->setWindowTitle(SPELLVIEWTAB);
+
+    _spellPreview = new SpellView(this);
+    _spellViewWidget->addTab(_spellPreview, "Preview");
+
+    _mainLayout->addWidget(_spellViewWidget);
+    _mainLayout->setAlignment(Qt::AlignCenter);
 
 }

@@ -1,6 +1,8 @@
 #ifndef CONSTANTES_H
 #define CONSTANTES_H
 
+#include <QString>
+
 const QString VERSION = "0.1";
 const QString VERSION_LIBELLE = "AnimaTool v" + VERSION;
 
@@ -9,6 +11,7 @@ const int DEFAULT_HEIGHT = 200;
 
 const QString SPELLBOOK_WINDOW_NAME = "SpellBook";
 const QString SPELLBOOK_TOOLBAR_NAME = "Barre d'outils";
+const QString SPELLVIEWTAB = "Détails";
 
 const int TOOL_BUTTON_ICON_SIZE = 15;
 
