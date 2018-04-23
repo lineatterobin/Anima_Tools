@@ -1,7 +1,7 @@
 SOURCES += \
-    $$PWD/IHM/mainwindow.cpp
+    $$PWD/IHM/MainWindow.cpp
 
 
 HEADERS += \
-    $$PWD/IHM/mainwindow.h \
-    $$PWD/constantes.h
+    $$PWD/Constantes.h \
+    $$PWD/IHM/MainWindow.h

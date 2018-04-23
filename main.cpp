@@ -1,4 +1,4 @@
-#include <Socle/IHM/mainwindow.h>
+#include <Socle/IHM/MainWindow.h>
 
 #include <QApplication>
 
