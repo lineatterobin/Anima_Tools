@@ -1,6 +1,6 @@
-#include "spellbookmainwindow.h"
+#include "SpellBookMainWindow.h"
 
-#include <Socle/constantes.h>
+#include <Socle/Constantes.h>
 #include <QToolBar>
 
 SpellBookMainWindow::SpellBookMainWindow(QString styleSheet_) : QMainWindow()
