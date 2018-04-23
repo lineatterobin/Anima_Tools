@@ -1,7 +1,9 @@
 #include "SpellBookMainWindow.h"
 
 #include <Socle/Constantes.h>
+#include <SpellBook/IHM/SpellView.h>
 #include <QToolBar>
+#include <QVBoxLayout>
 
 SpellBookMainWindow::SpellBookMainWindow(QString styleSheet_) : QMainWindow()
 {
@@ -37,7 +39,22 @@ void SpellBookMainWindow::initToolBar()
 
 void SpellBookMainWindow::initAllWidgets()
 {
+//    QVBoxLayout *layout = new QVBoxLayout;
 
+//    QTabWidget *onglets = new QTabWidget(this);
+
+//    SpellView *page1 = new SpellView;
+//    SpellView *page2 = new SpellView;
+
+//    onglets->addTab(page1, "Spell1");
+//    onglets->addTab(page2, "Spell2");
+
+//    layout->addWidget(onglets);
+//    setCentralWidget(new QWidget);
+//    centralWidget()->setLayout(layout);
+//    this->layout()->setSizeConstraint(QLayout::SetMinimumSize);
+
+//    onglets->setMaximumSize(this->size());
 }
 
 void SpellBookMainWindow::initAllConnections()
