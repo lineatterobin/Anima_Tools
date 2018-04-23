@@ -1,8 +1,10 @@
 SOURCES += \
-    $$PWD/IHM/spellbookmainwindow.cpp
+    $$PWD/IHM/SpellBookMainWindow.cpp \
+    $$PWD/IHM/SpellView.cpp
 
 
 
 HEADERS += \
-    $$PWD/IHM/spellbookmainwindow.h
+    $$PWD/IHM/SpellBookMainWindow.h \
+    $$PWD/IHM/SpellView.h
 
