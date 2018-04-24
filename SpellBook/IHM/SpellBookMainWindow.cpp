@@ -22,14 +22,18 @@ SpellBookMainWindow::SpellBookMainWindow(QString styleSheet_) : QMainWindow(),
 
     initAllConnections();
 
-    setWindowState(Qt::WindowMaximized);
     QPixmap pixmap(":/IMG/ANIMA_LOGO");
     QIcon icon(pixmap);
     setWindowIcon(icon);
 
     _centralWidget = new QWidget;
     _centralWidget->setLayout(_mainLayout);
+    _centralWidget->setMinimumSize(_mainLayout->minimumSize());
     setCentralWidget(_centralWidget);
+
+
+    setMinimumSize(_centralWidget->minimumSize());
+    setWindowState(Qt::WindowMinimized);
 }
 
 SpellBookMainWindow::~SpellBookMainWindow()
@@ -78,7 +82,10 @@ void SpellBookMainWindow::addSpellViewWidget()
     _spellPreview = new SpellView(this);
     _spellViewWidget->addTab(_spellPreview, "Preview");
 
+    _spellViewWidget->setMinimumSize(_spellPreview->minimumSize());
+
     _mainLayout->addWidget(_spellViewWidget);
     _mainLayout->setAlignment(Qt::AlignCenter);
+
 
 }

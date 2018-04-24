@@ -5,6 +5,7 @@
 #include <QSpinBox>
 #include <QCheckBox>
 #include <QLineEdit>
+#include <QTextEdit>
 #include <QLabel>
 #include <QComboBox>
 #include <QFormLayout>
@@ -43,12 +44,14 @@ private:
     QLabel* _spellCommentaireLabel;
     QLabel* _spellSourceLabel;
     QLabel* _spellEffectTypeLabel;
+    QLabel* _spellEffectLabel;
+    QLabel* _spellActionLabel;
 
     // Champs
     QLineEdit* _spellName;
     QSpinBox* _spellLevel;
     QComboBox* _spellBook;
-    QLineEdit* _spellDescription;
+    QTextEdit* _spellDescription;
     QSpinBox* _spellCostInitial;
     QSpinBox* _spellCostIntermediaire;
     QSpinBox* _spellCostAvancee;
@@ -64,9 +67,14 @@ private:
     QComboBox* _spellMaintenanceType;
     QSpinBox* _spellRMys;
     QComboBox* _spellRMysBool;
-    QLineEdit* _spellCommentaire;
+    QTextEdit* _spellCommentaire;
     QLineEdit* _spellSource;
-    QLineEdit* _spellEffectType;
+    QComboBox* _spellEffectType;
+    QTextEdit* _spellEffectInitial;
+    QTextEdit* _spellEffectIntermediaire;
+    QTextEdit* _spellEffectAvancee;
+    QTextEdit* _spellEffectArcane;
+    QComboBox* _spellAction;
 
 };
 
