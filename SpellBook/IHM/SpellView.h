@@ -41,8 +41,8 @@ private:
     QLabel* _spellCostLabel;
     QLabel* _spellRequirementLabel;
     QLabel* _spellMaintenanceLabel;
+    QLabel* _spellMaintenanceTypeLabel;
     QLabel* _spellRMysLabel;
-    QLabel* _spellRMysBoolLabel;
     QLabel* _spellCommentaireLabel;
     QLabel* _spellSourceLabel;
     QLabel* _spellEffectTypeLabel;

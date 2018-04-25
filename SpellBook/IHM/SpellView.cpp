@@ -12,8 +12,8 @@ SpellView::SpellView(QWidget *parent) : QWidget(parent),
     _spellCostLabel(NULL),
     _spellRequirementLabel(NULL),
     _spellMaintenanceLabel(NULL),
+    _spellMaintenanceTypeLabel(NULL),
     _spellRMysLabel(NULL),
-    _spellRMysBoolLabel(NULL),
     _spellCommentaireLabel(NULL),
     _spellSourceLabel(NULL),
     _spellEffectTypeLabel(NULL),
@@ -69,6 +69,46 @@ SpellView::SpellView(QWidget *parent) : QWidget(parent),
     _spellDescription = new QTextEdit(this);
     _spellDescription->setSizePolicy(QSizePolicy::MinimumExpanding, QSizePolicy::MinimumExpanding);
 
+    _spellInitialLabel = new QLabel("Initial", this);
+    _spellIntermediaireLabel = new QLabel("Intermédiaire", this);
+    _spellAvanceeLabel = new QLabel("Avancée", this);
+    _spellArcaneLabel = new QLabel("Arcane", this);
+    _spellCostLabel = new QLabel("Coût", this);
+    _spellRequirementLabel = new QLabel("Intel. Requis", this);
+    _spellMaintenanceLabel = new QLabel("Maintien", this);
+    _spellCostInitial = new QSpinBox(this);
+    _spellCostIntermediaire = new QSpinBox(this);
+    _spellCostAvancee = new QSpinBox(this);
+    _spellCostArcane = new QSpinBox(this);
+    _spellRequirementInitial = new QSpinBox(this);
+    _spellRequirementIntermediaire = new QSpinBox(this);
+    _spellRequirementAvancee = new QSpinBox(this);
+    _spellRequirementArcane = new QSpinBox(this);
+    _spellMaintenanceInitial = new QSpinBox(this);
+    _spellMaintenanceIntermediaire = new QSpinBox(this);
+    _spellMaintenanceAvancee = new QSpinBox(this);
+    _spellMaintenanceArcane = new QSpinBox(this);
+
+    _spellActionLabel = new QLabel("Action : ", this);
+    _spellEffectTypeLabel = new QLabel("Effet : ", this);
+    _spellRMysLabel = new QLabel("RMys : ", this);
+    _spellMaintenanceTypeLabel = new QLabel("Maintien : ", this);
+    _spellAction = new QComboBox(this);
+    _spellAction->insertItem(1, QIcon(), "Passive");
+    _spellAction->insertItem(2, QIcon(), "Active");
+    _spellEffectType = new QComboBox(this);
+    _spellEffectType->insertItem(1, QIcon(), "Automatique");
+    _spellEffectType->insertItem(2, QIcon(), "Effet");
+    _spellRMysBool = new QComboBox(this);
+    _spellRMysBool->insertItem(1, QIcon(), "Oui");
+    _spellRMysBool->insertItem(2, QIcon(), "Non");
+    _spellRMys = new QSpinBox(this);
+    _spellMaintenanceType = new QComboBox(this);
+    _spellMaintenanceType->insertItem(1, QIcon(), "Impossible");
+    _spellMaintenanceType->insertItem(2, QIcon(), "Continue");
+    _spellMaintenanceType->insertItem(3, QIcon(), "Quotidien");
+
+
     initForm();
     setEnabled(false);
 }
@@ -83,8 +123,8 @@ void SpellView::initForm()
     // Initialsation du formulaire
     QVBoxLayout* spellLayout = new QVBoxLayout(this);
 
+    // Eléments principaux
     QHBoxLayout* spellLayout1 = new QHBoxLayout;
-
     QHBoxLayout* spellLayout1_1 = new QHBoxLayout;
     spellLayout1_1->addWidget(_spellBookLabel, 0, Qt::AlignCenter);
     spellLayout1_1->addWidget(_spellBook, 0, Qt::AlignCenter);
@@ -95,11 +135,60 @@ void SpellView::initForm()
     spellLayout1_2->addWidget(_spellNameLabel, 0, Qt::AlignCenter);
     spellLayout1_2->addWidget(_spellName, 0, Qt::AlignCenter);
     spellLayout1_2->addStretch(1);
-
     spellLayout1->addLayout(spellLayout1_1,0);
     spellLayout1->addLayout(spellLayout1_2,0);
 
+    // Eléments Secondaires
+    QHBoxLayout* spellLayout2 = new QHBoxLayout;
+    QHBoxLayout* spellLayout2_1 = new QHBoxLayout;
+    spellLayout2_1->addWidget(_spellActionLabel, 0, Qt::AlignCenter);
+    spellLayout2_1->addWidget(_spellAction, 0, Qt::AlignCenter);
+    spellLayout2_1->addStretch(1);
+    QHBoxLayout* spellLayout2_2 = new QHBoxLayout;
+    spellLayout2_2->addWidget(_spellEffectTypeLabel, 0, Qt::AlignCenter);
+    spellLayout2_2->addWidget(_spellEffectType, 0, Qt::AlignCenter);
+    spellLayout2_2->addStretch(1);
+    QHBoxLayout* spellLayout2_3 = new QHBoxLayout;
+    spellLayout2_3->addWidget(_spellRMysLabel, 0, Qt::AlignCenter);
+    spellLayout2_3->addWidget(_spellRMysBool, 0, Qt::AlignCenter);
+    spellLayout2_3->addWidget(_spellRMys, 0, Qt::AlignCenter);
+    spellLayout2_3->addStretch(1);
+    QHBoxLayout* spellLayout2_4 = new QHBoxLayout;
+    spellLayout2_4->addWidget(_spellMaintenanceTypeLabel, 0, Qt::AlignCenter);
+    spellLayout2_4->addWidget(_spellMaintenanceType, 0, Qt::AlignCenter);
+    spellLayout2_4->addStretch(1);
+    spellLayout2->addLayout(spellLayout2_1,0);
+    spellLayout2->addLayout(spellLayout2_2,0);
+    spellLayout2->addLayout(spellLayout2_3,0);
+    spellLayout2->addLayout(spellLayout2_4,0);
+
+
+    // Tableau des coûts
+    QGridLayout* spellLayoutGrid = new QGridLayout;
+    spellLayoutGrid->addWidget(_spellInitialLabel, 0, 1, Qt::AlignCenter);
+    spellLayoutGrid->addWidget(_spellIntermediaireLabel, 0, 2, Qt::AlignCenter);
+    spellLayoutGrid->addWidget(_spellAvanceeLabel, 0, 3, Qt::AlignCenter);
+    spellLayoutGrid->addWidget(_spellArcaneLabel, 0, 4, Qt::AlignCenter);
+    spellLayoutGrid->addWidget(_spellRequirementLabel, 1, 0, Qt::AlignLeft);
+    spellLayoutGrid->addWidget(_spellRequirementInitial, 1, 1);
+    spellLayoutGrid->addWidget(_spellRequirementIntermediaire, 1, 2);
+    spellLayoutGrid->addWidget(_spellRequirementAvancee, 1, 3);
+    spellLayoutGrid->addWidget(_spellRequirementArcane, 1, 4);
+    spellLayoutGrid->addWidget(_spellCostLabel, 2, 0, Qt::AlignLeft);
+    spellLayoutGrid->addWidget(_spellCostInitial, 2, 1);
+    spellLayoutGrid->addWidget(_spellCostIntermediaire, 2, 2);
+    spellLayoutGrid->addWidget(_spellCostAvancee, 2, 3);
+    spellLayoutGrid->addWidget(_spellCostArcane, 2, 4);
+    spellLayoutGrid->addWidget(_spellMaintenanceLabel, 3, 0, Qt::AlignLeft);
+    spellLayoutGrid->addWidget(_spellMaintenanceInitial, 3, 1);
+    spellLayoutGrid->addWidget(_spellMaintenanceIntermediaire, 3, 2);
+    spellLayoutGrid->addWidget(_spellMaintenanceAvancee, 3, 3);
+    spellLayoutGrid->addWidget(_spellMaintenanceArcane, 3, 4);
+
+    //Assemblage final
     spellLayout->addLayout(spellLayout1,0);
+    spellLayout->addLayout(spellLayout2,0);
+    spellLayout->addLayout(spellLayoutGrid,0);
     spellLayout->addWidget(_spellDescriptionLabel, 0, Qt::AlignLeft);
     spellLayout->addWidget(_spellDescription);
 
