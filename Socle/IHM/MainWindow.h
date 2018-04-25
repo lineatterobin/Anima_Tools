@@ -18,6 +18,10 @@ public:
 
 protected:
     /*!
+     * \brief closeEvent
+     */
+    void closeEvent(QCloseEvent *);
+    /*!
      * \brief paintEvent : Gestion redessin
      * \param e Event de redessin
      */

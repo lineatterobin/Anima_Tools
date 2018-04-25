@@ -19,6 +19,8 @@ public:
 
     ~SpellView();
 
+    void setEnabled(const bool& value);
+
 signals:
 
 public slots:

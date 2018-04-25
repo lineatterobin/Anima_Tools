@@ -60,6 +60,11 @@ MainWindow::~MainWindow()
     }
 }
 
+void MainWindow::closeEvent(QCloseEvent *)
+{
+    _spellBookWindow->close();
+}
+
 void MainWindow::paintEvent(QPaintEvent *)
 {
     // Création et initialisation des images.

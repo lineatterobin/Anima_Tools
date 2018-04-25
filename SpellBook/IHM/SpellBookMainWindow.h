@@ -29,14 +29,10 @@ private:
 
     void initAllConnections();
 
-    void addSpellViewWidget();
+    void addSpellView();
 
-    QWidget* _centralWidget;
-    QVBoxLayout* _mainLayout;
+    QTabWidget* _centralWidget;
 
-    QToolBar* _toolBar;
-
-    QTabWidget* _spellViewWidget;
     SpellView* _spellPreview;
 
 };
