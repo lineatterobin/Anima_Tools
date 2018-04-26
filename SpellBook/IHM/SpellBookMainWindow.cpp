@@ -28,6 +28,16 @@ SpellBookMainWindow::~SpellBookMainWindow()
         delete _centralWidget;
         _centralWidget = NULL;
     }
+    if(_spellExplorer != NULL)
+    {
+        delete _spellExplorer;
+        _spellExplorer = NULL;
+    }
+    if(_spellList != NULL)
+    {
+        delete _spellList;
+        _spellList = NULL;
+    }
 }
 
 void SpellBookMainWindow::setTheme(QString styleSheet_)
@@ -49,7 +59,7 @@ void SpellBookMainWindow::initCentralWidget()
 void SpellBookMainWindow::initDockWidgets()
 {
     _spellExplorer = new QDockWidget(this);
-    QTreeView* spellTreeExplorer = new QTreeView(this);
+    QTreeView* spellTreeExplorer = new QTreeView(_spellExplorer);
     _spellExplorer->setWidget(spellTreeExplorer);
     _spellExplorer->setObjectName(SPELLEXPLORER);
     _spellExplorer->setWindowTitle(SPELLEXPLORER);
@@ -58,7 +68,7 @@ void SpellBookMainWindow::initDockWidgets()
     addDockWidget(Qt::LeftDockWidgetArea, _spellExplorer);
 
     _spellList = new QDockWidget(this);
-    QTreeView* spellTreeList = new QTreeView(this);
+    QTreeView* spellTreeList = new QTreeView(_spellList);
     _spellList->setWidget(spellTreeList);
     _spellList->setObjectName(SPELLLIST);
     _spellList->setWindowTitle(SPELLLIST);

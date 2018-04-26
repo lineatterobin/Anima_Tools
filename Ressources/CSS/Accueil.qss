@@ -4,3 +4,20 @@ QLabel#Version
     font: bold;
     font-size: 12px;
 }
+
+QLineEdit::disabled
+{
+	background-color: white;
+	color : black;
+	border: 0px;
+}
+
+QComboBox::disabled
+{
+	color: black;
+}
+
+QSpinBox::disabled
+{
+	color: black;
+}
