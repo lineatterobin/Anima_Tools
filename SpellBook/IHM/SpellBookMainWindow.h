@@ -7,6 +7,7 @@
 #include <QToolBar>
 #include <QVBoxLayout>
 #include <QDockWidget>
+#include <QTreeView>
 
 class SpellBookMainWindow : public QMainWindow
 {
@@ -31,6 +32,8 @@ private:
     void initDockWidgets();
 
     QTabWidget* _centralWidget;
+    QDockWidget* _spellExplorer;
+    QDockWidget* _spellList;
 
     SpellView* _spellPreview;
 

@@ -12,6 +12,8 @@ const int DEFAULT_HEIGHT = 200;
 const QString SPELLBOOK_WINDOW_NAME = "SpellBook";
 const QString SPELLBOOK_TOOLBAR_NAME = "Barre d'outils";
 const QString SPELLVIEWTAB = "Détails";
+const QString SPELLEXPLORER = "Sorts";
+const QString SPELLLIST= "Grimoire";
 
 const int TOOL_BUTTON_ICON_SIZE = 15;
 
