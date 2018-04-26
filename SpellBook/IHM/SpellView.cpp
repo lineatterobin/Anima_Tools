@@ -1,5 +1,10 @@
 #include "SpellView.h"
 
+#include <iostream>
+#include <QMetaEnum>
+
+#include <SpellBook/Modeles/Spell.h>
+
 SpellView::SpellView(QWidget *parent) : QWidget(parent),
     _spellNameLabel(NULL),
     _spellLevelLabel(NULL),
@@ -53,11 +58,10 @@ SpellView::SpellView(QWidget *parent) : QWidget(parent),
 
     _spellBookLabel = new QLabel("Domaine : ", this);
     _spellBook = new QComboBox(this);
-    _spellBook->insertItem(1, QIcon(), "Lumière");
-    _spellBook->insertItem(2, QIcon(), "Obscurité");
-    _spellBook->insertItem(3, QIcon(), "Création");
-    _spellBook->insertItem(4, QIcon(), "Destruction");
-    _spellBook->insertItem(5, QIcon(), "Necromancie");
+    for(int i = 0; i < QMetaEnum::fromType<Spell::Books>().keyCount(); ++i)
+    {
+        _spellBook->insertItem(i, QMetaEnum::fromType<Spell::Books>().valueToKey(i));
+    }
 
     _spellLevelLabel = new QLabel("/", this);
     _spellLevel = new QSpinBox(this);
@@ -94,20 +98,29 @@ SpellView::SpellView(QWidget *parent) : QWidget(parent),
     _spellRMysLabel = new QLabel("RMys : ", this);
     _spellMaintenanceTypeLabel = new QLabel("Maintien : ", this);
     _spellAction = new QComboBox(this);
-    _spellAction->insertItem(1, QIcon(), "Passive");
-    _spellAction->insertItem(2, QIcon(), "Active");
+    for(int i = 0; i < QMetaEnum::fromType<Spell::ActionTypes>().keyCount(); ++i)
+    {
+        _spellAction->insertItem(i, QMetaEnum::fromType<Spell::ActionTypes>().valueToKey(i));
+    }
     _spellEffectType = new QComboBox(this);
-    _spellEffectType->insertItem(1, QIcon(), "Automatique");
-    _spellEffectType->insertItem(2, QIcon(), "Effet");
+    for(int i = 0; i < QMetaEnum::fromType<Spell::EffectTypes>().keyCount(); ++i)
+    {
+        _spellEffectType->insertItem(i, QMetaEnum::fromType<Spell::EffectTypes>().valueToKey(i));
+    }
     _spellRMysBool = new QComboBox(this);
-    _spellRMysBool->insertItem(1, QIcon(), "Oui");
-    _spellRMysBool->insertItem(2, QIcon(), "Non");
+    _spellRMysBool->insertItem(0, "OUI");
+    _spellRMysBool->insertItem(1, "NON");
     _spellRMys = new QSpinBox(this);
     _spellMaintenanceType = new QComboBox(this);
-    _spellMaintenanceType->insertItem(1, QIcon(), "Impossible");
-    _spellMaintenanceType->insertItem(2, QIcon(), "Continue");
-    _spellMaintenanceType->insertItem(3, QIcon(), "Quotidien");
+    for(int i = 0; i < QMetaEnum::fromType<Spell::MaintenanceTypes>().keyCount(); ++i)
+    {
+        _spellMaintenanceType->insertItem(i, QMetaEnum::fromType<Spell::MaintenanceTypes>().valueToKey(i));
+    }
 
+    _spellSourceLabel = new QLabel("Source : ", this);
+    _spellSource = new QLineEdit(this);
+    _spellCommentaireLabel = new QLabel("Commetaires : ", this);
+    _spellCommentaire = new QTextEdit(this);
 
     initForm();
     setEnabled(false);
@@ -162,7 +175,6 @@ void SpellView::initForm()
     spellLayout2->addLayout(spellLayout2_3,0);
     spellLayout2->addLayout(spellLayout2_4,0);
 
-
     // Tableau des coûts
     QGridLayout* spellLayoutGrid = new QGridLayout;
     spellLayoutGrid->addWidget(_spellInitialLabel, 0, 1, Qt::AlignCenter);
@@ -185,12 +197,21 @@ void SpellView::initForm()
     spellLayoutGrid->addWidget(_spellMaintenanceAvancee, 3, 3);
     spellLayoutGrid->addWidget(_spellMaintenanceArcane, 3, 4);
 
+    // Source
+    QHBoxLayout* spellLayoutSource = new QHBoxLayout;
+    spellLayoutSource->addWidget(_spellSourceLabel, 0, Qt::AlignCenter);
+    spellLayoutSource->addWidget(_spellSource, 0, Qt::AlignCenter);
+    spellLayoutSource->addStretch(1);
+
     //Assemblage final
     spellLayout->addLayout(spellLayout1,0);
     spellLayout->addLayout(spellLayout2,0);
     spellLayout->addLayout(spellLayoutGrid,0);
     spellLayout->addWidget(_spellDescriptionLabel, 0, Qt::AlignLeft);
     spellLayout->addWidget(_spellDescription);
+    spellLayout->addLayout(spellLayoutSource,0);
+    spellLayout->addWidget(_spellCommentaireLabel, 0, Qt::AlignLeft);
+    spellLayout->addWidget(_spellCommentaire);
 
     this->setMinimumSize(spellLayout->minimumSize());
     setLayout(spellLayout);

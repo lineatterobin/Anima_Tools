@@ -62,7 +62,8 @@ MainWindow::~MainWindow()
 
 void MainWindow::closeEvent(QCloseEvent *)
 {
-    _spellBookWindow->close();
+    if(_spellBookWindow != NULL)
+       _spellBookWindow->close();
 }
 
 void MainWindow::paintEvent(QPaintEvent *)

@@ -4,48 +4,47 @@
 #include <QObject>
 #include <QString>
 
-
-enum Books {
-    LUMIERE,
-    OBSCURITE,
-    CREATION,
-    DESTRUCTION,
-    FEU,
-    EAU,
-    AIR,
-    TERRE,
-    ESSENCE,
-    ILLUSION,
-    NECROMANCIE,
-    LIBRE
-}; typedef enum Books Books;
-
-
-enum MaintenanceTypes {
-    NO,
-    ROUND,
-    DAYLY
-}; typedef enum MaintenanceTypes MTypes;
-
-
-enum EffectTypes {
-    AUTO,
-    EFFECT
-}; typedef enum EffectTypes ETypes;
-
-
-enum ActionTypes {
-    PASSIVE,
-    ACTIVE
-}; typedef enum ActionTypes ATypes;
-
 class Spell : public QObject
 {
     Q_OBJECT
 public:
     explicit Spell(QObject *parent = nullptr);
-
     ~Spell();
+
+    enum Books {
+        LUMIERE,
+        OBSCURITE,
+        CREATION,
+        DESTRUCTION,
+        FEU,
+        EAU,
+        AIR,
+        TERRE,
+        ESSENCE,
+        ILLUSION,
+        NECROMANCIE,
+        ACCES_LIBRE
+    }; Q_ENUM(Books)
+    typedef enum Books Books;
+
+
+    enum MaintenanceTypes {
+        IMPOSSIBLE,
+        CONTINUE,
+        QUOTIDIEN
+    }; Q_ENUM(MaintenanceTypes) typedef enum MaintenanceTypes MTypes;
+
+
+    enum EffectTypes {
+        AUTO,
+        EFFET
+    }; Q_ENUM(EffectTypes) typedef enum EffectTypes ETypes;
+
+
+    enum ActionTypes {
+        PASSIVE,
+        ACTIVE
+    }; Q_ENUM(ActionTypes) typedef enum ActionTypes ATypes;
 
 private:
     QString _name;

@@ -22,14 +22,13 @@ signals:
 
 public slots:
 
+    void addSpellView(bool enabled_);
+
 private:
-    void initToolBar();
 
-    void initAllWidgets();
+    void initCentralWidget();
 
-    void initAllConnections();
-
-    void addSpellView();
+    void initDockWidgets();
 
     QTabWidget* _centralWidget;
 
