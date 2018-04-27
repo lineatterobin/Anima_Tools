@@ -1,6 +1,10 @@
 #include "SpellBookMainWindow.h"
 
+#include <QFile>
+#include <iostream>
+
 #include <Socle/Constantes.h>
+#include <Librairies/Modeles/SpellTreeModel.h>
 
 SpellBookMainWindow::SpellBookMainWindow(QString styleSheet_) : QMainWindow(),
     _centralWidget(NULL),
@@ -67,6 +71,15 @@ void SpellBookMainWindow::initDockWidgets()
     spellTreeExplorer->setSizePolicy(QSizePolicy::MinimumExpanding, QSizePolicy::Expanding);
     addDockWidget(Qt::LeftDockWidgetArea, _spellExplorer);
 
+    loadTreeData(spellTreeExplorer, ":/DATA/BOOK");
+    spellTreeExplorer->setHeaderHidden(true);
+
+    QModelIndex startIndex = spellTreeExplorer->model()->index(0, 0);
+    //On cache le header du fixhier XML.
+    spellTreeExplorer->setRowHidden(0, startIndex.parent(), true);
+    //On cache les informations des sorts.
+    hideTreeSpellData(spellTreeExplorer, startIndex.parent());
+
     _spellList = new QDockWidget(this);
     QTreeView* spellTreeList = new QTreeView(_spellList);
     _spellList->setWidget(spellTreeList);
@@ -81,4 +94,40 @@ void SpellBookMainWindow::addSpellView(bool enabled_)
 {
     SpellView spellView(_centralWidget);
     spellView.setEnabled(enabled_);
+}
+
+void SpellBookMainWindow::loadTreeData(QTreeView* treeView_, QString xmlPath_)
+{
+    if (!xmlPath_.isEmpty()) {
+        QFile file(xmlPath_);
+        if (file.open(QIODevice::ReadOnly)) {
+            QDomDocument document;
+            if (document.setContent(&file)) {
+                SpellTreeModel *newModel = new SpellTreeModel(document, this);
+                treeView_->setModel(newModel);
+            }
+            file.close();
+        }
+    }
+}
+
+void SpellBookMainWindow::hideTreeSpellData(QTreeView* treeView_, const QModelIndex& startIndex_, int currentDepth_)
+{
+    QAbstractItemModel* model = treeView_->model();
+    int childCount = model->rowCount(startIndex_);
+
+    for(int i = 0; i< childCount; ++i)
+    {
+        if(currentDepth_ < 3)
+        {
+            // On descent d'un niveau.
+            hideTreeSpellData(treeView_, model->index(i,0,startIndex_), currentDepth_ + 1);
+        }
+        else
+        {
+            //Niveau du sort : On cache les informations des niveaux inférieurs.
+            treeView_->setRowHidden(i, startIndex_, true);
+        }
+    }
+
 }

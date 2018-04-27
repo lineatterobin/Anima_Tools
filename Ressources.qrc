@@ -5,4 +5,7 @@
     <qresource prefix="/CSS">
         <file alias="THEME_ACCUEIL">Ressources/CSS/Accueil.qss</file>
     </qresource>
+    <qresource prefix="/DATA">
+        <file alias="BOOK">Ressources/DATA/Books.xml</file>
+    </qresource>
 </RCC>

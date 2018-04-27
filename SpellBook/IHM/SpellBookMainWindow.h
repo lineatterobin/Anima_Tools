@@ -31,6 +31,9 @@ private:
 
     void initDockWidgets();
 
+    void loadTreeData(QTreeView *treeView_, QString xmlPath);
+    void hideTreeSpellData(QTreeView* treeView_, const QModelIndex &startIndex_, int currentDepth_ = 0);
+
     QTabWidget* _centralWidget;
     QDockWidget* _spellExplorer;
     QDockWidget* _spellList;

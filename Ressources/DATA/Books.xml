@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<Categorie Voie="Principale">
+	<Livre Livre="Lumière">
+		<Sort Level="2">
+			<name>Sort02</name>
+			<truc>muche</truc>
+			<machin>hey</machin>
+		</Sort>
+		<Sort Level="4">
+			<name>Sort04</name>
+			<truc>miche</truc>
+			<machin>hey</machin>
+		</Sort>
+	</Livre>
+	<Livre Livre="Obscurité">
+		<Sort Level="2">
+			<name>Sort02</name>
+			<truc>mache</truc>
+			<machin>hey</machin>
+		</Sort>
+		<Sort Level="4">
+			<name>Sort04</name>
+			<truc>moche</truc>
+			<machin>hey</machin>
+		</Sort>
+	</Livre>
+</Categorie>

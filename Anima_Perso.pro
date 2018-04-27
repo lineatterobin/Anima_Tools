@@ -5,6 +5,7 @@
 #-------------------------------------------------
 
 QT       += core gui
+QT       += xml
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -28,5 +29,8 @@ DEFINES += QT_DEPRECATED_WARNINGS
 # Accueil
 include ($$PWD/Socle/Socle.pri)
 include ($$PWD/SpellBook/SpellBook.pri)
+include ($$PWD/Librairies/Librairies.pri)
 
 RESOURCES += $$PWD/Ressources.qrc
+
+HEADERS += \
