@@ -23,6 +23,7 @@ signals:
 
 public slots:
 
+    void loadSpellPreview(const QModelIndex& index_);
     void addSpellView(bool enabled_);
 
 private:
@@ -30,6 +31,8 @@ private:
     void initCentralWidget();
 
     void initDockWidgets();
+
+    void initConnections();
 
     void loadTreeData(QTreeView *treeView_, QString xmlPath);
     void hideTreeSpellData(QTreeView* treeView_, const QModelIndex &startIndex_, int currentDepth_ = 0);

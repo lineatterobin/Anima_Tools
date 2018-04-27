@@ -1,7 +1,5 @@
 SOURCES += \
-    $$PWD/Modeles/DomItem.cpp \
-    $$PWD/Modeles/SpellTreeModel.cpp
+    $$PWD/Modeles/DomItem.cpp 
 
 HEADERS += \
-    $$PWD/Modeles/DomItem.h \
-    $$PWD/Modeles/SpellTreeModel.h
+    $$PWD/Modeles/DomItem.h 

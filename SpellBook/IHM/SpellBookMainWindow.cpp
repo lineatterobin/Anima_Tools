@@ -4,7 +4,7 @@
 #include <iostream>
 
 #include <Socle/Constantes.h>
-#include <Librairies/Modeles/SpellTreeModel.h>
+#include <SpellBook//Modeles/SpellTreeModel.h>
 
 SpellBookMainWindow::SpellBookMainWindow(QString styleSheet_) : QMainWindow(),
     _centralWidget(NULL),
@@ -21,7 +21,9 @@ SpellBookMainWindow::SpellBookMainWindow(QString styleSheet_) : QMainWindow(),
 
     initDockWidgets();
 
-    setMinimumSize(_centralWidget->minimumSizeHint());
+    initConnections();
+
+    setMinimumSize(_centralWidget->minimumSizeHint()+_spellExplorer->minimumSizeHint()+_spellList->minimumSizeHint());
     setWindowState(Qt::WindowMinimized);
 }
 
@@ -90,6 +92,11 @@ void SpellBookMainWindow::initDockWidgets()
     addDockWidget(Qt::RightDockWidgetArea, _spellList);
 }
 
+void SpellBookMainWindow::initConnections()
+{
+    QObject::connect((QTreeView*)_spellExplorer->widget(), SIGNAL(clicked(QModelIndex)), this, SLOT(loadSpellPreview(QModelIndex)));
+}
+
 void SpellBookMainWindow::addSpellView(bool enabled_)
 {
     SpellView spellView(_centralWidget);
@@ -130,4 +137,20 @@ void SpellBookMainWindow::hideTreeSpellData(QTreeView* treeView_, const QModelIn
         }
     }
 
+}
+
+void SpellBookMainWindow::loadSpellPreview(const QModelIndex& index_)
+{
+    QTreeView* treeView = (QTreeView*)_spellExplorer->widget();
+    QAbstractItemModel* model = treeView->model();
+
+    std::cout << model->data(index_).toString().toStdString() << std::endl;
+    QVariant data = model->data(index_);
+
+    //model->data(index_.child(0,0))
+    if(model->hasChildren(index_) && model->index(0,0,index_).data().toString() == "name")
+    {
+        std::cout << "Chargement de " << model->data(index_).toString().toStdString() << std::endl;
+        _spellPreview->loadData(index_, model);
+    }
 }

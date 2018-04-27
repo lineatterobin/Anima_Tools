@@ -3,25 +3,104 @@
 	<Livre Livre="Lumière">
 		<Sort Level="2">
 			<name>Sort02</name>
-			<truc>muche</truc>
-			<machin>hey</machin>
+			<initial>
+				<requirement>6</requirement>
+				<cost>40</cost>
+				<maintien>5</maintien>
+				<effets>Effet du sort initial</effets>
+			</initial>
+			<intermediaire>
+				<requirement>8</requirement>
+				<cost>80</cost>
+				<maintien>5</maintien>
+				<effets>Effet du sort intermediaire</effets>
+			</intermediaire>
+			<avancee>
+				<requirement>10</requirement>
+				<cost>120</cost>
+				<maintien>10</maintien>
+				<effets>Effet du sort avancee</effets>
+			</avancee>
+			<arcane>
+				<requirement>12</requirement>
+				<cost>160</cost>
+				<maintien>15</maintien>
+				<effets>Effet du sort arcane</effets>
+			</arcane>
+			<maitien_type>R</maitien_type>
+			<action>ACTIVE</action>
+			<effets_type>Effet</effets_type>
+			<description>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</description>
+			<commentaire>Pas de commentaires</commentaire>
+			<source>CE 112</source>
 		</Sort>
 		<Sort Level="4">
 			<name>Sort04</name>
-			<truc>miche</truc>
-			<machin>hey</machin>
+			<initial>
+				<requirement>6</requirement>
+				<cost>40</cost>
+				<maintien>0</maintien>
+				<effets>Effet du sort4 initial</effets>
+			</initial>
+			<intermediaire>
+				<requirement>8</requirement>
+				<cost>80</cost>
+				<maintien>0</maintien>
+				<effets>Effet du sort4 intermediaire</effets>
+			</intermediaire>
+			<avancee>
+				<requirement>10</requirement>
+				<cost>120</cost>
+				<maintien>0</maintien>
+				<effets>Effet du sort4 avancee</effets>
+			</avancee>
+			<arcane>
+				<requirement>12</requirement>
+				<cost>160</cost>
+				<maintien>0</maintien>
+				<effets>Effet du sort4 arcane</effets>
+			</arcane>
+			<maitien_type>0</maitien_type>
+			<action>PASSIVE</action>
+			<effets_type>Automatique</effets_type>
+			<description>"Lorem ipsum dolor sit amet, 4</description>
+			<commentaire>Pas de commentaires</commentaire>
+			<source>CE 188</source>
 		</Sort>
 	</Livre>
 	<Livre Livre="Obscurité">
 		<Sort Level="2">
 			<name>Sort02</name>
-			<truc>mache</truc>
-			<machin>hey</machin>
-		</Sort>
-		<Sort Level="4">
-			<name>Sort04</name>
-			<truc>moche</truc>
-			<machin>hey</machin>
+			<initial>
+				<requirement>6</requirement>
+				<cost>40</cost>
+				<maintien>5</maintien>
+				<effets>Effet du sort2 initial</effets>
+			</initial>
+			<intermediaire>
+				<requirement>8</requirement>
+				<cost>80</cost>
+				<maintien>5</maintien>
+				<effets>Effet du sort2 intermediaire</effets>
+			</intermediaire>
+			<avancee>
+				<requirement>10</requirement>
+				<cost>120</cost>
+				<maintien>10</maintien>
+				<effets>Effet du sort2 avancee</effets>
+			</avancee>
+			<arcane>
+				<requirement>12</requirement>
+				<cost>160</cost>
+				<maintien>15</maintien>
+				<effets>Effet du sort2 arcane</effets>
+			</arcane>
+			<maitien_type>Q</maitien_type>
+			<action>ACTIVE</action>
+			<effets_type>Effet</effets_type>
+			<description>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor inam, quis nostrud exercitation ullamco laboris nisi equat. Duis aute irure dolor in repulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</description>
+			<commentaire>Pas de commentaires</commentaire>
+			<source>AE 185</source>
 		</Sort>
 	</Livre>
 </Categorie>

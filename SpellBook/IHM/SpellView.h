@@ -21,6 +21,8 @@ public:
 
     void setEnabled(const bool& value);
 
+    void loadData(const QModelIndex& index_, QAbstractItemModel* model);
+
 signals:
 
 public slots:
@@ -72,10 +74,10 @@ private:
     QTextEdit* _spellCommentaire;
     QLineEdit* _spellSource;
     QComboBox* _spellEffectType;
-    QTextEdit* _spellEffectInitial;
-    QTextEdit* _spellEffectIntermediaire;
-    QTextEdit* _spellEffectAvancee;
-    QTextEdit* _spellEffectArcane;
+    QLineEdit* _spellEffectInitial;
+    QLineEdit* _spellEffectIntermediaire;
+    QLineEdit* _spellEffectAvancee;
+    QLineEdit* _spellEffectArcane;
     QComboBox* _spellAction;
 
 };

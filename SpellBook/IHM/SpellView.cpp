@@ -3,7 +3,7 @@
 #include <iostream>
 #include <QMetaEnum>
 
-#include <SpellBook/Modeles/Spell.h>
+#include <SpellBook/Modeles/SpellEnum.h>
 
 SpellView::SpellView(QWidget *parent) : QWidget(parent),
     _spellNameLabel(NULL),
@@ -80,6 +80,7 @@ SpellView::SpellView(QWidget *parent) : QWidget(parent),
     _spellCostLabel = new QLabel("Coût", this);
     _spellRequirementLabel = new QLabel("Intel. Requis", this);
     _spellMaintenanceLabel = new QLabel("Maintien", this);
+    _spellEffectLabel = new QLabel("Effets", this);
     _spellCostInitial = new QSpinBox(this);
     _spellCostIntermediaire = new QSpinBox(this);
     _spellCostAvancee = new QSpinBox(this);
@@ -92,6 +93,14 @@ SpellView::SpellView(QWidget *parent) : QWidget(parent),
     _spellMaintenanceIntermediaire = new QSpinBox(this);
     _spellMaintenanceAvancee = new QSpinBox(this);
     _spellMaintenanceArcane = new QSpinBox(this);
+    _spellEffectInitial = new QLineEdit(this);
+    _spellEffectInitial->setSizePolicy(QSizePolicy::MinimumExpanding, QSizePolicy::Fixed);
+    _spellEffectIntermediaire= new QLineEdit(this);
+    _spellEffectIntermediaire->setSizePolicy(QSizePolicy::MinimumExpanding, QSizePolicy::Fixed);
+    _spellEffectAvancee = new QLineEdit(this);
+    _spellEffectAvancee->setSizePolicy(QSizePolicy::MinimumExpanding, QSizePolicy::Fixed);
+    _spellEffectArcane = new QLineEdit(this);
+    _spellEffectArcane->setSizePolicy(QSizePolicy::MinimumExpanding, QSizePolicy::Fixed);
 
     _spellActionLabel = new QLabel("Action : ", this);
     _spellEffectTypeLabel = new QLabel("Effet : ", this);
@@ -196,6 +205,11 @@ void SpellView::initForm()
     spellLayoutGrid->addWidget(_spellMaintenanceIntermediaire, 3, 2);
     spellLayoutGrid->addWidget(_spellMaintenanceAvancee, 3, 3);
     spellLayoutGrid->addWidget(_spellMaintenanceArcane, 3, 4);
+    spellLayoutGrid->addWidget(_spellEffectLabel, 4, 0, Qt::AlignLeft);
+    spellLayoutGrid->addWidget(_spellEffectInitial, 4, 1);
+    spellLayoutGrid->addWidget(_spellEffectIntermediaire, 4, 2);
+    spellLayoutGrid->addWidget(_spellEffectAvancee, 4, 3);
+    spellLayoutGrid->addWidget(_spellEffectArcane, 4, 4);
 
     // Source
     QHBoxLayout* spellLayoutSource = new QHBoxLayout;
@@ -275,3 +289,19 @@ void SpellView::setEnabled(const bool& value)
         _spellAction->setEnabled(value);
 }
 
+void SpellView::loadData(const QModelIndex& index_, QAbstractItemModel* model)
+{
+    // Name
+    QModelIndex child = model->index(0,0,index_);
+    _spellName->setText(model->index(0,0,child).data().toString());
+
+    // Initial values
+    child = model->index(0,0, model->index(1,0,index_));
+    _spellRequirementInitial->setValue(model->index(0,0,child).data().toInt());
+    child = model->index(1,0, model->index(1,0,index_));
+    _spellCostInitial->setValue(model->index(0,0,child).data().toInt());
+    child = model->index(2,0, model->index(1,0,index_));
+    _spellMaintenanceInitial->setValue(model->index(0,0,child).data().toInt());
+    child = model->index(3,0, model->index(1,0,index_));
+    _spellEffectInitial->setText(model->index(0,0,child).data().toString());
+}

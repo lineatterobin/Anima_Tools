@@ -46,37 +46,6 @@ public:
         ACTIVE
     }; Q_ENUM(ActionTypes) typedef enum ActionTypes ATypes;
 
-private:
-    QString _name;
-    int _level;
-    Books _book;
-    QString _description;
-    int _initialCost;
-    int _intermediaireCost;
-    int _avanceeCost;
-    int _arcaneCost;
-    int _initialRequirement;
-    int _intermediaireRequirement;
-    int _avanceeRequirement;
-    int _arcaneRequirement;
-    int _initialMaintenance;
-    int _intermediaireMaintenance;
-    int _avanceeMaintenance;
-    int _arcaneMaintenance;
-    MTypes _maintenanceType;
-    int _initialRMys;
-    int _intermediaireRMys;
-    int _avanceeRMys;
-    int _arcaneRMy;
-    bool _hasRMys;
-    QString _commentaires;
-    QString _source;
-    ETypes _effectType;
-    QString _initialEffect;
-    QString _intermediaireEffect;
-    QString _avanceeEffect;
-    QString _arcaneEffect;
-    ATypes _action;
 };
 
 #endif // SPELL_H
