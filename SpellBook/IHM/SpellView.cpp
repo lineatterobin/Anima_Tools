@@ -304,4 +304,38 @@ void SpellView::loadData(const QModelIndex& index_, QAbstractItemModel* model)
     _spellMaintenanceInitial->setValue(model->index(0,0,child).data().toInt());
     child = model->index(3,0, model->index(1,0,index_));
     _spellEffectInitial->setText(model->index(0,0,child).data().toString());
+
+    // Intermediaire values
+    child = model->index(0,0, model->index(2,0,index_));
+    _spellRequirementIntermediaire->setValue(model->index(0,0,child).data().toInt());
+    child = model->index(1,0, model->index(2,0,index_));
+    _spellCostIntermediaire->setValue(model->index(0,0,child).data().toInt());
+    child = model->index(2,0, model->index(2,0,index_));
+    _spellMaintenanceIntermediaire->setValue(model->index(0,0,child).data().toInt());
+    child = model->index(3,0, model->index(2,0,index_));
+    _spellEffectIntermediaire->setText(model->index(0,0,child).data().toString());
+
+    // Avancee values
+    child = model->index(0,0, model->index(3,0,index_));
+    _spellRequirementAvancee->setValue(model->index(0,0,child).data().toInt());
+    child = model->index(1,0, model->index(3,0,index_));
+    _spellCostAvancee->setValue(model->index(0,0,child).data().toInt());
+    child = model->index(2,0, model->index(3,0,index_));
+    _spellMaintenanceAvancee->setValue(model->index(0,0,child).data().toInt());
+    child = model->index(3,0, model->index(3,0,index_));
+    _spellEffectAvancee->setText(model->index(0,0,child).data().toString());
+
+    //Arcane values
+    child = model->index(0,0, model->index(4,0,index_));
+    _spellRequirementArcane->setValue(model->index(0,0,child).data().toInt());
+    child = model->index(1,0, model->index(4,0,index_));
+    _spellCostArcane->setValue(model->index(0,0,child).data().toInt());
+    child = model->index(2,0, model->index(4,0,index_));
+    _spellMaintenanceArcane->setValue(model->index(0,0,child).data().toInt());
+    child = model->index(3,0, model->index(4,0,index_));
+    _spellEffectArcane->setText(model->index(0,0,child).data().toString());
+
+    //Type de Maintien
+    child = model->index(5,0,index_);
+    _spellMaintenanceType->setCurrentIndex(model->index(0,0,child).data().toInt());
 }
