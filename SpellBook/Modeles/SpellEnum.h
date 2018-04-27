@@ -4,13 +4,10 @@
 #include <QObject>
 #include <QString>
 
-class Spell : public QObject
+class SpellEnum : public QObject
 {
     Q_OBJECT
 public:
-    explicit Spell(QObject *parent = nullptr);
-    ~Spell();
-
     enum Books {
         LUMIERE,
         OBSCURITE,

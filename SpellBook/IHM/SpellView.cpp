@@ -58,9 +58,9 @@ SpellView::SpellView(QWidget *parent) : QWidget(parent),
 
     _spellBookLabel = new QLabel("Domaine : ", this);
     _spellBook = new QComboBox(this);
-    for(int i = 0; i < QMetaEnum::fromType<Spell::Books>().keyCount(); ++i)
+    for(int i = 0; i < QMetaEnum::fromType<SpellEnum::Books>().keyCount(); ++i)
     {
-        _spellBook->insertItem(i, QMetaEnum::fromType<Spell::Books>().valueToKey(i));
+        _spellBook->insertItem(i, QMetaEnum::fromType<SpellEnum::Books>().valueToKey(i));
     }
 
     _spellLevelLabel = new QLabel("/", this);
@@ -107,23 +107,23 @@ SpellView::SpellView(QWidget *parent) : QWidget(parent),
     _spellRMysLabel = new QLabel("RMys : ", this);
     _spellMaintenanceTypeLabel = new QLabel("Maintien : ", this);
     _spellAction = new QComboBox(this);
-    for(int i = 0; i < QMetaEnum::fromType<Spell::ActionTypes>().keyCount(); ++i)
+    for(int i = 0; i < QMetaEnum::fromType<SpellEnum::ActionTypes>().keyCount(); ++i)
     {
-        _spellAction->insertItem(i, QMetaEnum::fromType<Spell::ActionTypes>().valueToKey(i));
+        _spellAction->insertItem(i, QMetaEnum::fromType<SpellEnum::ActionTypes>().valueToKey(i));
     }
     _spellEffectType = new QComboBox(this);
-    for(int i = 0; i < QMetaEnum::fromType<Spell::EffectTypes>().keyCount(); ++i)
+    for(int i = 0; i < QMetaEnum::fromType<SpellEnum::EffectTypes>().keyCount(); ++i)
     {
-        _spellEffectType->insertItem(i, QMetaEnum::fromType<Spell::EffectTypes>().valueToKey(i));
+        _spellEffectType->insertItem(i, QMetaEnum::fromType<SpellEnum::EffectTypes>().valueToKey(i));
     }
     _spellRMysBool = new QComboBox(this);
     _spellRMysBool->insertItem(0, "OUI");
     _spellRMysBool->insertItem(1, "NON");
     _spellRMys = new QSpinBox(this);
     _spellMaintenanceType = new QComboBox(this);
-    for(int i = 0; i < QMetaEnum::fromType<Spell::MaintenanceTypes>().keyCount(); ++i)
+    for(int i = 0; i < QMetaEnum::fromType<SpellEnum::MaintenanceTypes>().keyCount(); ++i)
     {
-        _spellMaintenanceType->insertItem(i, QMetaEnum::fromType<Spell::MaintenanceTypes>().valueToKey(i));
+        _spellMaintenanceType->insertItem(i, QMetaEnum::fromType<SpellEnum::MaintenanceTypes>().valueToKey(i));
     }
 
     _spellSourceLabel = new QLabel("Source : ", this);
