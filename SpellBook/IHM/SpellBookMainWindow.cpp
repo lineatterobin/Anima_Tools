@@ -144,13 +144,9 @@ void SpellBookMainWindow::loadSpellPreview(const QModelIndex& index_)
     QTreeView* treeView = (QTreeView*)_spellExplorer->widget();
     QAbstractItemModel* model = treeView->model();
 
-    std::cout << model->data(index_).toString().toStdString() << std::endl;
-    QVariant data = model->data(index_);
-
     //model->data(index_.child(0,0))
     if(model->hasChildren(index_) && model->index(0,0,index_).data().toString() == "name")
     {
-        std::cout << "Chargement de " << model->data(index_).toString().toStdString() << std::endl;
         _spellPreview->loadData(index_, model);
     }
 }

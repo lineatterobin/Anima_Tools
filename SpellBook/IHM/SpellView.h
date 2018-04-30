@@ -54,7 +54,7 @@ private:
     // Champs
     QLineEdit* _spellName;
     QSpinBox* _spellLevel;
-    QComboBox* _spellBook;
+    QLineEdit* _spellBook;
     QTextEdit* _spellDescription;
     QSpinBox* _spellCostInitial;
     QSpinBox* _spellCostIntermediaire;

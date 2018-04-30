@@ -52,16 +52,16 @@ SpellView::SpellView(QWidget *parent) : QWidget(parent),
     _spellEffectArcane(NULL),
     _spellAction(NULL)
 {
+
     _spellNameLabel = new QLabel("Nom : ", this);
     _spellName = new QLineEdit(this);
     _spellName->setSizePolicy(QSizePolicy::MinimumExpanding, QSizePolicy::Fixed);
 
     _spellBookLabel = new QLabel("Domaine : ", this);
-    _spellBook = new QComboBox(this);
-    for(int i = 0; i < QMetaEnum::fromType<SpellEnum::Books>().keyCount(); ++i)
-    {
-        _spellBook->insertItem(i, QMetaEnum::fromType<SpellEnum::Books>().valueToKey(i));
-    }
+    _spellBook = new QLineEdit(this);
+    QFontMetrics b(_spellBook->font());
+    _spellBook->setSizePolicy(QSizePolicy::MinimumExpanding, QSizePolicy::Fixed);
+    _spellBook->setMaximumWidth(15*b.averageCharWidth());
 
     _spellLevelLabel = new QLabel("/", this);
     _spellLevel = new QSpinBox(this);
@@ -317,6 +317,15 @@ void SpellView::setEnabled(const bool& value)
 
 void SpellView::loadData(const QModelIndex& index_, QAbstractItemModel* model)
 {
+    // Domaine
+    QModelIndex parent = model->parent(index_);
+    _spellBook->setText(parent.data().toString());
+
+    // Niveau
+    QStringList niveau = index_.data().toString().split(" ", QString::SkipEmptyParts);
+    QString niv = niveau.at(0);
+    _spellLevel->setValue(niv.toInt());
+
     // Name
     QModelIndex child = model->index(0,0,index_);
     _spellName->setText(model->index(0,0,child).data().toString());
@@ -351,7 +360,7 @@ void SpellView::loadData(const QModelIndex& index_, QAbstractItemModel* model)
     child = model->index(3,0, model->index(3,0,index_));
     _spellEffectAvancee->setText(model->index(0,0,child).data().toString());
 
-    //Arcane values
+    // Arcane values
     child = model->index(0,0, model->index(4,0,index_));
     _spellRequirementArcane->setValue(model->index(0,0,child).data().toInt());
     child = model->index(1,0, model->index(4,0,index_));
@@ -361,7 +370,50 @@ void SpellView::loadData(const QModelIndex& index_, QAbstractItemModel* model)
     child = model->index(3,0, model->index(4,0,index_));
     _spellEffectArcane->setText(model->index(0,0,child).data().toString());
 
-    //Type de Maintien
+    // Type de Maintien
     child = model->index(5,0,index_);
     _spellMaintenanceType->setCurrentIndex(model->index(0,0,child).data().toInt());
+
+    // Type action
+    child = model->index(6,0,index_);
+    if(QString::compare(model->index(0,0,child).data().toString(), "ACTIVE", Qt::CaseInsensitive) == 0)
+    {
+        _spellAction->setCurrentIndex(SpellEnum::ACTIVE);
+    }
+    else
+    {
+        _spellAction->setCurrentIndex(SpellEnum::PASSIVE);
+    }
+
+    // Type effet
+    child = model->index(7,0,index_);
+    if(QString::compare(model->index(0,0,child).data().toString(), "AUTOMATIQUE", Qt::CaseInsensitive) == 0)
+        _spellEffectType->setCurrentIndex(SpellEnum::AUTOMATIQUE);
+    else if (QString::compare(model->index(0,0,child).data().toString(), "EFFET", Qt::CaseInsensitive) == 0)
+        _spellEffectType->setCurrentIndex(SpellEnum::EFFET);
+    else if (QString::compare(model->index(0,0,child).data().toString(), "ANIMIQUE", Qt::CaseInsensitive) == 0)
+        _spellEffectType->setCurrentIndex(SpellEnum::ANIMIQUE);
+    else if (QString::compare(model->index(0,0,child).data().toString(), "ATTAQUE", Qt::CaseInsensitive) == 0)
+        _spellEffectType->setCurrentIndex(SpellEnum::ATTAQUE);
+    else if (QString::compare(model->index(0,0,child).data().toString(), "DEFENSE", Qt::CaseInsensitive) == 0)
+        _spellEffectType->setCurrentIndex(SpellEnum::DEFENSE);
+    else if (QString::compare(model->index(0,0,child).data().toString(), "DETECTION", Qt::CaseInsensitive) == 0)
+        _spellEffectType->setCurrentIndex(SpellEnum::DETECTION);
+    else if (QString::compare(model->index(0,0,child).data().toString(), "EFFET, ANIMIQUE", Qt::CaseInsensitive) == 0)
+        _spellEffectType->setCurrentIndex(SpellEnum::EFFET_ANIMIQUE);
+    else
+        _spellEffectType->setCurrentIndex(SpellEnum::EFFET);
+
+    // Description
+    child = model->index(8,0,index_);
+    _spellDescription->setText(model->index(0,0,child).data().toString());
+
+    // Commentaires
+    child = model->index(9,0,index_);
+    _spellCommentaire->setText(model->index(0,0,child).data().toString());
+
+    // Source
+    child = model->index(10,0,index_);
+    _spellSource->setText(model->index(0,0,child).data().toString());
+
 }

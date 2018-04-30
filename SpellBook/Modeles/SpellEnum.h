@@ -8,22 +8,6 @@ class SpellEnum : public QObject
 {
     Q_OBJECT
 public:
-    enum Books {
-        LUMIERE,
-        OBSCURITE,
-        CREATION,
-        DESTRUCTION,
-        FEU,
-        EAU,
-        AIR,
-        TERRE,
-        ESSENCE,
-        ILLUSION,
-        NECROMANCIE,
-        ACCES_LIBRE
-    }; Q_ENUM(Books)
-    typedef enum Books Books;
-
 
     enum MaintenanceTypes {
         IMPOSSIBLE,
@@ -33,8 +17,13 @@ public:
 
 
     enum EffectTypes {
-        AUTO,
-        EFFET
+        AUTOMATIQUE,
+        EFFET,
+        ANIMIQUE,
+        ATTAQUE,
+        DEFENSE,
+        DETECTION,
+        EFFET_ANIMIQUE
     }; Q_ENUM(EffectTypes) typedef enum EffectTypes ETypes;
 
 
