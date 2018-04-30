@@ -166,6 +166,238 @@
 			<commentaire>Pas de commentaires</commentaire>
 			<source>CE 124</source>
 		</Sort>
+		<Sort Level="16">
+			<name>Armure de Lumière</name>
+			<initial>
+				<requirement>6</requirement>
+				<cost>60</cost>
+				<maintien>5</maintien>
+				<effets>IP 2 contre l'Énergie et IP 1 contre le reste</effets>
+			</initial>
+			<intermediaire>
+				<requirement>9</requirement>
+				<cost>90</cost>
+				<maintien>10</maintien>
+				<effets>IP 5 contre l'Énergie et IP 2 contre le reste </effets>
+			</intermediaire>
+			<avancee>
+				<requirement>12</requirement>
+				<cost>120</cost>
+				<maintien>15</maintien>
+				<effets>IP 8 contre l'Énergie et IP 4 contre le reste</effets>
+			</avancee>
+			<arcane>
+				<requirement>15</requirement>
+				<cost>150</cost>
+				<maintien>20</maintien>
+				<effets>IP 12 contre l'Énergie et IP 6 contre le reste</effets>
+			</arcane>
+			<maitien_type>1</maitien_type>
+			<action>ACTIVE</action>
+			<effets_type>Effet</effets_type>
+			<description>Forme une carapace mystique qui protège contre les attaques de Mode Énergie, et de la moitié contre les autres Modes. Bien que cette protection compte comme une armure, on n'applique aucun malus à l'initiative pour les couches de protection supplémentaires.</description>
+			<commentaire>Pas de commentaires</commentaire>
+			<source>CE 124</source>
+		</Sort>
+		<Sort Level="18">
+			<name>Destruction d'Ombres</name>
+			<initial>
+				<requirement>6</requirement>
+				<cost>60</cost>
+				<maintien>10</maintien>
+				<effets>RMys 140 / 10m de rayon</effets>
+			</initial>
+			<intermediaire>
+				<requirement>9</requirement>
+				<cost>100</cost>
+				<maintien>10</maintien>
+				<effets>RMys 180 / 100m de rayon</effets>
+			</intermediaire>
+			<avancee>
+				<requirement>12</requirement>
+				<cost>150</cost>
+				<maintien>15</maintien>
+				<effets>RMys 220 / 250m de rayon</effets>
+			</avancee>
+			<arcane>
+				<requirement>15</requirement>
+				<cost>250</cost>
+				<maintien>25</maintien>
+				<effets>RMys 280 / 500m de rayon</effets>
+			</arcane>
+			<maitien_type>1</maitien_type>
+			<action>ACTIVE</action>
+			<effets_type>Effet, Animique</effets_type>
+			<description>Détruit les ombres existant dans le rayon d'action du sortilège. Si ce sort est lancé sur des êtres naturellement basés sur l'obscurité, ils doivent réussir un test de RMys, sous peine de perdre une quantité de points de vie égale au double de leur marge d'échec (dix fois la marge d'échec dans le cas de créatures à Encaissement). Si ce sort est maintenu, les créatures devront effectuer un nouveau test de RMys à chaque round.</description>
+			<commentaire>Pas de commentaires</commentaire>
+			<source>CE 124</source>
+		</Sort>
+		<Sort Level="20">
+			<name>Détecter le Negatif</name>
+			<initial>
+				<requirement>6</requirement>
+				<cost>60</cost>
+				<maintien>5</maintien>
+				<effets>RMys 80 / 25m de rayon</effets>
+			</initial>
+			<intermediaire>
+				<requirement>9</requirement>
+				<cost>100</cost>
+				<maintien>10</maintien>
+				<effets>RMys 140 / 150m de rayon</effets>
+			</intermediaire>
+			<avancee>
+				<requirement>12</requirement>
+				<cost>160</cost>
+				<maintien>20</maintien>
+				<effets>RMys 160 / 500m de rayon</effets>
+			</avancee>
+			<arcane>
+				<requirement>15</requirement>
+				<cost>280</cost>
+				<maintien>30</maintien>
+				<effets>RMys 200 / 1km de rayon</effets>
+			</arcane>
+			<maitien_type>1</maitien_type>
+			<action>ACTIVE</action>
+			<effets_type>Détection</effets_type>
+			<description>Détecte tous les sentiments négatifs, comme la haine, la peur ou la colère, qui se trouvent autour du sorcier. Ce sort affecte aussi les créatures se basant sur ces émotions. Pour y résister, elles doivent réussir un test de RMys.</description>
+			<commentaire>Pas de commentaires</commentaire>
+			<source>CE 124</source>
+		</Sort>
+		<Sort Level="22">
+			<name>Décharge de Lumière</name>
+			<initial>
+				<requirement>6</requirement>
+				<cost>50</cost>
+				<maintien>0</maintien>
+				<effets>Dégâts de base 60</effets>
+			</initial>
+			<intermediaire>
+				<requirement>9</requirement>
+				<cost>90</cost>
+				<maintien>0</maintien>
+				<effets>Dégâts de base 90</effets>
+			</intermediaire>
+			<avancee>
+				<requirement>12</requirement>
+				<cost>120</cost>
+				<maintien>0</maintien>
+				<effets>Dégâts de base 120</effets>
+			</avancee>
+			<arcane>
+				<requirement>15</requirement>
+				<cost>150</cost>
+				<maintien>0</maintien>
+				<effets>Dégâts de base 150</effets>
+			</arcane>
+			<maitien_type>0</maitien_type>
+			<action>ACTIVE</action>
+			<effets_type>Attaque</effets_type>
+			<description>Projette une décharge d'énergie magique basée sur la lumière. L'attaque se fait sur le Mode Énergie. </description>
+			<commentaire>Pas de commentaires</commentaire>
+			<source>CE 124</source>
+		</Sort>
+		<Sort Level="26">
+			<name>Hologramme</name>
+			<initial>
+				<requirement>6</requirement>
+				<cost>40</cost>
+				<maintien>5</maintien>
+				<effets>La taille maximale est d'un mètre cube</effets>
+			</initial>
+			<intermediaire>
+				<requirement>9</requirement>
+				<cost>150</cost>
+				<maintien>20</maintien>
+				<effets>La taille maximale est de 15 mètres cube</effets>
+			</intermediaire>
+			<avancee>
+				<requirement>12</requirement>
+				<cost>250</cost>
+				<maintien>25</maintien>
+				<effets>La taille maximale est de 50 mètres cube</effets>
+			</avancee>
+			<arcane>
+				<requirement>15</requirement>
+				<cost>350</cost>
+				<maintien>30</maintien>
+				<effets>La taille maximale est de 100 mètres cube et la difficulté des tests de Vigilance et d'Observation passe respectivement à Impossible et Absurde.</effets>
+			</arcane>
+			<maitien_type>1</maitien_type>
+			<action>ACTIVE</action>
+			<effets_type>Effet</effets_type>
+			<description>Crée une forme lumineuse immatérielle dont la taille maximale dépend du rang du sort. Le sorcier peut lui donner l'apparence qu'il désire, ce qui n'aide pas à différencier un hologramme d'un être ou d'une chose véritable. Si on crée un être, ce dernier peut effectuer toutes les actions surhumaines que souhaite celui qui le contrôle, mais en imitant les compétences physiques du sorcier. Si par exemple, il utilise un hologramme pour faire croire à une attaque, l'hologramme utilise l'attaque du jeteur de sort. L'hologramme ne peut toucher personne ni être touché, mais s'il reçoit des dégâts basés sur l'énergie, il disparaît. Pour s'apercevoir qu'il ne s'agit que d'une image, il faut réussir un test Quasiment Impossible de Vigilance, ou un test Très Difficile d'observation.</description>
+			<commentaire>Pas de commentaires</commentaire>
+			<source>CE 124</source>
+		</Sort>
+		<Sort Level="28">
+			<name>Liens de Lumière</name>
+			<initial>
+				<requirement>6</requirement>
+				<cost>60</cost>
+				<maintien>10</maintien>
+				<effets>Force de 8</effets>
+			</initial>
+			<intermediaire>
+				<requirement>9</requirement>
+				<cost>100</cost>
+				<maintien>10</maintien>
+				<effets>Force de 12</effets>
+			</intermediaire>
+			<avancee>
+				<requirement>12</requirement>
+				<cost>140</cost>
+				<maintien>15</maintien>
+				<effets>Force de 15 et la solidité passe à 30</effets>
+			</avancee>
+			<arcane>
+				<requirement>15</requirement>
+				<cost>180</cost>
+				<maintien>15</maintien>
+				<effets>Force de 18 et la solidité passe à 35</effets>
+			</arcane>
+			<maitien_type>1</maitien_type>
+			<action>ACTIVE</action>
+			<effets_type>Attaque</effets_type>
+			<description>Forme quelques liens de lumière qui subjuguent la cible désignée. Il faut réaliser une attaque en utilisant les règles d'immobilisation, mais le sorcier ne subit aucun malus à sa compétence pour exécuter cette manouvre. La force des liens ont en ce qui concerne les tests appropriés dépend du rang du sort. Si un tiers tente de libérer une personne immobilisée par des liens de lumière, ceux-ci sont considérés comme une arme d'énergie de Solidité 25.</description>
+			<commentaire>Pas de commentaires</commentaire>
+			<source>CE 124</source>
+		</Sort>
+		<Sort Level="30">
+			<name>Maîtrise lumineuse</name>
+			<initial>
+				<requirement>6</requirement>
+				<cost>50</cost>
+				<maintien>10</maintien>
+				<effets>RMys 80 / rayon de 20m</effets>
+			</initial>
+			<intermediaire>
+				<requirement>9</requirement>
+				<cost>150</cost>
+				<maintien>10</maintien>
+				<effets>RMys 140 / rayon de 150m</effets>
+			</intermediaire>
+			<avancee>
+				<requirement>12</requirement>
+				<cost>250</cost>
+				<maintien>15</maintien>
+				<effets>RMys 180 / rayon de 300m</effets>
+			</avancee>
+			<arcane>
+				<requirement>16</requirement>
+				<cost>350</cost>
+				<maintien>15</maintien>
+				<effets>RMys 220 / rayon de 500m</effets>
+			</arcane>
+			<maitien_type>1</maitien_type>
+			<action>ACTIVE</action>
+			<effets_type>Effet, Animique</effets_type>
+			<description>Modifie et contrôle la forme, la couleur et l'intensité de la lumière. Si ce sort est lancé contre des êtres naturellement basés sur cet élément, ils doivent réussir un test de RMys sous peine d'être contrôlés par le sorcier. Une créature contrôlée ne peut refaire ce test que si elle reçoit un ordre contraire à sa nature.</description>
+			<commentaire>Pas de commentaires</commentaire>
+			<source>CE 124</source>
+		</Sort>
+
 	</Livre>
 	<Livre Livre="Obscurité">
 		<Sort Level="2">
