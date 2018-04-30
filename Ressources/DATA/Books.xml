@@ -2,70 +2,169 @@
 <Categorie Voie="Principale">
 	<Livre Livre="Lumière">
 		<Sort Level="2">
-			<name>Sort02</name>
+			<name>Créer Lumière</name>
 			<initial>
-				<requirement>6</requirement>
-				<cost>40</cost>
+				<requirement>5</requirement>
+				<cost>20</cost>
 				<maintien>5</maintien>
-				<effets>Effet du sort initial</effets>
+				<effets>5m de rayon.</effets>
+			</initial>
+			<intermediaire>
+				<requirement>8</requirement>
+				<cost>50</cost>
+				<maintien>5</maintien>
+				<effets>25m de rayon.</effets>
+			</intermediaire>
+			<avancee>
+				<requirement>10</requirement>
+				<cost>100</cost>
+				<maintien>10</maintien>
+				<effets>100m de rayon.</effets>
+			</avancee>
+			<arcane>
+				<requirement>12</requirement>
+				<cost>200</cost>
+				<maintien>15</maintien>
+				<effets>500m de rayon.</effets>
+			</arcane>
+			<maitien_type>2</maitien_type>
+			<action>ACTIVE</action>
+			<effets_type>Effet</effets_type>
+			<description>Crée de la lumière à partir d'un point déterminé par le sorcier.</description>
+			<commentaire>Pas de commentaires</commentaire>
+			<source>CE 124</source>
+		</Sort>
+		<Sort Level="6">
+			<name>Apaiser</name>
+			<initial>
+				<requirement>5</requirement>
+				<cost>40</cost>
+				<maintien>0</maintien>
+				<effets>RMys ou RPsy 80 / 10m de rayon.</effets>
 			</initial>
 			<intermediaire>
 				<requirement>8</requirement>
 				<cost>80</cost>
+				<maintien>0</maintien>
+				<effets>RMys ou RPsy 100 / 25m de rayon</effets>
+			</intermediaire>
+			<avancee>
+				<requirement>11</requirement>
+				<cost>120</cost>
+				<maintien>0</maintien>
+				<effets>RMys ou RPsy 120 / 50m de rayon</effets>
+			</avancee>
+			<arcane>
+				<requirement>14</requirement>
+				<cost>160</cost>
+				<maintien>0</maintien>
+				<effets>RMys ou RPsy 150 / 100m de rayon</effets>
+			</arcane>
+			<maitien_type>0</maitien_type>
+			<action>ACTIVE</action>
+			<effets_type>Animique</effets_type>
+			<description>Apaise les individus perturbés par un sentiment de peur ou de haine, qui se trouvent autour du sorcier. Ce sort fait disparaître tous les états de Peur, Terreur ou Colère que subissent ces individus, même si ces effets ont une origine surnaturelle. Par contre, il n'empêche pas les actions violentes si celles-ci sont effectuées de sang-froid ou de façon préméditée.</description>
+			<commentaire>Pas de commentaires</commentaire>
+			<source>CE 124</source>
+		</Sort>
+		<Sort Level="8">
+			<name>Flash aveuglant</name>
+			<initial>
+				<requirement>6</requirement>
+				<cost>50</cost>
+				<maintien>0</maintien>
+				<effets>RPhy 140 / 10m de rayon.</effets>
+			</initial>
+			<intermediaire>
+				<requirement>9</requirement>
+				<cost>100</cost>
+				<maintien>0</maintien>
+				<effets>RPhy 140 / 25m de rayon.</effets>
+			</intermediaire>
+			<avancee>
+				<requirement>11</requirement>
+				<cost>150</cost>
+				<maintien>0</maintien>
+				<effets>RPhy 140 / 50m de rayon.</effets>
+			</avancee>
+			<arcane>
+				<requirement>14</requirement>
+				<cost>200</cost>
+				<maintien>0</maintien>
+				<effets>RPhy 160 / 100m de rayon.</effets>
+			</arcane>
+			<maitien_type>0</maitien_type>
+			<action>ACTIVE</action>
+			<effets_type>Automatique</effets_type>
+			<description>Provoque un flash soudain de lumière dans un rayon de 15 mètres. Toutes les personnes qui le voient sont aveuglées pendant un round par tranche de 10 points de marge d'échec au test de Résistance. Il n'est pas possible de choisir des cibles spécifiques dans la zone du flash, qui affecte toutes les personnes présentes de la même manière, à l'exception du sorcier. Si les personnes affectées se couvrent les yeux ou se prémunissent du flash d'une façon quelconque, le défenseur bénéficie d'un bonus de +40 sur son test de résistance.</description>
+			<commentaire>Pas de commentaires</commentaire>
+			<source>CE 124</source>
+		</Sort>
+		<Sort Level="10">
+			<name>Bouclier de Lumière</name>
+			<initial>
+				<requirement>6</requirement>
+				<cost>50</cost>
 				<maintien>5</maintien>
-				<effets>Effet du sort intermediaire</effets>
+				<effets>Le bouclier possède 300 points de vie</effets>
+			</initial>
+			<intermediaire>
+				<requirement>8</requirement>
+				<cost>120</cost>
+				<maintien>15</maintien>
+				<effets>Le bouclier possède 1000 points de vie</effets>
 			</intermediaire>
 			<avancee>
 				<requirement>10</requirement>
-				<cost>120</cost>
-				<maintien>10</maintien>
-				<effets>Effet du sort avancee</effets>
+				<cost>180</cost>
+				<maintien>20</maintien>
+				<effets>Le bouclier possède 1800 points de vie</effets>
 			</avancee>
 			<arcane>
-				<requirement>12</requirement>
-				<cost>160</cost>
+				<requirement>14</requirement>
+				<cost>250</cost>
+				<maintien>25</maintien>
+				<effets>Le bouclier possède 3000 points de vie</effets>
+			</arcane>
+			<maitien_type>1</maitien_type>
+			<action>ACTIVE</action>
+			<effets_type>Défense</effets_type>
+			<description>Forme une barrière d'énergie, qui protège contre toute source d'attaque. Seules les attaques surnaturelles peuvent lui infliger des dégâts et les attaques basées sur l'obscurité lui en infligent même le double.</description>
+			<commentaire>Pas de commentaires</commentaire>
+			<source>CE 124</source>
+		</Sort>
+		<Sort Level="12">
+			<name>Percevoir</name>
+			<initial>
+				<requirement>6</requirement>
+				<cost>50</cost>
+				<maintien>5</maintien>
+				<effets>+50 en Vigilance, Observation et Éval. Magique</effets>
+			</initial>
+			<intermediaire>
+				<requirement>9</requirement>
+				<cost>150</cost>
 				<maintien>15</maintien>
-				<effets>Effet du sort arcane</effets>
+				<effets>+150 en Vigilance, Observation et Éval. Magique</effets>
+			</intermediaire>
+			<avancee>
+				<requirement>12</requirement>
+				<cost>200</cost>
+				<maintien>20</maintien>
+				<effets>+200 en Vigilance, Observation et Éval. Magique</effets>
+			</avancee>
+			<arcane>
+				<requirement>14</requirement>
+				<cost>250</cost>
+				<maintien>25</maintien>
+				<effets>+250 en Vigilance, Observation et Éval. Magique</effets>
 			</arcane>
 			<maitien_type>1</maitien_type>
 			<action>ACTIVE</action>
 			<effets_type>Effet</effets_type>
-			<description>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</description>
+			<description>Ce sort augmente les perceptions du sorcier en rehaussant ses compétences secondaires de vigilance et d'observation. Son évaluation magique augmente de la même valeur, mais seulement s'il compte mesurer ou détecter le potentiel magique de quelque chose ou quelqu'un, pas pour le dissimuler.</description>
 			<commentaire>Pas de commentaires</commentaire>
-			<source>CE 112</source>
-		</Sort>
-		<Sort Level="4">
-			<name>Sort04</name>
-			<initial>
-				<requirement>6</requirement>
-				<cost>40</cost>
-				<maintien>0</maintien>
-				<effets>Effet du sort4 initial</effets>
-			</initial>
-			<intermediaire>
-				<requirement>8</requirement>
-				<cost>80</cost>
-				<maintien>0</maintien>
-				<effets>Effet du sort4 intermediaire</effets>
-			</intermediaire>
-			<avancee>
-				<requirement>10</requirement>
-				<cost>120</cost>
-				<maintien>IMPOSSIBLE</maintien>
-				<effets>Effet du sort4 avancee</effets>
-			</avancee>
-			<arcane>
-				<requirement>12</requirement>
-				<cost>160</cost>
-				<maintien>0</maintien>
-				<effets>Effet du sort4 arcane</effets>
-			</arcane>
-			<maitien_type>0</maitien_type>
-			<action>PASSIVE</action>
-			<effets_type>Automatique</effets_type>
-			<description>"Lorem ipsum dolor sit amet, 4</description>
-			<commentaire>Pas de commentaires</commentaire>
-			<source>CE 188</source>
+			<source>CE 124</source>
 		</Sort>
 	</Livre>
 	<Livre Livre="Obscurité">

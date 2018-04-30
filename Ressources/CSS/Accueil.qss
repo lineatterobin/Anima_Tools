@@ -7,9 +7,7 @@ QLabel#Version
 
 QLineEdit::disabled
 {
-	background-color: white;
 	color : black;
-	border: 0px;
 }
 
 QComboBox::disabled

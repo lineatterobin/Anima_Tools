@@ -74,10 +74,10 @@ private:
     QTextEdit* _spellCommentaire;
     QLineEdit* _spellSource;
     QComboBox* _spellEffectType;
-    QLineEdit* _spellEffectInitial;
-    QLineEdit* _spellEffectIntermediaire;
-    QLineEdit* _spellEffectAvancee;
-    QLineEdit* _spellEffectArcane;
+    QTextEdit* _spellEffectInitial;
+    QTextEdit* _spellEffectIntermediaire;
+    QTextEdit* _spellEffectAvancee;
+    QTextEdit* _spellEffectArcane;
     QComboBox* _spellAction;
 
 };
