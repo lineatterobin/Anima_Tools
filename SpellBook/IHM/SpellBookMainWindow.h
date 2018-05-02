@@ -2,12 +2,12 @@
 #define SPELLBOOKMAINWINDOW_H
 
 #include <SpellBook/IHM/SpellView.h>
+#include <SpellBook/IHM/SpellTreeView.h>
 
 #include <QMainWindow>
 #include <QToolBar>
 #include <QVBoxLayout>
 #include <QDockWidget>
-#include <QTreeView>
 
 class SpellBookMainWindow : public QMainWindow
 {
@@ -34,8 +34,7 @@ private:
 
     void initConnections();
 
-    void loadTreeData(QTreeView *treeView_, QString xmlPath);
-    void hideTreeSpellData(QTreeView* treeView_, const QModelIndex &startIndex_, int currentDepth_ = 0);
+    void hideRowSpellTreeView(SpellTreeView* treeview_, const bool& hasXMLHeader_);
 
     QTabWidget* _centralWidget;
     QDockWidget* _spellExplorer;

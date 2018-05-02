@@ -19,3 +19,8 @@ QSpinBox::disabled
 {
 	color: black;
 }
+
+QTextEdit::disabled
+{
+	color: black;
+}

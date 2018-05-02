@@ -1,10 +1,9 @@
 #include "SpellBookMainWindow.h"
 
 #include <QFile>
-#include <iostream>
 
 #include <Socle/Constantes.h>
-#include <SpellBook//Modeles/SpellTreeModel.h>
+#include <SpellBook/Modeles/SpellTreeModel.h>
 
 SpellBookMainWindow::SpellBookMainWindow(QString styleSheet_) : QMainWindow(),
     _centralWidget(NULL),
@@ -65,7 +64,7 @@ void SpellBookMainWindow::initCentralWidget()
 void SpellBookMainWindow::initDockWidgets()
 {
     _spellExplorer = new QDockWidget(this);
-    QTreeView* spellTreeExplorer = new QTreeView(_spellExplorer);
+    SpellTreeView* spellTreeExplorer = new SpellTreeView(_spellExplorer);
     _spellExplorer->setWidget(spellTreeExplorer);
     _spellExplorer->setObjectName(SPELLEXPLORER);
     _spellExplorer->setWindowTitle(SPELLEXPLORER);
@@ -73,17 +72,13 @@ void SpellBookMainWindow::initDockWidgets()
     spellTreeExplorer->setSizePolicy(QSizePolicy::MinimumExpanding, QSizePolicy::Expanding);
     addDockWidget(Qt::LeftDockWidgetArea, _spellExplorer);
 
-    loadTreeData(spellTreeExplorer, ":/DATA/BOOK");
+    spellTreeExplorer->loadTreeData(":/DATA/BOOK");
     spellTreeExplorer->setHeaderHidden(true);
 
-    QModelIndex startIndex = spellTreeExplorer->model()->index(0, 0);
-    //On cache le header du fixhier XML.
-    spellTreeExplorer->setRowHidden(0, startIndex.parent(), true);
-    //On cache les informations des sorts.
-    hideTreeSpellData(spellTreeExplorer, startIndex.parent());
+    hideRowSpellTreeView(spellTreeExplorer, true);
 
     _spellList = new QDockWidget(this);
-    QTreeView* spellTreeList = new QTreeView(_spellList);
+    SpellTreeView* spellTreeList = new SpellTreeView(_spellList);
     _spellList->setWidget(spellTreeList);
     _spellList->setObjectName(SPELLLIST);
     _spellList->setWindowTitle(SPELLLIST);
@@ -103,42 +98,6 @@ void SpellBookMainWindow::addSpellView(bool enabled_)
     spellView.setEnabled(enabled_);
 }
 
-void SpellBookMainWindow::loadTreeData(QTreeView* treeView_, QString xmlPath_)
-{
-    if (!xmlPath_.isEmpty()) {
-        QFile file(xmlPath_);
-        if (file.open(QIODevice::ReadOnly)) {
-            QDomDocument document;
-            if (document.setContent(&file)) {
-                SpellTreeModel *newModel = new SpellTreeModel(document, this);
-                treeView_->setModel(newModel);
-            }
-            file.close();
-        }
-    }
-}
-
-void SpellBookMainWindow::hideTreeSpellData(QTreeView* treeView_, const QModelIndex& startIndex_, int currentDepth_)
-{
-    QAbstractItemModel* model = treeView_->model();
-    int childCount = model->rowCount(startIndex_);
-
-    for(int i = 0; i< childCount; ++i)
-    {
-        if(currentDepth_ < 3)
-        {
-            // On descent d'un niveau.
-            hideTreeSpellData(treeView_, model->index(i,0,startIndex_), currentDepth_ + 1);
-        }
-        else
-        {
-            //Niveau du sort : On cache les informations des niveaux inférieurs.
-            treeView_->setRowHidden(i, startIndex_, true);
-        }
-    }
-
-}
-
 void SpellBookMainWindow::loadSpellPreview(const QModelIndex& index_)
 {
     QTreeView* treeView = (QTreeView*)_spellExplorer->widget();
@@ -149,4 +108,16 @@ void SpellBookMainWindow::loadSpellPreview(const QModelIndex& index_)
     {
         _spellPreview->loadData(index_, model);
     }
+}
+
+void SpellBookMainWindow::hideRowSpellTreeView(SpellTreeView* treeview_, const bool& hasXMLHeader_)
+{
+    QModelIndex startIndex = treeview_->model()->index(0, 0);
+
+    //On cache le header du fixhier XML.
+    if(hasXMLHeader_)
+        treeview_->setRowHidden(0, startIndex.parent(), true);
+
+    //On cache les informations des sorts.
+    treeview_->hideTreeSpellData(startIndex.parent());
 }

@@ -18,7 +18,7 @@ SpellView::SpellView(QWidget *parent) : QWidget(parent),
     _spellRequirementLabel(NULL),
     _spellMaintenanceLabel(NULL),
     _spellMaintenanceTypeLabel(NULL),
-    _spellRMysLabel(NULL),
+//    _spellRMysLabel(NULL),
     _spellCommentaireLabel(NULL),
     _spellSourceLabel(NULL),
     _spellEffectTypeLabel(NULL),
@@ -41,8 +41,8 @@ SpellView::SpellView(QWidget *parent) : QWidget(parent),
     _spellMaintenanceAvancee(NULL),
     _spellMaintenanceArcane(NULL),
     _spellMaintenanceType(NULL),
-    _spellRMys(NULL),
-    _spellRMysBool(NULL),
+    //_spellRMys(NULL),
+    //_spellRMysBool(NULL),
     _spellCommentaire(NULL),
     _spellSource(NULL),
     _spellEffectType(NULL),
@@ -130,7 +130,7 @@ SpellView::SpellView(QWidget *parent) : QWidget(parent),
 
     _spellActionLabel = new QLabel("Action : ", this);
     _spellEffectTypeLabel = new QLabel("Effet : ", this);
-    _spellRMysLabel = new QLabel("RMys : ", this);
+    //_spellRMysLabel = new QLabel("RMys : ", this);
     _spellMaintenanceTypeLabel = new QLabel("Maintien : ", this);
     _spellAction = new QComboBox(this);
     for(int i = 0; i < QMetaEnum::fromType<SpellEnum::ActionTypes>().keyCount(); ++i)
@@ -142,10 +142,10 @@ SpellView::SpellView(QWidget *parent) : QWidget(parent),
     {
         _spellEffectType->insertItem(i, QMetaEnum::fromType<SpellEnum::EffectTypes>().valueToKey(i));
     }
-    _spellRMysBool = new QComboBox(this);
-    _spellRMysBool->insertItem(0, "OUI");
-    _spellRMysBool->insertItem(1, "NON");
-    _spellRMys = new QSpinBox(this);
+//    _spellRMysBool = new QComboBox(this);
+//    _spellRMysBool->insertItem(0, "OUI");
+//    _spellRMysBool->insertItem(1, "NON");
+//    _spellRMys = new QSpinBox(this);
     _spellMaintenanceType = new QComboBox(this);
     for(int i = 0; i < QMetaEnum::fromType<SpellEnum::MaintenanceTypes>().keyCount(); ++i)
     {
@@ -196,18 +196,18 @@ void SpellView::initForm()
     spellLayout2_2->addWidget(_spellEffectTypeLabel, 0, Qt::AlignCenter);
     spellLayout2_2->addWidget(_spellEffectType, 0, Qt::AlignCenter);
     spellLayout2_2->addStretch(1);
-    QHBoxLayout* spellLayout2_3 = new QHBoxLayout;
-    spellLayout2_3->addWidget(_spellRMysLabel, 0, Qt::AlignCenter);
-    spellLayout2_3->addWidget(_spellRMysBool, 0, Qt::AlignCenter);
-    spellLayout2_3->addWidget(_spellRMys, 0, Qt::AlignCenter);
-    spellLayout2_3->addStretch(1);
+//    QHBoxLayout* spellLayout2_3 = new QHBoxLayout;
+//    spellLayout2_3->addWidget(_spellRMysLabel, 0, Qt::AlignCenter);
+//    spellLayout2_3->addWidget(_spellRMysBool, 0, Qt::AlignCenter);
+//    spellLayout2_3->addWidget(_spellRMys, 0, Qt::AlignCenter);
+//    spellLayout2_3->addStretch(1);
     QHBoxLayout* spellLayout2_4 = new QHBoxLayout;
     spellLayout2_4->addWidget(_spellMaintenanceTypeLabel, 0, Qt::AlignCenter);
     spellLayout2_4->addWidget(_spellMaintenanceType, 0, Qt::AlignCenter);
     spellLayout2_4->addStretch(1);
     spellLayout2->addLayout(spellLayout2_1,0);
     spellLayout2->addLayout(spellLayout2_2,0);
-    spellLayout2->addLayout(spellLayout2_3,0);
+//    spellLayout2->addLayout(spellLayout2_3,0);
     spellLayout2->addLayout(spellLayout2_4,0);
 
     // Tableau des coûts
@@ -293,10 +293,10 @@ void SpellView::setEnabled(const bool& value)
         _spellMaintenanceArcane->setEnabled(value);
     if(_spellMaintenanceType != NULL)
         _spellMaintenanceType->setEnabled(value);
-    if(_spellRMys != NULL)
-        _spellRMys->setEnabled(value);
-    if(_spellRMysBool != NULL)
-        _spellRMysBool->setEnabled(value);
+//    if(_spellRMys != NULL)
+//        _spellRMys->setEnabled(value);
+//    if(_spellRMysBool != NULL)
+//        _spellRMysBool->setEnabled(value);
     if(_spellCommentaire != NULL)
         _spellCommentaire->setEnabled(value);
     if(_spellSource != NULL)

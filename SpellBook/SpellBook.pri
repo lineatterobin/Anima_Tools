@@ -1,7 +1,8 @@
 SOURCES += \
     $$PWD/IHM/SpellBookMainWindow.cpp \
     $$PWD/IHM/SpellView.cpp \
-	$$PWD/Modeles/SpellTreeModel.cpp
+	$$PWD/Modeles/SpellTreeModel.cpp \
+    $$PWD/IHM/SpellTreeView.cpp
 
 
 
@@ -9,5 +10,6 @@ HEADERS += \
     $$PWD/IHM/SpellBookMainWindow.h \
     $$PWD/IHM/SpellView.h \
     $$PWD/Modeles/SpellEnum.h \
-	$$PWD/Modeles/SpellTreeModel.h
+	$$PWD/Modeles/SpellTreeModel.h \
+    $$PWD/IHM/SpellTreeView.h
 

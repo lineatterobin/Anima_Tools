@@ -44,7 +44,7 @@ private:
     QLabel* _spellRequirementLabel;
     QLabel* _spellMaintenanceLabel;
     QLabel* _spellMaintenanceTypeLabel;
-    QLabel* _spellRMysLabel;
+//    QLabel* _spellRMysLabel;
     QLabel* _spellCommentaireLabel;
     QLabel* _spellSourceLabel;
     QLabel* _spellEffectTypeLabel;
@@ -69,8 +69,8 @@ private:
     QSpinBox* _spellMaintenanceAvancee;
     QSpinBox* _spellMaintenanceArcane;
     QComboBox* _spellMaintenanceType;
-    QSpinBox* _spellRMys;
-    QComboBox* _spellRMysBool;
+//    QSpinBox* _spellRMys;
+//    QComboBox* _spellRMysBool;
     QTextEdit* _spellCommentaire;
     QLineEdit* _spellSource;
     QComboBox* _spellEffectType;
