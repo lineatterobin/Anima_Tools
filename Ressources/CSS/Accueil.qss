@@ -32,6 +32,5 @@ QTabBar::close-button
 
 QTabBar::close-button:hover
 {
-	image: url(:/IMG/BLACK_CROSS);
-	border : 1px blue;
+	image: url(:/IMG/BLACK_CROSS_HOVER);
 }
