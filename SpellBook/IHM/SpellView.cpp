@@ -417,3 +417,8 @@ void SpellView::loadData(const QModelIndex& index_, QAbstractItemModel* model)
     _spellSource->setText(model->index(0,0,child).data().toString());
 
 }
+
+QString SpellView::getName()
+{
+    return _spellName->text();
+}

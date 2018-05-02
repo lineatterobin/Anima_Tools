@@ -1,6 +1,7 @@
 #include "SpellBookMainWindow.h"
 
 #include <QFile>
+#include <iostream>
 
 #include <Socle/Constantes.h>
 #include <SpellBook/Modeles/SpellTreeModel.h>
@@ -55,6 +56,7 @@ void SpellBookMainWindow::initCentralWidget()
     _centralWidget = new QTabWidget(this);
     _centralWidget->setObjectName(SPELLVIEWTAB);
     _centralWidget->setWindowTitle(SPELLVIEWTAB);
+    _centralWidget->setTabsClosable(true);
     setCentralWidget(_centralWidget);
     _spellPreview = new SpellView(_centralWidget);
     _centralWidget->addTab(_spellPreview, "Preview");
@@ -89,24 +91,57 @@ void SpellBookMainWindow::initDockWidgets()
 
 void SpellBookMainWindow::initConnections()
 {
-    QObject::connect((QTreeView*)_spellExplorer->widget(), SIGNAL(clicked(QModelIndex)), this, SLOT(loadSpellPreview(QModelIndex)));
+    QObject::connect(_spellExplorer->widget(), SIGNAL(clicked(QModelIndex)), this, SLOT(loadSpellPreview(QModelIndex)));
+    QObject::connect(_spellExplorer->widget(), SIGNAL(doubleClicked(QModelIndex)), this, SLOT(addSpellViewExplorer(QModelIndex)));
+    QObject::connect(_spellList->widget(), SIGNAL(doubleClicked(QModelIndex)), this, SLOT(addSpellViewList(QModelIndex)));
+    QObject::connect(_centralWidget, SIGNAL(tabCloseRequested(int)), this, SLOT(closeSpellView(int)));
 }
 
-void SpellBookMainWindow::addSpellView(bool enabled_)
+void SpellBookMainWindow::addSpellViewExplorer(const QModelIndex &index_)
 {
-    SpellView spellView(_centralWidget);
-    spellView.setEnabled(enabled_);
+    addSpellView((SpellTreeView*)_spellExplorer->widget(), index_, false);
+}
+
+void SpellBookMainWindow::addSpellViewList(const QModelIndex &index_)
+{
+    addSpellView((SpellTreeView*)_spellList->widget(), index_, true);
+}
+
+void SpellBookMainWindow::addSpellView(SpellTreeView* treeView_, const QModelIndex &index_, bool enabled_)
+{
+    QAbstractItemModel* model = treeView_->model();
+    if(model->hasChildren(index_) && model->index(0,0,index_).data().toString() == "name")
+    {
+        SpellView* spellView = new SpellView(_centralWidget);
+        spellView->setEnabled(enabled_);
+        spellView->loadData(index_, model);
+        _centralWidget->addTab(spellView, spellView->getName());
+    }
+
 }
 
 void SpellBookMainWindow::loadSpellPreview(const QModelIndex& index_)
 {
-    QTreeView* treeView = (QTreeView*)_spellExplorer->widget();
+    SpellTreeView* treeView = (SpellTreeView*)_spellExplorer->widget();
     QAbstractItemModel* model = treeView->model();
 
-    //model->data(index_.child(0,0))
     if(model->hasChildren(index_) && model->index(0,0,index_).data().toString() == "name")
     {
         _spellPreview->loadData(index_, model);
+    }
+}
+
+void SpellBookMainWindow::closeSpellView(const int &index_)
+{
+    if(index_ == 0)
+    {
+        return;
+    }
+    else
+    {
+        QWidget* p = _centralWidget->widget(index_);
+        _centralWidget->removeTab(index_);
+        p->deleteLater();
     }
 }
 

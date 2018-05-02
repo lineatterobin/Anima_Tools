@@ -24,3 +24,14 @@ QTextEdit::disabled
 {
 	color: black;
 }
+
+QTabBar::close-button
+{
+	image: url(:/IMG/BLACK_CROSS);
+}
+
+QTabBar::close-button:hover
+{
+	image: url(:/IMG/BLACK_CROSS);
+	border : 1px blue;
+}
