@@ -18,7 +18,6 @@ SpellView::SpellView(QWidget *parent) : QWidget(parent),
     _spellRequirementLabel(NULL),
     _spellMaintenanceLabel(NULL),
     _spellMaintenanceTypeLabel(NULL),
-//    _spellRMysLabel(NULL),
     _spellCommentaireLabel(NULL),
     _spellSourceLabel(NULL),
     _spellEffectTypeLabel(NULL),
@@ -41,8 +40,6 @@ SpellView::SpellView(QWidget *parent) : QWidget(parent),
     _spellMaintenanceAvancee(NULL),
     _spellMaintenanceArcane(NULL),
     _spellMaintenanceType(NULL),
-    //_spellRMys(NULL),
-    //_spellRMysBool(NULL),
     _spellCommentaire(NULL),
     _spellSource(NULL),
     _spellEffectType(NULL),
@@ -130,7 +127,6 @@ SpellView::SpellView(QWidget *parent) : QWidget(parent),
 
     _spellActionLabel = new QLabel("Action : ", this);
     _spellEffectTypeLabel = new QLabel("Effet : ", this);
-    //_spellRMysLabel = new QLabel("RMys : ", this);
     _spellMaintenanceTypeLabel = new QLabel("Maintien : ", this);
     _spellAction = new QComboBox(this);
     for(int i = 0; i < QMetaEnum::fromType<SpellEnum::ActionTypes>().keyCount(); ++i)
@@ -142,10 +138,6 @@ SpellView::SpellView(QWidget *parent) : QWidget(parent),
     {
         _spellEffectType->insertItem(i, QMetaEnum::fromType<SpellEnum::EffectTypes>().valueToKey(i));
     }
-//    _spellRMysBool = new QComboBox(this);
-//    _spellRMysBool->insertItem(0, "OUI");
-//    _spellRMysBool->insertItem(1, "NON");
-//    _spellRMys = new QSpinBox(this);
     _spellMaintenanceType = new QComboBox(this);
     for(int i = 0; i < QMetaEnum::fromType<SpellEnum::MaintenanceTypes>().keyCount(); ++i)
     {
@@ -196,18 +188,12 @@ void SpellView::initForm()
     spellLayout2_2->addWidget(_spellEffectTypeLabel, 0, Qt::AlignCenter);
     spellLayout2_2->addWidget(_spellEffectType, 0, Qt::AlignCenter);
     spellLayout2_2->addStretch(1);
-//    QHBoxLayout* spellLayout2_3 = new QHBoxLayout;
-//    spellLayout2_3->addWidget(_spellRMysLabel, 0, Qt::AlignCenter);
-//    spellLayout2_3->addWidget(_spellRMysBool, 0, Qt::AlignCenter);
-//    spellLayout2_3->addWidget(_spellRMys, 0, Qt::AlignCenter);
-//    spellLayout2_3->addStretch(1);
     QHBoxLayout* spellLayout2_4 = new QHBoxLayout;
     spellLayout2_4->addWidget(_spellMaintenanceTypeLabel, 0, Qt::AlignCenter);
     spellLayout2_4->addWidget(_spellMaintenanceType, 0, Qt::AlignCenter);
     spellLayout2_4->addStretch(1);
     spellLayout2->addLayout(spellLayout2_1,0);
     spellLayout2->addLayout(spellLayout2_2,0);
-//    spellLayout2->addLayout(spellLayout2_3,0);
     spellLayout2->addLayout(spellLayout2_4,0);
 
     // Tableau des coûts
@@ -293,10 +279,6 @@ void SpellView::setEnabled(const bool& value)
         _spellMaintenanceArcane->setEnabled(value);
     if(_spellMaintenanceType != NULL)
         _spellMaintenanceType->setEnabled(value);
-//    if(_spellRMys != NULL)
-//        _spellRMys->setEnabled(value);
-//    if(_spellRMysBool != NULL)
-//        _spellRMysBool->setEnabled(value);
     if(_spellCommentaire != NULL)
         _spellCommentaire->setEnabled(value);
     if(_spellSource != NULL)
@@ -315,10 +297,10 @@ void SpellView::setEnabled(const bool& value)
         _spellAction->setEnabled(value);
 }
 
-void SpellView::loadData(const QModelIndex& index_, QAbstractItemModel* model)
+void SpellView::loadData(const QModelIndex& index_, QAbstractItemModel* model_)
 {
     // Domaine
-    QModelIndex parent = model->parent(index_);
+    QModelIndex parent = model_->parent(index_);
     _spellBook->setText(parent.data().toString());
 
     // Niveau
@@ -327,56 +309,56 @@ void SpellView::loadData(const QModelIndex& index_, QAbstractItemModel* model)
     _spellLevel->setValue(niv.toInt());
 
     // Name
-    QModelIndex child = model->index(0,0,index_);
-    _spellName->setText(model->index(0,0,child).data().toString());
+    QModelIndex child = model_->index(0,0,index_);
+    _spellName->setText(model_->index(0,0,child).data().toString());
 
     // Initial values
-    child = model->index(0,0, model->index(1,0,index_));
-    _spellRequirementInitial->setValue(model->index(0,0,child).data().toInt());
-    child = model->index(1,0, model->index(1,0,index_));
-    _spellCostInitial->setValue(model->index(0,0,child).data().toInt());
-    child = model->index(2,0, model->index(1,0,index_));
-    _spellMaintenanceInitial->setValue(model->index(0,0,child).data().toInt());
-    child = model->index(3,0, model->index(1,0,index_));
-    _spellEffectInitial->setText(model->index(0,0,child).data().toString());
+    child = model_->index(0,0, model_->index(1,0,index_));
+    _spellRequirementInitial->setValue(model_->index(0,0,child).data().toInt());
+    child = model_->index(1,0, model_->index(1,0,index_));
+    _spellCostInitial->setValue(model_->index(0,0,child).data().toInt());
+    child = model_->index(2,0, model_->index(1,0,index_));
+    _spellMaintenanceInitial->setValue(model_->index(0,0,child).data().toInt());
+    child = model_->index(3,0, model_->index(1,0,index_));
+    _spellEffectInitial->setText(model_->index(0,0,child).data().toString());
 
     // Intermediaire values
-    child = model->index(0,0, model->index(2,0,index_));
-    _spellRequirementIntermediaire->setValue(model->index(0,0,child).data().toInt());
-    child = model->index(1,0, model->index(2,0,index_));
-    _spellCostIntermediaire->setValue(model->index(0,0,child).data().toInt());
-    child = model->index(2,0, model->index(2,0,index_));
-    _spellMaintenanceIntermediaire->setValue(model->index(0,0,child).data().toInt());
-    child = model->index(3,0, model->index(2,0,index_));
-    _spellEffectIntermediaire->setText(model->index(0,0,child).data().toString());
+    child = model_->index(0,0, model_->index(2,0,index_));
+    _spellRequirementIntermediaire->setValue(model_->index(0,0,child).data().toInt());
+    child = model_->index(1,0, model_->index(2,0,index_));
+    _spellCostIntermediaire->setValue(model_->index(0,0,child).data().toInt());
+    child = model_->index(2,0, model_->index(2,0,index_));
+    _spellMaintenanceIntermediaire->setValue(model_->index(0,0,child).data().toInt());
+    child = model_->index(3,0, model_->index(2,0,index_));
+    _spellEffectIntermediaire->setText(model_->index(0,0,child).data().toString());
 
     // Avancee values
-    child = model->index(0,0, model->index(3,0,index_));
-    _spellRequirementAvancee->setValue(model->index(0,0,child).data().toInt());
-    child = model->index(1,0, model->index(3,0,index_));
-    _spellCostAvancee->setValue(model->index(0,0,child).data().toInt());
-    child = model->index(2,0, model->index(3,0,index_));
-    _spellMaintenanceAvancee->setValue(model->index(0,0,child).data().toInt());
-    child = model->index(3,0, model->index(3,0,index_));
-    _spellEffectAvancee->setText(model->index(0,0,child).data().toString());
+    child = model_->index(0,0, model_->index(3,0,index_));
+    _spellRequirementAvancee->setValue(model_->index(0,0,child).data().toInt());
+    child = model_->index(1,0, model_->index(3,0,index_));
+    _spellCostAvancee->setValue(model_->index(0,0,child).data().toInt());
+    child = model_->index(2,0, model_->index(3,0,index_));
+    _spellMaintenanceAvancee->setValue(model_->index(0,0,child).data().toInt());
+    child = model_->index(3,0, model_->index(3,0,index_));
+    _spellEffectAvancee->setText(model_->index(0,0,child).data().toString());
 
     // Arcane values
-    child = model->index(0,0, model->index(4,0,index_));
-    _spellRequirementArcane->setValue(model->index(0,0,child).data().toInt());
-    child = model->index(1,0, model->index(4,0,index_));
-    _spellCostArcane->setValue(model->index(0,0,child).data().toInt());
-    child = model->index(2,0, model->index(4,0,index_));
-    _spellMaintenanceArcane->setValue(model->index(0,0,child).data().toInt());
-    child = model->index(3,0, model->index(4,0,index_));
-    _spellEffectArcane->setText(model->index(0,0,child).data().toString());
+    child = model_->index(0,0, model_->index(4,0,index_));
+    _spellRequirementArcane->setValue(model_->index(0,0,child).data().toInt());
+    child = model_->index(1,0, model_->index(4,0,index_));
+    _spellCostArcane->setValue(model_->index(0,0,child).data().toInt());
+    child = model_->index(2,0, model_->index(4,0,index_));
+    _spellMaintenanceArcane->setValue(model_->index(0,0,child).data().toInt());
+    child = model_->index(3,0, model_->index(4,0,index_));
+    _spellEffectArcane->setText(model_->index(0,0,child).data().toString());
 
     // Type de Maintien
-    child = model->index(5,0,index_);
-    _spellMaintenanceType->setCurrentIndex(model->index(0,0,child).data().toInt());
+    child = model_->index(5,0,index_);
+    _spellMaintenanceType->setCurrentIndex(model_->index(0,0,child).data().toInt());
 
     // Type action
-    child = model->index(6,0,index_);
-    if(QString::compare(model->index(0,0,child).data().toString(), "ACTIVE", Qt::CaseInsensitive) == 0)
+    child = model_->index(6,0,index_);
+    if(QString::compare(model_->index(0,0,child).data().toString(), "ACTIVE", Qt::CaseInsensitive) == 0)
     {
         _spellAction->setCurrentIndex(SpellEnum::ACTIVE);
     }
@@ -386,35 +368,35 @@ void SpellView::loadData(const QModelIndex& index_, QAbstractItemModel* model)
     }
 
     // Type effet
-    child = model->index(7,0,index_);
-    if(QString::compare(model->index(0,0,child).data().toString(), "AUTOMATIQUE", Qt::CaseInsensitive) == 0)
+    child = model_->index(7,0,index_);
+    if(QString::compare(model_->index(0,0,child).data().toString(), "AUTOMATIQUE", Qt::CaseInsensitive) == 0)
         _spellEffectType->setCurrentIndex(SpellEnum::AUTOMATIQUE);
-    else if (QString::compare(model->index(0,0,child).data().toString(), "EFFET", Qt::CaseInsensitive) == 0)
+    else if (QString::compare(model_->index(0,0,child).data().toString(), "EFFET", Qt::CaseInsensitive) == 0)
         _spellEffectType->setCurrentIndex(SpellEnum::EFFET);
-    else if (QString::compare(model->index(0,0,child).data().toString(), "ANIMIQUE", Qt::CaseInsensitive) == 0)
+    else if (QString::compare(model_->index(0,0,child).data().toString(), "ANIMIQUE", Qt::CaseInsensitive) == 0)
         _spellEffectType->setCurrentIndex(SpellEnum::ANIMIQUE);
-    else if (QString::compare(model->index(0,0,child).data().toString(), "ATTAQUE", Qt::CaseInsensitive) == 0)
+    else if (QString::compare(model_->index(0,0,child).data().toString(), "ATTAQUE", Qt::CaseInsensitive) == 0)
         _spellEffectType->setCurrentIndex(SpellEnum::ATTAQUE);
-    else if (QString::compare(model->index(0,0,child).data().toString(), "DEFENSE", Qt::CaseInsensitive) == 0)
+    else if (QString::compare(model_->index(0,0,child).data().toString(), "DEFENSE", Qt::CaseInsensitive) == 0)
         _spellEffectType->setCurrentIndex(SpellEnum::DEFENSE);
-    else if (QString::compare(model->index(0,0,child).data().toString(), "DETECTION", Qt::CaseInsensitive) == 0)
+    else if (QString::compare(model_->index(0,0,child).data().toString(), "DETECTION", Qt::CaseInsensitive) == 0)
         _spellEffectType->setCurrentIndex(SpellEnum::DETECTION);
-    else if (QString::compare(model->index(0,0,child).data().toString(), "EFFET, ANIMIQUE", Qt::CaseInsensitive) == 0)
+    else if (QString::compare(model_->index(0,0,child).data().toString(), "EFFET, ANIMIQUE", Qt::CaseInsensitive) == 0)
         _spellEffectType->setCurrentIndex(SpellEnum::EFFET_ANIMIQUE);
     else
         _spellEffectType->setCurrentIndex(SpellEnum::EFFET);
 
     // Description
-    child = model->index(8,0,index_);
-    _spellDescription->setText(model->index(0,0,child).data().toString());
+    child = model_->index(8,0,index_);
+    _spellDescription->setText(model_->index(0,0,child).data().toString());
 
     // Commentaires
-    child = model->index(9,0,index_);
-    _spellCommentaire->setText(model->index(0,0,child).data().toString());
+    child = model_->index(9,0,index_);
+    _spellCommentaire->setText(model_->index(0,0,child).data().toString());
 
     // Source
-    child = model->index(10,0,index_);
-    _spellSource->setText(model->index(0,0,child).data().toString());
+    child = model_->index(10,0,index_);
+    _spellSource->setText(model_->index(0,0,child).data().toString());
 
 }
 

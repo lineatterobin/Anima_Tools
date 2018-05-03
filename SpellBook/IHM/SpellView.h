@@ -11,6 +11,8 @@
 #include <QFormLayout>
 #include <QGroupBox>
 
+#include <Librairies/Modeles/DomItem.h>
+
 class SpellView : public QWidget
 {
     Q_OBJECT
@@ -21,7 +23,7 @@ public:
 
     void setEnabled(const bool& value);
 
-    void loadData(const QModelIndex& index_, QAbstractItemModel* model);
+    void loadData(const QModelIndex& index_, QAbstractItemModel* model_);
 
     QString getBook();
     QString getName();
