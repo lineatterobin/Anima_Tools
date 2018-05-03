@@ -129,6 +129,8 @@ void SpellBookMainWindow::loadSpellPreview(const QModelIndex& index_)
     {
         _spellPreview->loadData(index_, model);
     }
+
+    treeView->setReadOnly(true);
 }
 
 void SpellBookMainWindow::closeSpellView(const int &index_)

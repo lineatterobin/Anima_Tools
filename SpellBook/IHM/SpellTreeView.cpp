@@ -3,7 +3,9 @@
 #include <QFile>
 #include <SpellBook/Modeles/SpellTreeModel.h>
 
-SpellTreeView::SpellTreeView(QWidget* parent_) : QTreeView(parent_)
+SpellTreeView::SpellTreeView(QWidget* parent_) : QTreeView(parent_),
+    _readOnly(false),
+    _maxDepth(3)
 {
 }
 
@@ -14,7 +16,7 @@ void SpellTreeView::hideTreeSpellData(const QModelIndex& startIndex_, int curren
 
     for(int i = 0; i< childCount; ++i)
     {
-        if(currentDepth_ < 3)
+        if(currentDepth_ < maxDepth())
         {
             // On descent d'un niveau.
             hideTreeSpellData(model->index(i,0,startIndex_), currentDepth_ + 1);
@@ -41,4 +43,24 @@ void SpellTreeView::loadTreeData(QString xmlPath_)
             file.close();
         }
     }
+}
+
+void SpellTreeView::setReadOnly(const bool& readOnly_)
+{
+    _readOnly = readOnly_;
+}
+
+bool SpellTreeView::isReadOnly()
+{
+    return _readOnly;
+}
+
+void SpellTreeView::setMaxDepth(const int& max_)
+{
+    _maxDepth = max_;
+}
+
+int SpellTreeView::maxDepth()
+{
+    return _maxDepth;
 }

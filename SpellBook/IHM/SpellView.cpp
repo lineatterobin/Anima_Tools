@@ -418,6 +418,11 @@ void SpellView::loadData(const QModelIndex& index_, QAbstractItemModel* model)
 
 }
 
+QString SpellView::getBook()
+{
+    return _spellBook->text();
+}
+
 QString SpellView::getName()
 {
     return _spellName->text();

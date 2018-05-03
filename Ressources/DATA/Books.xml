@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Categorie Voie="Primaire">
+<Biblio Name="Source">
 	<Livre Livre="Lumière">
 		<Sort Level="2">
 			<name>Créer Lumière</name>
@@ -434,4 +434,4 @@
 			<source>AE 185</source>
 		</Sort>
 	</Livre>
-</Categorie>
+</Biblio>

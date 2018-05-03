@@ -23,6 +23,7 @@ public:
 
     void loadData(const QModelIndex& index_, QAbstractItemModel* model);
 
+    QString getBook();
     QString getName();
 
 signals:

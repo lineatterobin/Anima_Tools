@@ -1,14 +1,14 @@
 #include "SpellTreeModel.h"
 
 SpellTreeModel::SpellTreeModel(QDomDocument document, QObject *parent)
-    : QAbstractItemModel(parent), domDocument(document)
+    : QAbstractItemModel(parent), _domDocument(document)
 {
-    rootItem = new DomItem(domDocument, 0);
+    _rootItem = new DomItem(_domDocument, 0);
 }
 
 SpellTreeModel::~SpellTreeModel()
 {
-    delete rootItem;
+    delete _rootItem;
 }
 
 int SpellTreeModel::columnCount(const QModelIndex &/*parent*/) const
@@ -24,18 +24,8 @@ Qt::ItemFlags SpellTreeModel::flags(const QModelIndex &index) const
     return QAbstractItemModel::flags(index);
 }
 
-QVariant SpellTreeModel::headerData(int section, Qt::Orientation orientation,
-                              int role) const
+QVariant SpellTreeModel::headerData(int, Qt::Orientation, int) const
 {
-    if (orientation == Qt::Horizontal && role == Qt::DisplayRole) {
-        switch (section) {
-        case 0:
-            return QVariant();
-        default:
-            return QVariant();
-        }
-    }
-
     return QVariant();
 }
 
@@ -48,7 +38,7 @@ const
     DomItem *parentItem;
 
     if (!parent.isValid())
-        parentItem = rootItem;
+        parentItem = _rootItem;
     else
         parentItem = static_cast<DomItem*>(parent.internalPointer());
 
@@ -67,7 +57,7 @@ int SpellTreeModel::rowCount(const QModelIndex &parent) const
     DomItem *parentItem;
 
     if (!parent.isValid())
-        parentItem = rootItem;
+        parentItem = _rootItem;
     else
         parentItem = static_cast<DomItem*>(parent.internalPointer());
 
@@ -82,7 +72,7 @@ QModelIndex SpellTreeModel::parent(const QModelIndex &child) const
     DomItem *childItem = static_cast<DomItem*>(child.internalPointer());
     DomItem *parentItem = childItem->parent();
 
-    if (!parentItem || parentItem == rootItem)
+    if (!parentItem || parentItem == _rootItem)
         return QModelIndex();
 
     return createIndex(parentItem->row(), 0, parentItem);
