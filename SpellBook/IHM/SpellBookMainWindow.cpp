@@ -87,6 +87,11 @@ void SpellBookMainWindow::initDockWidgets()
     _spellList->setAllowedAreas(Qt::LeftDockWidgetArea | Qt::RightDockWidgetArea);
     spellTreeList->setSizePolicy(QSizePolicy::MinimumExpanding, QSizePolicy::Expanding);
     addDockWidget(Qt::RightDockWidgetArea, _spellList);
+
+    spellTreeList->loadTreeData("");
+    spellTreeList->setHeaderHidden(true);
+
+    hideRowSpellTreeView(spellTreeList, true);
 }
 
 void SpellBookMainWindow::initConnections()

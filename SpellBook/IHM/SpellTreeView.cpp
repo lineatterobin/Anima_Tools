@@ -32,16 +32,23 @@ void SpellTreeView::hideTreeSpellData(const QModelIndex& startIndex_, int curren
 
 void SpellTreeView::loadTreeData(QString xmlPath_)
 {
+    QDomDocument document;
     if (!xmlPath_.isEmpty()) {
         QFile file(xmlPath_);
         if (file.open(QIODevice::ReadOnly)) {
-            QDomDocument document;
             if (document.setContent(&file)) {
                 SpellTreeModel *newModel = new SpellTreeModel(document, this);
                 this->setModel(newModel);
             }
             file.close();
         }
+    }
+    else
+    {
+        QDomProcessingInstruction process = document.createProcessingInstruction("xml", "version=\"1.0\" encoding=\"UTF-8\"");
+        document.appendChild(process);
+        SpellTreeModel *newModel = new SpellTreeModel(document, this);
+        this->setModel(newModel);
     }
 }
 
