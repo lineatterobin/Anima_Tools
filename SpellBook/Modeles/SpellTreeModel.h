@@ -28,7 +28,10 @@ public:
     void sortBooks(const QModelIndex &parent_ = QModelIndex());
     void sortSpells(const QModelIndex &parent_ = QModelIndex());
 
+    void addBook(const QString &name_);
+
 private:
+
     QDomDocument _domDocument;
     DomItem* _rootItem;
 };

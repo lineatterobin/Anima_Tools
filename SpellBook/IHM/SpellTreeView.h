@@ -3,6 +3,7 @@
 
 #include <QTreeView>
 #include <SpellBook/Modeles/SpellTreeModel.h>
+#include <SpellBook/IHM/SpellView.h>
 
 class SpellTreeView : public QTreeView
 {
@@ -14,6 +15,8 @@ public:
 
     void loadTreeData(QString xmlPath_);
 
+    void addSpell(SpellView* spell_);
+
     // Accesseurs
     void setReadOnly(const bool& readOnly_);
     bool isReadOnly();
@@ -22,12 +25,9 @@ public:
     int maxDepth();
     SpellTreeModel* model();
 
-private:
+    void refresh();
 
-    QModelIndex hasDomaine(QString name_);
-    void addDomaine(QString name_);
-    bool hasSpells();
-    void removeDomaine(const QModelIndex& index_);
+private:
 
     bool _readOnly;
     int _maxDepth;

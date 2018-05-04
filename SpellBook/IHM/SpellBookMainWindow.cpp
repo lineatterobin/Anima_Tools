@@ -77,6 +77,7 @@ void SpellBookMainWindow::initDockWidgets()
     spellTreeExplorer->loadTreeData(":/DATA/BOOK");
     spellTreeExplorer->model()->sort();
     spellTreeExplorer->setHeaderHidden(true);
+    spellTreeExplorer->setReadOnly(true);
 
     hideRowSpellTreeView(spellTreeExplorer, true);
 
@@ -90,7 +91,7 @@ void SpellBookMainWindow::initDockWidgets()
     addDockWidget(Qt::RightDockWidgetArea, _spellList);
 
     spellTreeList->loadTreeData("");
-    spellTreeExplorer->model()->sort();
+    spellTreeList->model()->sort();
     spellTreeList->setHeaderHidden(true);
 
     hideRowSpellTreeView(spellTreeList, true);
@@ -106,7 +107,11 @@ void SpellBookMainWindow::initConnections()
 
 void SpellBookMainWindow::addSpellViewExplorer(const QModelIndex &index_)
 {
-    addSpellView((SpellTreeView*)_spellExplorer->widget(), index_, false);
+    SpellView* spellView = addSpellView((SpellTreeView*)_spellExplorer->widget(), index_, false);
+    //test d'ajout
+    SpellTreeView* treeList = (SpellTreeView*)_spellList->widget();
+    treeList->addSpell(spellView);
+    treeList->expand(treeList->model()->index(0,0));
 }
 
 void SpellBookMainWindow::addSpellViewList(const QModelIndex &index_)
@@ -114,7 +119,7 @@ void SpellBookMainWindow::addSpellViewList(const QModelIndex &index_)
     addSpellView((SpellTreeView*)_spellList->widget(), index_, true);
 }
 
-void SpellBookMainWindow::addSpellView(SpellTreeView* treeView_, const QModelIndex &index_, bool enabled_)
+SpellView* SpellBookMainWindow::addSpellView(SpellTreeView* treeView_, const QModelIndex &index_, bool enabled_)
 {
     QAbstractItemModel* model = treeView_->model();
     if(model->hasChildren(index_) && model->index(0,0,index_).data().toString() == "name")
@@ -123,8 +128,9 @@ void SpellBookMainWindow::addSpellView(SpellTreeView* treeView_, const QModelInd
         spellView->setEnabled(enabled_);
         spellView->loadData(index_, model);
         _centralWidget->addTab(spellView, spellView->getName());
+        return spellView;
     }
-
+    return NULL;
 }
 
 void SpellBookMainWindow::loadSpellPreview(const QModelIndex& index_)
@@ -136,8 +142,6 @@ void SpellBookMainWindow::loadSpellPreview(const QModelIndex& index_)
     {
         _spellPreview->loadData(index_, model);
     }
-
-    treeView->setReadOnly(true);
 }
 
 void SpellBookMainWindow::closeSpellView(const int &index_)

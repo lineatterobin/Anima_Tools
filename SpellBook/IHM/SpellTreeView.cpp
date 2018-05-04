@@ -1,5 +1,6 @@
 #include "SpellTreeView.h"
 
+#include <iostream>
 #include <QFile>
 #include <SpellBook/Modeles/SpellTreeModel.h>
 
@@ -47,12 +48,24 @@ void SpellTreeView::loadTreeData(QString xmlPath_)
     {
         QDomProcessingInstruction process = document.createProcessingInstruction("xml", "version=\"1.0\" encoding=\"UTF-8\"");
         document.appendChild(process);
+        QDomElement bibliotheque = document.createElement("Biblio");
+        bibliotheque.setAttribute("Name", "Nouvelle bibliothèque");
+        document.appendChild(bibliotheque);
         SpellTreeModel *newModel = new SpellTreeModel(document, this);
         this->setModel(newModel);
     }
 }
 
+void SpellTreeView::addSpell(SpellView* spell_)
+{
+    //Vérifier si le Livre existe, sinon le créer
+    this->model()->addBook(spell_->getBook());
+    //Vérifier si le sort existe, si oui le modifier si non le créer
 
+
+    //Trier l'arbre.
+    this->model()->sort();
+}
 
 void SpellTreeView::setReadOnly(const bool& readOnly_)
 {

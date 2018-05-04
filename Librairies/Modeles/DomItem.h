@@ -15,7 +15,6 @@ public:
     int row();
 
     void swapChild(int i, int j);
-    void sortChildren();
 
 private:
     QDomNode domNode;

@@ -92,7 +92,12 @@ QVariant SpellTreeModel::data(const QModelIndex &index, int role) const
 
     QDomNode node = item->node();
     if(!node.hasChildNodes())
-        return node.nodeValue();
+    {
+        if(node.nodeName() == "Biblio" || node.nodeName() == "Livre")
+            return node.attributes().item(0).nodeValue();
+        else
+            return node.nodeValue();
+    }
 
     QDomNamedNodeMap attributeMap = node.attributes();
 
@@ -102,6 +107,8 @@ QVariant SpellTreeModel::data(const QModelIndex &index, int role) const
     {
         if(node.nodeName() == "Sort")
             return attributeMap.item(0).nodeValue() + " " + node.firstChild().firstChild().nodeValue().split("\n").join(' ');
+        else if(node.nodeName() == "Biblio" || node.nodeName() == "Livre")
+            return node.attributes().item(0).nodeValue();
         else if(!child.hasChildNodes())
             return node.nodeName();
         else
@@ -181,3 +188,22 @@ void SpellTreeModel::sortBooks(const QModelIndex &parent_)
     }
 }
 
+void SpellTreeModel::addBook(const QString &name_)
+{
+    QDomNode biblio = _domDocument.namedItem("Biblio");
+    QDomNode livre = biblio.firstChild();
+    while((QString::compare(livre.attributes().item(0).nodeValue(), name_) != 0 ) && !(livre.nextSibling().isNull()))
+    {
+        std::cout << "Name :" << livre.attributes().item(0).nodeValue().toStdString() << " != " << name_.toStdString() << std::endl;
+        livre = livre.nextSibling();
+    }
+
+    if(QString::compare(livre.attributes().item(0).nodeValue(), name_) != 0)
+    {
+        QDomElement livreElt = _domDocument.createElement("Livre");
+        livreElt.setAttribute("Name", name_);
+        biblio.appendChild(livreElt);
+        std::cout << _domDocument.toString().toStdString() << std::endl;
+        livre = livreElt;
+    }
+}
