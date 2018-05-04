@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Biblio Name="Source">
 	<Livre Livre="Lumière">
-		<Sort Level="2">
+		<Sort Level="002">
 			<name>Créer Lumière</name>
 			<initial>
 				<requirement>5</requirement>
@@ -34,7 +34,7 @@
 			<commentaire>Pas de commentaires</commentaire>
 			<source>CE 124</source>
 		</Sort>
-		<Sort Level="6">
+		<Sort Level="006">
 			<name>Apaiser</name>
 			<initial>
 				<requirement>5</requirement>
@@ -67,7 +67,7 @@
 			<commentaire>Pas de commentaires</commentaire>
 			<source>CE 124</source>
 		</Sort>
-		<Sort Level="8">
+		<Sort Level="008">
 			<name>Flash aveuglant</name>
 			<initial>
 				<requirement>6</requirement>
@@ -100,7 +100,7 @@
 			<commentaire>Pas de commentaires</commentaire>
 			<source>CE 124</source>
 		</Sort>
-		<Sort Level="10">
+		<Sort Level="010">
 			<name>Bouclier de Lumière</name>
 			<initial>
 				<requirement>6</requirement>
@@ -133,7 +133,7 @@
 			<commentaire>Pas de commentaires</commentaire>
 			<source>CE 124</source>
 		</Sort>
-		<Sort Level="12">
+		<Sort Level="001">
 			<name>Percevoir</name>
 			<initial>
 				<requirement>6</requirement>
@@ -166,7 +166,7 @@
 			<commentaire>Pas de commentaires</commentaire>
 			<source>CE 124</source>
 		</Sort>
-		<Sort Level="16">
+		<Sort Level="016">
 			<name>Armure de Lumière</name>
 			<initial>
 				<requirement>6</requirement>
@@ -199,7 +199,7 @@
 			<commentaire>Pas de commentaires</commentaire>
 			<source>CE 124</source>
 		</Sort>
-		<Sort Level="18">
+		<Sort Level="018">
 			<name>Destruction d'Ombres</name>
 			<initial>
 				<requirement>6</requirement>
@@ -232,7 +232,7 @@
 			<commentaire>Pas de commentaires</commentaire>
 			<source>CE 124</source>
 		</Sort>
-		<Sort Level="20">
+		<Sort Level="020">
 			<name>Détecter le Negatif</name>
 			<initial>
 				<requirement>6</requirement>
@@ -265,7 +265,7 @@
 			<commentaire>Pas de commentaires</commentaire>
 			<source>CE 124</source>
 		</Sort>
-		<Sort Level="22">
+		<Sort Level="022">
 			<name>Décharge de Lumière</name>
 			<initial>
 				<requirement>6</requirement>
@@ -298,7 +298,7 @@
 			<commentaire>Pas de commentaires</commentaire>
 			<source>CE 124</source>
 		</Sort>
-		<Sort Level="26">
+		<Sort Level="026">
 			<name>Hologramme</name>
 			<initial>
 				<requirement>6</requirement>
@@ -331,7 +331,7 @@
 			<commentaire>Pas de commentaires</commentaire>
 			<source>CE 124</source>
 		</Sort>
-		<Sort Level="28">
+		<Sort Level="028">
 			<name>Liens de Lumière</name>
 			<initial>
 				<requirement>6</requirement>
@@ -364,7 +364,7 @@
 			<commentaire>Pas de commentaires</commentaire>
 			<source>CE 124</source>
 		</Sort>
-		<Sort Level="30">
+		<Sort Level="030">
 			<name>Maîtrise lumineuse</name>
 			<initial>
 				<requirement>6</requirement>
@@ -399,8 +399,8 @@
 		</Sort>
 
 	</Livre>
-	<Livre Livre="Obscurité">
-		<Sort Level="2">
+	<Livre Livre="AObscurité">
+		<Sort Level="002">
 			<name>Sort02</name>
 			<initial>
 				<requirement>6</requirement>

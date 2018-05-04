@@ -42,3 +42,38 @@ DomItem *DomItem::child(int i)
     }
     return 0;
 }
+
+void DomItem::swapChild(int i, int j)
+{
+    DomItem* child_1 = child(i);
+    DomItem* child_2 = child(j);
+    QDomNode tmp = child_2->domNode;
+    child_2->domNode = child_1->domNode;
+    child_1->domNode = tmp;
+}
+
+void DomItem::sortChildren()
+{
+//    for(int i=0; i < domNode.childNodes().count() ; ++i)
+//    {
+//        if(child(i)->domNode.hasChildNodes())
+//        {
+//            child(i)->sortChildren();
+//        }
+
+//        //sort
+//        if(child(i)->domNode.nodeName() == "Sort" || child(i)->domNode.nodeName() == "Livre")
+//        {
+//            int c = i;
+//            while(c > 0)
+//            {
+//                if( QString::compare(child(c)->domNode.attributes().item(0).nodeValue(), child(c-1)->domNode.attributes().item(0).nodeValue()) < 0)
+//                    this->swapChild(c-1,c);
+//                else
+//                    break;
+
+//                c = c-1;
+//            }
+//        }
+//    }
+}

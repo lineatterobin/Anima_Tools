@@ -14,6 +14,9 @@ public:
     QDomNode node() const;
     int row();
 
+    void swapChild(int i, int j);
+    void sortChildren();
+
 private:
     QDomNode domNode;
     QHash<int,DomItem*> childItems;
