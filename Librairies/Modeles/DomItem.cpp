@@ -76,4 +76,8 @@ void DomItem::sortChildren()
 //            }
 //        }
 //    }
+    if(this->node().nodeName() == "Livre")
+        this->swapChild(0,4);
+    else
+        child(0)->sortChildren();
 }

@@ -133,7 +133,7 @@
 			<commentaire>Pas de commentaires</commentaire>
 			<source>CE 124</source>
 		</Sort>
-		<Sort Level="001">
+		<Sort Level="012">
 			<name>Percevoir</name>
 			<initial>
 				<requirement>6</requirement>
@@ -399,7 +399,7 @@
 		</Sort>
 
 	</Livre>
-	<Livre Livre="AObscurité">
+	<Livre Livre="Obscurité">
 		<Sort Level="002">
 			<name>Sort02</name>
 			<initial>
@@ -433,5 +433,39 @@
 			<commentaire>Pas de commentaires</commentaire>
 			<source>AE 185</source>
 		</Sort>
+		<Sort Level="004">
+			<name>Sort04</name>
+			<initial>
+				<requirement>6</requirement>
+				<cost>40</cost>
+				<maintien>5</maintien>
+				<effets>Effet du sort2 initial</effets>
+			</initial>
+			<intermediaire>
+				<requirement>8</requirement>
+				<cost>80</cost>
+				<maintien>5</maintien>
+				<effets>Effet du sort2 intermediaire</effets>
+			</intermediaire>
+			<avancee>
+				<requirement>10</requirement>
+				<cost>120</cost>
+				<maintien>10</maintien>
+				<effets>Effet du sort2 avancee</effets>
+			</avancee>
+			<arcane>
+				<requirement>12</requirement>
+				<cost>160</cost>
+				<maintien>15</maintien>
+				<effets>Effet du sort2 arcane</effets>
+			</arcane>
+			<maitien_type>2</maitien_type>
+			<action>PASSIVE</action>
+			<effets_type>Effet</effets_type>
+			<description>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor inam, quis nostrud exercitation ullamco laboris nisi equat. Duis aute irure dolor in repulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</description>
+			<commentaire>Pas de commentaires</commentaire>
+			<source>AE 185</source>
+		</Sort>
+
 	</Livre>
 </Biblio>

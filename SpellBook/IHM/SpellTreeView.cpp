@@ -52,6 +52,8 @@ void SpellTreeView::loadTreeData(QString xmlPath_)
     }
 }
 
+
+
 void SpellTreeView::setReadOnly(const bool& readOnly_)
 {
     _readOnly = readOnly_;
@@ -70,4 +72,9 @@ void SpellTreeView::setMaxDepth(const int& max_)
 int SpellTreeView::maxDepth()
 {
     return _maxDepth;
+}
+
+SpellTreeModel* SpellTreeView::model()
+{
+    return (SpellTreeModel*)QTreeView::model();
 }

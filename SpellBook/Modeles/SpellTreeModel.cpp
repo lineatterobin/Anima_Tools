@@ -113,30 +113,63 @@ QVariant SpellTreeModel::data(const QModelIndex &index, int role) const
     }
 }
 
-
-void SpellTreeModel::sort(const QModelIndex &parent_, DomItem* parentItem)
+void SpellTreeModel::sort()
 {
-    QDomNode node = parentItem->node();
+    sortBooks();
+    sortSpells();
+}
 
-    if(!node.hasChildNodes())
-        return;
+
+void SpellTreeModel::sortSpells(const QModelIndex &parent_)
+{
+    DomItem* parentItem;
+    if (!parent_.isValid())
+        parentItem = _rootItem->child(1);
+    else
+        parentItem = static_cast<DomItem*>(parent_.internalPointer());
+
+    QDomNode node = parentItem->node();
+    for(int j=0; j < node.childNodes().count() ; ++j)
+    {
+        DomItem* childItem = parentItem->child(j);
+        for(int i=0; i < childItem->node().childNodes().count() ; ++i)
+        {
+            //sort
+            if(childItem->child(i)->node().nodeName() == "Sort")
+            {
+                int c = i;
+                while(c > 0)
+                {
+                    if( QString::compare(childItem->child(c)->node().attributes().item(0).nodeValue(), childItem->child(c-1)->node().attributes().item(0).nodeValue()) < 0)
+                        childItem->swapChild(c-1,c);
+                    else
+                        break;
+
+                    c = c-1;
+                }
+            }
+        }
+    }
+}
+
+void SpellTreeModel::sortBooks(const QModelIndex &parent_)
+{
+    DomItem* parentItem;
+    if (!parent_.isValid())
+        parentItem = _rootItem->child(1);
+    else
+        parentItem = static_cast<DomItem*>(parent_.internalPointer());
+
+    QDomNode node = parentItem->node();
 
     for(int i=0; i < node.childNodes().count() ; ++i)
     {
-        DomItem* child = parentItem->child(i);
-        if(child->node().hasChildNodes())
-        {
-            sort(index(i,0,parent_), child);
-        }
-
         //sort
-        if(parentItem->child(i)->node().nodeName() == "Sort" || parentItem->child(i)->node().nodeName() == "Livre")
+        if(parentItem->child(i)->node().nodeName() == "Livre")
         {
             int c = i;
             while(c > 0)
             {
-                std::cout << parentItem->child(c)->node().attributes().item(0).nodeValue().toStdString() << "/" << parentItem->child(c-1)->node().attributes().item(0).nodeValue().toStdString() << std::endl;
-                std::cout << QString::compare(parentItem->child(c)->node().attributes().item(0).nodeValue(), parentItem->child(c-1)->node().attributes().item(0).nodeValue()) << std::endl;
                 if( QString::compare(parentItem->child(c)->node().attributes().item(0).nodeValue(), parentItem->child(c-1)->node().attributes().item(0).nodeValue()) < 0)
                     parentItem->swapChild(c-1,c);
                 else
@@ -147,3 +180,4 @@ void SpellTreeModel::sort(const QModelIndex &parent_, DomItem* parentItem)
         }
     }
 }
+

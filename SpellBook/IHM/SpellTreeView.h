@@ -2,6 +2,7 @@
 #define SPELLTREEVIEW_H
 
 #include <QTreeView>
+#include <SpellBook/Modeles/SpellTreeModel.h>
 
 class SpellTreeView : public QTreeView
 {
@@ -19,6 +20,7 @@ public:
 
     void setMaxDepth(const int &max_);
     int maxDepth();
+    SpellTreeModel* model();
 
 private:
 

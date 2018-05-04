@@ -24,7 +24,9 @@ public:
     int rowCount(const QModelIndex &parent = QModelIndex()) const override;
     int columnCount(const QModelIndex &parent = QModelIndex()) const override;
 
-    void sort(const QModelIndex &parent_, DomItem *parentItem);
+    void sort();
+    void sortBooks(const QModelIndex &parent_ = QModelIndex());
+    void sortSpells(const QModelIndex &parent_ = QModelIndex());
 
 private:
     QDomDocument _domDocument;

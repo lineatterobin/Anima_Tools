@@ -75,18 +75,7 @@ void SpellBookMainWindow::initDockWidgets()
     addDockWidget(Qt::LeftDockWidgetArea, _spellExplorer);
 
     spellTreeExplorer->loadTreeData(":/DATA/BOOK");
-    //TEST Tri
-
-    SpellTreeModel* model = (SpellTreeModel*)spellTreeExplorer->model();
-    DomItem* item;
-    QModelIndex index = model->index(1,0);
-    item = static_cast<DomItem*>(index.internalPointer());
-    item->sortChildren();
-
-//    spellTreeExplorer->sort(index, item);
-
-    //TEST Tri
-
+    spellTreeExplorer->model()->sort();
     spellTreeExplorer->setHeaderHidden(true);
 
     hideRowSpellTreeView(spellTreeExplorer, true);
@@ -101,6 +90,7 @@ void SpellBookMainWindow::initDockWidgets()
     addDockWidget(Qt::RightDockWidgetArea, _spellList);
 
     spellTreeList->loadTreeData("");
+    spellTreeExplorer->model()->sort();
     spellTreeList->setHeaderHidden(true);
 
     hideRowSpellTreeView(spellTreeList, true);
