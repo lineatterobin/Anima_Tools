@@ -27,6 +27,8 @@ public:
 
     void refresh();
 
+    void sort();
+
 private:
 
     bool _readOnly;

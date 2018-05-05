@@ -227,7 +227,7 @@
 			</arcane>
 			<maitien_type>1</maitien_type>
 			<action>ACTIVE</action>
-			<effets_type>Effet, Animique</effets_type>
+			<effets_type>effet_animique</effets_type>
 			<description>Détruit les ombres existant dans le rayon d’action du sortilège. Si ce sort est lancé sur des êtres naturellement basés sur l'obscurité, ils doivent réussir un test de RMys, sous peine de perdre une quantité de points de vie égale au double de leur marge d'échec (dix fois la marge d'échec dans le cas de créatures à Encaissement). Si ce sort est maintenu, les créatures devront effectuer un nouveau test de RMys à chaque round.</description>
 			<commentaire>Pas de commentaires</commentaire>
 			<source>CE 124</source>
@@ -392,7 +392,7 @@
 			</arcane>
 			<maitien_type>1</maitien_type>
 			<action>ACTIVE</action>
-			<effets_type>Effet, Animique</effets_type>
+			<effets_type>effet_animique</effets_type>
 			<description>Modifie et contrôle la forme, la couleur et l'intensité de la lumière. Si ce sort est lancé contre des êtres naturellement basés sur cet élément, ils doivent réussir un test de RMys sous peine d'être contrôlés par le sorcier. Une créature contrôlée ne peut refaire ce test que si elle reçoit un ordre contraire à sa nature.</description>
 			<commentaire>Pas de commentaires</commentaire>
 			<source>CE 124</source>

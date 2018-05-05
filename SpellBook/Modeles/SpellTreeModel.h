@@ -5,6 +5,7 @@
 #include <QAbstractItemModel>
 #include <QDomDocument>
 #include <Librairies/Modeles/DomItem.h>
+#include <SpellBook/IHM/SpellView.h>
 
 class SpellTreeModel : public QAbstractItemModel
 {
@@ -28,7 +29,8 @@ public:
     void sortBooks(const QModelIndex &parent_ = QModelIndex());
     void sortSpells(const QModelIndex &parent_ = QModelIndex());
 
-    void addBook(const QString &name_);
+    QDomNode addBook(const QString &name_);
+    void addSpell(SpellView* spell_, QDomNode book_);
 
 private:
 

@@ -21,6 +21,8 @@ SpellBookMainWindow::SpellBookMainWindow(QString styleSheet_) : QMainWindow(),
 
     initDockWidgets();
 
+    initToolBar();
+
     initConnections();
 
     setMinimumSize(_centralWidget->minimumSizeHint()+_spellExplorer->minimumSizeHint()+_spellList->minimumSizeHint());
@@ -51,6 +53,18 @@ void SpellBookMainWindow::setTheme(QString styleSheet_)
     setStyleSheet(styleSheet_);
 }
 
+void SpellBookMainWindow::initToolBar()
+{
+    QToolBar* toolBar = addToolBar(SPELLBOOK_TOOLBAR_NAME);
+    toolBar->setObjectName(SPELLBOOK_TOOLBAR_NAME);
+    QAction* addSpellAction = new QAction("Ajouter", this);
+    addSpellAction->setStatusTip("Ajoute le sort à la liste personnalisée");
+    toolBar->addAction(addSpellAction);
+
+    QObject::connect(addSpellAction, SIGNAL(triggered(bool)), this, SLOT(addSpellButton()));
+
+}
+
 void SpellBookMainWindow::initCentralWidget()
 {
     _centralWidget = new QTabWidget(this);
@@ -75,7 +89,7 @@ void SpellBookMainWindow::initDockWidgets()
     addDockWidget(Qt::LeftDockWidgetArea, _spellExplorer);
 
     spellTreeExplorer->loadTreeData(":/DATA/BOOK");
-    spellTreeExplorer->model()->sort();
+    spellTreeExplorer->sort();
     spellTreeExplorer->setHeaderHidden(true);
     spellTreeExplorer->setReadOnly(true);
 
@@ -91,8 +105,10 @@ void SpellBookMainWindow::initDockWidgets()
     addDockWidget(Qt::RightDockWidgetArea, _spellList);
 
     spellTreeList->loadTreeData("");
-    spellTreeList->model()->sort();
+    spellTreeList->setMaxDepth(2);
+    spellTreeList->sort();
     spellTreeList->setHeaderHidden(true);
+
 
     hideRowSpellTreeView(spellTreeList, true);
 }
@@ -100,6 +116,7 @@ void SpellBookMainWindow::initDockWidgets()
 void SpellBookMainWindow::initConnections()
 {
     QObject::connect(_spellExplorer->widget(), SIGNAL(clicked(QModelIndex)), this, SLOT(loadSpellPreview(QModelIndex)));
+    QObject::connect(_spellList->widget(), SIGNAL(clicked(QModelIndex)), this, SLOT(loadSpellPreview(QModelIndex)));
     QObject::connect(_spellExplorer->widget(), SIGNAL(doubleClicked(QModelIndex)), this, SLOT(addSpellViewExplorer(QModelIndex)));
     QObject::connect(_spellList->widget(), SIGNAL(doubleClicked(QModelIndex)), this, SLOT(addSpellViewList(QModelIndex)));
     QObject::connect(_centralWidget, SIGNAL(tabCloseRequested(int)), this, SLOT(closeSpellView(int)));
@@ -107,11 +124,8 @@ void SpellBookMainWindow::initConnections()
 
 void SpellBookMainWindow::addSpellViewExplorer(const QModelIndex &index_)
 {
-    SpellView* spellView = addSpellView((SpellTreeView*)_spellExplorer->widget(), index_, false);
+    addSpellView((SpellTreeView*)_spellExplorer->widget(), index_, false);
     //test d'ajout
-    SpellTreeView* treeList = (SpellTreeView*)_spellList->widget();
-    treeList->addSpell(spellView);
-    treeList->expand(treeList->model()->index(0,0));
 }
 
 void SpellBookMainWindow::addSpellViewList(const QModelIndex &index_)
@@ -142,6 +156,8 @@ void SpellBookMainWindow::loadSpellPreview(const QModelIndex& index_)
     {
         _spellPreview->loadData(index_, model);
     }
+
+    _centralWidget->setCurrentIndex(0);
 }
 
 void SpellBookMainWindow::closeSpellView(const int &index_)
@@ -156,6 +172,12 @@ void SpellBookMainWindow::closeSpellView(const int &index_)
         _centralWidget->removeTab(index_);
         p->deleteLater();
     }
+}
+
+void SpellBookMainWindow::addSpellButton()
+{
+    SpellTreeView* treeList = (SpellTreeView*)_spellList->widget();
+    treeList->addSpell((SpellView*)_centralWidget->currentWidget());
 }
 
 void SpellBookMainWindow::hideRowSpellTreeView(SpellTreeView* treeview_, const bool& hasXMLHeader_)

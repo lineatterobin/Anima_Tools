@@ -59,12 +59,19 @@ void SpellTreeView::loadTreeData(QString xmlPath_)
 void SpellTreeView::addSpell(SpellView* spell_)
 {
     //Vérifier si le Livre existe, sinon le créer
-    this->model()->addBook(spell_->getBook());
-    //Vérifier si le sort existe, si oui le modifier si non le créer
+    QDomNode book = this->model()->addBook(spell_->getBook());
 
+    //Vérifier si le sort existe, si oui le modifier si non le créer
+    this->model()->addSpell(spell_, book);
 
     //Trier l'arbre.
+    this->sort();
+}
+
+void SpellTreeView::sort()
+{
     this->model()->sort();
+    this->hideTreeSpellData(this->model()->index(1, 0));
 }
 
 void SpellTreeView::setReadOnly(const bool& readOnly_)

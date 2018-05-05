@@ -12,6 +12,7 @@
 #include <QGroupBox>
 
 #include <Librairies/Modeles/DomItem.h>
+#include <SpellBook/Modeles/SpellEnum.h>
 
 class SpellView : public QWidget
 {
@@ -25,8 +26,31 @@ public:
 
     void loadData(const QModelIndex& index_, QAbstractItemModel* model_);
 
-    QString getBook();
     QString getName();
+    int getLevel();
+    QString getBook();
+    QString getDescription();
+    int getCostInitial();
+    int getCostIntermediaire();
+    int getCostAvancee();
+    int getCostArcane();
+    int getRequirementInitial();
+    int getRequirementIntermediaire();
+    int getRequirementAvancee();
+    int getRequirementArcane();
+    int getMaintenanceInitial();
+    int getMaintenanceIntermediaire();
+    int getMaintenanceAvancee();
+    int getMaintenanceArcane();
+    int getMaintenanceType();
+    QString getCommentaires();
+    QString getSource();
+    QString getEffectType();
+    QString getEffectInitial();
+    QString getEffectIntermediaire();
+    QString getEffectAvancee();
+    QString getEffectArcane();
+    QString getAction();
 
 signals:
 
@@ -49,7 +73,6 @@ private:
     QLabel* _spellRequirementLabel;
     QLabel* _spellMaintenanceLabel;
     QLabel* _spellMaintenanceTypeLabel;
-//    QLabel* _spellRMysLabel;
     QLabel* _spellCommentaireLabel;
     QLabel* _spellSourceLabel;
     QLabel* _spellEffectTypeLabel;
@@ -74,8 +97,6 @@ private:
     QSpinBox* _spellMaintenanceAvancee;
     QSpinBox* _spellMaintenanceArcane;
     QComboBox* _spellMaintenanceType;
-//    QSpinBox* _spellRMys;
-//    QComboBox* _spellRMysBool;
     QTextEdit* _spellCommentaire;
     QLineEdit* _spellSource;
     QComboBox* _spellEffectType;

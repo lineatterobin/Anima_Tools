@@ -29,7 +29,11 @@ public slots:
     void addSpellViewList(const QModelIndex &index_);
     void closeSpellView(const int& index_);
 
+    void addSpellButton();
+
 private:
+
+    void initToolBar();
 
     void initCentralWidget();
 

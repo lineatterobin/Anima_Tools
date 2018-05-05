@@ -381,7 +381,7 @@ void SpellView::loadData(const QModelIndex& index_, QAbstractItemModel* model_)
         _spellEffectType->setCurrentIndex(SpellEnum::DEFENSE);
     else if (QString::compare(model_->index(0,0,child).data().toString(), "DETECTION", Qt::CaseInsensitive) == 0)
         _spellEffectType->setCurrentIndex(SpellEnum::DETECTION);
-    else if (QString::compare(model_->index(0,0,child).data().toString(), "EFFET, ANIMIQUE", Qt::CaseInsensitive) == 0)
+    else if (QString::compare(model_->index(0,0,child).data().toString(), "EFFET_ANIMIQUE", Qt::CaseInsensitive) == 0)
         _spellEffectType->setCurrentIndex(SpellEnum::EFFET_ANIMIQUE);
     else
         _spellEffectType->setCurrentIndex(SpellEnum::EFFET);
@@ -400,12 +400,125 @@ void SpellView::loadData(const QModelIndex& index_, QAbstractItemModel* model_)
 
 }
 
+QString SpellView::getName()
+{
+    return _spellName->text();
+}
+
+int SpellView::getLevel()
+{
+    return _spellLevel->value();
+}
+
 QString SpellView::getBook()
 {
     return _spellBook->text();
 }
 
-QString SpellView::getName()
+QString SpellView::getDescription()
 {
-    return _spellName->text();
+    return _spellDescription->toPlainText();
+}
+
+int SpellView::getCostInitial()
+{
+    return _spellCostInitial->value();
+}
+
+int SpellView::getCostIntermediaire()
+{
+    return _spellCostIntermediaire->value();
+}
+
+int SpellView::getCostAvancee()
+{
+    return _spellCostAvancee->value();
+}
+
+int SpellView::getCostArcane()
+{
+    return _spellCostArcane->value();
+}
+int SpellView::getRequirementInitial()
+{
+    return _spellRequirementInitial->value();
+}
+
+int SpellView::getRequirementIntermediaire()
+{
+    return _spellRequirementIntermediaire->value();
+}
+
+int SpellView::getRequirementAvancee()
+{
+    return _spellRequirementAvancee->value();
+}
+
+int SpellView::getRequirementArcane()
+{
+    return _spellRequirementArcane->value();
+}
+int SpellView::getMaintenanceInitial()
+{
+    return _spellMaintenanceInitial->value();
+}
+
+int SpellView::getMaintenanceIntermediaire()
+{
+    return _spellMaintenanceIntermediaire->value();
+}
+
+int SpellView::getMaintenanceAvancee()
+{
+    return _spellMaintenanceAvancee->value();
+}
+
+int SpellView::getMaintenanceArcane()
+{
+    return _spellMaintenanceArcane->value();
+}
+
+int SpellView::getMaintenanceType()
+{
+    return _spellMaintenanceType->currentIndex();
+}
+
+QString SpellView::getCommentaires()
+{
+    return _spellCommentaire->toPlainText();
+}
+
+QString SpellView::getSource()
+{
+    return _spellSource->text();
+}
+
+QString SpellView::getEffectType()
+{
+    return _spellEffectType->currentText();
+}
+
+QString SpellView::getEffectInitial()
+{
+    return _spellEffectInitial->toPlainText();
+}
+
+QString SpellView::getEffectIntermediaire()
+{
+    return _spellEffectIntermediaire->toPlainText();
+}
+
+QString SpellView::getEffectAvancee()
+{
+    return _spellEffectAvancee->toPlainText();
+}
+
+QString SpellView::getEffectArcane()
+{
+    return _spellEffectArcane->toPlainText();
+}
+
+QString SpellView::getAction()
+{
+    return _spellAction->currentText();
 }
