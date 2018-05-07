@@ -109,8 +109,9 @@ void SpellBookMainWindow::initDockWidgets()
     spellTreeList->sort();
     spellTreeList->setHeaderHidden(true);
 
-
     hideRowSpellTreeView(spellTreeList, true);
+
+    spellTreeExplorer->setSiblingSpellTree(spellTreeList);
 }
 
 void SpellBookMainWindow::initConnections()
@@ -119,6 +120,8 @@ void SpellBookMainWindow::initConnections()
     QObject::connect(_spellList->widget(), SIGNAL(clicked(QModelIndex)), this, SLOT(loadSpellPreview(QModelIndex)));
     QObject::connect(_spellExplorer->widget(), SIGNAL(doubleClicked(QModelIndex)), this, SLOT(addSpellViewExplorer(QModelIndex)));
     QObject::connect(_spellList->widget(), SIGNAL(doubleClicked(QModelIndex)), this, SLOT(addSpellViewList(QModelIndex)));
+    //QObject::connect(_spellExplorer->widget(), SIGNAL(customContextMenuRequested(QPoint)), _spellExplorer->widget(), SLOT(openTreeContextMenu(QPoint)));
+
     QObject::connect(_centralWidget, SIGNAL(tabCloseRequested(int)), this, SLOT(closeSpellView(int)));
 }
 

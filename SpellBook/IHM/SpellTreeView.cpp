@@ -1,13 +1,19 @@
 #include "SpellTreeView.h"
 
-#include <iostream>
 #include <QFile>
-#include <SpellBook/Modeles/SpellTreeModel.h>
 
 SpellTreeView::SpellTreeView(QWidget* parent_) : QTreeView(parent_),
     _readOnly(false),
-    _maxDepth(3)
+    _maxDepth(3),
+    _contextMenu(NULL),
+    _indexCustomMenu(),
+    _siblingSpellTree(NULL)
 {
+    _contextMenu = new QMenu(this);
+    this->setContextMenuPolicy(Qt::CustomContextMenu);
+    connect(this, SIGNAL(customContextMenuRequested(QPoint)), this, SLOT(onCustomMenuRequest(QPoint)));
+    _contextMenu->addAction("Ajouter au Grimoire", this, SLOT(addSpellTo()));
+    _contextMenu->addAction("Retirer du Grimoire", this, SLOT(removeSpellFrom()));
 }
 
 void SpellTreeView::hideTreeSpellData(const QModelIndex& startIndex_, int currentDepth_)
@@ -74,6 +80,48 @@ void SpellTreeView::sort()
     this->hideTreeSpellData(this->model()->index(1, 0));
 }
 
+void SpellTreeView::onCustomMenuRequest(const QPoint &point_)
+{
+    _indexCustomMenu = this->indexAt(point_);
+    QList<QAction*> actions = _contextMenu->actions();
+    Q_FOREACH (QAction* action, actions)
+    {
+        if(action->text() == "Ajouter au Grimoire")
+        {
+            action->setEnabled(this->isReadOnly());
+            action->setVisible(this->isReadOnly());
+        }
+        if(action->text() == "Retirer du Grimoire")
+        {
+            action->setEnabled(!this->isReadOnly());
+            action->setVisible(!this->isReadOnly());
+        }
+
+    }
+
+    _contextMenu->exec(this->mapToGlobal(point_));
+}
+
+void SpellTreeView::removeSpellFrom()
+{
+    if(this->model()->index(0,0,_indexCustomMenu).data().toString() == "name" && !isReadOnly())
+    {
+        this->model()->removeSpell(_indexCustomMenu);
+    }
+
+}
+
+void SpellTreeView::addSpellTo()
+{
+    if(this->model()->index(0,0,_indexCustomMenu).data().toString() == "name" && !_siblingSpellTree->isReadOnly())
+    {
+        SpellView* spellView = new SpellView(this);
+        spellView->loadData(_indexCustomMenu, this->model());
+
+        _siblingSpellTree->addSpell(spellView);
+    }
+}
+
 void SpellTreeView::setReadOnly(const bool& readOnly_)
 {
     _readOnly = readOnly_;
@@ -92,6 +140,11 @@ void SpellTreeView::setMaxDepth(const int& max_)
 int SpellTreeView::maxDepth()
 {
     return _maxDepth;
+}
+
+void SpellTreeView::setSiblingSpellTree(SpellTreeView *treeView)
+{
+    _siblingSpellTree = treeView;
 }
 
 SpellTreeModel* SpellTreeView::model()

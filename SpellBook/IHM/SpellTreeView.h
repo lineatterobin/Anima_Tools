@@ -2,6 +2,9 @@
 #define SPELLTREEVIEW_H
 
 #include <QTreeView>
+#include <QMenu>
+#include <QAction>
+
 #include <SpellBook/Modeles/SpellTreeModel.h>
 #include <SpellBook/IHM/SpellView.h>
 
@@ -23,16 +26,28 @@ public:
 
     void setMaxDepth(const int &max_);
     int maxDepth();
+
+    void setSiblingSpellTree(SpellTreeView* treeView);
+
     SpellTreeModel* model();
 
     void refresh();
 
     void sort();
 
+public slots:
+    void onCustomMenuRequest(const QPoint &point_);
+    void removeSpellFrom();
+    void addSpellTo();
+
 private:
 
     bool _readOnly;
     int _maxDepth;
+    QMenu* _contextMenu;
+    QModelIndex _indexCustomMenu;
+
+    SpellTreeView* _siblingSpellTree;
 
 };
 

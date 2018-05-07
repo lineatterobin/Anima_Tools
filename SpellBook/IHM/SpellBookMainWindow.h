@@ -27,6 +27,7 @@ public slots:
     void loadSpellPreview(const QModelIndex& index_);
     void addSpellViewExplorer(const QModelIndex &index_);
     void addSpellViewList(const QModelIndex &index_);
+
     void closeSpellView(const int& index_);
 
     void addSpellButton();
