@@ -326,18 +326,10 @@ void SpellTreeModel::addSpell(SpellView *spell_, QDomNode book_)
 
 void SpellTreeModel::removeSpell(const QModelIndex &index_)
 {
-//    DomItem* spell = static_cast<DomItem*>(index_.internalPointer());
-//    DomItem* book = spell->parent();
+    DomItem* spell = static_cast<DomItem*>(index_.internalPointer());
+    DomItem* book = spell->parent();
 
-//    std::cout << spell->node().nodeName().toStdString() << " " << spell->node().attributes().item(0).nodeValue().toStdString() << std::endl;
+    book->removeChild(spell->row());
 
-//    book->node().removeChild(spell->node());
-
-//    beginRemoveRows(index_.parent(), index_.row(), index_.row());
-//    this->removeRow(index_.row(), index_.parent());
-//    endRemoveRows();
-
-//    std::cout << _domDocument.toString().toStdString() << std::endl;
-
-    this->sort();
+    std::cout << _domDocument.toString().toStdString() << std::endl;
 }

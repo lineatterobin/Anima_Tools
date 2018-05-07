@@ -43,6 +43,12 @@ DomItem *DomItem::child(int i)
     return 0;
 }
 
+void DomItem::removeChild(int i)
+{
+    this->node().removeChild(this->child(i)->node());
+    childItems.remove(i);
+}
+
 void DomItem::swapChild(int i, int j)
 {
     DomItem* child_1 = child(i);

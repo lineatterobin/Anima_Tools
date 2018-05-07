@@ -1,6 +1,7 @@
 #include "SpellTreeView.h"
 
 #include <QFile>
+#include <iostream>
 
 SpellTreeView::SpellTreeView(QWidget* parent_) : QTreeView(parent_),
     _readOnly(false),
@@ -14,6 +15,12 @@ SpellTreeView::SpellTreeView(QWidget* parent_) : QTreeView(parent_),
     connect(this, SIGNAL(customContextMenuRequested(QPoint)), this, SLOT(onCustomMenuRequest(QPoint)));
     _contextMenu->addAction("Ajouter au Grimoire", this, SLOT(addSpellTo()));
     _contextMenu->addAction("Retirer du Grimoire", this, SLOT(removeSpellFrom()));
+}
+
+SpellTreeView::~SpellTreeView()
+{
+    std::cout << "~SpellTreeView" << std::endl;
+    delete this->model();
 }
 
 void SpellTreeView::hideTreeSpellData(const QModelIndex& startIndex_, int currentDepth_)
@@ -108,6 +115,8 @@ void SpellTreeView::removeSpellFrom()
     {
         this->model()->removeSpell(_indexCustomMenu);
     }
+
+    this->sort();
 
 }
 

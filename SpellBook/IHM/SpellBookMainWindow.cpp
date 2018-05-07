@@ -38,11 +38,13 @@ SpellBookMainWindow::~SpellBookMainWindow()
     }
     if(_spellExplorer != NULL)
     {
+        delete _spellExplorer->widget();
         delete _spellExplorer;
         _spellExplorer = NULL;
     }
     if(_spellList != NULL)
     {
+        delete _spellList->widget();
         delete _spellList;
         _spellList = NULL;
     }

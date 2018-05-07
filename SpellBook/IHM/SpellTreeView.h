@@ -14,6 +14,8 @@ class SpellTreeView : public QTreeView
 public:
     explicit SpellTreeView(QWidget *parent_);
 
+    ~SpellTreeView();
+
     void hideTreeSpellData(const QModelIndex& startIndex_, int currentDepth_ = 0);
 
     void loadTreeData(QString xmlPath_);

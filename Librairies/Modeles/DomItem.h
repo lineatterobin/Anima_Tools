@@ -14,6 +14,7 @@ public:
     QDomNode node() const;
     int row();
 
+    void removeChild(int i);
     void swapChild(int i, int j);
 
 private:
