@@ -91,11 +91,9 @@ void SpellBookMainWindow::initDockWidgets()
     addDockWidget(Qt::LeftDockWidgetArea, _spellExplorer);
 
     spellTreeExplorer->loadTreeData(":/DATA/BOOK");
-    spellTreeExplorer->sort();
     spellTreeExplorer->setHeaderHidden(true);
     spellTreeExplorer->setReadOnly(true);
-
-    hideRowSpellTreeView(spellTreeExplorer, true);
+    spellTreeExplorer->sort();
 
     _spellList = new QDockWidget(this);
     SpellTreeView* spellTreeList = new SpellTreeView(_spellList);
@@ -107,11 +105,8 @@ void SpellBookMainWindow::initDockWidgets()
     addDockWidget(Qt::RightDockWidgetArea, _spellList);
 
     spellTreeList->loadTreeData("");
-    spellTreeList->setMaxDepth(2);
-    spellTreeList->sort();
     spellTreeList->setHeaderHidden(true);
-
-    hideRowSpellTreeView(spellTreeList, true);
+    spellTreeList->sort();
 
     spellTreeExplorer->setSiblingSpellTree(spellTreeList);
 }
@@ -183,16 +178,4 @@ void SpellBookMainWindow::addSpellButton()
 {
     SpellTreeView* treeList = (SpellTreeView*)_spellList->widget();
     treeList->addSpell((SpellView*)_centralWidget->currentWidget());
-}
-
-void SpellBookMainWindow::hideRowSpellTreeView(SpellTreeView* treeview_, const bool& hasXMLHeader_)
-{
-    QModelIndex startIndex = treeview_->model()->index(0, 0);
-
-    //On cache le header du fixhier XML.
-    if(hasXMLHeader_)
-        treeview_->setRowHidden(0, startIndex.parent(), true);
-
-    //On cache les informations des sorts.
-    treeview_->hideTreeSpellData(startIndex.parent());
 }

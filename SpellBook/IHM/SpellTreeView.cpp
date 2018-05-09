@@ -5,7 +5,7 @@
 
 SpellTreeView::SpellTreeView(QWidget* parent_) : QTreeView(parent_),
     _readOnly(false),
-    _maxDepth(3),
+    _maxDepth(2),
     _contextMenu(NULL),
     _indexCustomMenu(),
     _siblingSpellTree(NULL)
@@ -84,6 +84,7 @@ void SpellTreeView::addSpell(SpellView* spell_)
 void SpellTreeView::sort()
 {
     this->model()->sort();
+    this->setRowHidden(0, QModelIndex(), true);
     this->hideTreeSpellData(this->model()->index(1, 0));
 }
 
@@ -111,24 +112,24 @@ void SpellTreeView::onCustomMenuRequest(const QPoint &point_)
 
 void SpellTreeView::removeSpellFrom()
 {
-//    if(this->model()->index(0,0,_indexCustomMenu).data().toString() == "name" && !isReadOnly())
-//    {
-//        this->model()->removeSpell(_indexCustomMenu);
-//    }
+    if(this->model()->index(0,0,_indexCustomMenu).data().toString() == "name" && !isReadOnly())
+    {
+        this->model()->removeSpell(_indexCustomMenu);
+    }
 
-//    this->sort();
+    this->sort();
 
 }
 
 void SpellTreeView::addSpellTo()
 {
-//    if(this->model()->index(0,0,_indexCustomMenu).data().toString() == "name" && !_siblingSpellTree->isReadOnly())
-//    {
-//        SpellView* spellView = new SpellView(this);
-//        spellView->loadData(_indexCustomMenu, this->model());
+    if(this->model()->index(0,0,_indexCustomMenu).data().toString() == "name" && !_siblingSpellTree->isReadOnly())
+    {
+        SpellView* spellView = new SpellView(this);
+        spellView->loadData(_indexCustomMenu, this->model());
 
-//        _siblingSpellTree->addSpell(spellView);
-//    }
+        _siblingSpellTree->addSpell(spellView);
+    }
 }
 
 void SpellTreeView::setReadOnly(const bool& readOnly_)

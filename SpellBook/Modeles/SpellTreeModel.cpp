@@ -122,10 +122,12 @@ QVariant SpellTreeModel::data(const QModelIndex &index, int role) const
 
 void SpellTreeModel::sort()
 {
-    emit layoutAboutToBeChanged();
+    beginResetModel();
     sortBooks();
     sortSpells();
-    emit layoutChanged();
+    endResetModel();
+
+    std::cout << _domDocument.toString().toStdString() << std::endl;
 }
 
 
@@ -213,122 +215,122 @@ QDomNode SpellTreeModel::addBook(const QString &name_)
 
 void SpellTreeModel::addSpell(SpellView *spell_, QDomNode book_)
 {
-//    QDomNode sort = book_.firstChild();
-//    while((QString::compare(sort.firstChild().firstChild().nodeValue(), spell_->getName()) != 0) && !(sort.nextSibling().isNull()))
-//    {
-//        sort = sort.nextSibling();
-//    }
+    QDomNode sort = book_.firstChild();
+    int i =0;
+    while((QString::compare(sort.firstChild().firstChild().nodeValue(), spell_->getName()) != 0) && !(sort.nextSibling().isNull()))
+    {
+        ++i;
+        sort = sort.nextSibling();
+    }
 
-//    if(QString::compare(sort.firstChild().firstChild().nodeValue(), spell_->getName()) != 0)
-//    {
-//        // On crée le sort.
-//        QDomElement sortElt = _domDocument.createElement("Sort");
-//        sortElt.setAttribute("Level", QString("%1").arg(spell_->getLevel(), 3, 10, QChar('0')));
+    if(QString::compare(sort.firstChild().firstChild().nodeValue(), spell_->getName()) != 0)
+    {
+        ++i;
+        // On crée le sort.
+        QDomElement sortElt = _domDocument.createElement("Sort");
+        sortElt.setAttribute("Level", QString("%1").arg(spell_->getLevel(), 3, 10, QChar('0')));
 
-//        // On rempli les informations du sorts.
-//        QDomElement name = _domDocument.createElement("name");
-//        name.appendChild(_domDocument.createTextNode(spell_->getName()));
-//        sortElt.appendChild(name);
+        // On rempli les informations du sorts.
+        QDomElement name = _domDocument.createElement("name");
+        name.appendChild(_domDocument.createTextNode(spell_->getName()));
+        sortElt.appendChild(name);
 
-//        QDomElement initial = _domDocument.createElement("initial");
-//        QDomElement req = _domDocument.createElement("requirement");
-//        req.appendChild(_domDocument.createTextNode(QString::number(spell_->getRequirementInitial())));
-//        QDomElement cost = _domDocument.createElement("cost");
-//        cost.appendChild(_domDocument.createTextNode(QString::number(spell_->getCostInitial())));
-//        QDomElement maintien = _domDocument.createElement("maintien");
-//        maintien.appendChild(_domDocument.createTextNode(QString::number(spell_->getMaintenanceInitial())));
-//        QDomElement effets = _domDocument.createElement("effets");
-//        effets.appendChild(_domDocument.createTextNode(spell_->getEffectInitial()));
-//        initial.appendChild(req);
-//        initial.appendChild(cost);
-//        initial.appendChild(maintien);
-//        initial.appendChild(effets);
-//        sortElt.appendChild(initial);
+        QDomElement initial = _domDocument.createElement("initial");
+        QDomElement req = _domDocument.createElement("requirement");
+        req.appendChild(_domDocument.createTextNode(QString::number(spell_->getRequirementInitial())));
+        QDomElement cost = _domDocument.createElement("cost");
+        cost.appendChild(_domDocument.createTextNode(QString::number(spell_->getCostInitial())));
+        QDomElement maintien = _domDocument.createElement("maintien");
+        maintien.appendChild(_domDocument.createTextNode(QString::number(spell_->getMaintenanceInitial())));
+        QDomElement effets = _domDocument.createElement("effets");
+        effets.appendChild(_domDocument.createTextNode(spell_->getEffectInitial()));
+        initial.appendChild(req);
+        initial.appendChild(cost);
+        initial.appendChild(maintien);
+        initial.appendChild(effets);
+        sortElt.appendChild(initial);
 
-//        QDomElement intermediaire = _domDocument.createElement("intermediaire");
-//        req = _domDocument.createElement("requirement");
-//        req.appendChild(_domDocument.createTextNode(QString::number(spell_->getRequirementIntermediaire())));
-//        cost = _domDocument.createElement("cost");
-//        cost.appendChild(_domDocument.createTextNode(QString::number(spell_->getCostIntermediaire())));
-//        maintien = _domDocument.createElement("maintien");
-//        maintien.appendChild(_domDocument.createTextNode(QString::number(spell_->getMaintenanceIntermediaire())));
-//        effets = _domDocument.createElement("effets");
-//        effets.appendChild(_domDocument.createTextNode(spell_->getEffectIntermediaire()));
-//        intermediaire.appendChild(req);
-//        intermediaire.appendChild(cost);
-//        intermediaire.appendChild(maintien);
-//        intermediaire.appendChild(effets);
-//        sortElt.appendChild(intermediaire);
+        QDomElement intermediaire = _domDocument.createElement("intermediaire");
+        req = _domDocument.createElement("requirement");
+        req.appendChild(_domDocument.createTextNode(QString::number(spell_->getRequirementIntermediaire())));
+        cost = _domDocument.createElement("cost");
+        cost.appendChild(_domDocument.createTextNode(QString::number(spell_->getCostIntermediaire())));
+        maintien = _domDocument.createElement("maintien");
+        maintien.appendChild(_domDocument.createTextNode(QString::number(spell_->getMaintenanceIntermediaire())));
+        effets = _domDocument.createElement("effets");
+        effets.appendChild(_domDocument.createTextNode(spell_->getEffectIntermediaire()));
+        intermediaire.appendChild(req);
+        intermediaire.appendChild(cost);
+        intermediaire.appendChild(maintien);
+        intermediaire.appendChild(effets);
+        sortElt.appendChild(intermediaire);
 
-//        QDomElement avancee = _domDocument.createElement("avancee");
-//        req = _domDocument.createElement("requirement");
-//        req.appendChild(_domDocument.createTextNode(QString::number(spell_->getRequirementAvancee())));
-//        cost = _domDocument.createElement("cost");
-//        cost.appendChild(_domDocument.createTextNode(QString::number(spell_->getCostAvancee())));
-//        maintien = _domDocument.createElement("maintien");
-//        maintien.appendChild(_domDocument.createTextNode(QString::number(spell_->getMaintenanceAvancee())));
-//        effets = _domDocument.createElement("effets");
-//        effets.appendChild(_domDocument.createTextNode(spell_->getEffectAvancee()));
-//        avancee.appendChild(req);
-//        avancee.appendChild(cost);
-//        avancee.appendChild(maintien);
-//        avancee.appendChild(effets);
-//        sortElt.appendChild(avancee);
+        QDomElement avancee = _domDocument.createElement("avancee");
+        req = _domDocument.createElement("requirement");
+        req.appendChild(_domDocument.createTextNode(QString::number(spell_->getRequirementAvancee())));
+        cost = _domDocument.createElement("cost");
+        cost.appendChild(_domDocument.createTextNode(QString::number(spell_->getCostAvancee())));
+        maintien = _domDocument.createElement("maintien");
+        maintien.appendChild(_domDocument.createTextNode(QString::number(spell_->getMaintenanceAvancee())));
+        effets = _domDocument.createElement("effets");
+        effets.appendChild(_domDocument.createTextNode(spell_->getEffectAvancee()));
+        avancee.appendChild(req);
+        avancee.appendChild(cost);
+        avancee.appendChild(maintien);
+        avancee.appendChild(effets);
+        sortElt.appendChild(avancee);
 
-//        QDomElement arcane = _domDocument.createElement("arcane");
-//        req = _domDocument.createElement("requirement");
-//        req.appendChild(_domDocument.createTextNode(QString::number(spell_->getRequirementArcane())));
-//        cost = _domDocument.createElement("cost");
-//        cost.appendChild(_domDocument.createTextNode(QString::number(spell_->getCostArcane())));
-//        maintien = _domDocument.createElement("maintien");
-//        maintien.appendChild(_domDocument.createTextNode(QString::number(spell_->getMaintenanceArcane())));
-//        effets = _domDocument.createElement("effets");
-//        effets.appendChild(_domDocument.createTextNode(spell_->getEffectArcane()));
-//        arcane.appendChild(req);
-//        arcane.appendChild(cost);
-//        arcane.appendChild(maintien);
-//        arcane.appendChild(effets);
-//        sortElt.appendChild(arcane);
+        QDomElement arcane = _domDocument.createElement("arcane");
+        req = _domDocument.createElement("requirement");
+        req.appendChild(_domDocument.createTextNode(QString::number(spell_->getRequirementArcane())));
+        cost = _domDocument.createElement("cost");
+        cost.appendChild(_domDocument.createTextNode(QString::number(spell_->getCostArcane())));
+        maintien = _domDocument.createElement("maintien");
+        maintien.appendChild(_domDocument.createTextNode(QString::number(spell_->getMaintenanceArcane())));
+        effets = _domDocument.createElement("effets");
+        effets.appendChild(_domDocument.createTextNode(spell_->getEffectArcane()));
+        arcane.appendChild(req);
+        arcane.appendChild(cost);
+        arcane.appendChild(maintien);
+        arcane.appendChild(effets);
+        sortElt.appendChild(arcane);
 
-//        QDomElement maintienType = _domDocument.createElement("maitien_types");
-//        maintienType.appendChild(_domDocument.createTextNode(QString::number(spell_->getMaintenanceType())));
-//        sortElt.appendChild(maintienType);
+        QDomElement maintienType = _domDocument.createElement("maitien_types");
+        maintienType.appendChild(_domDocument.createTextNode(QString::number(spell_->getMaintenanceType())));
+        sortElt.appendChild(maintienType);
 
-//        QDomElement action = _domDocument.createElement("action");
-//        action.appendChild(_domDocument.createTextNode(spell_->getAction()));
-//        sortElt.appendChild(action);
+        QDomElement action = _domDocument.createElement("action");
+        action.appendChild(_domDocument.createTextNode(spell_->getAction()));
+        sortElt.appendChild(action);
 
-//        QDomElement effetsType = _domDocument.createElement("effets_type");
-//        effetsType.appendChild(_domDocument.createTextNode(spell_->getEffectType()));
-//        sortElt.appendChild(effetsType);
+        QDomElement effetsType = _domDocument.createElement("effets_type");
+        effetsType.appendChild(_domDocument.createTextNode(spell_->getEffectType()));
+        sortElt.appendChild(effetsType);
 
-//        QDomElement description = _domDocument.createElement("description");
-//        description.appendChild(_domDocument.createTextNode(spell_->getDescription()));
-//        sortElt.appendChild(description);
+        QDomElement description = _domDocument.createElement("description");
+        description.appendChild(_domDocument.createTextNode(spell_->getDescription()));
+        sortElt.appendChild(description);
 
-//        QDomElement commentaire = _domDocument.createElement("commentaire");
-//        commentaire.appendChild(_domDocument.createTextNode(spell_->getCommentaires()));
-//        sortElt.appendChild(commentaire);
+        QDomElement commentaire = _domDocument.createElement("commentaire");
+        commentaire.appendChild(_domDocument.createTextNode(spell_->getCommentaires()));
+        sortElt.appendChild(commentaire);
 
-//        QDomElement source = _domDocument.createElement("source");
-//        source.appendChild(_domDocument.createTextNode(spell_->getSource()));
-//        sortElt.appendChild(source);
+        QDomElement source = _domDocument.createElement("source");
+        source.appendChild(_domDocument.createTextNode(spell_->getSource()));
+        sortElt.appendChild(source);
 
-//        // On ajoute le sort au livre.
-//        book_.appendChild(sortElt);
-//    }
-//    else
-//    {
-//        // On modifie le sort.
-//    }
+        // On ajoute le sort au livre.
+        book_.appendChild(sortElt);
+    }
+    else
+    {
+        // On modifie le sort.
+    }
 }
 
 void SpellTreeModel::removeSpell(const QModelIndex &index_)
 {
-//    DomItem* spell = static_cast<DomItem*>(index_.internalPointer());
-//    DomItem* book = spell->parent();
-
-//    book->removeChild(spell->row());
-
-//    std::cout << _domDocument.toString().toStdString() << std::endl;
+    DomItem* spell = static_cast<DomItem*>(index_.internalPointer());
+    DomItem* book = spell->parent();
+    book->removeChild(spell->row());
 }

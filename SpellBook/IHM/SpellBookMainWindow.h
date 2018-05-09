@@ -42,7 +42,7 @@ private:
 
     void initConnections();
 
-    void hideRowSpellTreeView(SpellTreeView* treeview_, const bool& hasXMLHeader_);
+    void sortTreeSpellView(SpellTreeView* treeview_);
 
     QTabWidget* _centralWidget;
     QDockWidget* _spellExplorer;
