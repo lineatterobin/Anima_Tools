@@ -47,23 +47,34 @@ DomItem *DomItem::child(int i)
 
 void DomItem::removeChild(int i)
 {
-//    this->node().removeChild(this->child(i)->node());
-//    childItems.remove(i);
+    for(int j=i+1; j<childItems.size(); ++j)
+    {
+        swapChild(j,j-1);
+    }
+    this->node().removeChild(this->child(childItems.size()-1)->node());
+    int nbr = childItems.remove(childItems.size()-1);
 }
 
+/*!
+ * \brief DomItem::swapChild inverse les positions de i et j
+ * \param i
+ * \param j
+ */
 void DomItem::swapChild(int i, int j)
 {
     DomItem* child_1 = child(i);
     DomItem* child_2 = child(j);
 
     // Modification XML
+    QDomNode tmp = child_2->node().previousSibling();
     domNode.insertBefore(child_2->node(), child_1->node());
+    domNode.insertAfter(child_1->node(),tmp);
 
     // Modification Model
-    QDomNode tmp = child_2->domNode;
     int rowTmp = child_2->rowNumber;
-    child_2->domNode = child_1->domNode;
     child_2->rowNumber = child_1->rowNumber;
-    child_1->domNode = tmp;
     child_1->rowNumber = rowTmp;
+    DomItem *itemTmp = childItems[j];
+    childItems[j] = childItems[i];
+    childItems[i] = itemTmp;
 }
