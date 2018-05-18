@@ -331,7 +331,7 @@
 			<commentaire>Pas de commentaires</commentaire>
 			<source>CE 124</source>
 		</Sort>
-		<Sort Level="001">
+		<Sort Level="028">
 			<name>Liens de Lumière</name>
 			<initial>
 				<requirement>6</requirement>
@@ -399,7 +399,7 @@
 		</Sort>
 
 	</Livre>
-	<Livre Name="AObscurité">
+	<Livre Name="Obscurité">
 		<Sort Level="002">
 			<name>Sort02</name>
 			<initial>

@@ -122,14 +122,10 @@ QVariant SpellTreeModel::data(const QModelIndex &index, int role) const
 
 void SpellTreeModel::sort()
 {
-    std::cout << _domDocument.toString().toStdString() << std::endl;
-
-    beginResetModel();
+    //beginResetModel();
     sortBooks();
     sortSpells();
-    endResetModel();
-
-    std::cout << _domDocument.toString().toStdString() << std::endl;
+    //endResetModel();
 }
 
 
