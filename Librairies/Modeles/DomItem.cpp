@@ -52,7 +52,10 @@ void DomItem::removeChild(int i)
         swapChild(j,j-1);
     }
     this->node().removeChild(this->child(childItems.size()-1)->node());
-    int nbr = childItems.remove(childItems.size()-1);
+    childItems.remove(childItems.size()-1);
+
+    if(this->node().childNodes().count() == 0 && this->node().nodeName() == "Livre")
+        this->parent()->removeChild(this->row());
 }
 
 /*!
