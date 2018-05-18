@@ -1,7 +1,5 @@
 #include "SpellTreeModel.h"
 
-#include <iostream>
-
 SpellTreeModel::SpellTreeModel(QDomDocument document, QObject *parent)
     : QAbstractItemModel(parent), _domDocument(document)
 {
@@ -328,5 +326,11 @@ void SpellTreeModel::removeSpell(const QModelIndex &index_)
 {
     DomItem* spell = static_cast<DomItem*>(index_.internalPointer());
     DomItem* book = spell->parent();
+
+    //On supprime le sort.
     book->removeChild(spell->row());
+
+    //Si il n'y a plus de sort on supprime le livre.
+    if(book->node().childNodes().count() == 0)
+        book->parent()->removeChild(book->row());
 }

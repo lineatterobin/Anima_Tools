@@ -1,7 +1,5 @@
 #include "DomItem.h"
 
-#include <iostream>
-
 DomItem::DomItem(QDomNode &node, int row, DomItem *parent)
 {
     domNode = node;
@@ -31,6 +29,11 @@ QDomNode DomItem::node() const
     return domNode;
 }
 
+/*!
+ * \brief DomItem::child retourne le fils i. Il est créé s'il n'existait pas.
+ * \param i
+ * \return
+ */
 DomItem *DomItem::child(int i)
 {
     if (childItems.contains(i))
@@ -45,17 +48,23 @@ DomItem *DomItem::child(int i)
     return 0;
 }
 
+/*!
+ * \brief DomItem::removeChild supprime le fils i.
+ * \param i
+ */
 void DomItem::removeChild(int i)
 {
+    //On déplace l'élément à supprimer à la fin du QHash.
     for(int j=i+1; j<childItems.size(); ++j)
     {
         swapChild(j,j-1);
     }
+
+    //On supprime le fils dans le QDomDocument.
     this->node().removeChild(this->child(childItems.size()-1)->node());
+    //On supprime le fils dans le QHash.
     childItems.remove(childItems.size()-1);
 
-    if(this->node().childNodes().count() == 0 && this->node().nodeName() == "Livre")
-        this->parent()->removeChild(this->row());
 }
 
 /*!
@@ -68,12 +77,12 @@ void DomItem::swapChild(int i, int j)
     DomItem* child_1 = child(i);
     DomItem* child_2 = child(j);
 
-    // Modification XML
+    // Modification QDomDocument
     QDomNode tmp = child_2->node().previousSibling();
     domNode.insertBefore(child_2->node(), child_1->node());
     domNode.insertAfter(child_1->node(),tmp);
 
-    // Modification Model
+    // Modification interne
     int rowTmp = child_2->rowNumber;
     child_2->rowNumber = child_1->rowNumber;
     child_1->rowNumber = rowTmp;
