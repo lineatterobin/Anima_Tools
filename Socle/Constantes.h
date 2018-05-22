@@ -2,6 +2,7 @@
 #define CONSTANTES_H
 
 #include <QString>
+#include <QStandardPaths>
 
 const QString VERSION = "0.1";
 const QString VERSION_LIBELLE = "AnimaTool v" + VERSION;
@@ -16,5 +17,7 @@ const QString SPELLEXPLORER = "Sorts";
 const QString SPELLLIST= "Grimoire";
 
 const int TOOL_BUTTON_ICON_SIZE = 15;
+
+const QString STD_DOCUMENT_PATH = QStandardPaths::standardLocations(QStandardPaths::DocumentsLocation).first();
 
 #endif // CONSTANTES_H

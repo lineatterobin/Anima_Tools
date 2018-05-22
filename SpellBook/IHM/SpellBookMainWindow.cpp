@@ -269,7 +269,7 @@ void SpellBookMainWindow::loadSpellList()
         return;
     }
 
-    QString fileName = QFileDialog::getOpenFileName(this, "Ouvrir une liste personalisée", "", "XML Files (*.xml)");
+    QString fileName = QFileDialog::getOpenFileName(this, "Ouvrir une liste personalisée", STD_DOCUMENT_PATH, "XML Files (*.xml)");
 
     SpellTreeView* treeList = (SpellTreeView*)_spellList->widget();
     treeList->model()->deleteLater();
@@ -284,7 +284,7 @@ void SpellBookMainWindow::saveSpellList()
     SpellTreeView* treeList = (SpellTreeView*)_spellList->widget();
     QString fileName;
     if(treeList->xmlPath() == "")
-        fileName = QFileDialog::getSaveFileName(this, "Enregistrer la liste personalisée", "NewList.xml", "XML Files (*.xml)");
+        fileName = QFileDialog::getSaveFileName(this, "Enregistrer la liste personalisée", STD_DOCUMENT_PATH, "XML Files (*.xml)");
     else
         fileName = treeList->xmlPath();
 
@@ -297,7 +297,7 @@ void SpellBookMainWindow::saveAsSpellList()
     SpellTreeView* treeList = (SpellTreeView*)_spellList->widget();
     QString fileName;
 
-    fileName = QFileDialog::getSaveFileName(this, "Enregistrer la liste personalisée", "NewList.xml", "XML Files (*.xml)");
+    fileName = QFileDialog::getSaveFileName(this, "Enregistrer la liste personalisée", STD_DOCUMENT_PATH, "XML Files (*.xml)");
 
     treeList->model()->save(fileName);
     treeList->setXmlPath(fileName);
