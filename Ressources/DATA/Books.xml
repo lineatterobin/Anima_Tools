@@ -164,7 +164,7 @@
 			<effets_type>Effet</effets_type>
 			<description>Ce sort augmente les perceptions du sorcier en rehaussant ses compétences secondaires de vigilance et d'observation. Son évaluation magique augmente de la même valeur, mais seulement s'il compte mesurer ou détecter le potentiel magique de quelque chose ou quelqu'un, pas pour le dissimuler.</description>
 			<commentaire>Pas de commentaires</commentaire>
-			<source>CE 124</source>
+			<source>CE 125</source>
 		</Sort>
 		<Sort Level="016">
 			<name>Armure de Lumière</name>
@@ -197,7 +197,7 @@
 			<effets_type>Effet</effets_type>
 			<description>Forme une carapace mystique qui protège contre les attaques de Mode énergie, et de la moitié contre les autres Modes. Bien que cette protection compte comme une armure, on n'applique aucun malus à l'initiative pour les couches de protection supplémentaires.</description>
 			<commentaire>Pas de commentaires</commentaire>
-			<source>CE 124</source>
+			<source>CE 125</source>
 		</Sort>
 		<Sort Level="018">
 			<name>Destruction d'Ombres</name>
@@ -230,7 +230,7 @@
 			<effets_type>effet_animique</effets_type>
 			<description>Détruit les ombres existant dans le rayon d’action du sortilège. Si ce sort est lancé sur des êtres naturellement basés sur l'obscurité, ils doivent réussir un test de RMys, sous peine de perdre une quantité de points de vie égale au double de leur marge d'échec (dix fois la marge d'échec dans le cas de créatures à Encaissement). Si ce sort est maintenu, les créatures devront effectuer un nouveau test de RMys à chaque round.</description>
 			<commentaire>Pas de commentaires</commentaire>
-			<source>CE 124</source>
+			<source>CE 125</source>
 		</Sort>
 		<Sort Level="020">
 			<name>Détecter le Negatif</name>
@@ -263,7 +263,7 @@
 			<effets_type>Detection</effets_type>
 			<description>Détecte tous les sentiments négatifs, comme la haine, la peur ou la colère, qui se trouvent autour du sorcier. Ce sort affecte aussi les créatures se basant sur ces émotions. Pour y résister, elles doivent réussir un test de RMys.</description>
 			<commentaire>Pas de commentaires</commentaire>
-			<source>CE 124</source>
+			<source>CE 125</source>
 		</Sort>
 		<Sort Level="022">
 			<name>Décharge de Lumière</name>
@@ -296,7 +296,7 @@
 			<effets_type>Attaque</effets_type>
 			<description>Projette une décharge d'énergie magique basée sur la lumière. L'attaque se fait sur le Mode Énergie.</description>
 			<commentaire>Pas de commentaires</commentaire>
-			<source>CE 124</source>
+			<source>CE 125</source>
 		</Sort>
 		<Sort Level="026">
 			<name>Hologramme</name>
@@ -329,7 +329,7 @@
 			<effets_type>Effet</effets_type>
 			<description>Crée une forme lumineuse immatérielle dont la taille maximale dépend du rang du sort. Le sorcier peut lui donner l'apparence qu'il désire, ce qui n'aide pas à différencier un hologramme d'un être ou d'une chose véritable. Si on crée un être, ce dernier peut effectuer toutes les actions surhumaines que souhaite celui qui le contrôle, mais en imitant les compétences physiques du sorcier. Si par exemple, il utilise un hologramme pour faire croire à une attaque, l'hologramme utilise l'attaque du jeteur de sort. L'hologramme ne peut toucher personne ni être touché, mais s'il reçoit des dégâts basés sur l'énergie, il disparaît. Pour s'apercevoir qu'il ne s'agit que d'une image, il faut réussir un test Quasiment Impossible de Vigilance, ou un test Très Difficile d'observation.</description>
 			<commentaire>Pas de commentaires</commentaire>
-			<source>CE 124</source>
+			<source>CE 125</source>
 		</Sort>
 		<Sort Level="028">
 			<name>Liens de Lumière</name>
@@ -362,7 +362,7 @@
 			<effets_type>Attaque</effets_type>
 			<description>Forme quelques liens de lumière qui subjuguent la cible désignée. Il faut réaliser une attaque en utilisant les règles d'immobilisation, mais le sorcier ne subit aucun malus à sa compétence pour exécuter cette manœuvre. La force des liens ont en ce qui concerne les tests appropriés dépend du rang du sort. Si un tiers tente de libérer une personne immobilisée par des liens de lumière, ceux-ci sont considérés comme une arme d'énergie de Solidité 25.</description>
 			<commentaire>Pas de commentaires</commentaire>
-			<source>CE 124</source>
+			<source>CE 125</source>
 		</Sort>
 		<Sort Level="030">
 			<name>Maîtrise lumineuse</name>
@@ -395,7 +395,337 @@
 			<effets_type>effet_animique</effets_type>
 			<description>Modifie et contrôle la forme, la couleur et l'intensité de la lumière. Si ce sort est lancé contre des êtres naturellement basés sur cet élément, ils doivent réussir un test de RMys sous peine d'être contrôlés par le sorcier. Une créature contrôlée ne peut refaire ce test que si elle reçoit un ordre contraire à sa nature.</description>
 			<commentaire>Pas de commentaires</commentaire>
-			<source>CE 124</source>
+			<source>CE 125</source>
+		</Sort>
+		<Sort Level="032">
+			<name>Détecter la Vie</name>
+			<initial>
+				<requirement>6</requirement>
+				<cost>60</cost>
+				<maintien>5</maintien>
+				<effets>RMys 140 / rayon de 25m</effets>
+			</initial>
+			<intermediaire>
+				<requirement>9</requirement>
+				<cost>100</cost>
+				<maintien>10</maintien>
+				<effets>RMys 180 / rayon de 50m</effets>
+			</intermediaire>
+			<avancee>
+				<requirement>12</requirement>
+				<cost>150</cost>
+				<maintien>15</maintien>
+				<effets>RMys 220 / rayon de 150m</effets>
+			</avancee>
+			<arcane>
+				<requirement>15</requirement>
+				<cost>300</cost>
+				<maintien>30</maintien>
+				<effets>RMys 280 / rayon de 500m</effets>
+			</arcane>
+			<maitien_type>1</maitien_type>
+			<action>ACTIVE</action>
+			<effets_type>Detection</effets_type>
+			<description>Détecte toute forme de vie. Le sort ne donne pas plus d'information que le nombre d'êtres présents et le lieu exact où ils se trouvent. Si un individu désire résister, il doit réussir un test de RMys.</description>
+			<commentaire>Pas de commentaires</commentaire>
+			<source>CE 125</source>
+		</Sort>
+		<Sort Level="036">
+			<name>Espion de Lumière</name>
+			<initial>
+				<requirement>6</requirement>
+				<cost>100</cost>
+				<maintien>20</maintien>
+				<effets>100 en Observation et Vigilance / 1 km de distance.</effets>
+			</initial>
+			<intermediaire>
+				<requirement>9</requirement>
+				<cost>200</cost>
+				<maintien>40</maintien>
+				<effets>150 en Observation et Vigilance / 10 km de distance.</effets>
+			</intermediaire>
+			<avancee>
+				<requirement>12</requirement>
+				<cost>300</cost>
+				<maintien>60</maintien>
+				<effets>200 en Observation et Vigilance / 50 km de distance.</effets>
+			</avancee>
+			<arcane>
+				<requirement>15</requirement>
+				<cost>400</cost>
+				<maintien>80</maintien>
+				<effets>250 en Observation et Vigilance / 500 km de distance.</effets>
+			</arcane>
+			<maitien_type>2</maitien_type>
+			<action>ACTIVE</action>
+			<effets_type>Effet</effets_type>
+			<description>Crée un petit éclat d'énergie lumineuse qui se déplace selon les désirs du sorcier, avec une Qualité de Vol de 14, jusqu'à une distance maximale dépendant du rang du sort. Le sorcier peut voir et entendre grâce à elle comme s'il se trouvait à sa place ; par contre, ce faisant, il supprime ses sens naturels et ne peut percevoir le monde qu'à travers l'espion. Le personnage choisit à chaque round s’il va regarder à travers l'espion ou utiliser ses propres sens. L'espion dispose d’un score Vigilance et en Observation en fonction du rang du sort. S'il subit une attaque, il peut se défendre avec via la projection magique du sorcier. En ce qui concerne l'Initiative, on considère qu'il a la même que son maître. Il n'est possible de le toucher qu'avec des attaques surnaturelles, mais il est détruit dès qu'il reçoit des dégâts.</description>
+			<commentaire>Pas de commentaires</commentaire>
+			<source>CE 126</source>
+		</Sort>
+		<Sort Level="038">
+			<name>Extase</name>
+			<initial>
+				<requirement>6</requirement>
+				<cost>60</cost>
+				<maintien>10</maintien>
+				<effets>RMys 80 / rayon de 10m.</effets>
+			</initial>
+			<intermediaire>
+				<requirement>9</requirement>
+				<cost>90</cost>
+				<maintien>10</maintien>
+				<effets>RMys 100 / rayon de 50m.</effets>
+			</intermediaire>
+			<avancee>
+				<requirement>12</requirement>
+				<cost>120</cost>
+				<maintien>15</maintien>
+				<effets>RMys 120 / rayon de 100m.</effets>
+			</avancee>
+			<arcane>
+				<requirement>15</requirement>
+				<cost>150</cost>
+				<maintien>15</maintien>
+				<effets>RMys 160 / rayon de 250m.</effets>
+			</arcane>
+			<maitien_type>1</maitien_type>
+			<action>ACTIVE</action>
+			<effets_type>Animique</effets_type>
+			<description>Ce sort envahit d'un sentiment d'extase absolue tous ceux qu'il affecte. La sensation de plaisir est si intense que les sens des cibles sont totalement engourdis, et qu'elles subissent un malus de -20 toutes leurs actions pendant toute la durée de l'effet. Les cibles du sort oublient complètement tout sentiment de douleur ou de tristesse et ignorent tous les malus de douleur, sauf ceux que provoquent des incapacités physiques. Un test de RMys permet d'annuler les effets de ce sort.</description>
+			<commentaire>Pas de commentaires</commentaire>
+			<source>CE 126</source>
+		</Sort>
+		<Sort Level="040">
+			<name>Détruire les Sentiments Négatifs</name>
+			<initial>
+				<requirement>6</requirement>
+				<cost>80</cost>
+				<maintien>0</maintien>
+				<effets>RMys ou RPsy 80 / 10m de rayon.</effets>
+			</initial>
+			<intermediaire>
+				<requirement>9</requirement>
+				<cost>180</cost>
+				<maintien>0</maintien>
+				<effets>RMys ou RPsy 100 / 25m de rayon.</effets>
+			</intermediaire>
+			<avancee>
+				<requirement>12</requirement>
+				<cost>240</cost>
+				<maintien>0</maintien>
+				<effets>RMys ou RPsy 120 / 50m de rayon.</effets>
+			</avancee>
+			<arcane>
+				<requirement>15</requirement>
+				<cost>350</cost>
+				<maintien>0</maintien>
+				<effets>RMys ou RPsy 150 / 100m de rayon.</effets>
+			</arcane>
+			<maitien_type>0</maitien_type>
+			<action>ACTIVE</action>
+			<effets_type>Animique</effets_type>
+			<description>Détruit temporairement tous les sentiments négatifs, comme la haine, la peur ou la colère, qui se trouvent autour du sorcier. Il faut réussir un test de RMys ou de RPsy pour résister à ce sort.</description>
+			<commentaire>Pas de commentaires</commentaire>
+			<source>CE 126</source>
+		</Sort>
+		<Sort Level="042">
+			<name>Lumière soignante</name>
+			<initial>
+				<requirement>7</requirement>
+				<cost>70</cost>
+				<maintien>0</maintien>
+				<effets>40 points de vie.</effets>
+			</initial>
+			<intermediaire>
+				<requirement>10</requirement>
+				<cost>100</cost>
+				<maintien>0</maintien>
+				<effets>80 points de vie.</effets>
+			</intermediaire>
+			<avancee>
+				<requirement>13</requirement>
+				<cost>150</cost>
+				<maintien>0</maintien>
+				<effets>120 points de vie.</effets>
+			</avancee>
+			<arcane>
+				<requirement>15</requirement>
+				<cost>200</cost>
+				<maintien>0</maintien>
+				<effets>250 points de vie.</effets>
+			</arcane>
+			<maitien_type>0</maitien_type>
+			<action>ACTIVE</action>
+			<effets_type>Effet</effets_type>
+			<description>Permet de redonner des points de vie au bénéficiaire du sort. Ce sort ne permet pas de rendre les membres coupés ou amputés, ni n'élimine les malus infligés par les Critiques.</description>
+			<commentaire>Pas de commentaires</commentaire>
+			<source>CE 126</source>
+		</Sort>
+		<Sort Level="046">
+			<name>Sphère Chercheuse</name>
+			<initial>
+				<requirement>6</requirement>
+				<cost>120</cost>
+				<maintien>15</maintien>
+				<effets>Dégâts de base 100 / Projection Magique 150.</effets>
+			</initial>
+			<intermediaire>
+				<requirement>9</requirement>
+				<cost>180</cost>
+				<maintien>20</maintien>
+				<effets>Dégâts de base 120 / Projection Magique 180.</effets>
+			</intermediaire>
+			<avancee>
+				<requirement>12</requirement>
+				<cost>240</cost>
+				<maintien>25</maintien>
+				<effets>Dégâts de base 160 / Projection Magique 210.</effets>
+			</avancee>
+			<arcane>
+				<requirement>15</requirement>
+				<cost>300</cost>
+				<maintien>30</maintien>
+				<effets>Dégâts de base 200 / Projection Magique 240.</effets>
+			</arcane>
+			<maitien_type>1</maitien_type>
+			<action>ACTIVE</action>
+			<effets_type>Attaque</effets_type>
+			<description>Libère une sphère d'énergie lumineuse qui inflige des dégâts sur le mode Énergie. Le sort peut être contrôlé avec la Projection Magique du sorcier jusqu'au moment de l'impact. Si une cible esquive l'attaque d'une Sphère Chercheuse, elle peut continuer à attaquer le round suivant, puisqu'elle n'est pas détruite. Quand la sphère inflige des dégâts ou est bloquée, elle disparaît. Si le sorcier abandonne son contrôle sur la sphère, elle agit indépendamment et suit la dernière cible fixée avec une Projection magique dépendant du rang du sort.</description>
+			<commentaire>Pas de commentaires</commentaire>
+			<source>CE 126</source>
+		</Sort>
+		<Sort Level="048">
+			<name>Zone de Détection</name>
+			<initial>
+				<requirement>7</requirement>
+				<cost>140</cost>
+				<maintien>10</maintien>
+				<effets>RMys 180 / rayon de 20m.</effets>
+			</initial>
+			<intermediaire>
+				<requirement>10</requirement>
+				<cost>200</cost>
+				<maintien>10</maintien>
+				<effets>RMys 240 / rayon de 80m.</effets>
+			</intermediaire>
+			<avancee>
+				<requirement>12</requirement>
+				<cost>280</cost>
+				<maintien>15</maintien>
+				<effets>RMys 280 / rayon de 150m.</effets>
+			</avancee>
+			<arcane>
+				<requirement>15</requirement>
+				<cost>360</cost>
+				<maintien>15</maintien>
+				<effets>RMys 340 / rayon de 250m.</effets>
+			</arcane>
+			<maitien_type>2</maitien_type>
+			<action>ACTIVE</action>
+			<effets_type>Detection</effets_type>
+			<description>Quand il lance ce sort sur un lieu précis, le sorcier perçoit tous les êtres se trouvant dans la zone, qui ne réussissent pas un test de RMys. La Zone de Détection ne donne pas plus d'information que le nombre d'individus présents à cet endroit, et leur localisation exacte. Les sorts de Détection tentant de pénétrer dans la zone apparaissent aussi, à condition que le sorcier qui les lance rate son test RMys (quel que soit l'endroit où il se trouve). Le centre de la zone de détection est fixé au lieu où le sort a été lancé.</description>
+			<commentaire>Pas de commentaires</commentaire>
+			<source>CE 126</source>
+		</Sort>
+		<Sort Level="050">
+			<name>S'introduire dans les rêves</name>
+			<initial>
+				<requirement>6</requirement>
+				<cost>120</cost>
+				<maintien>10</maintien>
+				<effets>RMys ou RPsy 140 / 10m de rayon.</effets>
+			</initial>
+			<intermediaire>
+				<requirement>9</requirement>
+				<cost>180</cost>
+				<maintien>10</maintien>
+				<effets>RMys ou RPsy 160 / 80m de rayon.</effets>
+			</intermediaire>
+			<avancee>
+				<requirement>12</requirement>
+				<cost>240</cost>
+				<maintien>15</maintien>
+				<effets>RMys ou RPsy 200 / 140m de rayon.</effets>
+			</avancee>
+			<arcane>
+				<requirement>15</requirement>
+				<cost>300</cost>
+				<maintien>15</maintien>
+				<effets>RMys ou RPsy 240 / 200m de rayon.</effets>
+			</arcane>
+			<maitien_type>2</maitien_type>
+			<action>ACTIVE</action>
+			<effets_type>Animique</effets_type>
+			<description>Permet au sorcier de s'introduire physiquement dans les rêves d'un dormeur. Le sorcier n'a aucun contrôle sur le monde onirique du rêveur et toute chose qui s'y déroule sera réelle pour lui. Le rêveur doit avoir des songes paisibles pour que ce sort puisse l'affecter et, dès que le rêve se change en cauchemar, qu'il se réveille ou qu'il meurt, le sorcier abandonne le monde onirique et revient à la réalité. Tous les sorts d'Essence réalisés sur le dormeur affectent aussi le sorcier. La victime a droit à un test de RMys ou RPsy. Une fois dans les rêves, le sorcier peut sauter vers l'inconscient d'un autre rêveur si celui-ci se trouve physiquement près du premier rêveur (la distance dépend du rang du sort). Bien sûr, cette personne à elle aussi droit au test de RMys ou RPsy. Si la conscience du dormeur se trouve dans le monde de la Veille, le sorcier y reste coincé, même après la fin du sort.</description>
+			<commentaire>Pas de commentaires</commentaire>
+			<source>CE 127</source>
+		</Sort>
+		<Sort Level="052">
+			<name>De Corps à Lumière</name>
+			<initial>
+				<requirement>8</requirement>
+				<cost>100</cost>
+				<maintien>10</maintien>
+				<effets>+50 en Vigilance et Observation / +20 aux Résistances.</effets>
+			</initial>
+			<intermediaire>
+				<requirement>11</requirement>
+				<cost>120</cost>
+				<maintien>15</maintien>
+				<effets>+60 en Vigilance et Observation / +30 aux Résistances.</effets>
+			</intermediaire>
+			<avancee>
+				<requirement>13</requirement>
+				<cost>140</cost>
+				<maintien>15</maintien>
+				<effets>Comme le rang intermédiaire à ceci près que les bonus de résistances s’applique aussi à tous les effets surnaturels à l’exception de ceux basés sur l’Obscurité.</effets>
+			</avancee>
+			<arcane>
+				<requirement>16</requirement>
+				<cost>160</cost>
+				<maintien>20</maintien>
+				<effets>Comme le rang avancé à ceci près que les dégâts reçus par des attaques basés sur l’Obscurité ne sont plus doublés.</effets>
+			</arcane>
+			<maitien_type>1</maitien_type>
+			<action>ACTIVE</action>
+			<effets_type>Effet</effets_type>
+			<description>La créature désignée par le sorcier se transforme en énergie lumineuse et devient intangible vis à vis de toutes les matières et attaques non basées sur l'énergie. Tant qu'elle se trouve dans cet état, la créature bénéficie d'un bonus dans ses compétences secondaires de Vigilance et d'Observation, et à ses Résistances contre les effets basés sur la Lumière. Dans cet état, tous les dégâts infligés par l'obscurité sont doublés.</description>
+			<commentaire>Pas de commentaires</commentaire>
+			<source>CE 127</source>
+		</Sort>
+		<Sort Level="056">
+			<name>Bénédiction</name>
+			<initial>
+				<requirement>8</requirement>
+				<cost>100</cost>
+				<maintien>5</maintien>
+				<effets>+10 à toutes les actions / +10 aux résistances / 5m de rayon.</effets>
+			</initial>
+			<intermediaire>
+				<requirement>10</requirement>
+				<cost>180</cost>
+				<maintien>10</maintien>
+				<effets>+20 à toutes les actions / +20 aux résistances / 25m de rayon.</effets>
+			</intermediaire>
+			<avancee>
+				<requirement>12</requirement>
+				<cost>240</cost>
+				<maintien>15</maintien>
+				<effets>+20 à toutes les actions / +30 aux résistances / 50m de rayon.</effets>
+			</avancee>
+			<arcane>
+				<requirement>15</requirement>
+				<cost>300</cost>
+				<maintien>15</maintien>
+				<effets>+30 à toutes les actions / +30 aux résistances / 150m de rayon.</effets>
+			</arcane>
+			<maitien_type>1</maitien_type>
+			<action>ACTIVE</action>
+			<effets_type>Effet</effets_type>
+			<description>La bénédiction accorde une énergie incroyable aux personnes affectées. Les cibles d'une bénédiction disposent d'un bonus à toutes leurs actions et leurs Résistances. Le sort est centré sur le sorcier ; à l'extérieur de la zone d’effet, plus aucun bonus n'est applicable. Les bénéfices de ce sort ne se cumulent pas : un personnage n'obtient pas deux fois ces bonus quand il se trouve dans la zone de deux sorts de bénédiction.</description>
+			<commentaire>Pas de commentaires</commentaire>
+			<source>CE 127</source>
 		</Sort>
 
 	</Livre>
