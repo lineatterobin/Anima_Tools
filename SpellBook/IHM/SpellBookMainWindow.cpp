@@ -200,29 +200,34 @@ void SpellBookMainWindow::closeSpellView(const int &index_)
 
 void SpellBookMainWindow::createSpellList()
 {
-    QMessageBox msgBox;
+    QMessageBox msgBox(this);
     msgBox.setText("Les données de la liste actuelle vont être remplacées.");
     msgBox.setInformativeText("Voulez-vous enregistrer la liste actuelle ?");
-    msgBox.setStandardButtons(QMessageBox::Save | QMessageBox::Discard | QMessageBox::Cancel);
-    msgBox.setDefaultButton(QMessageBox::Save);
-    int ret = msgBox.exec();
+    QPushButton *save = msgBox.addButton("Enregistrer", QMessageBox::AcceptRole);
+    QPushButton *discard = msgBox.addButton("Ignorer", QMessageBox::DestructiveRole);
+    QPushButton *cancel = msgBox.addButton("Annuler", QMessageBox::RejectRole);
+    msgBox.setDefaultButton(save);
+    msgBox.exec();
 
-    switch (ret) {
-    case QMessageBox::Save:
+    if(msgBox.clickedButton() == (QAbstractButton*)save)
+    {
         // Save was clicked
         saveSpellList();
-        break;
-    case QMessageBox::Discard:
+    }
+    else if(msgBox.clickedButton() == (QAbstractButton*)discard)
+    {
         // Don't Save was clicked
-        break;
-    case QMessageBox::Cancel:
+        ;;
+    }
+    else if(msgBox.clickedButton() == (QAbstractButton*)cancel)
+    {
         // Cancel was clicked
         return;
-        break;
-    default:
+    }
+    else
+    {
         // should never be reached
         return;
-        break;
     }
 
     SpellTreeView* treeList = (SpellTreeView*)_spellList->widget();
@@ -235,29 +240,34 @@ void SpellBookMainWindow::createSpellList()
 
 void SpellBookMainWindow::loadSpellList()
 {
-    QMessageBox msgBox;
+    QMessageBox msgBox(this);
     msgBox.setText("Les données de la liste actuelle vont être remplacées.");
     msgBox.setInformativeText("Voulez-vous enregistrer la liste actuelle ?");
-    msgBox.setStandardButtons(QMessageBox::Save | QMessageBox::Discard | QMessageBox::Cancel);
-    msgBox.setDefaultButton(QMessageBox::Save);
-    int ret = msgBox.exec();
+    QPushButton *save = msgBox.addButton("Enregistrer", QMessageBox::AcceptRole);
+    QPushButton *discard = msgBox.addButton("Ignorer", QMessageBox::DestructiveRole);
+    QPushButton *cancel = msgBox.addButton("Annuler", QMessageBox::RejectRole);
+    msgBox.setDefaultButton(save);
+    msgBox.exec();
 
-    switch (ret) {
-    case QMessageBox::Save:
+    if(msgBox.clickedButton() == (QAbstractButton*)save)
+    {
         // Save was clicked
         saveSpellList();
-        break;
-    case QMessageBox::Discard:
+    }
+    else if(msgBox.clickedButton() == (QAbstractButton*)discard)
+    {
         // Don't Save was clicked
-        break;
-    case QMessageBox::Cancel:
+        ;;
+    }
+    else if(msgBox.clickedButton() == (QAbstractButton*)cancel)
+    {
         // Cancel was clicked
         return;
-        break;
-    default:
+    }
+    else
+    {
         // should never be reached
         return;
-        break;
     }
 
     QString fileName = QFileDialog::getOpenFileName(this, "Ouvrir une liste personalisée", "", "XML Files (*.xml)");
