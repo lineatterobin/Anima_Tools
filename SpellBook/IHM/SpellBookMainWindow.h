@@ -30,8 +30,11 @@ public slots:
 
     void closeSpellView(const int& index_);
 
-    void addSpellButton();
+    void createSpellList();
+    void loadSpellList();
     void saveSpellList();
+    void saveAsSpellList();
+    void addSpellButton();
 
 private:
 

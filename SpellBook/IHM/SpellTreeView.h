@@ -33,6 +33,9 @@ public:
 
     SpellTreeModel* model();
 
+    void setXmlPath(QString xmlPath_);
+    QString xmlPath();
+
     void refresh();
 
     void sort();
@@ -50,6 +53,8 @@ private:
     QModelIndex _indexCustomMenu;
 
     SpellTreeView* _siblingSpellTree;
+
+    QString _xmlPath;
 
 };
 

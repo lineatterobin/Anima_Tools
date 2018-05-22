@@ -3,6 +3,7 @@
 #include <QFile>
 #include <QFileDialog>
 #include <iostream>
+#include <QMessageBox>
 
 #include <Socle/Constantes.h>
 #include <SpellBook/Modeles/SpellTreeModel.h>
@@ -61,16 +62,31 @@ void SpellBookMainWindow::initToolBar()
     QToolBar* toolBar = addToolBar(SPELLBOOK_TOOLBAR_NAME);
     toolBar->setObjectName(SPELLBOOK_TOOLBAR_NAME);
 
+    QAction* newSpellListAction = new QAction("Nouveau", this);
+    newSpellListAction->setStatusTip("Crée une nouvelle liste personalisée.");
+
+    QAction* loadSpellListAction = new QAction("Ouvrir", this);
+    loadSpellListAction->setStatusTip("Ouvre une liste personalisée.");
+
     QAction* saveSpellListAction = new QAction("Enregistrer", this);
     saveSpellListAction->setStatusTip("Sauvegarde la liste personnalisée");
+
+    QAction* saveAsSpellListAction = new QAction("Enregistrer sous", this);
+    saveAsSpellListAction->setStatusTip("Sauvegarde la liste personnalisée");
 
     QAction* addSpellAction = new QAction("Ajouter", this);
     addSpellAction->setStatusTip("Ajoute le sort à la liste personnalisée");
 
+    toolBar->addAction(newSpellListAction);
+    toolBar->addAction(loadSpellListAction);
     toolBar->addAction(saveSpellListAction);
+    toolBar->addAction(saveAsSpellListAction);
     toolBar->addAction(addSpellAction);
 
+    QObject::connect(newSpellListAction, SIGNAL(triggered(bool)), this, SLOT(createSpellList()));
+    QObject::connect(loadSpellListAction, SIGNAL(triggered(bool)), this, SLOT(loadSpellList()));
     QObject::connect(saveSpellListAction, SIGNAL(triggered(bool)), this, SLOT(saveSpellList()));
+    QObject::connect(saveAsSpellListAction, SIGNAL(triggered(bool)), this, SLOT(saveAsSpellList()));
     QObject::connect(addSpellAction, SIGNAL(triggered(bool)), this, SLOT(addSpellButton()));
 
 }
@@ -182,16 +198,103 @@ void SpellBookMainWindow::closeSpellView(const int &index_)
     }
 }
 
-void SpellBookMainWindow::addSpellButton()
+void SpellBookMainWindow::createSpellList()
 {
+    QMessageBox msgBox;
+    msgBox.setText("Les données de la liste actuelle vont être remplacées.");
+    msgBox.setInformativeText("Voulez-vous enregistrer la liste actuelle ?");
+    msgBox.setStandardButtons(QMessageBox::Save | QMessageBox::Discard | QMessageBox::Cancel);
+    msgBox.setDefaultButton(QMessageBox::Save);
+    int ret = msgBox.exec();
+
+    switch (ret) {
+    case QMessageBox::Save:
+        // Save was clicked
+        saveSpellList();
+        break;
+    case QMessageBox::Discard:
+        // Don't Save was clicked
+        break;
+    case QMessageBox::Cancel:
+        // Cancel was clicked
+        return;
+        break;
+    default:
+        // should never be reached
+        return;
+        break;
+    }
+
     SpellTreeView* treeList = (SpellTreeView*)_spellList->widget();
-    treeList->addSpell((SpellView*)_centralWidget->currentWidget());
+    treeList->model()->deleteLater();
+    treeList->loadTreeData("");
+    treeList->setHeaderHidden(true);
+    treeList->sort();
+
+}
+
+void SpellBookMainWindow::loadSpellList()
+{
+    QMessageBox msgBox;
+    msgBox.setText("Les données de la liste actuelle vont être remplacées.");
+    msgBox.setInformativeText("Voulez-vous enregistrer la liste actuelle ?");
+    msgBox.setStandardButtons(QMessageBox::Save | QMessageBox::Discard | QMessageBox::Cancel);
+    msgBox.setDefaultButton(QMessageBox::Save);
+    int ret = msgBox.exec();
+
+    switch (ret) {
+    case QMessageBox::Save:
+        // Save was clicked
+        saveSpellList();
+        break;
+    case QMessageBox::Discard:
+        // Don't Save was clicked
+        break;
+    case QMessageBox::Cancel:
+        // Cancel was clicked
+        return;
+        break;
+    default:
+        // should never be reached
+        return;
+        break;
+    }
+
+    QString fileName = QFileDialog::getOpenFileName(this, "Ouvrir une liste personalisée", "", "XML Files (*.xml)");
+
+    SpellTreeView* treeList = (SpellTreeView*)_spellList->widget();
+    treeList->model()->deleteLater();
+    treeList->loadTreeData(fileName);
+    treeList->setHeaderHidden(true);
+    treeList->sort();
+
 }
 
 void SpellBookMainWindow::saveSpellList()
 {
-    QString fileName = QFileDialog::getSaveFileName(this, "Enregistrer la liste personalisée", "NewList.xml", "XML Files (*.xml)");
-
     SpellTreeView* treeList = (SpellTreeView*)_spellList->widget();
+    QString fileName;
+    if(treeList->xmlPath() == "")
+        fileName = QFileDialog::getSaveFileName(this, "Enregistrer la liste personalisée", "NewList.xml", "XML Files (*.xml)");
+    else
+        fileName = treeList->xmlPath();
+
+
     treeList->model()->save(fileName);
+}
+
+void SpellBookMainWindow::saveAsSpellList()
+{
+    SpellTreeView* treeList = (SpellTreeView*)_spellList->widget();
+    QString fileName;
+
+    fileName = QFileDialog::getSaveFileName(this, "Enregistrer la liste personalisée", "NewList.xml", "XML Files (*.xml)");
+
+    treeList->model()->save(fileName);
+}
+
+void SpellBookMainWindow::addSpellButton()
+{
+    SpellTreeView* treeList = (SpellTreeView*)_spellList->widget();
+    treeList->addSpell((SpellView*)_centralWidget->currentWidget());
 }

@@ -8,7 +8,8 @@ SpellTreeView::SpellTreeView(QWidget* parent_) : QTreeView(parent_),
     _maxDepth(2),
     _contextMenu(NULL),
     _indexCustomMenu(),
-    _siblingSpellTree(NULL)
+    _siblingSpellTree(NULL),
+    _xmlPath("")
 {
     _contextMenu = new QMenu(this);
     this->setContextMenuPolicy(Qt::CustomContextMenu);
@@ -53,6 +54,7 @@ void SpellTreeView::loadTreeData(QString xmlPath_)
             if (document.setContent(&file)) {
                 SpellTreeModel *newModel = new SpellTreeModel(document, this);
                 this->setModel(newModel);
+                _xmlPath = xmlPath_;
             }
             file.close();
         }
@@ -160,4 +162,14 @@ void SpellTreeView::setSiblingSpellTree(SpellTreeView *treeView)
 SpellTreeModel* SpellTreeView::model()
 {
     return (SpellTreeModel*)QTreeView::model();
+}
+
+void SpellTreeView::setXmlPath(QString xmlPath_)
+{
+    _xmlPath = xmlPath_;
+}
+
+QString SpellTreeView::xmlPath()
+{
+    return _xmlPath;
 }
