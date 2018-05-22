@@ -141,7 +141,6 @@ void SpellBookMainWindow::initConnections()
     QObject::connect(_spellList->widget(), SIGNAL(clicked(QModelIndex)), this, SLOT(loadSpellPreview(QModelIndex)));
     QObject::connect(_spellExplorer->widget(), SIGNAL(doubleClicked(QModelIndex)), this, SLOT(addSpellViewExplorer(QModelIndex)));
     QObject::connect(_spellList->widget(), SIGNAL(doubleClicked(QModelIndex)), this, SLOT(addSpellViewList(QModelIndex)));
-    //QObject::connect(_spellExplorer->widget(), SIGNAL(customContextMenuRequested(QPoint)), _spellExplorer->widget(), SLOT(openTreeContextMenu(QPoint)));
 
     QObject::connect(_centralWidget, SIGNAL(tabCloseRequested(int)), this, SLOT(closeSpellView(int)));
 }
@@ -289,8 +288,8 @@ void SpellBookMainWindow::saveSpellList()
     else
         fileName = treeList->xmlPath();
 
-
     treeList->model()->save(fileName);
+    treeList->setXmlPath(fileName);
 }
 
 void SpellBookMainWindow::saveAsSpellList()
@@ -301,6 +300,7 @@ void SpellBookMainWindow::saveAsSpellList()
     fileName = QFileDialog::getSaveFileName(this, "Enregistrer la liste personalisée", "NewList.xml", "XML Files (*.xml)");
 
     treeList->model()->save(fileName);
+    treeList->setXmlPath(fileName);
 }
 
 void SpellBookMainWindow::addSpellButton()
