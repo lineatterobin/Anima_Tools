@@ -33,6 +33,8 @@ public:
     void addSpell(SpellView* spell_, QDomNode book_);
     void removeSpell(const QModelIndex &index_);
 
+    void save(QString fileName_);
+
 private:
 
     QDomDocument _domDocument;

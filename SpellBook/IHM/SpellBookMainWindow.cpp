@@ -1,6 +1,7 @@
 #include "SpellBookMainWindow.h"
 
 #include <QFile>
+#include <QFileDialog>
 #include <iostream>
 
 #include <Socle/Constantes.h>
@@ -59,10 +60,17 @@ void SpellBookMainWindow::initToolBar()
 {
     QToolBar* toolBar = addToolBar(SPELLBOOK_TOOLBAR_NAME);
     toolBar->setObjectName(SPELLBOOK_TOOLBAR_NAME);
+
+    QAction* saveSpellListAction = new QAction("Enregistrer", this);
+    saveSpellListAction->setStatusTip("Sauvegarde la liste personnalisée");
+
     QAction* addSpellAction = new QAction("Ajouter", this);
     addSpellAction->setStatusTip("Ajoute le sort à la liste personnalisée");
+
+    toolBar->addAction(saveSpellListAction);
     toolBar->addAction(addSpellAction);
 
+    QObject::connect(saveSpellListAction, SIGNAL(triggered(bool)), this, SLOT(saveSpellList()));
     QObject::connect(addSpellAction, SIGNAL(triggered(bool)), this, SLOT(addSpellButton()));
 
 }
@@ -178,4 +186,12 @@ void SpellBookMainWindow::addSpellButton()
 {
     SpellTreeView* treeList = (SpellTreeView*)_spellList->widget();
     treeList->addSpell((SpellView*)_centralWidget->currentWidget());
+}
+
+void SpellBookMainWindow::saveSpellList()
+{
+    QString fileName = QFileDialog::getSaveFileName(this, "Enregistrer la liste personalisée", "NewList.xml", "XML Files (*.xml)");
+
+    SpellTreeView* treeList = (SpellTreeView*)_spellList->widget();
+    treeList->model()->save(fileName);
 }

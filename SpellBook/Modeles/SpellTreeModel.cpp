@@ -1,5 +1,9 @@
 #include "SpellTreeModel.h"
 
+#include <QFile>
+#include <QTextStream>
+#include <iostream>
+
 SpellTreeModel::SpellTreeModel(QDomDocument document, QObject *parent)
     : QAbstractItemModel(parent), _domDocument(document)
 {
@@ -333,4 +337,22 @@ void SpellTreeModel::removeSpell(const QModelIndex &index_)
     //Si il n'y a plus de sort on supprime le livre.
     if(book->node().childNodes().count() == 0)
         book->parent()->removeChild(book->row());
+}
+
+void SpellTreeModel::save(QString fileName_)
+{
+    QFile file(fileName_);
+    if(!file.open(QIODevice::WriteOnly | QIODevice::Text))
+    {
+        std::cout << "Failed to open file for writing : " << fileName_.toStdString();
+        return;
+    }
+
+    QTextStream stream(&file);
+    stream << _domDocument.toString();
+
+    std::cout << _domDocument.toString().toStdString() << std::endl;
+
+
+    file.close();
 }

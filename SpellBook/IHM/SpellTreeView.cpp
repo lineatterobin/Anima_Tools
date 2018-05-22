@@ -59,10 +59,10 @@ void SpellTreeView::loadTreeData(QString xmlPath_)
     }
     else
     {
-        QDomProcessingInstruction process = document.createProcessingInstruction("xml", "version=\"1.0\" encoding=\"UTF-8\"");
+        QDomProcessingInstruction process = document.createProcessingInstruction("xml", "version=\"1.0\" encoding=\"ISO-8859-1\"");
         document.appendChild(process);
         QDomElement bibliotheque = document.createElement("Biblio");
-        bibliotheque.setAttribute("Name", "Nouvelle bibliothèque");
+        bibliotheque.setAttribute("Name", "Grimoire");
         document.appendChild(bibliotheque);
         SpellTreeModel *newModel = new SpellTreeModel(document, this);
         this->setModel(newModel);
