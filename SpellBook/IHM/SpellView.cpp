@@ -52,7 +52,9 @@ SpellView::SpellView(QWidget *parent) : QWidget(parent),
 
     _spellNameLabel = new QLabel("Nom : ", this);
     _spellName = new QLineEdit(this);
-    _spellName->setSizePolicy(QSizePolicy::MinimumExpanding, QSizePolicy::Fixed);
+    QFontMetrics a(_spellName->font());
+    _spellName->setSizePolicy(QSizePolicy::Ignored, QSizePolicy::Fixed);
+    _spellName->setMinimumWidth(50*a.averageCharWidth());
 
     _spellBookLabel = new QLabel("Domaine : ", this);
     _spellBook = new QLineEdit(this);
