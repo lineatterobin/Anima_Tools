@@ -2,32 +2,51 @@ QLabel#Version
 {
     color: black;
     font: bold;
-    font-size: 12px;
-	font: 14px "unknown"
+    font-size: 13px;
 }
 
+QLineEdit
+{
+	color : black;
+	font: 13px "unknown"
+}
 QLineEdit::disabled
 {
 	color : black;
-	font: 14px "unknown"
+	font: 13px "unknown"
 }
 
+QComboBox
+{
+	color: black;
+	font: 13px "unknown"
+}
 QComboBox::disabled
 {
 	color: black;
-	font: 14px "unknown"
+	font: 13px "unknown"
 }
 
+QSpinBox
+{
+	color: black;
+	font: 13px "unknown"
+}
 QSpinBox::disabled
 {
 	color: black;
-	font: 14px "unknown"
+	font: 13px "unknown"
 }
 
+QTextEdit
+{
+	color: black;
+	font: 13px "unknown"
+}
 QTextEdit::disabled
 {
 	color: black;
-	font: 14px "unknown"
+	font: 13px "unknown"
 }
 
 QTabBar::close-button
@@ -42,5 +61,5 @@ QTabBar::close-button:hover
 
 QTreeView
 {
-	font: 14px "unknown"
+	font: 13px "unknown"
 }

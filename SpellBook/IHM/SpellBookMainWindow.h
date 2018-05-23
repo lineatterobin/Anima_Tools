@@ -18,7 +18,7 @@ public:
     ~SpellBookMainWindow();
 
     void setTheme(QString styleSheet_);
-    SpellView *addSpellView(SpellTreeView* treeView_, const QModelIndex& index_, bool enabled_);
+    SpellView *addSpellView(SpellTreeView* treeView_, const QModelIndex& index_, bool readOnly_);
 
 signals:
 

@@ -2,6 +2,7 @@
 
 #include <QFile>
 #include <QTextStream>
+#include <QMessageBox>
 #include <iostream>
 
 SpellTreeModel::SpellTreeModel(QDomDocument document, QObject *parent)
@@ -293,7 +294,7 @@ void SpellTreeModel::addSpell(SpellView *spell_, QDomNode book_)
         arcane.appendChild(effets);
         sortElt.appendChild(arcane);
 
-        QDomElement maintienType = _domDocument.createElement("maitien_types");
+        QDomElement maintienType = _domDocument.createElement("maintien_type");
         maintienType.appendChild(_domDocument.createTextNode(QString::number(spell_->getMaintenanceType())));
         sortElt.appendChild(maintienType);
 
@@ -322,7 +323,106 @@ void SpellTreeModel::addSpell(SpellView *spell_, QDomNode book_)
     }
     else
     {
-        // On modifie le sort.
+        QMessageBox* msgBox = new QMessageBox();
+        QString msg = "Le sort \"";
+        msg += spell_->getName() + "\" existe déjà.";
+        msgBox->setText(msg);
+        msgBox->setInformativeText("Voulez-vous remplacer ce sort ?");
+        QPushButton *yes = msgBox->addButton("Confirmer", QMessageBox::AcceptRole);
+        QPushButton *cancel = msgBox->addButton("Annuler", QMessageBox::RejectRole);
+        msgBox->setDefaultButton(yes);
+        msgBox->exec();
+
+        if(msgBox->clickedButton() == (QAbstractButton*)yes)
+        {
+            // yes was clicked
+            // On modifie le sort.
+            QDomNode tmp;
+
+            // level
+            sort.attributes().item(0).setNodeValue(QString("%1").arg(spell_->getLevel(), 3, 10, QChar('0')));
+
+            // name (n'a pas changé)
+            // rien à faire sur sort.namedItem("name")
+
+            // initial
+            tmp = sort.namedItem("initial");
+            // -> requirement
+            tmp.namedItem("requirement").firstChild().setNodeValue(QString::number(spell_->getRequirementInitial()));
+            // -> cost
+            tmp.namedItem("cost").firstChild().setNodeValue(QString::number(spell_->getCostInitial()));
+            // -> maintien
+            tmp.namedItem("maintien").firstChild().setNodeValue(QString::number(spell_->getMaintenanceInitial()));
+            // -> effets
+            tmp.namedItem("effets").firstChild().setNodeValue(spell_->getEffectInitial());
+
+            // intermediaire
+            tmp = sort.namedItem("intermediaire");
+            // -> requirement
+            tmp.namedItem("requirement").firstChild().setNodeValue(QString::number(spell_->getRequirementIntermediaire()));
+            // -> cost
+            tmp.namedItem("cost").firstChild().setNodeValue(QString::number(spell_->getCostIntermediaire()));
+            // -> maintien
+            tmp.namedItem("maintien").firstChild().setNodeValue(QString::number(spell_->getMaintenanceIntermediaire()));
+            // -> effets
+            tmp.namedItem("effets").firstChild().setNodeValue(spell_->getEffectIntermediaire());
+
+            // avancee
+            tmp = sort.namedItem("avancee");
+            // -> requirement
+            tmp.namedItem("requirement").firstChild().setNodeValue(QString::number(spell_->getRequirementAvancee()));
+            // -> cost
+            tmp.namedItem("cost").firstChild().setNodeValue(QString::number(spell_->getCostAvancee()));
+            // -> maintien
+            tmp.namedItem("maintien").firstChild().setNodeValue(QString::number(spell_->getMaintenanceAvancee()));
+            // -> effets
+            tmp.namedItem("effets").firstChild().setNodeValue(spell_->getEffectAvancee());
+
+            // arcane
+            tmp = sort.namedItem("arcane");
+            // -> requirement
+            tmp.namedItem("requirement").firstChild().setNodeValue(QString::number(spell_->getRequirementArcane()));
+            // -> cost
+            tmp.namedItem("cost").firstChild().setNodeValue(QString::number(spell_->getCostArcane()));
+            // -> maintien
+            tmp.namedItem("maintien").firstChild().setNodeValue(QString::number(spell_->getMaintenanceArcane()));
+            // -> effets
+            tmp.namedItem("effets").firstChild().setNodeValue(spell_->getEffectArcane());
+
+            // maintien_type
+            std::cout << spell_->getMaintenanceType() << std::endl;
+            std::cout << sort.namedItem("maintien_type").firstChild().nodeValue().toStdString() << std::endl;
+            sort.namedItem("maintien_type").firstChild().setNodeValue(QString::number(spell_->getMaintenanceType()));
+            std::cout << sort.namedItem("maintien_type").firstChild().nodeValue().toStdString() << std::endl;
+
+            // action
+            sort.namedItem("action").firstChild().setNodeValue(spell_->getAction());
+
+            // effets_type
+            sort.namedItem("effets_type").firstChild().setNodeValue(spell_->getEffectType());
+
+            // description
+            sort.namedItem("description").firstChild().setNodeValue(spell_->getDescription());
+
+            // commentaire
+            sort.namedItem("commentaire").firstChild().setNodeValue(spell_->getCommentaires());
+
+            // source
+            sort.namedItem("source").firstChild().setNodeValue(spell_->getSource());
+
+        }
+        else if(msgBox->clickedButton() == (QAbstractButton*)cancel)
+        {
+            // Cancel was clicked
+            return;
+        }
+        else
+        {
+            // should never be reached
+            return;
+        }
+
+        msgBox->deleteLater();
     }
 }
 

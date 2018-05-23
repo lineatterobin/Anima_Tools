@@ -20,7 +20,6 @@ SpellTreeView::SpellTreeView(QWidget* parent_) : QTreeView(parent_),
 
 SpellTreeView::~SpellTreeView()
 {
-    std::cout << "~SpellTreeView" << std::endl;
     delete this->model();
 }
 

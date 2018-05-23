@@ -2,6 +2,7 @@
 
 #include <iostream>
 #include <QMetaEnum>
+#include <QPushButton>
 
 #include <SpellBook/Modeles/SpellEnum.h>
 
@@ -152,7 +153,7 @@ SpellView::SpellView(QWidget *parent) : QWidget(parent),
     _spellCommentaire = new QTextEdit(this);
 
     initForm();
-    setEnabled(false);
+    setReadOnly(true);
 }
 
 SpellView::~SpellView()
@@ -231,6 +232,18 @@ void SpellView::initForm()
     spellLayoutSource->addWidget(_spellSource, 0, Qt::AlignCenter);
     spellLayoutSource->addStretch(1);
 
+    QHBoxLayout* spellLayoutCommentaire = new QHBoxLayout;
+    QVBoxLayout* spellLayoutCommentaire_1 = new QVBoxLayout;
+    spellLayoutCommentaire_1->addWidget(_spellCommentaireLabel, 0, Qt::AlignLeft);
+    spellLayoutCommentaire_1->addWidget(_spellCommentaire);
+    QVBoxLayout* spellLayoutCommentaire_2 = new QVBoxLayout;
+    QPushButton* addSpellButton = new QPushButton("Ajouter");
+    addSpellButton->setToolTip("Ajoute le sort à la liste personnalisée");
+    QObject::connect(addSpellButton, SIGNAL(pressed()), this, SIGNAL(addSpellButtonClicked()));
+    spellLayoutCommentaire_2->addWidget(addSpellButton, 0, Qt::AlignCenter);
+    spellLayoutCommentaire->addLayout(spellLayoutCommentaire_1, 0);
+    spellLayoutCommentaire->addLayout(spellLayoutCommentaire_2, 0);
+
     //Assemblage final
     spellLayout->addLayout(spellLayout1,0);
     spellLayout->addLayout(spellLayout2,0);
@@ -238,8 +251,8 @@ void SpellView::initForm()
     spellLayout->addWidget(_spellDescriptionLabel, 0, Qt::AlignLeft);
     spellLayout->addWidget(_spellDescription);
     spellLayout->addLayout(spellLayoutSource,0);
-    spellLayout->addWidget(_spellCommentaireLabel, 0, Qt::AlignLeft);
-    spellLayout->addWidget(_spellCommentaire);
+    spellLayout->addLayout(spellLayoutCommentaire, 0);
+
 
     this->setMinimumSize(spellLayout->minimumSize());
     setLayout(spellLayout);
@@ -297,6 +310,60 @@ void SpellView::setEnabled(const bool& value)
         _spellEffectArcane->setEnabled(value);
     if(_spellAction != NULL)
         _spellAction->setEnabled(value);
+}
+
+void SpellView::setReadOnly(const bool& value)
+{
+    if(_spellName != NULL)
+        _spellName->setReadOnly(value);
+    if(_spellLevel != NULL)
+        _spellLevel->setReadOnly(value);
+    if(_spellBook != NULL)
+        _spellBook->setReadOnly(value);
+    if(_spellDescription != NULL)
+        _spellDescription->setReadOnly(value);
+    if(_spellCostInitial != NULL)
+        _spellCostInitial->setReadOnly(value);
+    if(_spellCostIntermediaire != NULL)
+        _spellCostIntermediaire->setReadOnly(value);
+    if(_spellCostAvancee != NULL)
+        _spellCostAvancee->setReadOnly(value);
+    if(_spellCostArcane != NULL)
+        _spellCostArcane->setReadOnly(value);
+    if(_spellRequirementInitial != NULL)
+        _spellRequirementInitial->setReadOnly(value);
+    if(_spellRequirementIntermediaire != NULL)
+        _spellRequirementIntermediaire->setReadOnly(value);
+    if(_spellRequirementAvancee != NULL)
+        _spellRequirementAvancee->setReadOnly(value);
+    if(_spellRequirementArcane != NULL)
+        _spellRequirementArcane->setReadOnly(value);
+    if(_spellMaintenanceInitial != NULL)
+        _spellMaintenanceInitial->setReadOnly(value);
+    if(_spellMaintenanceIntermediaire != NULL)
+        _spellMaintenanceIntermediaire->setReadOnly(value);
+    if(_spellMaintenanceAvancee != NULL)
+        _spellMaintenanceAvancee->setReadOnly(value);
+    if(_spellMaintenanceArcane != NULL)
+        _spellMaintenanceArcane->setReadOnly(value);
+    if(_spellMaintenanceType != NULL)
+        _spellMaintenanceType->setEnabled(!value);
+    if(_spellCommentaire != NULL)
+        _spellCommentaire->setReadOnly(value);
+    if(_spellSource != NULL)
+        _spellSource->setReadOnly(value);
+    if(_spellEffectType != NULL)
+        _spellEffectType->setEnabled(!value);
+    if(_spellEffectInitial != NULL)
+        _spellEffectInitial->setReadOnly(value);
+    if(_spellEffectIntermediaire != NULL)
+        _spellEffectIntermediaire->setReadOnly(value);
+    if(_spellEffectAvancee != NULL)
+        _spellEffectAvancee->setReadOnly(value);
+    if(_spellEffectArcane != NULL)
+        _spellEffectArcane->setReadOnly(value);
+    if(_spellAction != NULL)
+        _spellAction->setEnabled(!value);
 }
 
 void SpellView::loadData(const QModelIndex& index_, QAbstractItemModel* model_)

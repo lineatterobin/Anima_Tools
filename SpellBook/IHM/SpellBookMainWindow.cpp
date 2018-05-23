@@ -74,20 +74,15 @@ void SpellBookMainWindow::initToolBar()
     QAction* saveAsSpellListAction = new QAction("Enregistrer sous", this);
     saveAsSpellListAction->setStatusTip("Sauvegarde la liste personnalisée");
 
-    QAction* addSpellAction = new QAction("Ajouter", this);
-    addSpellAction->setStatusTip("Ajoute le sort à la liste personnalisée");
-
     toolBar->addAction(newSpellListAction);
     toolBar->addAction(loadSpellListAction);
     toolBar->addAction(saveSpellListAction);
     toolBar->addAction(saveAsSpellListAction);
-    toolBar->addAction(addSpellAction);
 
     QObject::connect(newSpellListAction, SIGNAL(triggered(bool)), this, SLOT(createSpellList()));
     QObject::connect(loadSpellListAction, SIGNAL(triggered(bool)), this, SLOT(loadSpellList()));
     QObject::connect(saveSpellListAction, SIGNAL(triggered(bool)), this, SLOT(saveSpellList()));
     QObject::connect(saveAsSpellListAction, SIGNAL(triggered(bool)), this, SLOT(saveAsSpellList()));
-    QObject::connect(addSpellAction, SIGNAL(triggered(bool)), this, SLOT(addSpellButton()));
 
 }
 
@@ -142,29 +137,33 @@ void SpellBookMainWindow::initConnections()
     QObject::connect(_spellExplorer->widget(), SIGNAL(doubleClicked(QModelIndex)), this, SLOT(addSpellViewExplorer(QModelIndex)));
     QObject::connect(_spellList->widget(), SIGNAL(doubleClicked(QModelIndex)), this, SLOT(addSpellViewList(QModelIndex)));
 
+    QObject::connect(_spellPreview, SIGNAL(addSpellButtonClicked()), this, SLOT(addSpellButton()));
+
     QObject::connect(_centralWidget, SIGNAL(tabCloseRequested(int)), this, SLOT(closeSpellView(int)));
+
 }
 
 void SpellBookMainWindow::addSpellViewExplorer(const QModelIndex &index_)
 {
-    addSpellView((SpellTreeView*)_spellExplorer->widget(), index_, false);
+    addSpellView((SpellTreeView*)_spellExplorer->widget(), index_, true);
     //test d'ajout
 }
 
 void SpellBookMainWindow::addSpellViewList(const QModelIndex &index_)
 {
-    addSpellView((SpellTreeView*)_spellList->widget(), index_, true);
+    addSpellView((SpellTreeView*)_spellList->widget(), index_, false);
 }
 
-SpellView* SpellBookMainWindow::addSpellView(SpellTreeView* treeView_, const QModelIndex &index_, bool enabled_)
+SpellView* SpellBookMainWindow::addSpellView(SpellTreeView* treeView_, const QModelIndex &index_, bool readOnly_)
 {
     QAbstractItemModel* model = treeView_->model();
     if(model->hasChildren(index_) && model->index(0,0,index_).data().toString() == "name")
     {
         SpellView* spellView = new SpellView(_centralWidget);
-        spellView->setEnabled(enabled_);
+        spellView->setReadOnly(readOnly_);
         spellView->loadData(index_, model);
         _centralWidget->addTab(spellView, spellView->getName());
+        QObject::connect(spellView, SIGNAL(addSpellButtonClicked()), this, SLOT(addSpellButton()));
         return spellView;
     }
     return NULL;

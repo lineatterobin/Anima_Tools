@@ -23,6 +23,7 @@ public:
     ~SpellView();
 
     void setEnabled(const bool& value);
+    void setReadOnly(const bool& value);
 
     void loadData(const QModelIndex& index_, QAbstractItemModel* model_);
 
@@ -53,6 +54,7 @@ public:
     QString getAction();
 
 signals:
+    addSpellButtonClicked();
 
 public slots:
 
