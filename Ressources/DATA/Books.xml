@@ -727,7 +727,600 @@
 			<commentaire>Pas de commentaires</commentaire>
 			<source>CE 127</source>
 		</Sort>
-
+		<Sort Level="058">
+			<name>Créer des Sentiments Positifs</name>
+			<initial>
+				<requirement>8</requirement>
+				<cost>100</cost>
+				<maintien>10</maintien>
+				<effets>RMys ou RPsy 120 / 20m de rayon.</effets>
+			</initial>
+			<intermediaire>
+				<requirement>10</requirement>
+				<cost>180</cost>
+				<maintien>20</maintien>
+				<effets>RMys ou RPsy 160 / 100m de rayon.</effets>
+			</intermediaire>
+			<avancee>
+				<requirement>12</requirement>
+				<cost>240</cost>
+				<maintien>25</maintien>
+				<effets>RMys ou RPsy 180 / 250m de rayon.</effets>
+			</avancee>
+			<arcane>
+				<requirement>15</requirement>
+				<cost>300</cost>
+				<maintien>30</maintien>
+				<effets>RMys ou RPsy 220 / 500m de rayon.</effets>
+			</arcane>
+			<maintien_type>2</maintien_type>
+			<action>ACTIVE</action>
+			<effets_type>Animique</effets_type>
+			<description>Ce sort introduit un type de sentiment positif, comme l'amour, le plaisir ou l'amitié, chez les cibles désignées par le sorcier. Un test de RMys ou de RPsy peut bloquer les effets de ce sortilège. Une cible affectée peut effectuer à nouveau ce test une fois par jour.</description>
+			<commentaire>Pas de commentaires</commentaire>
+			<source>CE 127</source>
+		</Sort>
+		<Sort Level="060">
+			<name>Voir Réellement</name>
+			<initial>
+				<requirement>8</requirement>
+				<cost>100</cost>
+				<maintien>10</maintien>
+				<effets>Permet de percevoir la magie, les matrices psychiques et les êtres invisibles / RMys +50 contre les illusions.</effets>
+			</initial>
+			<intermediaire>
+				<requirement>12</requirement>
+				<cost>120</cost>
+				<maintien>15</maintien>
+				<effets>Comme le rang Initial mais permet aussi de voir les êtres spirituels.</effets>
+			</intermediaire>
+			<avancee>
+				<requirement>14</requirement>
+				<cost>180</cost>
+				<maintien>15</maintien>
+				<effets>Comme le rang Intermédiaire à ceci près que le bonus de RMys passe à +75.</effets>
+			</avancee>
+			<arcane>
+				<requirement>16</requirement>
+				<cost>250</cost>
+				<maintien>25</maintien>
+				<effets>Comme le rang avancé à ceci près que le bonus de RMys passe a +100.</effets>
+			</arcane>
+			<maintien_type>2</maintien_type>
+			<action>ACTIVE</action>
+			<effets_type>Effet</effets_type>
+			<description>Permet à la personne affectée par ce sort de percevoir les forces surnaturelles invisibles pour l'œil humain : elle peut voir la magie, les matrices psychiques et les êtres invisibles ou Animiques. Bien qu'il ne fonctionne pas contre les sorts d'illusion, qui affectent l'esprit et pas les sens, tous ceux qui se servent de Voir Réellement contre les illusions visuelles peuvent bénéficier d'un bonus à leur RMys, puisqu'ils auront plus de facilité à s'apercevoir de leur fausseté.</description>
+			<commentaire>Pas de commentaires</commentaire>
+			<source>CE 127</source>
+		</Sort>
+		<Sort Level="062">
+			<name>Bouclier Anti-Négatif</name>
+			<initial>
+				<requirement>7</requirement>
+				<cost>140</cost>
+				<maintien>15</maintien>
+				<effets>RMys 120 / 20m de rayon.</effets>
+			</initial>
+			<intermediaire>
+				<requirement>9</requirement>
+				<cost>180</cost>
+				<maintien>20</maintien>
+				<effets>RMys 140 / 100m de rayon.</effets>
+			</intermediaire>
+			<avancee>
+				<requirement>12</requirement>
+				<cost>240</cost>
+				<maintien>25</maintien>
+				<effets>RMys 160 / 250m de rayon.</effets>
+			</avancee>
+			<arcane>
+				<requirement>15</requirement>
+				<cost>300</cost>
+				<maintien>30</maintien>
+				<effets>RMys 180 / 500m de rayon.</effets>
+			</arcane>
+			<maintien_type>2</maintien_type>
+			<action>ACTIVE</action>
+			<effets_type>Automatique</effets_type>
+			<description>Enchante une zone déterminée pour la rendre impénétrable pour les êtres basés naturellement sur les sentiments négatifs ou l'obscurité. Toute créature de ce type pénétrant dans la zone d'effet du sort doit effectuer à chaque round un test de RMys, sous peine de perdre autant de points de vie que sa marge d'échec. De plus, si elle échoue à ce test, la créature subit immédiatement un malus de -40 à toutes ses actions. La zone d'effet à son centre est fixée au lieu où le sort a été lancé.</description>
+			<commentaire>Pas de commentaires</commentaire>
+			<source>CE 127</source>
+		</Sort>
+		<Sort Level="066">
+			<name>Trouver</name>
+			<initial>
+				<requirement>8</requirement>
+				<cost>160</cost>
+				<maintien>0</maintien>
+				<effets>RMys 140.</effets>
+			</initial>
+			<intermediaire>
+				<requirement>10</requirement>
+				<cost>200</cost>
+				<maintien>0</maintien>
+				<effets>RMys 180.</effets>
+			</intermediaire>
+			<avancee>
+				<requirement>13</requirement>
+				<cost>260</cost>
+				<maintien>0</maintien>
+				<effets>RMys 220.</effets>
+			</avancee>
+			<arcane>
+				<requirement>16</requirement>
+				<cost>320</cost>
+				<maintien>0</maintien>
+				<effets>RMys 260.</effets>
+			</arcane>
+			<maintien_type>0</maintien_type>
+			<action>ACTIVE</action>
+			<effets_type>Detection</effets_type>
+			<description>Grâce au sort Trouver, un sorcier obtient la capacité de localiser une personne, un objet ou un lieu, et de connaître sa localisation exacte à ce moment précis, qu'importe la distance qui les sépare. Il peut chercher une chose précise ou générique, ou simplement une chose qui répond à une condition déterminée. Par exemple, un sorcier peut tenter de localiser une ville, le voleur qui lui a volé sa balance (et qu'il ne connaît pas), ou même la demoiselle de sang royal la plus proche de lui. Les objets, les lieux ou les personnes affectées doivent effectuer un test de RMys pour ne pas être localisés. Les lieux de grande taille subissent un malus de -40 à ce test.</description>
+			<commentaire>Pas de commentaires</commentaire>
+			<source>CE 127</source>
+		</Sort>
+		<Sort Level="068">
+			<name>Rétablir</name>
+			<initial>
+				<requirement>8</requirement>
+				<cost>150</cost>
+				<maintien>0</maintien>
+				<effets>Élimine jusqu’à -40 sur éventuel malus à toutes les actions et restitue 2 points de fatigue.</effets>
+			</initial>
+			<intermediaire>
+				<requirement>10</requirement>
+				<cost>200</cost>
+				<maintien>0</maintien>
+				<effets>Élimine jusqu’à -80 sur éventuel malus à toutes les actions et restitue 5 points de fatigue.</effets>
+			</intermediaire>
+			<avancee>
+				<requirement>12</requirement>
+				<cost>250</cost>
+				<maintien>0</maintien>
+				<effets>Élimine jusqu’a -120 sur éventuel malus à toutes les actions et restitue 10 points de fatigue.</effets>
+			</avancee>
+			<arcane>
+				<requirement>15</requirement>
+				<cost>300</cost>
+				<maintien>0</maintien>
+				<effets>Élimine tous les malus aux actions et restitue l’intégralité des points de fatigue.</effets>
+			</arcane>
+			<maintien_type>0</maintien_type>
+			<action>ACTIVE</action>
+			<effets_type>Effet</effets_type>
+			<description>Ce sort annule les malus que subit un individu déterminé. Les malus annulés peuvent avoir pour origine la fatigue, la faim, des dégâts physiques ou même des sorts, mais en aucun cas des carences physiques comme un membre amputé ou équivalent. Le rétablissement permet de récupérer, de façon automatique, tous les points de Fatigue dépensés.</description>
+			<commentaire>Pas de commentaires</commentaire>
+			<source>CE 127</source>
+		</Sort>
+		<Sort Level="070">
+			<name>Symbole Hypnotique</name>
+			<initial>
+				<requirement>10</requirement>
+				<cost>140</cost>
+				<maintien>5</maintien>
+				<effets>Visible dans un rayon d’1 km / RMys ou RPsy 120.</effets>
+			</initial>
+			<intermediaire>
+				<requirement>12</requirement>
+				<cost>200</cost>
+				<maintien>10</maintien>
+				<effets>Visible dans un rayon de 5 km / RMys ou RPsy 150.</effets>
+			</intermediaire>
+			<avancee>
+				<requirement>14</requirement>
+				<cost>280</cost>
+				<maintien>10</maintien>
+				<effets>Visible dans un rayon de 15 km / RMys ou RPsy 180.</effets>
+			</avancee>
+			<arcane>
+				<requirement>16</requirement>
+				<cost>360</cost>
+				<maintien>15</maintien>
+				<effets>Visible dans un rayon de 25 km / RMys ou RPsy 220.</effets>
+			</arcane>
+			<maintien_type>1</maintien_type>
+			<action>ACTIVE</action>
+			<effets_type>Automatique</effets_type>
+			<description>Forme un symbole ou un spectacle lumineux dans un lieu déterminé, qui fascine et mystifie tous ceux qui l'observent. Tout individu regardant le Symbole ne peut faire rien d'autre que demeurer absorbé dans sa contemplation. Le sort est visible à un kilomètre de distance. Les observateurs doivent effectuer un test de RMys ou RPsy pour résister à ses effets. Une fois affectée par ce sort, une personne ne peut plus effectuer que des actions passives et ne peut pas se déplacer beaucoup. Chaque fois qu'elle subit une attaque, elle a le droit d'effectuer un nouveau test de RMys ou RPsy. Ce sort affecte ses victimes à l'unique condition qu'elles regardent directement le symbole hypnotique.</description>
+			<commentaire>Pas de commentaires</commentaire>
+			<source>CE 127</source>
+		</Sort>
+		<Sort Level="072">
+			<name>Lumière Catastrophique</name>
+			<initial>
+				<requirement>10</requirement>
+				<cost>140</cost>
+				<maintien>0</maintien>
+				<effets>Dégâts de base 120 / 25 m de rayon.</effets>
+			</initial>
+			<intermediaire>
+				<requirement>12</requirement>
+				<cost>180</cost>
+				<maintien>0</maintien>
+				<effets>Dégâts de base 150 / 100 m de rayon.</effets>
+			</intermediaire>
+			<avancee>
+				<requirement>14</requirement>
+				<cost>240</cost>
+				<maintien>0</maintien>
+				<effets>Dégâts de base 200 / 150 m de rayon.</effets>
+			</avancee>
+			<arcane>
+				<requirement>16</requirement>
+				<cost>350</cost>
+				<maintien>0</maintien>
+				<effets>Dégâts de base 250 / 250 m de rayon.</effets>
+			</arcane>
+			<maintien_type>0</maintien_type>
+			<action>ACTIVE</action>
+			<effets_type>Attaque</effets_type>
+			<description>Projette une décharge d'énergie basée sur la lumière. Le mode de dégât est Énergie.</description>
+			<commentaire>Pas de commentaires</commentaire>
+			<source>CE 127</source>
+		</Sort>
+		<Sort Level="076">
+			<name>Objets Lumineux Matériels</name>
+			<initial>
+				<requirement>10</requirement>
+				<cost>150</cost>
+				<maintien>15</maintien>
+				<effets>Présence 60 / Qualité +5.</effets>
+			</initial>
+			<intermediaire>
+				<requirement>12</requirement>
+				<cost>200</cost>
+				<maintien>20</maintien>
+				<effets>Présence 100 / Qualité +10.</effets>
+			</intermediaire>
+			<avancee>
+				<requirement>14</requirement>
+				<cost>240</cost>
+				<maintien>25</maintien>
+				<effets>Présence 140 / Qualité +10.</effets>
+			</avancee>
+			<arcane>
+				<requirement>16</requirement>
+				<cost>300</cost>
+				<maintien>30</maintien>
+				<effets>Présence 180 / Qualité +15.</effets>
+			</arcane>
+			<maintien_type>1</maintien_type>
+			<action>ACTIVE</action>
+			<effets_type>Effet</effets_type>
+			<description>Forme un objet physique d'énergie lumineuse. L'objet créé ne peut pas avoir une Présence supérieure à ce qu’indique le rang du sort, qu'il soit aussi complexe qu'une horloge ou aussi simple qu'une épée. En fonction du rang du sort, il peut être de qualité supérieure. Exceptionnellement, la qualité de l'objet n'influe pas sur sa Présence.</description>
+			<commentaire>Pas de commentaires</commentaire>
+			<source>CE 127</source>
+		</Sort>
+		<Sort Level="078">
+			<name>Transmission par la Lumière</name>
+			<initial>
+				<requirement>10</requirement>
+				<cost>250</cost>
+				<maintien>0</maintien>
+				<effets>100 km / Présence max 250 / RMys 120.</effets>
+			</initial>
+			<intermediaire>
+				<requirement>12</requirement>
+				<cost>360</cost>
+				<maintien>0</maintien>
+				<effets>1000 km / Présence max 500 / RMys 140.</effets>
+			</intermediaire>
+			<avancee>
+				<requirement>14</requirement>
+				<cost>450</cost>
+				<maintien>0</maintien>
+				<effets>5000 km / Présence max 1000 / RMys 180.</effets>
+			</avancee>
+			<arcane>
+				<requirement>16</requirement>
+				<cost>600</cost>
+				<maintien>0</maintien>
+				<effets>15000 km / Présence max 2000 / RMys 200.</effets>
+			</arcane>
+			<maintien_type>0</maintien_type>
+			<action>ACTIVE</action>
+			<effets_type>Effet_animique</effets_type>
+			<description>Transporte instantanément les individus ou les objets désignés par le sorcier, d'une source de lumière à une autre qui se trouve à une distance maximale fixée par le rang du sort. La somme de Présence transportable est également fixée par ce rang. Si une cible souhaite résister, elle doit réussir un test de RMys.</description>
+			<commentaire>Pas de commentaires</commentaire>
+			<source>CE 127</source>
+		</Sort>
+		<Sort Level="080">
+			<name>Seigneur des Rêves</name>
+			<initial>
+				<requirement>12</requirement>
+				<cost>300</cost>
+				<maintien>60</maintien>
+				<effets>RMys 140.</effets>
+			</initial>
+			<intermediaire>
+				<requirement>14</requirement>
+				<cost>400</cost>
+				<maintien>65</maintien>
+				<effets>RMys 150 / Si le sorcier se retrouve dans la Veille, il en contrôle également l’environnement et obtient les pouvoirs d’une créature de Gnose 40, à condition que la zone soit fortement influencée par les énergies positives. S’il se trouve dans une zone neutre, la Gnose équivalente sera de 30. Ce sort n’affecte que ce qui se trouve dans sa zone d’effet et seulement si aucune autre entité de Gnose similaire s’y trouve ou n’y pénètre.</effets>
+			</intermediaire>
+			<avancee>
+				<requirement>16</requirement>
+				<cost>500</cost>
+				<maintien>70</maintien>
+				<effets>RMys 160 / comme pour Intermédiaire à ceci près que la Gnose équivalent en zone neutre passe à 35.</effets>
+			</avancee>
+			<arcane>
+				<requirement>18</requirement>
+				<cost>750</cost>
+				<maintien>80</maintien>
+				<effets>RMys 180 / comme pour Avancé à ceci près que les sortilèges n’ont plus de limites spatiales et peuvent atteindre tout ce qui se trouve dans les zones de la veille influencées par les énergies positives.</effets>
+			</arcane>
+			<maintien_type>2</maintien_type>
+			<action>ACTIVE</action>
+			<effets_type>Effet_animique</effets_type>
+			<description>Permet de dominer n'importe quel type de rêve. Le sorcier a la capacité de contrôler le monde onirique d'un dormeur, en le modifiant comme s'il avait 45 en Gnose. Si le rêve s'alimente d'énergie négative, autrement dit qu'il se change en cauchemar, la Gnose du sorcier ne sera que de 30. Si le dormeur souhaite éviter le sort, il doit effectuer un test de RMys. Ce sort a aussi une deuxième fonction, suivant si le sorcier se trouve dans la Veille ou pas. Les sorts lancés par le sorciers autorisés par ce niveau de gnose (comme les sorts de Magie Divine par exemple) ne peuvent avoir d’effets en dehors de la zone d’influence du sortilège et durent jusqu’à ce que le sorcier ne quitte le rêve (ou la veille).</description>
+			<commentaire>Pas de commentaires</commentaire>
+			<source>CE 127</source>
+		</Sort>
+		<Sort Level="082">
+			<name>Création de Lumière</name>
+			<initial>
+				<requirement>10</requirement>
+				<cost>250</cost>
+				<maintien>50</maintien>
+				<effets>Niveau 1.</effets>
+			</initial>
+			<intermediaire>
+				<requirement>12</requirement>
+				<cost>350</cost>
+				<maintien>70</maintien>
+				<effets>Niveau 3.</effets>
+			</intermediaire>
+			<avancee>
+				<requirement>14</requirement>
+				<cost>500</cost>
+				<maintien>100</maintien>
+				<effets>Niveau 6.</effets>
+			</avancee>
+			<arcane>
+				<requirement>16</requirement>
+				<cost>700</cost>
+				<maintien>140</maintien>
+				<effets>Niveau 10.</effets>
+			</arcane>
+			<maintien_type>2</maintien_type>
+			<action>ACTIVE</action>
+			<effets_type>Effet</effets_type>
+			<description>Crée un être lumineux avec l'apparence de la vie, sous le contrôle absolu du sorcier. Cet être sera conçu comme une créature d'Entre Mondes, en utilisant les pouvoirs et les limitations des élémentaires de Lumière du Chapitre 26. Le niveau de la créature dépendra du rang du sort.</description>
+			<commentaire>Pas de commentaires</commentaire>
+			<source>CE 127</source>
+		</Sort>
+		<Sort Level="086">
+			<name>Prisme Réfléchissant</name>
+			<initial>
+				<requirement>10</requirement>
+				<cost>160</cost>
+				<maintien>20</maintien>
+				<effets>100 contre Choc / 800 Points de Vie.</effets>
+			</initial>
+			<intermediaire>
+				<requirement>13</requirement>
+				<cost>250</cost>
+				<maintien>25</maintien>
+				<effets>120 contre Choc / 1500 Points de Vie.</effets>
+			</intermediaire>
+			<avancee>
+				<requirement>15</requirement>
+				<cost>300</cost>
+				<maintien>30</maintien>
+				<effets>140 contre Choc / 3000 Points de Vie.</effets>
+			</avancee>
+			<arcane>
+				<requirement>17</requirement>
+				<cost>400</cost>
+				<maintien>40</maintien>
+				<effets>180 contre Choc / 6000 Points de Vie.</effets>
+			</arcane>
+			<maintien_type>2</maintien_type>
+			<action>PASSIVE</action>
+			<effets_type>Defense</effets_type>
+			<description>Crée un halo de lumière pure qui fonctionne comme un bouclier prismatique, renvoyant vers son envoyeur tout sort, discipline psychique d'attaque ou technique de Ki, effectué à distance. Pour que le pouvoir soit renvoyé, il doit échouer à un test de choc contre l'équivalent d'une décharge de Dégâts variables, dépendant du rang du sort. Il faut aussi avoir réussi sa parade avec le prisme pour renvoyer une telle attaque. S'il s'agit d'une Attaque de zone, elle ne sera pas renvoyée en totalité : elle affectera toutes les cibles de la zone affectée à l'exception du sorcier protégé par le prisme. Ce sort ne renvoie pas les effets Animiques ou Ésotériques. Le sorcier peut utiliser sa Projection magique pour rediriger l'attaque. La résistance du prisme dépend du rang du sort.</description>
+			<commentaire>Pas de commentaires</commentaire>
+			<source>CE 127</source>
+		</Sort>
+		<Sort Level="088">
+			<name>Omniscience Rayonnante</name>
+			<initial>
+				<requirement>10</requirement>
+				<cost>200</cost>
+				<maintien>40</maintien>
+				<effets>500 m de rayon / Présence max 60.</effets>
+			</initial>
+			<intermediaire>
+				<requirement>12</requirement>
+				<cost>250</cost>
+				<maintien>50</maintien>
+				<effets>2 km de rayon / Présence max 80.</effets>
+			</intermediaire>
+			<avancee>
+				<requirement>15</requirement>
+				<cost>400</cost>
+				<maintien>60</maintien>
+				<effets>10 km de rayon / Présence max 100.</effets>
+			</avancee>
+			<arcane>
+				<requirement>18</requirement>
+				<cost>800</cost>
+				<maintien>65</maintien>
+				<effets>50 km de rayon / Présence max 120.</effets>
+			</arcane>
+			<maintien_type>1</maintien_type>
+			<action>ACTIVE</action>
+			<effets_type>Effet</effets_type>
+			<description>Permet au sorcier d'être omniscient, vis à vis de tout événement ou pensée située autour de lui. Cela n'affecte que les individus dont la Présence est inférieure à un seuil fixé par le sort et de Gnose inférieure à celle du personnage. Le sorcier sait automatiquement tout ce que se passe à l'intérieur de cette zone et ce que pensent les personnes. Il n'y a pas de test de Résistance possible.</description>
+			<commentaire>Pas de commentaires</commentaire>
+			<source>CE 127</source>
+		</Sort>
+		<Sort Level="090">
+			<name>Prédire</name>
+			<initial>
+				<requirement>10</requirement>
+				<cost>200</cost>
+				<maintien>40</maintien>
+				<effets>Un an.</effets>
+			</initial>
+			<intermediaire>
+				<requirement>12</requirement>
+				<cost>300</cost>
+				<maintien>50</maintien>
+				<effets>5 ans.</effets>
+			</intermediaire>
+			<avancee>
+				<requirement>14</requirement>
+				<cost>450</cost>
+				<maintien>60</maintien>
+				<effets>50 ans / Dans le cas d’une prédiction d’un évènement situé d’ici moins d’une journée, la description sera parfaitement exacte.</effets>
+			</avancee>
+			<arcane>
+				<requirement>16</requirement>
+				<cost>600</cost>
+				<maintien>65</maintien>
+				<effets>1 siècle / Dans le cas d’une prédiction d’un évènement situé d’ici moins d’une année, la description sera parfaitement exacte.</effets>
+			</arcane>
+			<maintien_type>1</maintien_type>
+			<action>ACTIVE</action>
+			<effets_type>Animique</effets_type>
+			<description>Permet de visualiser les événements à venir qui se dérouleront autour d'une personne, d'un objet ou d'un lieu. Prédire montre au sorcier le destin le plus probable qui attend une chose ou un individu, en lui donnant des informations détaillées sur les événements futurs. L'intervalle de temps ne pourra pas s'étendre au-delà d’une période fixée par le rang du sort à partir du moment présent. Le Meneur de Jeu doit détailler avec honnêteté au sorcier quels événements vont se dérouler. Cependant, ceux-ci ne sont pas infaillibles ; ce sort ne prédit que le destin le plus probable, et il existe toujours la possibilité qu'il puisse être modifié, par l'intervention de puissances majeures ou des personnages de Gnose élevée.</description>
+			<commentaire>Pas de commentaires</commentaire>
+			<source>CE 127</source>
+		</Sort>
+		<Sort Level="090">
+			<name>Prison de Lumière</name>
+			<initial>
+				<requirement>14</requirement>
+				<cost>200</cost>
+				<maintien>40</maintien>
+				<effets>RMys 140 / La prison possède 10 000 Points de Vie.</effets>
+			</initial>
+			<intermediaire>
+				<requirement>16</requirement>
+				<cost>350</cost>
+				<maintien>70</maintien>
+				<effets>RMys 180 / La prison possède 250 000 Points de Vie.</effets>
+			</intermediaire>
+			<avancee>
+				<requirement>18</requirement>
+				<cost>500</cost>
+				<maintien>100</maintien>
+				<effets>RMys 220 / La prison possède 500 000 Points de Vie.</effets>
+			</avancee>
+			<arcane>
+				<requirement>20</requirement>
+				<cost>800</cost>
+				<maintien>160</maintien>
+				<effets>RMys 240 / La prison ne peut être brisée de l’intérieur et possède 500 000 PV pour résister aux attaques de l’extérieur.</effets>
+			</arcane>
+			<maintien_type>1</maintien_type>
+			<action>ACTIVE</action>
+			<effets_type>Animique</effets_type>
+			<description>Emprisonne une créature dans un monde de lumière impossible à traverser, un univers dans lequel elle ne pourra pas interagir avec l'extérieur, ni inversement. Tant que la cible du sort se trouve à l'intérieur de la prison, elle n'a pas conscience de ce qui se passe à l'extérieur, ou inversement. Pour briser le sortilège de l'intérieur, on considère que la prison possède une quantité de point de vie fixée par le rang du sort et est considérée comme une créature avec Encaissement et une IP 10. Les dommages infligés depuis l’extérieur sont doublés mais la prison régénère les dégâts subis avec une Régénération de 19. On peut éviter ce sort en réussissant un test de RMys. En cas d'échec, la cible n'a droit à aucun test ultérieur ; si elle désire sortir, elle devra être capable de rompre le sortilège.</description>
+			<commentaire>Pas de commentaires</commentaire>
+			<source>CE 127</source>
+		</Sort>
+		<Sort Level="096">
+			<name>Essence de Lumière</name>
+			<initial>
+				<requirement>12</requirement>
+				<cost>200</cost>
+				<maintien>0</maintien>
+				<effets>Un jour.</effets>
+			</initial>
+			<intermediaire>
+				<requirement>14</requirement>
+				<cost>400</cost>
+				<maintien>0</maintien>
+				<effets>Une semaine.</effets>
+			</intermediaire>
+			<avancee>
+				<requirement>16</requirement>
+				<cost>600</cost>
+				<maintien>0</maintien>
+				<effets>Un mois.</effets>
+			</avancee>
+			<arcane>
+				<requirement>18</requirement>
+				<cost>800</cost>
+				<maintien>0</maintien>
+				<effets>Un an.</effets>
+			</arcane>
+			<maintien_type>0</maintien_type>
+			<action>ACTIVE</action>
+			<effets_type>Effet</effets_type>
+			<description>Permet au sorcier d'entrer dans un état de léthargie absolue, tandis que son corps ne fait plus qu'un avec la lumière. Il abandonne le monde et commence son ascension vers le flux des âmes pour se nourrir de son énergie. À l'écart et inconscient de tout ce qui se passe autour de lui, le personnage multiplie par 10 sa régénération Zéonique et soigne ses blessures avec une Régénération de 16. Bien que ce sort n'ait pas de maintien, le sorcier peut rester dans le flux des âmes pour une durée fixée par le rang du sort.</description>
+			<commentaire>Pas de commentaires</commentaire>
+			<source>CE 127</source>
+		</Sort>
+		<Sort Level="098">
+			<name>Ascension</name>
+			<initial>
+				<requirement>14</requirement>
+				<cost>500</cost>
+				<maintien>30</maintien>
+				<effets>Gnose maximale 30.</effets>
+			</initial>
+			<intermediaire>
+				<requirement>16</requirement>
+				<cost>1000</cost>
+				<maintien>40</maintien>
+				<effets>Gnose maximale 35.</effets>
+			</intermediaire>
+			<avancee>
+				<requirement>18</requirement>
+				<cost>2000</cost>
+				<maintien>45</maintien>
+				<effets>Gnose maximale 40.</effets>
+			</avancee>
+			<arcane>
+				<requirement>20</requirement>
+				<cost>5000</cost>
+				<maintien>50</maintien>
+				<effets>Gnose maximale 45.</effets>
+			</arcane>
+			<maintien_type>2</maintien_type>
+			<action>ACTIVE</action>
+			<effets_type>Effet</effets_type>
+			<description>Le sort échange l'essence physique d'un individu avec de l'énergie divine, transformant son esprit en pure puissance surnaturelle. L’effet permet au sorcier, ou à sa cible, d’augmenter sa Gnose jusqu’à une valeur maximale fixée par le rang du sort.</description>
+			<commentaire>Pas de commentaires</commentaire>
+			<source>CE 127</source>
+		</Sort>
+		<Sort Level="100">
+			<name>Holocauste de Lumière</name>
+			<initial>
+				<requirement>14</requirement>
+				<cost>600</cost>
+				<maintien>0</maintien>
+				<effets>Dégâts de base 350 / 100m de rayon.</effets>
+			</initial>
+			<intermediaire>
+				<requirement>16</requirement>
+				<cost>1000</cost>
+				<maintien>0</maintien>
+				<effets>Dégâts de base 500 / 100 km de rayon.</effets>
+			</intermediaire>
+			<avancee>
+				<requirement>18</requirement>
+				<cost>2500</cost>
+				<maintien>0</maintien>
+				<effets>Dégâts de base 800 / 10 000 km de rayon.</effets>
+			</avancee>
+			<arcane>
+				<requirement>20</requirement>
+				<cost>10000</cost>
+				<maintien>0</maintien>
+				<effets>Dégâts de base 1 000 / 1 UA de rayon.</effets>
+			</arcane>
+			<maintien_type>0</maintien_type>
+			<action>ACTIVE</action>
+			<effets_type>Effet</effets_type>
+			<description>Ce sort déchaîne la puissance de la lumière dans son état le plus pur, rasant tout ce qui se trouve sur son passage, aussi bien dans le monde matériel que dans le monde spirituel. L'énergie libérée arrache et dévore toute chose, unifiant toute existence à celle de la lumière. Même les créatures de lumière sont assimilées par ce sort.L'Holocauste crée une grande coupole lumineuse, à l'intérieur de laquelle tout se dissout instantanément. Les dégâts provoqués sont de type Énergie. Tout être subissant des dégâts, aussi minimes soient-ils, doit réussir un test de RMys contre 160 sous peine d'être unifié à la lumière et, de fait, détruit de corps comme d'esprit. Il n'est pas possible de désigner des cibles précises dans le rayon du sort, qui affecte tout de la même manière, à l'exception du sorcier.</description>
+			<commentaire>Pas de commentaires</commentaire>
+			<source>CE 127</source>
+		</Sort>
 	</Livre>
 	<Livre Name="Obscurité">
 		<Sort Level="002">
