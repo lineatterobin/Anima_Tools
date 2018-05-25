@@ -1324,71 +1324,315 @@
 	</Livre>
 	<Livre Name="Obscurité">
 		<Sort Level="002">
-			<name>Sort02</name>
+			<name>Créer Obscurité</name>
 			<initial>
-				<requirement>6</requirement>
-				<cost>40</cost>
+				<requirement>5</requirement>
+				<cost>20</cost>
 				<maintien>5</maintien>
-				<effets>Effet du sort2 initial</effets>
+				<effets>5 m de rayon</effets>
+			</initial>
+			<intermediaire>
+				<requirement>8</requirement>
+				<cost>50</cost>
+				<maintien>5</maintien>
+				<effets>25 m de rayon</effets>
+			</intermediaire>
+			<avancee>
+				<requirement>10</requirement>
+				<cost>100</cost>
+				<maintien>10</maintien>
+				<effets>100 m de rayon</effets>
+			</avancee>
+			<arcane>
+				<requirement>12</requirement>
+				<cost>200</cost>
+				<maintien>15</maintien>
+				<effets>500 m de rayon</effets>
+			</arcane>
+			<maintien_type>2</maintien_type>
+			<action>ACTIVE</action>
+			<effets_type>Effet</effets_type>
+			<description>Obscurcit complètement une zone. Tout ce qui se trouve à l'intérieur de cette zone est perçu comme sous une nuit nuageuse et sans lune.</description>
+			<commentaire>Pas de commentaires</commentaire>
+			<source>CE ???</source>
+		</Sort>
+		<Sort Level="006">
+			<name>Apeurer</name>
+			<initial>
+				<requirement>5</requirement>
+				<cost>40</cost>
+				<maintien>0</maintien>
+				<effets>RMys ou RPsy 80 / 10 m de rayon</effets>
 			</initial>
 			<intermediaire>
 				<requirement>8</requirement>
 				<cost>80</cost>
-				<maintien>5</maintien>
-				<effets>Effet du sort2 intermediaire</effets>
+				<maintien>0</maintien>
+				<effets>RMys ou RPsy 100 / 50 m de rayon</effets>
 			</intermediaire>
 			<avancee>
 				<requirement>10</requirement>
-				<cost>120</cost>
-				<maintien>10</maintien>
-				<effets>Effet du sort2 avancee</effets>
+				<cost>140</cost>
+				<maintien>0</maintien>
+				<effets>RMys ou RPsy 120 / 100 m de rayon</effets>
 			</avancee>
 			<arcane>
 				<requirement>12</requirement>
-				<cost>160</cost>
-				<maintien>15</maintien>
-				<effets>Effet du sort2 arcane</effets>
+				<cost>180</cost>
+				<maintien>0</maintien>
+				<effets>RMys ou RPsy 140 / 250 m de rayon</effets>
 			</arcane>
-			<maintien_type>2</maintien_type>
-			<action>PASSIVE</action>
-			<effets_type>Effet</effets_type>
-			<description>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor inam, quis nostrud exercitation ullamco laboris nisi equat. Duis aute irure dolor in repulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</description>
+			<maintien_type>0</maintien_type>
+			<action>ACTIVE</action>
+			<effets_type>Animique</effets_type>
+			<description>Provoque temporairement l'état de Peur chez tous les individus se trouvant autour du sorcier et échouant à un test de RMys. Le sorcier décide quelle est l'origine de la peur que ressentent les personnes affectées.</description>
 			<commentaire>Pas de commentaires</commentaire>
-			<source>AE 185</source>
+			<source>CE ???</source>
 		</Sort>
-		<Sort Level="004">
-			<name>Sort04</name>
+		<Sort Level="008">
+			<name>Voir dans l'Obscurité</name>
 			<initial>
-				<requirement>6</requirement>
+				<requirement>5</requirement>
 				<cost>40</cost>
 				<maintien>5</maintien>
-				<effets>Effet du sort2 initial</effets>
+				<effets>Présence maximale 80</effets>
 			</initial>
 			<intermediaire>
 				<requirement>8</requirement>
 				<cost>80</cost>
-				<maintien>5</maintien>
-				<effets>Effet du sort2 intermediaire</effets>
+				<maintien>10</maintien>
+				<effets>Présence maximale 100</effets>
 			</intermediaire>
 			<avancee>
 				<requirement>10</requirement>
-				<cost>120</cost>
+				<cost>100</cost>
 				<maintien>10</maintien>
-				<effets>Effet du sort2 avancee</effets>
+				<effets>Présence maximale 120</effets>
 			</avancee>
 			<arcane>
 				<requirement>12</requirement>
-				<cost>160</cost>
+				<cost>120</cost>
 				<maintien>15</maintien>
-				<effets>Effet du sort2 arcane</effets>
+				<effets>Présence maximale 140 / Permet de voir à travers l’obscurité surnaturelle</effets>
+			</arcane>
+			<maintien_type>2</maintien_type>
+			<action>ACTIVE</action>
+			<effets_type>Effet</effets_type>
+			<description>Permet au sorcier, ou à la personne qu'il choisit, de voir parfaitement dans l'obscurité. Il peut affecter autant de cibles qu'il le désire, tant que la somme de leurs Présences ne dépasse pas une valeur fixée par le rang du sort.</description>
+			<commentaire>Pas de commentaires</commentaire>
+			<source>CE ???</source>
+		</Sort>
+		<Sort Level="010">
+			<name>Bouclier Obscur</name>
+			<initial>
+				<requirement>6</requirement>
+				<cost>50</cost>
+				<maintien>5</maintien>
+				<effets>Le bouclier possède 300 Points de Vie</effets>
+			</initial>
+			<intermediaire>
+				<requirement>8</requirement>
+				<cost>120</cost>
+				<maintien>15</maintien>
+				<effets>Le bouclier possède 1 000 Points de Vie</effets>
+			</intermediaire>
+			<avancee>
+				<requirement>10</requirement>
+				<cost>180</cost>
+				<maintien>20</maintien>
+				<effets>Le bouclier possède 1 800 Points de Vie</effets>
+			</avancee>
+			<arcane>
+				<requirement>14</requirement>
+				<cost>250</cost>
+				<maintien>25</maintien>
+				<effets>Le bouclier possède 3 000 Points de Vie</effets>
+			</arcane>
+			<maintien_type>1</maintien_type>
+			<action>PASSIVE</action>
+			<effets_type>Defense</effets_type>
+			<description>Forme une barrière d'énergie, qui protège contre toute source d'attaque. Seules les attaques surnaturelles peuvent lui infliger des dégâts. Les attaques basées sur la lumière lui infligent le double de dégâts.</description>
+			<commentaire>Pas de commentaires</commentaire>
+			<source>CE ???</source>
+		</Sort>
+		<Sort Level="012">
+			<name>Ombre</name>
+			<initial>
+				<requirement>5</requirement>
+				<cost>50</cost>
+				<maintien>5</maintien>
+				<effets>+50 en Camouflage, Discrétion et Eval. Magique</effets>
+			</initial>
+			<intermediaire>
+				<requirement>9</requirement>
+				<cost>150</cost>
+				<maintien>15</maintien>
+				<effets>+150 en Camouflage, Discrétion et Eval. Magique</effets>
+			</intermediaire>
+			<avancee>
+				<requirement>12</requirement>
+				<cost>200</cost>
+				<maintien>20</maintien>
+				<effets>+200 en Camouflage, Discrétion et Eval. Magique</effets>
+			</avancee>
+			<arcane>
+				<requirement>14</requirement>
+				<cost>240</cost>
+				<maintien>25</maintien>
+				<effets>+250 en Camouflage, Discrétion et Eval. Magique</effets>
+			</arcane>
+			<maintien_type>1</maintien_type>
+			<action>ACTIVE</action>
+			<effets_type>Effet</effets_type>
+			<description>Ce sort augmente les capacités de dissimulation du sorcier, en rehaussant ses compétences secondaires de Camouflage et de Discrétion. Son Évaluation magique augmente de la même valeur, mais seulement s'il compte cacher le potentiel magique de quelque chose ou quelqu'un, pas pour le détecter.</description>
+			<commentaire>Pas de commentaires</commentaire>
+			<source>CE ???</source>
+		</Sort>
+		<Sort Level="016">
+			<name>Armure Obscure</name>
+			<initial>
+				<requirement>6</requirement>
+				<cost>60</cost>
+				<maintien>5</maintien>
+				<effets>IP 2 contre l’Énergie et IP 1 contre le reste</effets>
+			</initial>
+			<intermediaire>
+				<requirement>9</requirement>
+				<cost>90</cost>
+				<maintien>10</maintien>
+				<effets>IP 5 contre l’Énergie et IP 2 contre le reste</effets>
+			</intermediaire>
+			<avancee>
+				<requirement>12</requirement>
+				<cost>120</cost>
+				<maintien>15</maintien>
+				<effets>IP 8 contre l’Énergie et IP 4 contre le reste</effets>
+			</avancee>
+			<arcane>
+				<requirement>15</requirement>
+				<cost>150</cost>
+				<maintien>20</maintien>
+				<effets>IP 12 contre l’Énergie et IP 6 contre le reste</effets>
+			</arcane>
+			<maintien_type>1</maintien_type>
+			<action>ACTIVE</action>
+			<effets_type>Effet</effets_type>
+			<description>Forme une carapace mystique qui contre les attaques de Mode Énergie, et de la moitié contre les autres Modes. Bien que cette protection compte comme une armure, on n'applique aucun malus à l'Initiative pour les couches de protection supplémentaires.</description>
+			<commentaire>Pas de commentaires</commentaire>
+			<source>CE ???</source>
+		</Sort>
+		<Sort Level="018">
+			<name>Destruction de Lumière</name>
+			<initial>
+				<requirement>6</requirement>
+				<cost>60</cost>
+				<maintien>10</maintien>
+				<effets>10 m de rayon / RMys 140</effets>
+			</initial>
+			<intermediaire>
+				<requirement>9</requirement>
+				<cost>100</cost>
+				<maintien>10</maintien>
+				<effets>100 m de rayon / RMys 180</effets>
+			</intermediaire>
+			<avancee>
+				<requirement>12</requirement>
+				<cost>150</cost>
+				<maintien>15</maintien>
+				<effets>250 m de rayon / RMys 220</effets>
+			</avancee>
+			<arcane>
+				<requirement>15</requirement>
+				<cost>250</cost>
+				<maintien>25</maintien>
+				<effets>500 m de rayon / RMys 280</effets>
+			</arcane>
+			<maintien_type>1</maintien_type>
+			<action>ACTIVE</action>
+			<effets_type>Effet_animique</effets_type>
+			<description>Détruit la lumière ambiante dans un rayon de 10 mètres. Si ce sort est lancé sur des êtres naturellement basés sur la lumière, ils doivent réussir un test de RMys contre 120, sous peine de perdre une quantité de points de vie égale au double de leur marge d'échec (dix fois la marge d'échec dans le cas d'une créature à Encaissement). Si ce sort est maintenu, les créatures devront effectuer un nouveau test de RMys à chaque round.</description>
+			<commentaire>Pas de commentaires</commentaire>
+			<source>CE ???</source>
+		</Sort>
+		<Sort Level="020">
+			<name>Occultation de Magie</name>
+			<initial>
+				<requirement>6</requirement>
+				<cost>50</cost>
+				<maintien>5</maintien>
+				<effets>Évaluation Magique -100</effets>
+			</initial>
+			<intermediaire>
+				<requirement>9</requirement>
+				<cost>180</cost>
+				<maintien>20</maintien>
+				<effets>Évaluation Magique -180</effets>
+			</intermediaire>
+			<avancee>
+				<requirement>12</requirement>
+				<cost>240</cost>
+				<maintien>25</maintien>
+				<effets>Évaluation Magique -240</effets>
+			</avancee>
+			<arcane>
+				<requirement>15</requirement>
+				<cost>300</cost>
+				<maintien>30</maintien>
+				<effets>Évaluation Magique -320</effets>
 			</arcane>
 			<maintien_type>2</maintien_type>
 			<action>PASSIVE</action>
 			<effets_type>Effet</effets_type>
-			<description>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor inam, quis nostrud exercitation ullamco laboris nisi equat. Duis aute irure dolor in repulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</description>
+			<description>Cache un sort, ou les propriétés mystiques d'un objet, face à tout type de détection magique. En termes de jeu, ce sort inflige un malus à l'Évaluation magique de quiconque tente de détecter ou mesurer le sort ou un objet mystique (ainsi que ce sort lui-même).</description>
 			<commentaire>Pas de commentaires</commentaire>
-			<source>AE 185</source>
+			<source>CE ???</source>
 		</Sort>
-
 	</Livre>
+	<Livre Name="Création">
+	</Livre>
+	<Livre Name="Destruction">
+	</Livre>	
+	<Livre Name="Feu">
+	</Livre>	
+	<Livre Name="Eau">
+	</Livre>	
+	<Livre Name="Terre">
+	</Livre>	
+	<Livre Name="Air">
+	</Livre>	
+	<Livre Name="Essence">
+	</Livre>	
+	<Livre Name="Nécromancie">
+	</Livre>	
+	<Livre Name="Chaos">
+	</Livre>	
+	<Livre Name="Guerre">
+	</Livre>	
+	<Livre Name="Literae">
+	</Livre>	
+	<Livre Name="Mort">
+	</Livre>	
+	<Livre Name="Musique">
+	</Livre>	
+	<Livre Name="Noblesse">
+	</Livre>	
+	<Livre Name="Paix">
+	</Livre>	
+	<Livre Name="Péché">
+	</Livre>	
+	<Livre Name="Connaissance">
+	</Livre>	
+	<Livre Name="Sang">
+	</Livre>	
+	<Livre Name="Songes">
+	</Livre>	
+	<Livre Name="Temps">
+	</Livre>	
+	<Livre Name="Seuil">
+	</Livre>	
+	<Livre Name="Vide">
+	</Livre>	
+	<Livre Name="Accès Libre">
+	</Livre>	
+	
 </Biblio>
