@@ -5,6 +5,8 @@
 #include <QMessageBox>
 #include <iostream>
 
+#include <Librairies/Algorithmes/BookSorting.h>
+
 SpellTreeModel::SpellTreeModel(QDomDocument document, QObject *parent)
     : QAbstractItemModel(parent), _domDocument(document)
 {
@@ -180,7 +182,7 @@ void SpellTreeModel::sortBooks(const QModelIndex &parent_)
             int c = i;
             while(c > 0)
             {
-                if( QString::compare(parentItem->child(c)->node().attributes().item(0).nodeValue(), parentItem->child(c-1)->node().attributes().item(0).nodeValue()) < 0)
+                if( BookSorting::compareBooks(parentItem->child(c)->node().attributes().item(0).nodeValue(), parentItem->child(c-1)->node().attributes().item(0).nodeValue()) < 0)
                     parentItem->swapChild(c-1,c);
                 else
                     break;
