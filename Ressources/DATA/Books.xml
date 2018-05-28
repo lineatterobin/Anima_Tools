@@ -1587,6 +1587,402 @@
 			<commentaire>Pas de commentaires</commentaire>
 			<source>CE ???</source>
 		</Sort>
+		<Sort Level="022">
+			<name>Décharge Obscure</name>
+			<initial>
+				<requirement>6</requirement>
+				<cost>50</cost>
+				<maintien>0</maintien>
+				<effets>Dégâts de base 60</effets>
+			</initial>
+			<intermediaire>
+				<requirement>9</requirement>
+				<cost>90</cost>
+				<maintien>0</maintien>
+				<effets>Dégâts de base 90</effets>
+			</intermediaire>
+			<avancee>
+				<requirement>12</requirement>
+				<cost>120</cost>
+				<maintien>0</maintien>
+				<effets>Dégâts de base 120</effets>
+			</avancee>
+			<arcane>
+				<requirement>15</requirement>
+				<cost>150</cost>
+				<maintien>0</maintien>
+				<effets>Dégâts de base 150</effets>
+			</arcane>
+			<maintien_type>0</maintien_type>
+			<action>ACTIVE</action>
+			<effets_type>Attaque</effets_type>
+			<description>Projette une décharge d'énergie magique basée sur l'obscurité. Les Dégâts se font sur le Mode Énergie.</description>
+			<commentaire>Pas de commentaires</commentaire>
+			<source>CE ???</source>
+		</Sort>
+		<Sort Level="026">
+			<name>Obscurité Ambiante</name>
+			<initial>
+				<requirement>6</requirement>
+				<cost>60</cost>
+				<maintien>5</maintien>
+				<effets>20 m de rayon</effets>
+			</initial>
+			<intermediaire>
+				<requirement>9</requirement>
+				<cost>180</cost>
+				<maintien>10</maintien>
+				<effets>250 m de rayon</effets>
+			</intermediaire>
+			<avancee>
+				<requirement>12</requirement>
+				<cost>240</cost>
+				<maintien>15</maintien>
+				<effets>500 m de rayon</effets>
+			</avancee>
+			<arcane>
+				<requirement>15</requirement>
+				<cost>300</cost>
+				<maintien>15</maintien>
+				<effets>1 km de rayon</effets>
+			</arcane>
+			<maintien_type>1</maintien_type>
+			<action>ACTIVE</action>
+			<effets_type>Effet</effets_type>
+			<description>Crée une ambiance mystique qui engourdit les sens de toutes les personnes se trouvant à l'intérieur. L'Obscurité Ambiante augmente de deux niveaux la Difficulté de tout test de Perception réalisé à l'intérieur de cette zone ; cela affecte aussi la Détection du Ki. Il n'est pas possible de choisir ses cibles dans la zone d'effet. Aucun test de Résistance n'est possible.</description>
+			<commentaire>Pas de commentaires</commentaire>
+			<source>CE ???</source>
+		</Sort>
+		<Sort Level="028">
+			<name>Liens Obscurs</name>
+			<initial>
+				<requirement>6</requirement>
+				<cost>60</cost>
+				<maintien>10</maintien>
+				<effets>Force 8</effets>
+			</initial>
+			<intermediaire>
+				<requirement>9</requirement>
+				<cost>100</cost>
+				<maintien>10</maintien>
+				<effets>Force 12</effets>
+			</intermediaire>
+			<avancee>
+				<requirement>12</requirement>
+				<cost>140</cost>
+				<maintien>15</maintien>
+				<effets>Force 15 et la solidité passe à 30</effets>
+			</avancee>
+			<arcane>
+				<requirement>15</requirement>
+				<cost>180</cost>
+				<maintien>15</maintien>
+				<effets>Force 18 et la solidité passe à 35</effets>
+			</arcane>
+			<maintien_type>1</maintien_type>
+			<action>ACTIVE</action>
+			<effets_type>Attaque</effets_type>
+			<description>Forme quelques liens d'obscurité qui subjuguent la cible désignée. Il faut réaliser une attaque en utilisant les règles d'Immobilisation, mais le sorcier ne subit aucun malus à sa compétence pour exécuter cette manœuvre. Les liens ont une Force fixée par le rang du sort en ce qui concerne les tests appropriés. Si un tiers tente de libérer une personne immobilisée par des liens d'obscurité, ceux-ci sont considérés comme une arme d'énergie de solidité 25.</description>
+			<commentaire>Pas de commentaires</commentaire>
+			<source>CE ???</source>
+		</Sort>
+		<Sort Level="030">
+			<name>Maîtrise Obscure</name>
+			<initial>
+				<requirement>6</requirement>
+				<cost>50</cost>
+				<maintien>5</maintien>
+				<effets>20 m de rayon / RMys 80</effets>
+			</initial>
+			<intermediaire>
+				<requirement>9</requirement>
+				<cost>150</cost>
+				<maintien>20</maintien>
+				<effets>260 m de rayon / RMys 140</effets>
+			</intermediaire>
+			<avancee>
+				<requirement>12</requirement>
+				<cost>250</cost>
+				<maintien>25</maintien>
+				<effets>300 m de rayon / RMys 180</effets>
+			</avancee>
+			<arcane>
+				<requirement>16</requirement>
+				<cost>350</cost>
+				<maintien>30</maintien>
+				<effets>500 m de rayon / RMys 220</effets>
+			</arcane>
+			<maintien_type>1</maintien_type>
+			<action>ACTIVE</action>
+			<effets_type>Effet_animique</effets_type>
+			<description>Modifie et contrôle la forme, la couleur et l'intensité de l'obscurité dans un rayon de 20 mètres. Si ce sort est lancé contre des êtres naturellement basés sur cet élément, ils doivent réussir un test de RMys contre 80 sous peine d'être contrôlés par le sorcier. Une créature contrôlée ne peut refaire ce test que si elle reçoit un ordre contraire à sa nature.</description>
+			<commentaire>Pas de commentaires</commentaire>
+			<source>CE ???</source>
+		</Sort>
+		<Sort Level="032">
+			<name>Occultation</name>
+			<initial>
+				<requirement>6</requirement>
+				<cost>60</cost>
+				<maintien>10</maintien>
+				<effets>RMys ou RPsy +50 / Occultation du Ki +50</effets>
+			</initial>
+			<intermediaire>
+				<requirement>9</requirement>
+				<cost>180</cost>
+				<maintien>20</maintien>
+				<effets>RMys ou RPsy +140 / Occultation du Ki +150</effets>
+			</intermediaire>
+			<avancee>
+				<requirement>12</requirement>
+				<cost>240</cost>
+				<maintien>25</maintien>
+				<effets>RMys ou RPsy +220 / Occultation du Ki +200</effets>
+			</avancee>
+			<arcane>
+				<requirement>15</requirement>
+				<cost>300</cost>
+				<maintien>30</maintien>
+				<effets>RMys ou RPsy +280 / Occultation du Ki +250</effets>
+			</arcane>
+			<maintien_type>2</maintien_type>
+			<action>PASSIVE</action>
+			<effets_type>Effet</effets_type>
+			<description>Cache la présence du sorcier ou de la cible désignée par ce dernier, face à tout type de détection. En termes de jeu, ce sort augmente les Résistances effectuées contre les détections surnaturelles, qu'elles soient mystiques ou psychiques. Il augmente aussi la compétence de Dissimulation du Ki du personnage, ce qui lui permet de cacher son énergie même s'il n'a pas développé ce pouvoir.</description>
+			<commentaire>Pas de commentaires</commentaire>
+			<source>CE ???</source>
+		</Sort>
+		<Sort Level="036">
+			<name>Dissimulation</name>
+			<initial>
+				<requirement>6</requirement>
+				<cost>100</cost>
+				<maintien>20</maintien>
+				<effets>base de 100 en Camouflage, Discrétion et Dissimulation du Ki</effets>
+			</initial>
+			<intermediaire>
+				<requirement>9</requirement>
+				<cost>180</cost>
+				<maintien>40</maintien>
+				<effets>base de 150 en Camouflage, Discrétion et Dissimulation du Ki</effets>
+			</intermediaire>
+			<avancee>
+				<requirement>12</requirement>
+				<cost>240</cost>
+				<maintien>50</maintien>
+				<effets>base de 200 en Camouflage, Discrétion et Dissimulation du Ki</effets>
+			</avancee>
+			<arcane>
+				<requirement>15</requirement>
+				<cost>300</cost>
+				<maintien>60</maintien>
+				<effets>base de 250 en Camouflage, Discrétion et Dissimulation du Ki</effets>
+			</arcane>
+			<maintien_type>2</maintien_type>
+			<action>ACTIVE</action>
+			<effets_type>Effet</effets_type>
+			<description>Modifie le corps d'un individu, afin de lui permettre de se fondre dans son environnement et de se cacher naturellement. Tant que ce sort est maintenu actif, le personnage peut substituer à ses scores dans les compétences de Camouflage et de Discrétion une valeur de base fixée par le rang du sort. Ce dernier fournit la même valeur au pouvoir de Dissimulation du Ki, même s'il ne l'a pas développé.</description>
+			<commentaire>Pas de commentaires</commentaire>
+			<source>CE ???</source>
+		</Sort>
+		<Sort Level="038">
+			<name>Rage</name>
+			<initial>
+				<requirement>6</requirement>
+				<cost>60</cost>
+				<maintien>10</maintien>
+				<effets>5 m de rayon / RMys 80</effets>
+			</initial>
+			<intermediaire>
+				<requirement>9</requirement>
+				<cost>90</cost>
+				<maintien>40</maintien>
+				<effets>10 m de rayon / RMys 100</effets>
+			</intermediaire>
+			<avancee>
+				<requirement>12</requirement>
+				<cost>150</cost>
+				<maintien>15</maintien>
+				<effets>50 m de rayon / RMys 120</effets>
+			</avancee>
+			<arcane>
+				<requirement>15</requirement>
+				<cost>200</cost>
+				<maintien>20</maintien>
+				<effets>100 m de rayon / 140</effets>
+			</arcane>
+			<maintien_type>1</maintien_type>
+			<action>ACTIVE</action>
+			<effets_type>Animique</effets_type>
+			<description>Provoque l'état de Colère chez les cibles du sort, en leur empêchant de contrôler leurs actions et les faisant attaquer l'individu le plus proche d'elles. Les victimes dans le rayon d’action et échouant à un test de RMys appliquent un bonus de +10 en Attaque et un malus de -30 à tous leurs autres tests. </description>
+			<commentaire>Pas de commentaires</commentaire>
+			<source>CE ???</source>
+		</Sort>
+		<Sort Level="040">
+			<name>Détruire les Sentiments Positifs</name>
+			<initial>
+				<requirement>6</requirement>
+				<cost>80</cost>
+				<maintien>0</maintien>
+				<effets>RMys ou RPsy 100 / 100 m de rayon</effets>
+			</initial>
+			<intermediaire>
+				<requirement>9</requirement>
+				<cost>180</cost>
+				<maintien>0</maintien>
+				<effets>RMys ou RPsy 150 / 500 m de rayon</effets>
+			</intermediaire>
+			<avancee>
+				<requirement>12</requirement>
+				<cost>240</cost>
+				<maintien>0</maintien>
+				<effets>RMys ou RPsy 180 / 1 km de rayon</effets>
+			</avancee>
+			<arcane>
+				<requirement>15</requirement>
+				<cost>350</cost>
+				<maintien>0</maintien>
+				<effets>RMys ou RPsy 220 / 5 km de rayon</effets>
+			</arcane>
+			<maintien_type>0</maintien_type>
+			<action>ACTIVE</action>
+			<effets_type>Animique</effets_type>
+			<description>Détruit temporairement tous les sentiments positifs, comme la paix intérieure, le calme ou l'allégresse autour du sorcier. Il faut réussir un test de RMys ou de RPsy pour résister à ce sort.</description>
+			<commentaire>Pas de commentaires</commentaire>
+			<source>CE ???</source>
+		</Sort>
+		<Sort Level="042">
+			<name>Nuit</name>
+			<initial>
+				<requirement>6</requirement>
+				<cost>80</cost>
+				<maintien>10</maintien>
+				<effets>25 m de rayon</effets>
+			</initial>
+			<intermediaire>
+				<requirement>9</requirement>
+				<cost>180</cost>
+				<maintien>20</maintien>
+				<effets>250 m de rayon</effets>
+			</intermediaire>
+			<avancee>
+				<requirement>12</requirement>
+				<cost>240</cost>
+				<maintien>25</maintien>
+				<effets>500 m de rayon / l’obscurité est considérée comme surnaturelle</effets>
+			</avancee>
+			<arcane>
+				<requirement>15</requirement>
+				<cost>300</cost>
+				<maintien>30</maintien>
+				<effets>1 km de rayon / l’obscurité est considérée comme surnaturelle</effets>
+			</arcane>
+			<maintien_type>1</maintien_type>
+			<action>ACTIVE</action>
+			<effets_type>Effet</effets_type>
+			<description>Forme un dôme d'obscurité absolue. Tout ce qui se trouve à l'intérieur de cette zone, à l'exception du sorcier, subit les règles de Cécité. Pour voir à travers cette obscurité, que ce soit à l'intérieur ou depuis l'extérieur, il faut réussir un test Surhumain de Vigilance ou un test Quasiment Impossible d'Observation. Il n'est pas possible de désigner des cibles à l'intérieur de la zone.</description>
+			<commentaire>Pas de commentaires</commentaire>
+			<source>CE ???</source>
+		</Sort>
+		<Sort Level="046">
+			<name>Sphère Obscure</name>
+			<initial>
+				<requirement>6</requirement>
+				<cost>80</cost>
+				<maintien>15</maintien>
+				<effets>Dégâts de base 100 / Projection Magique 150</effets>
+			</initial>
+			<intermediaire>
+				<requirement>9</requirement>
+				<cost>180</cost>
+				<maintien>20</maintien>
+				<effets>Dégâts de base 120 / Projection Magique 180</effets>
+			</intermediaire>
+			<avancee>
+				<requirement>12</requirement>
+				<cost>240</cost>
+				<maintien>25</maintien>
+				<effets>Dégâts de base 160 / Projection Magique 210</effets>
+			</avancee>
+			<arcane>
+				<requirement>15</requirement>
+				<cost>300</cost>
+				<maintien>30</maintien>
+				<effets>Dégâts de base 200 / Projection Magique 240</effets>
+			</arcane>
+			<maintien_type>1</maintien_type>
+			<action>ACTIVE</action>
+			<effets_type>Attaque</effets_type>
+			<description>Libère une sphère d'énergie obscure infligeant des dégâts sur le mode Énergie. Le sort peut être contrôlé avec la Projection magique du sorcier jusqu'au moment de l'impact. Si une cible esquive l'attaque d'une Sphère Obscure, elle peut continuer à attaquer le round suivant, puisqu'elle n'est pas détruite. Quand la sphère inflige des dégâts ou est bloquée, elle disparaît. Si le sorcier abandonne son contrôle sur la sphère, elle agit indépendamment et suit la dernière cible fixée avec une Projection magique dépendant du rang du sort.</description>
+			<commentaire>Pas de commentaires</commentaire>
+			<source>CE ???</source>
+		</Sort>
+		<Sort Level="048">
+			<name>Zone d'Occultation</name>
+			<initial>
+				<requirement>7</requirement>
+				<cost>140</cost>
+				<maintien>10</maintien>
+				<effets>20 m de rayon / RMys -100 / Comp. de détection -140</effets>
+			</initial>
+			<intermediaire>
+				<requirement>9</requirement>
+				<cost>180</cost>
+				<maintien>10</maintien>
+				<effets>50 m de rayon / RMys -150 / Comp. de détection -180</effets>
+			</intermediaire>
+			<avancee>
+				<requirement>12</requirement>
+				<cost>240</cost>
+				<maintien>15</maintien>
+				<effets>250 m de rayon / RMys -200 / Comp. de détection -240</effets>
+			</avancee>
+			<arcane>
+				<requirement>15</requirement>
+				<cost>300</cost>
+				<maintien>15</maintien>
+				<effets>500 m de rayon / RMys -300 / Comp. de détection -320</effets>
+			</arcane>
+			<maintien_type>2</maintien_type>
+			<action>ACTIVE</action>
+			<effets_type>Detection</effets_type>
+			<description>Quand il lance ce sort sur un lieu précis, le sorcier crée une zone mystique empêchant de détecter ce qui se trouve à l'intérieur. La zone bloque les sorts de Détection, à moins que la personne qui les lancent ne réussisse une RMys. De plus, les compétences de Détection du Ki ou d'Évaluation magique utilisées à l'intérieur de la zone subissent un malus au résultat final. De même, toute forme de détection psychique subit un malus équivalent. La Zone d'Occultation à son centre fixé au lieu où le sort a été lancé.</description>
+			<commentaire>Pas de commentaires</commentaire>
+			<source>CE ???</source>
+		</Sort>
+		<Sort Level="050">
+			<name>S'introduire dans les cauchemars</name>
+			<initial>
+				<requirement>6</requirement>
+				<cost>120</cost>
+				<maintien>10</maintien>
+				<effets>RMys ou RPsy 140 / 10 m de distance</effets>
+			</initial>
+			<intermediaire>
+				<requirement>9</requirement>
+				<cost>180</cost>
+				<maintien>10</maintien>
+				<effets>RMys ou RPsy 160 / 80 m de distance</effets>
+			</intermediaire>
+			<avancee>
+				<requirement>12</requirement>
+				<cost>240</cost>
+				<maintien>15</maintien>
+				<effets>RMys ou RPsy 200 / 140 m de distance</effets>
+			</avancee>
+			<arcane>
+				<requirement>15</requirement>
+				<cost>300</cost>
+				<maintien>15</maintien>
+				<effets>RMys ou RPsy 240 / 200 m de distance</effets>
+			</arcane>
+			<maintien_type>2</maintien_type>
+			<action>ACTIVE</action>
+			<effets_type>Animique</effets_type>
+			<description>Permet au sorcier de s'introduire physiquement dans les cauchemars d'un dormeur. Le sorcier n'a aucun contrôle sur le monde onirique du rêveur et toute chose qui s'y déroule sera réelle pour lui. Le rêveur doit avoir des cauchemars effrayants pour que ce sort puisse l'affecter et, dès que le cauchemar se change en rêve paisible, qu'il se réveille ou qu'il meurt, le sorcier abandonne le monde onirique et revient à la réalité. Tous les sorts d'Essence réalisés sur le dormeur affectent aussi le sorcier. La victime a droit à un test de RMys ou RPsy. Une fois dans les cauchemars, le sorcier peut sauter vers l'inconscient d'un autre rêveur si celui-ci se trouve physiquement à maximum du premier rêveur fixée par le rang du sort. Bien sûr, cette personne à elle aussi droit au test de RMys ou RPsy. Si la conscience du dormeur se trouve dans le monde de la Veille, le sorcier y reste coincé, même après la fin du sort.</description>
+			<commentaire>Pas de commentaires</commentaire>
+			<source>CE ???</source>
+		</Sort>
 	</Livre>
 	<Livre Name="Création">
 	</Livre>
