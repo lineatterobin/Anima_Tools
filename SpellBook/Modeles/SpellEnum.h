@@ -23,7 +23,8 @@ public:
         ATTAQUE,
         DEFENSE,
         DETECTION,
-        EFFET_ANIMIQUE
+        EFFET_ANIMIQUE,
+        ATTAQUE_ANIMIQUE
     }; Q_ENUM(EffectTypes) typedef enum EffectTypes ETypes;
 
 

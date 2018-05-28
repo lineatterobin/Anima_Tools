@@ -452,6 +452,8 @@ void SpellView::loadData(const QModelIndex& index_, QAbstractItemModel* model_)
         _spellEffectType->setCurrentIndex(SpellEnum::DETECTION);
     else if (QString::compare(model_->index(0,0,child).data().toString(), "EFFET_ANIMIQUE", Qt::CaseInsensitive) == 0)
         _spellEffectType->setCurrentIndex(SpellEnum::EFFET_ANIMIQUE);
+    else if (QString::compare(model_->index(0,0,child).data().toString(), "ATTAQUE_ANIMIQUE", Qt::CaseInsensitive) == 0)
+        _spellEffectType->setCurrentIndex(SpellEnum::ATTAQUE_ANIMIQUE);
     else
         _spellEffectType->setCurrentIndex(SpellEnum::EFFET);
 

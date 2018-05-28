@@ -1316,7 +1316,7 @@
 			</arcane>
 			<maintien_type>0</maintien_type>
 			<action>ACTIVE</action>
-			<effets_type>Effet</effets_type>
+			<effets_type>Attaque_animique</effets_type>
 			<description>Ce sort déchaîne la puissance de la lumière dans son état le plus pur, rasant tout ce qui se trouve sur son passage, aussi bien dans le monde matériel que dans le monde spirituel. L'énergie libérée arrache et dévore toute chose, unifiant toute existence à celle de la lumière. Même les créatures de lumière sont assimilées par ce sort.L'Holocauste crée une grande coupole lumineuse, à l'intérieur de laquelle tout se dissout instantanément. Les dégâts provoqués sont de type Énergie. Tout être subissant des dégâts, aussi minimes soient-ils, doit réussir un test de RMys contre 160 sous peine d'être unifié à la lumière et, de fait, détruit de corps comme d'esprit. Il n'est pas possible de désigner des cibles précises dans le rayon du sort, qui affecte tout de la même manière, à l'exception du sorcier.</description>
 			<commentaire>Pas de commentaires</commentaire>
 			<source>CE 127</source>
@@ -1980,6 +1980,666 @@
 			<action>ACTIVE</action>
 			<effets_type>Animique</effets_type>
 			<description>Permet au sorcier de s'introduire physiquement dans les cauchemars d'un dormeur. Le sorcier n'a aucun contrôle sur le monde onirique du rêveur et toute chose qui s'y déroule sera réelle pour lui. Le rêveur doit avoir des cauchemars effrayants pour que ce sort puisse l'affecter et, dès que le cauchemar se change en rêve paisible, qu'il se réveille ou qu'il meurt, le sorcier abandonne le monde onirique et revient à la réalité. Tous les sorts d'Essence réalisés sur le dormeur affectent aussi le sorcier. La victime a droit à un test de RMys ou RPsy. Une fois dans les cauchemars, le sorcier peut sauter vers l'inconscient d'un autre rêveur si celui-ci se trouve physiquement à maximum du premier rêveur fixée par le rang du sort. Bien sûr, cette personne à elle aussi droit au test de RMys ou RPsy. Si la conscience du dormeur se trouve dans le monde de la Veille, le sorcier y reste coincé, même après la fin du sort.</description>
+			<commentaire>Pas de commentaires</commentaire>
+			<source>CE ???</source>
+		</Sort>
+		<Sort Level="052">
+			<name>De Corps à Obscurité</name>
+			<initial>
+				<requirement>8</requirement>
+				<cost>100</cost>
+				<maintien>10</maintien>
+				<effets>Discrétion et Camouflage + 50 / +20 aux Résistances</effets>
+			</initial>
+			<intermediaire>
+				<requirement>11</requirement>
+				<cost>120</cost>
+				<maintien>15</maintien>
+				<effets>Discrétion et Camouflage + 60 / +30 aux Résistances</effets>
+			</intermediaire>
+			<avancee>
+				<requirement>13</requirement>
+				<cost>140</cost>
+				<maintien>15</maintien>
+				<effets>Comme Intermédiaire à ceci près que le bonus aux résistances s’appliquent à tous les types d’effet à l’exception de ceux basés sur la lumière</effets>
+			</avancee>
+			<arcane>
+				<requirement>16</requirement>
+				<cost>160</cost>
+				<maintien>20</maintien>
+				<effets>Comme Avancée à ceci près que les dégâts infligés par la lumière ne sont plus doublés</effets>
+			</arcane>
+			<maintien_type>1</maintien_type>
+			<action>ACTIVE</action>
+			<effets_type>Effet</effets_type>
+			<description>La créature désignée par le sorcier se transforme en pure énergie obscure et devient intangible vis à vis de toutes les matières et attaques non basées sur l'énergie. Tant qu'elle se trouve dans cet état, la créature bénéficie d'un bonus dans ses compétences secondaires de Camouflage et de Discrétion, et à ses Résistances contre les effets basés sur l'Obscurité. Dans cet état, tous les dégâts infligés par la Lumière sont doublés.</description>
+			<commentaire>Pas de commentaires</commentaire>
+			<source>CE ???</source>
+		</Sort>
+		<Sort Level="056">
+			<name>Perdition</name>
+			<initial>
+				<requirement>6</requirement>
+				<cost>100</cost>
+				<maintien>5</maintien>
+				<effets>RMys 120 / 5 m de rayon</effets>
+			</initial>
+			<intermediaire>
+				<requirement>9</requirement>
+				<cost>180</cost>
+				<maintien>10</maintien>
+				<effets>RMys 160 / 25 m de rayon</effets>
+			</intermediaire>
+			<avancee>
+				<requirement>12</requirement>
+				<cost>240</cost>
+				<maintien>15</maintien>
+				<effets>RMys 180 / 50 m de rayon</effets>
+			</avancee>
+			<arcane>
+				<requirement>15</requirement>
+				<cost>300</cost>
+				<maintien>20</maintien>
+				<effets>RMys 200 / 150 m de rayon</effets>
+			</arcane>
+			<maintien_type>1</maintien_type>
+			<action>ACTIVE</action>
+			<effets_type>Effet</effets_type>
+			<description>La Perdition provoque un choc chez les individus qu'elle affecte, en diminuant toutes leurs capacités. Ceux qui en subissent l'influence doivent réussir un test de RMys sous peine de subit un malus de -40 à toutes leurs actions et Résistances. Le sort affecte automatiquement toute personne se trouvant à l'intérieur de la zone. Les malus de Perdition ne sont pas cumulables : un personnage ne subit pas deux fois les malus quand il se trouve dans la zone d'influence de deux sorts de Perdition.</description>
+			<commentaire>Pas de commentaires</commentaire>
+			<source>CE ???</source>
+		</Sort>
+		<Sort Level="058">
+			<name>Créer des Sentiments Négatifs</name>
+			<initial>
+				<requirement>8</requirement>
+				<cost>100</cost>
+				<maintien>10</maintien>
+				<effets>20 m de rayon / RMys ou RPsy 120</effets>
+			</initial>
+			<intermediaire>
+				<requirement>10</requirement>
+				<cost>180</cost>
+				<maintien>20</maintien>
+				<effets>100 m de rayon / RMys ou RPsy 160</effets>
+			</intermediaire>
+			<avancee>
+				<requirement>12</requirement>
+				<cost>240</cost>
+				<maintien>25</maintien>
+				<effets>250 m de rayon / RMys ou RPsy 180</effets>
+			</avancee>
+			<arcane>
+				<requirement>15</requirement>
+				<cost>300</cost>
+				<maintien>30</maintien>
+				<effets>500 m de rayon / RMys ou RPsy 220</effets>
+			</arcane>
+			<maintien_type>2</maintien_type>
+			<action>ACTIVE</action>
+			<effets_type>Animique</effets_type>
+			<description>Ce sort introduit un type de sentiment négatif, comme la haine, la peur ou la colère, chez les cibles désignées par le sorcier et échouant à un test de RMys ou de RPsy. Une cible affectée peut effectuer ce test une fois par jour.</description>
+			<commentaire>Pas de commentaires</commentaire>
+			<source>CE ???</source>
+		</Sort>
+		<Sort Level="060">
+			<name>Eliminer les Traces</name>
+			<initial>
+				<requirement>8</requirement>
+				<cost>100</cost>
+				<maintien>0</maintien>
+				<effets>50 m de rayon</effets>
+			</initial>
+			<intermediaire>
+				<requirement>10</requirement>
+				<cost>180</cost>
+				<maintien>0</maintien>
+				<effets>250 m de rayon</effets>
+			</intermediaire>
+			<avancee>
+				<requirement>13</requirement>
+				<cost>240</cost>
+				<maintien>0</maintien>
+				<effets>1 km de rayon / ce sort efface également les actions d’un personnage capable de lire dans les lieux ou les objets</effets>
+			</avancee>
+			<arcane>
+				<requirement>16</requirement>
+				<cost>300</cost>
+				<maintien>0</maintien>
+				<effets>5 km de rayon / comme Avancé à ceci près que le sorcier efface absolument toutes les traces de son passage dans toute la zone d’effet</effets>
+			</arcane>
+			<maintien_type>0</maintien_type>
+			<action>ACTIVE</action>
+			<effets_type>Effet</effets_type>
+			<description>Le sorcier peut effacer les traces de sa présence dans un lieu déterminé. En fait, toute trace de son passage à cet endroit disparaît complètement, que ce soit vis à vis des compétences naturelles, comme Pistage, ou des détections surnaturelles.</description>
+			<commentaire>Pas de commentaires</commentaire>
+			<source>CE ???</source>
+		</Sort>
+		<Sort Level="062">
+			<name>Bouclier Anti-Positif</name>
+			<initial>
+				<requirement>7</requirement>
+				<cost>140</cost>
+				<maintien>15</maintien>
+				<effets>RMys 120 / 20 m de rayon</effets>
+			</initial>
+			<intermediaire>
+				<requirement>9</requirement>
+				<cost>180</cost>
+				<maintien>20</maintien>
+				<effets>RMys 140 / 100 m de rayon</effets>
+			</intermediaire>
+			<avancee>
+				<requirement>12</requirement>
+				<cost>240</cost>
+				<maintien>25</maintien>
+				<effets>RMys 160 / 250 m de rayon</effets>
+			</avancee>
+			<arcane>
+				<requirement>15</requirement>
+				<cost>300</cost>
+				<maintien>30</maintien>
+				<effets>RMys 180 / 500 m de rayon</effets>
+			</arcane>
+			<maintien_type>2</maintien_type>
+			<action>ACTIVE</action>
+			<effets_type>Automatique</effets_type>
+			<description>Enchante une zone déterminée pour la rendre impénétrable pour les êtres basés naturellement sur les sentiments positifs ou la lumière. Toute créature de ce type pénétrant dans la zone d'effet du sort doit effectuer à chaque round un test de RMys, sous peine de perdre autant de points de vie que sa marge d'échec. De plus, si elle échoue à ce test, la créature subit immédiatement un malus de -40 à toutes ses actions. La zone d'effet voit son centre est fixé au lieu où le sort a été lancé.</description>
+			<commentaire>Pas de commentaires</commentaire>
+			<source>CE ???</source>
+		</Sort>
+		<Sort Level="066">
+			<name>Obscurité Dévorante</name>
+			<initial>
+				<requirement>6</requirement>
+				<cost>120</cost>
+				<maintien>10</maintien>
+				<effets>Dégâts de choc 80 / le bouclier possède 600 PV</effets>
+			</initial>
+			<intermediaire>
+				<requirement>9</requirement>
+				<cost>180</cost>
+				<maintien>10</maintien>
+				<effets>Dégâts de choc 110 / le bouclier possède 1 200 PV</effets>
+			</intermediaire>
+			<avancee>
+				<requirement>12</requirement>
+				<cost>240</cost>
+				<maintien>15</maintien>
+				<effets>Dégâts de choc 140 / le bouclier possède 1 800 PV</effets>
+			</avancee>
+			<arcane>
+				<requirement>15</requirement>
+				<cost>300</cost>
+				<maintien>15</maintien>
+				<effets>Dégâts de choc 170 / le bouclier possède 2 200 PV</effets>
+			</arcane>
+			<maintien_type>1</maintien_type>
+			<action>PASSIVE</action>
+			<effets_type>Defense</effets_type>
+			<description>Crée une ombre qui fonctionne à la manière d'un bouclier, avec la capacité d'absorber tout sort d'Attaque qu'elle reçoit. Pour que le sort soit absorbé, il faut réussir une parade contre l'attaque portée. Si le défenseur réussit sa parade, le sortilège d'attaque doit échouer lors d'un test de choc contre l'équivalant d'une décharge de dégâts fixée par le rang du sort. Le vide absorbe la moitié du Zéon du sort dévoré, qui est transféré au sorcier. Il est aussi possible d'absorber des Attaques de zone.</description>
+			<commentaire>Pas de commentaires</commentaire>
+			<source>CE ???</source>
+		</Sort>
+		<Sort Level="068">
+			<name>Mettre en Pièces</name>
+			<initial>
+				<requirement>6</requirement>
+				<cost>100</cost>
+				<maintien>10</maintien>
+				<effets>RMys 120</effets>
+			</initial>
+			<intermediaire>
+				<requirement>9</requirement>
+				<cost>180</cost>
+				<maintien>20</maintien>
+				<effets>RMys 160</effets>
+			</intermediaire>
+			<avancee>
+				<requirement>12</requirement>
+				<cost>240</cost>
+				<maintien>25</maintien>
+				<effets>RMys 200</effets>
+			</avancee>
+			<arcane>
+				<requirement>15</requirement>
+				<cost>300</cost>
+				<maintien>30</maintien>
+				<effets>RMys 240</effets>
+			</arcane>
+			<maintien_type>1</maintien_type>
+			<action>ACTIVE</action>
+			<effets_type>Animique</effets_type>
+			<description>Ce sort provoque des malus par une accumulation de souffrances, de malheurs et d'autres effets mystiques négatifs. La cible affectée doit réussir un test de RMys sous peine de subir un malus équivalent à la marge d'échec de ce test à toutes ses actions et ses Résistances. Si elle échoue au test de Résistance, elle n'aura droit à aucun nouveau test jusqu'à la fin du sort.</description>
+			<commentaire>Pas de commentaires</commentaire>
+			<source>CE ???</source>
+		</Sort>
+		<Sort Level="070">
+			<name>Marque de la Peur</name>
+			<initial>
+				<requirement>10</requirement>
+				<cost>140</cost>
+				<maintien>5</maintien>
+				<effets>Visible dans un rayon d’1 km / RMys ou RPsy 120</effets>
+			</initial>
+			<intermediaire>
+				<requirement>12</requirement>
+				<cost>200</cost>
+				<maintien>10</maintien>
+				<effets>Visible dans un rayon de 5 km / RMys ou RPsy 150</effets>
+			</intermediaire>
+			<avancee>
+				<requirement>14</requirement>
+				<cost>280</cost>
+				<maintien>10</maintien>
+				<effets>Visible dans un rayon de 15 km / RMys ou RPsy 180</effets>
+			</avancee>
+			<arcane>
+				<requirement>16</requirement>
+				<cost>360</cost>
+				<maintien>15</maintien>
+				<effets>Visible dans un rayon de 25 km / RMys ou RPsy 220</effets>
+			</arcane>
+			<maintien_type>1</maintien_type>
+			<action>ACTIVE</action>
+			<effets_type>Automatique</effets_type>
+			<description>Crée un spectacle d'ombres dans un lieu déterminé, qui terrorise tous ceux qui l'observent. Les spectateurs doivent réussir un test de RMys ou RPsy sous peine de subir un état de Terreur. Le sort est visible à une distance fixée par le rang du sort. Ce sort affecte ses victimes à l'unique condition qu'elles regardent directement la Marque de la Peur.</description>
+			<commentaire>Pas de commentaires</commentaire>
+			<source>CE ???</source>
+		</Sort>
+		<Sort Level="072">
+			<name>Obscurité Catastrophique</name>
+			<initial>
+				<requirement>10</requirement>
+				<cost>140</cost>
+				<maintien>0</maintien>
+				<effets>Dégâts de base 120 / 25 m de rayon</effets>
+			</initial>
+			<intermediaire>
+				<requirement>12</requirement>
+				<cost>180</cost>
+				<maintien>0</maintien>
+				<effets>Dégâts de base 150 / 100 m de rayon</effets>
+			</intermediaire>
+			<avancee>
+				<requirement>14</requirement>
+				<cost>240</cost>
+				<maintien>0</maintien>
+				<effets>Dégâts de base 200 / 150 m de rayon</effets>
+			</avancee>
+			<arcane>
+				<requirement>16</requirement>
+				<cost>350</cost>
+				<maintien>0</maintien>
+				<effets>Dégâts de base 250 / 250 m de rayon</effets>
+			</arcane>
+			<maintien_type>0</maintien_type>
+			<action>ACTIVE</action>
+			<effets_type>Attaque</effets_type>
+			<description>Projette une décharge d'énergie basée sur l'obscurité, sur le Mode Énergie. </description>
+			<commentaire>Pas de commentaires</commentaire>
+			<source>CE ???</source>
+		</Sort>
+		<Sort Level="076">
+			<name>Objets Obscurs</name>
+			<initial>
+				<requirement>10</requirement>
+				<cost>150</cost>
+				<maintien>15</maintien>
+				<effets>Présence 60 / Qualité +5</effets>
+			</initial>
+			<intermediaire>
+				<requirement>12</requirement>
+				<cost>200</cost>
+				<maintien>20</maintien>
+				<effets>Présence 100 / Qualité +10</effets>
+			</intermediaire>
+			<avancee>
+				<requirement>14</requirement>
+				<cost>240</cost>
+				<maintien>25</maintien>
+				<effets>Présence 140 / Qualité +10</effets>
+			</avancee>
+			<arcane>
+				<requirement>16</requirement>
+				<cost>300</cost>
+				<maintien>30</maintien>
+				<effets>Présence 180 / Qualité +15</effets>
+			</arcane>
+			<maintien_type>1</maintien_type>
+			<action>ACTIVE</action>
+			<effets_type>Effet</effets_type>
+			<description>Forme un objet physique d'énergie obscure. L'objet créé ne peut pas avoir une Présence supérieure à une valeur fixée par le rang du sort, qu'il soit aussi complexe qu'une horloge ou aussi simple qu'une épée, et il obtient un bonus de qualité dépendant de ce même rang. Exceptionnellement, la qualité de l'objet n'influe pas sur sa Présence.</description>
+			<commentaire>Pas de commentaires</commentaire>
+			<source>CE ???</source>
+		</Sort>
+		<Sort Level="078">
+			<name>Transmission par les Ombres</name>
+			<initial>
+				<requirement>10</requirement>
+				<cost>250</cost>
+				<maintien>0</maintien>
+				<effets>100 km / 250 de Présence / RMys 120</effets>
+			</initial>
+			<intermediaire>
+				<requirement>12</requirement>
+				<cost>360</cost>
+				<maintien>0</maintien>
+				<effets>1 000 km / 500 de Présence / RMys 140</effets>
+			</intermediaire>
+			<avancee>
+				<requirement>14</requirement>
+				<cost>450</cost>
+				<maintien>0</maintien>
+				<effets>5 000 km / 1 000 de Présence / RMys 180</effets>
+			</avancee>
+			<arcane>
+				<requirement>16</requirement>
+				<cost>600</cost>
+				<maintien>0</maintien>
+				<effets>15 000 km / 2 000 de Présence / RMys 200</effets>
+			</arcane>
+			<maintien_type>0</maintien_type>
+			<action>ACTIVE</action>
+			<effets_type>Effet_animique</effets_type>
+			<description>Transporte instantanément les individus ou les objets désignés par le sorcier, d'une ombre à une autre qui se trouve à une distance maximale fixée par le rang du sort. La somme de Présence transportable ne peut pas être supérieure à une valeur fixée par ce même rang. Si une cible souhaite résister, elle doit réussir un test de RMys.</description>
+			<commentaire>Pas de commentaires</commentaire>
+			<source>CE ???</source>
+		</Sort>
+		<Sort Level="080">
+			<name>Roi des Cauchemars</name>
+			<initial>
+				<requirement>12</requirement>
+				<cost>300</cost>
+				<maintien>60</maintien>
+				<effets>RMys 140</effets>
+			</initial>
+			<intermediaire>
+				<requirement>14</requirement>
+				<cost>400</cost>
+				<maintien>65</maintien>
+				<effets>RMys 150 / Si le sorcier se retrouve dans la Veille, il en contrôle également l’environnement et obtient les pouvoirs d’une créature de Gnose 40, à condition que la zone soit fortement influencée par les énergies négatives. S’il se trouve dans une zone neutre, la Gnose équivalente sera de 30. Ce sort n’affecte que ce qui se trouve dans sa zone d’effet et seulement si aucune autre entité de Gnose similaire s’y trouve ou n’y pénètre.</effets>
+			</intermediaire>
+			<avancee>
+				<requirement>16</requirement>
+				<cost>500</cost>
+				<maintien>70</maintien>
+				<effets>RMys 160 / comme pour Intermédiaire à ceci près que la Gnose équivalent en zone neutre passe à 35</effets>
+			</avancee>
+			<arcane>
+				<requirement>18</requirement>
+				<cost>750</cost>
+				<maintien>80</maintien>
+				<effets>RMys 180 / comme pour Avancé à ceci près que les sortilèges n’ont plus de limites spatiales et peuvent atteindre tout ce qui se trouve dans les zones de la veille influencées par les énergies négatives.</effets>
+			</arcane>
+			<maintien_type>2</maintien_type>
+			<action>ACTIVE</action>
+			<effets_type>Effet_animique</effets_type>
+			<description>Permet de dominer n'importe quel type de rêve. Le sorcier a la capacité de contrôler le monde onirique d'un dormeur, en le modifiant comme s'il avait 45 en Gnose. Si le rêve s'alimente d'énergie négative, autrement dit qu'il se change en cauchemar, la Gnose du sorcier ne sera que de 30. Si le dormeur souhaite éviter le sort, il doit effectuer un test de RMys. Ce sort a aussi une deuxième fonction, suivant si le sorcier se trouve dans la Veille ou pas. Les sorts lancés par le sorciers autorisés par ce niveau de gnose (comme les sorts de Magie Divine par exemple) ne peuvent avoir d’effets en dehors de la zone d’influence du sortilège et durent jusqu’à ce que le sorcier ne quitte le rêve (ou la veille).</description>
+			<commentaire>Pas de commentaires</commentaire>
+			<source>CE ???</source>
+		</Sort>
+		<Sort Level="082">
+			<name>Création Obscure</name>
+			<initial>
+				<requirement>10</requirement>
+				<cost>250</cost>
+				<maintien>50</maintien>
+				<effets>Niveau 1</effets>
+			</initial>
+			<intermediaire>
+				<requirement>12</requirement>
+				<cost>350</cost>
+				<maintien>70</maintien>
+				<effets>Niveau 3</effets>
+			</intermediaire>
+			<avancee>
+				<requirement>14</requirement>
+				<cost>500</cost>
+				<maintien>100</maintien>
+				<effets>Niveau 6</effets>
+			</avancee>
+			<arcane>
+				<requirement>16</requirement>
+				<cost>700</cost>
+				<maintien>140</maintien>
+				<effets>Niveau 10</effets>
+			</arcane>
+			<maintien_type>2</maintien_type>
+			<action>ACTIVE</action>
+			<effets_type>Effet</effets_type>
+			<description>Crée un être obscur avec l'apparence de la vie, sous le contrôle absolu du sorcier. Cet être sera conçu comme une créature d'Entre Mondes, en utilisant les pouvoirs et les limitations des élémentaires d’Obscurité du Chapitre 26. Le niveau de la créature sera fixé par le rang du sort.</description>
+			<commentaire>Pas de commentaires</commentaire>
+			<source>CE ???</source>
+		</Sort>
+		<Sort Level="086">
+			<name>Occultation devant la Magie</name>
+			<initial>
+				<requirement>10</requirement>
+				<cost>200</cost>
+				<maintien>10</maintien>
+				<effets>Affecte un sort Automatique de Degré  Initial</effets>
+			</initial>
+			<intermediaire>
+				<requirement>12</requirement>
+				<cost>240</cost>
+				<maintien>15</maintien>
+				<effets>Affecte un sort Automatique de Degré  Intermédiaire</effets>
+			</intermediaire>
+			<avancee>
+				<requirement>14</requirement>
+				<cost>280</cost>
+				<maintien>15</maintien>
+				<effets>Affecte un sort Automatique de Degré  Avancé</effets>
+			</avancee>
+			<arcane>
+				<requirement>16</requirement>
+				<cost>700</cost>
+				<maintien>20</maintien>
+				<effets>Affecte un sort Automatique de Degré  Arcane</effets>
+			</arcane>
+			<maintien_type>2</maintien_type>
+			<action>PASSIVE</action>
+			<effets_type>Effet</effets_type>
+			<description>Dissimule la présence d'un individu vis à vis des sorts de type Automatique, ce qui lui permet de ne pas être affecté par eux de manière directe. Contrairement à ce qu'indiquent les règles générales, le sorcier qui maintient actif un sort Automatique devra réussir à cibler le personnage avec sa Projection magique, comme s'il s'agissait d'un sort Animique traditionnel, si ce n'est que cette condition est nécessaire pour affecter le personnage.</description>
+			<commentaire>Pas de commentaires</commentaire>
+			<source>CE ???</source>
+		</Sort>
+		<Sort Level="088">
+			<name>Règne des Ténèbres</name>
+			<initial>
+				<requirement>10</requirement>
+				<cost>200</cost>
+				<maintien>10</maintien>
+				<effets>50 m de rayon</effets>
+			</initial>
+			<intermediaire>
+				<requirement>12</requirement>
+				<cost>360</cost>
+				<maintien>20</maintien>
+				<effets>500 m de rayon</effets>
+			</intermediaire>
+			<avancee>
+				<requirement>14</requirement>
+				<cost>420</cost>
+				<maintien>25</maintien>
+				<effets>1 km de rayon</effets>
+			</avancee>
+			<arcane>
+				<requirement>16</requirement>
+				<cost>480</cost>
+				<maintien>25</maintien>
+				<effets>1 km de rayon / AMR + 30 pour les sorts d’Obscurité</effets>
+			</arcane>
+			<maintien_type>1</maintien_type>
+			<action>ACTIVE</action>
+			<effets_type>Automatique</effets_type>
+			<description>Crée une zone autour du sorcier, où tout se couvre d'une obscurité absolue. Le corps du sorcier se fond avec les ombres, augmentant ainsi de +40 ses Résistances contre tout type de détection. Pour le localiser en utilisant ses sens, il faut réussir un test Impossible d'Observation ou un test Surhumain de Vigilance. Même Détection du Ki exige de réussir un test Surhumain. De plus, tant que le sorcier reste dans l'obscurité, il peut se téléporter en un round vers tout endroit compris sous le Règne des Ténèbres. Enfin, son AMR augmente de +20 quand il utilise des sorts d'obscurité. Tous les êtres vivants pris dans l’aire d’effet et qui ne sont pas des élémentaires obscurs perdent automatiquement 10 points de Zéon par round (le double pour un élémentaire de lumière). La zone ne peut pas s'étendre au-delà du lieu où le sort a été lancé.</description>
+			<commentaire>Pas de commentaires</commentaire>
+			<source>CE ???</source>
+		</Sort>
+		<Sort Level="090">
+			<name>Non Détection</name>
+			<initial>
+				<requirement>12</requirement>
+				<cost>350</cost>
+				<maintien>80</maintien>
+				<effets>Le personnage n’est plus détectables par la magie ou les pouvoirs psychiques.</effets>
+			</initial>
+			<intermediaire>
+				<requirement>14</requirement>
+				<cost>450</cost>
+				<maintien>90</maintien>
+				<effets>Comme Initial, sauf que le personnage n’est plus non plus détectable par le Ki.</effets>
+			</intermediaire>
+			<avancee>
+				<requirement>16</requirement>
+				<cost>600</cost>
+				<maintien>105</maintien>
+				<effets>Comme Intermédiaire, sauf que le personnage n’est plus détectable du tout par aucun type de capacité surnaturelle.</effets>
+			</avancee>
+			<arcane>
+				<requirement>18</requirement>
+				<cost>800</cost>
+				<maintien>115</maintien>
+				<effets>Ignore tout autre test que ceux effectués avec les cinq sens naturels.</effets>
+			</arcane>
+			<maintien_type>2</maintien_type>
+			<action>ACTIVE</action>
+			<effets_type>Effet</effets_type>
+			<description>Le sorcier, ou celui qu'il désigne comme cible, devient complètement immunisé à tout type de détection de caractère surnaturel, magique, psychique ou du Ki. Par exemple, un personnage qui utilise ce sort au rang Arcane ne peut être détecté que par l’utilisation des sens physiques, comme la vue et l'ouïe.</description>
+			<commentaire>Pas de commentaires</commentaire>
+			<source>CE ???</source>
+		</Sort>
+		<Sort Level="092">
+			<name>Prison d'Obscurité</name>
+			<initial>
+				<requirement>14</requirement>
+				<cost>200</cost>
+				<maintien>40</maintien>
+				<effets>RMys 140 / La prison possède 10 000 PV</effets>
+			</initial>
+			<intermediaire>
+				<requirement>16</requirement>
+				<cost>350</cost>
+				<maintien>70</maintien>
+				<effets>RMys 180 / La prison possède 250 000 PV</effets>
+			</intermediaire>
+			<avancee>
+				<requirement>18</requirement>
+				<cost>500</cost>
+				<maintien>100</maintien>
+				<effets>RMys 220 / La prison possède 500 000 PV</effets>
+			</avancee>
+			<arcane>
+				<requirement>20</requirement>
+				<cost>800</cost>
+				<maintien>160</maintien>
+				<effets>RMys 240 / La prison ne peut être brisée de l’intérieur, mais possède 500 000 PV de résistance aux dégâts de l’extérieur.</effets>
+			</arcane>
+			<maintien_type>1</maintien_type>
+			<action>ACTIVE</action>
+			<effets_type>Animique</effets_type>
+			<description>Emprisonne une créature dans un monde d'obscurité impossible à traverser, un univers dans lequel elle ne pourra pas interagir avec l'extérieur, ni inversement. Tant que la cible du sort se trouve à l'intérieur de la prison, elle n'a pas conscience de ce qui se passe à l'extérieur, ou inversement. Pour briser le sortilège de l'intérieur, on considère que la prison possède une quantité de PV fixée par le rang du sort, et qu'elle suit les règles d'Encaissement avec une IP de 10. De l'extérieur, les dommages infligés sont doublés mais la prison régénère les dégâts subis avec une Régénération de 19. On peut éviter ce sort en réussissant un test de RMys. En cas d'échec, la cible n'a droit à aucun test ultérieur ; si elle désire sortir, elle devra être capable de rompre le sortilège.</description>
+			<commentaire>Pas de commentaires</commentaire>
+			<source>CE ???</source>
+		</Sort>
+		<Sort Level="096">
+			<name>Essence Obscure</name>
+			<initial>
+				<requirement>12</requirement>
+				<cost>200</cost>
+				<maintien>0</maintien>
+				<effets>Un jour</effets>
+			</initial>
+			<intermediaire>
+				<requirement>14</requirement>
+				<cost>400</cost>
+				<maintien>0</maintien>
+				<effets>Une semaine</effets>
+			</intermediaire>
+			<avancee>
+				<requirement>16</requirement>
+				<cost>600</cost>
+				<maintien>0</maintien>
+				<effets>Un mois</effets>
+			</avancee>
+			<arcane>
+				<requirement>18</requirement>
+				<cost>800</cost>
+				<maintien>0</maintien>
+				<effets>Un an</effets>
+			</arcane>
+			<maintien_type>0</maintien_type>
+			<action>ACTIVE</action>
+			<effets_type>Effet</effets_type>
+			<description>Permet au sorcier d'entrer dans un état de léthargie absolue, tandis que son corps ne fait plus qu'un avec l'obscurité. Il abandonne le monde et commence son ascension vers le flux des âmes pour se nourrir de son énergie. À l'écart et inconscient de tout ce qui se passe autour de lui, le personnage multiplie par 10 sa régénération Zéonique et soigne ses blessures avec une Régénération de 16. Bien que ce sort n'ait pas de maintien, le sorcier peut rester dans le flux des âmes pour une durée maximale fixée par le rang du sort.</description>
+			<commentaire>Pas de commentaires</commentaire>
+			<source>CE ???</source>
+		</Sort>
+		<Sort Level="098">
+			<name>Ascension Obscure</name>
+			<initial>
+				<requirement>14</requirement>
+				<cost>500</cost>
+				<maintien>30</maintien>
+				<effets>Gnose maximale 30</effets>
+			</initial>
+			<intermediaire>
+				<requirement>16</requirement>
+				<cost>1000</cost>
+				<maintien>40</maintien>
+				<effets>Gnose maximale 35</effets>
+			</intermediaire>
+			<avancee>
+				<requirement>18</requirement>
+				<cost>2000</cost>
+				<maintien>45</maintien>
+				<effets>Gnose maximale 40</effets>
+			</avancee>
+			<arcane>
+				<requirement>20</requirement>
+				<cost>5000</cost>
+				<maintien>50</maintien>
+				<effets>Gnose maximale 45</effets>
+			</arcane>
+			<maintien_type>2</maintien_type>
+			<action>ACTIVE</action>
+			<effets_type>Effet</effets_type>
+			<description>Permet au sorcier d'entrer dans un état de léthargie absolue, tandis que son corps ne fait plus qu'un avec l'obscurité. Il abandonne le monde et commence son ascension vers le flux des âmes pour se nourrir de son énergie. À l'écart et inconscient de tout ce qui se passe autour de lui, le personnage multiplie par 10 sa régénération Zéonique et soigne ses blessures avec une Régénération de 16. Bien que ce sort n'ait pas de maintien, le sorcier peut rester dans le flux des âmes pour une durée maximale fixée par le rang du sort.</description>
+			<commentaire>Pas de commentaires</commentaire>
+			<source>CE ???</source>
+		</Sort>
+		<Sort Level="100">
+			<name>Holocauste d'Obscurité</name>
+			<initial>
+				<requirement>14</requirement>
+				<cost>600</cost>
+				<maintien>0</maintien>
+				<effets>Dégâts de base 350 / 100m de rayon</effets>
+			</initial>
+			<intermediaire>
+				<requirement>16</requirement>
+				<cost>1000</cost>
+				<maintien>0</maintien>
+				<effets>Dégâts de base 500 / 100 km de rayon</effets>
+			</intermediaire>
+			<avancee>
+				<requirement>18</requirement>
+				<cost>2500</cost>
+				<maintien>0</maintien>
+				<effets>Dégâts de base 800 / 10 000 km de rayon</effets>
+			</avancee>
+			<arcane>
+				<requirement>20</requirement>
+				<cost>10000</cost>
+				<maintien>0</maintien>
+				<effets>Dégâts de base 1 000 / 1 UA de rayon</effets>
+			</arcane>
+			<maintien_type>0</maintien_type>
+			<action>ACTIVE</action>
+			<effets_type>Attaque_animique</effets_type>
+			<description>Ce sort déchaîne la puissance de l'obscurité dans son état le plus pur, rasant tout ce qui se trouve sur son passage, aussi bien dans le monde matériel que dans le monde spirituel. L'énergie libérée arrache et dévore toute chose, unifiant toute existence à celle de l'obscurité. Même les créatures élémentaires d'obscurité sont assimilées par ce sort. L'Holocauste crée une grande coupole ténébreuse, à l'intérieur de laquelle tout se dissout instantanément. L’attaque se fait sur le mode Énergie. Tout être subissant des dégâts, aussi minimes soient-ils, doit réussir un test de RMys contre 160 sous peine d'être unifié à l'obscurité et de fait détruit de corps comme d'esprit. Il n'est pas possible de désigner des cibles précises dans le rayon du sort, qui affecte tout de la même manière, à l'exception du sorcier.</description>
 			<commentaire>Pas de commentaires</commentaire>
 			<source>CE ???</source>
 		</Sort>
