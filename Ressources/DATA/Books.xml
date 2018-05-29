@@ -2645,6 +2645,936 @@
 		</Sort>
 	</Livre>
 	<Livre Name="Création">
+		<Sort Level="002">
+			<name>Création mineure</name>
+			<initial>
+				<requirement>5</requirement>
+				<cost>30</cost>
+				<maintien>5</maintien>
+				<effets>Un objet / Présence maximale 25</effets>
+			</initial>
+			<intermediaire>
+				<requirement>8</requirement>
+				<cost>80</cost>
+				<maintien>10</maintien>
+				<effets>5 objets / Présence maximale 25</effets>
+			</intermediaire>
+			<avancee>
+				<requirement>10</requirement>
+				<cost>100</cost>
+				<maintien>10</maintien>
+				<effets>Un objet / Présence maximale 30</effets>
+			</avancee>
+			<arcane>
+				<requirement>12</requirement>
+				<cost>120</cost>
+				<maintien>15</maintien>
+				<effets>5 objets / Présence maximale 30</effets>
+			</arcane>
+			<maintien_type>1</maintien_type>
+			<action>ACTIVE</action>
+			<effets_type>Effet</effets_type>
+			<description>Crée un objet simple, dont la Présence maximale dépend du rang du sort.</description>
+			<commentaire>Pas de commentaires</commentaire>
+			<source>CE ???</source>
+		</Sort>
+		<Sort Level="006">
+			<name>Reconstruire</name>
+			<initial>
+				<requirement>5</requirement>
+				<cost>40</cost>
+				<maintien>0</maintien>
+				<effets>Présence maximale affectable 20</effets>
+			</initial>
+			<intermediaire>
+				<requirement>8</requirement>
+				<cost>140</cost>
+				<maintien>0</maintien>
+				<effets>Présence maximale affectable 60</effets>
+			</intermediaire>
+			<avancee>
+				<requirement>10</requirement>
+				<cost>200</cost>
+				<maintien>0</maintien>
+				<effets>Présence maximale affectable 100</effets>
+			</avancee>
+			<arcane>
+				<requirement>12</requirement>
+				<cost>280</cost>
+				<maintien>0</maintien>
+				<effets>Présence maximale affectable 120</effets>
+			</arcane>
+			<maintien_type>0</maintien_type>
+			<action>ACTIVE</action>
+			<effets_type>Effet</effets_type>
+			<description>Redonne à un objet sa forme originelle, à partir des pièces ou des composants qui restent de lui. Il faut en posséder tous les fragments ou la matière première nécessaire pour que la reconstruction soit complète, sinon l'objet ne se répare pas totalement. Ce sort affecte les objets dont la Présence ne dépasse pas une valeur fixée par le rang.</description>
+			<commentaire>Pas de commentaires</commentaire>
+			<source>CE ???</source>
+		</Sort>
+		<Sort Level="008">
+			<name>Créer Énergie</name>
+			<initial>
+				<requirement>5</requirement>
+				<cost>40</cost>
+				<maintien>5</maintien>
+				<effets>1 Intensité</effets>
+			</initial>
+			<intermediaire>
+				<requirement>8</requirement>
+				<cost>150</cost>
+				<maintien>15</maintien>
+				<effets>5 Intensité</effets>
+			</intermediaire>
+			<avancee>
+				<requirement>10</requirement>
+				<cost>200</cost>
+				<maintien>20</maintien>
+				<effets>10 Intensité</effets>
+			</avancee>
+			<arcane>
+				<requirement>12</requirement>
+				<cost>250</cost>
+				<maintien>25</maintien>
+				<effets>20 Intensité</effets>
+			</arcane>
+			<maintien_type>1</maintien_type>
+			<action>ACTIVE</action>
+			<effets_type>Effet</effets_type>
+			<description>Crée une intensité d'un des trois types d'énergie existants : le froid, le feu et l'électricité.</description>
+			<commentaire>Pas de commentaires</commentaire>
+			<source>CE ???</source>
+		</Sort>
+		<Sort Level="010">
+			<name>Régénération</name>
+			<initial>
+				<requirement>6</requirement>
+				<cost>60</cost>
+				<maintien>10</maintien>
+				<effets>Régénération 4</effets>
+			</initial>
+			<intermediaire>
+				<requirement>8</requirement>
+				<cost>100</cost>
+				<maintien>10</maintien>
+				<effets>Régénération 8</effets>
+			</intermediaire>
+			<avancee>
+				<requirement>10</requirement>
+				<cost>150</cost>
+				<maintien>15</maintien>
+				<effets>Régénération 12</effets>
+			</avancee>
+			<arcane>
+				<requirement>12</requirement>
+				<cost>250</cost>
+				<maintien>25</maintien>
+				<effets>Régénération 16</effets>
+			</arcane>
+			<maintien_type>2</maintien_type>
+			<action>ACTIVE</action>
+			<effets_type>Effet</effets_type>
+			<description>Augmente la capacité d'une créature à soigner tous les types de blessures. Ce sort accorde un score de régénération précis à une cible. Il ne permet cependant pas de dépasser Régénération 18 si la cible n'a pas la Gnose suffisante.</description>
+			<commentaire>Pas de commentaires</commentaire>
+			<source>CE ???</source>
+		</Sort>
+		<Sort Level="012">
+			<name>Modification inorganique</name>
+			<initial>
+				<requirement>6</requirement>
+				<cost>60</cost>
+				<maintien>5</maintien>
+				<effets>Présence maximale 20</effets>
+			</initial>
+			<intermediaire>
+				<requirement>8</requirement>
+				<cost>90</cost>
+				<maintien>5</maintien>
+				<effets>Présence maximale 30</effets>
+			</intermediaire>
+			<avancee>
+				<requirement>5</requirement>
+				<cost>120</cost>
+				<maintien>15</maintien>
+				<effets>Présence maximale 40</effets>
+			</avancee>
+			<arcane>
+				<requirement>12</requirement>
+				<cost>150</cost>
+				<maintien>10</maintien>
+				<effets>Présence maximale 50</effets>
+			</arcane>
+			<maintien_type>1</maintien_type>
+			<action>ACTIVE</action>
+			<effets_type>Effet</effets_type>
+			<description>Grâce à son contrôle de la magie, le sorcier peut altérer la forme et d'un objet inorganique, le transformant en un autre objet distinct mais de puissance spirituelle équivalente. On peut donc transformer n'importe quelle chose, dont la Présence ne dépasse pas une valeur fixée par le rang du sort, en un objet dont la Présence est égale ou inférieure à celle de l’objet original.</description>
+			<commentaire>Pas de commentaires</commentaire>
+			<source>CE ???</source>
+		</Sort>
+		<Sort Level="016">
+			<name>Augmenter les Résistances</name>
+			<initial>
+				<requirement>8</requirement>
+				<cost>80</cost>
+				<maintien>15</maintien>
+				<effets>+10 à toutes les résistances</effets>
+			</initial>
+			<intermediaire>
+				<requirement>10</requirement>
+				<cost>120</cost>
+				<maintien>20</maintien>
+				<effets>+20 à toutes les résistances</effets>
+			</intermediaire>
+			<avancee>
+				<requirement>12</requirement>
+				<cost>150</cost>
+				<maintien>30</maintien>
+				<effets>+30 à toutes les résistances</effets>
+			</avancee>
+			<arcane>
+				<requirement>14</requirement>
+				<cost>200</cost>
+				<maintien>40</maintien>
+				<effets>+40 à toutes les résistances</effets>
+			</arcane>
+			<maintien_type>2</maintien_type>
+			<action>ACTIVE</action>
+			<effets_type>Effet</effets_type>
+			<description>Augmente de façon surnaturelle toutes les Résistances d'un individu (RPhy, RPoi, RMal, RMys et RPsy). Les effets de ce sort ne se cumulent pas et il ne peut affecter qu'une fois chaque cible.</description>
+			<commentaire>Pas de commentaires</commentaire>
+			<source>CE ???</source>
+		</Sort>
+		<Sort Level="018">
+			<name>Bouclier Réel</name>
+			<initial>
+				<requirement>6</requirement>
+				<cost>40</cost>
+				<maintien>5</maintien>
+				<effets>500 Points de Vie</effets>
+			</initial>
+			<intermediaire>
+				<requirement>8</requirement>
+				<cost>150</cost>
+				<maintien>15</maintien>
+				<effets>3 000 Points de Vie</effets>
+			</intermediaire>
+			<avancee>
+				<requirement>10</requirement>
+				<cost>260</cost>
+				<maintien>15</maintien>
+				<effets>5 000 Points de Vie</effets>
+			</avancee>
+			<arcane>
+				<requirement>12</requirement>
+				<cost>400</cost>
+				<maintien>20</maintien>
+				<effets>10 000 Points de Vie</effets>
+			</arcane>
+			<maintien_type>1</maintien_type>
+			<action>PASSIVE</action>
+			<effets_type>Defense</effets_type>
+			<description>Forme une barrière d'énergie qui protège de toutes les sources d'attaque.</description>
+			<commentaire>Pas de commentaires</commentaire>
+			<source>CE ???</source>
+		</Sort>
+		<Sort Level="020">
+			<name>Guérison</name>
+			<initial>
+				<requirement>8</requirement>
+				<cost>80</cost>
+				<maintien>0</maintien>
+				<effets>50 Points de Vie</effets>
+			</initial>
+			<intermediaire>
+				<requirement>10</requirement>
+				<cost>120</cost>
+				<maintien>0</maintien>
+				<effets>150 Points de Vie</effets>
+			</intermediaire>
+			<avancee>
+				<requirement>12</requirement>
+				<cost>150</cost>
+				<maintien>0</maintien>
+				<effets>250 Points de Vie</effets>
+			</avancee>
+			<arcane>
+				<requirement>14</requirement>
+				<cost>200</cost>
+				<maintien>0</maintien>
+				<effets>350 Points de Vie</effets>
+			</arcane>
+			<maintien_type>0</maintien_type>
+			<action>ACTIVE</action>
+			<effets_type>Effet</effets_type>
+			<description>Permet à l'individu ciblé de récupérer des points de vie. Ce sort ne permet pas de faire repousser les membres coupés ou amputés; par contre, il annule les malus temporaires causés par les Critiques, jusqu'à une valeur équivalente à la moitié des points de vie rendus.</description>
+			<commentaire>Pas de commentaires</commentaire>
+			<source>CE ???</source>
+		</Sort>
+		<Sort Level="022">
+			<name>Invulnérabilité</name>
+			<initial>
+				<requirement>6</requirement>
+				<cost>60</cost>
+				<maintien>10</maintien>
+				<effets>Seuil d’Invulnérabilité 30</effets>
+			</initial>
+			<intermediaire>
+				<requirement>9</requirement>
+				<cost>90</cost>
+				<maintien>10</maintien>
+				<effets>Seuil d’Invulnérabilité 50</effets>
+			</intermediaire>
+			<avancee>
+				<requirement>12</requirement>
+				<cost>120</cost>
+				<maintien>15</maintien>
+				<effets>Seuil d’Invulnérabilité 80</effets>
+			</avancee>
+			<arcane>
+				<requirement>15</requirement>
+				<cost>150</cost>
+				<maintien>15</maintien>
+				<effets>Seuil d’Invulnérabilité 100</effets>
+			</arcane>
+			<maintien_type>2</maintien_type>
+			<action>ACTIVE</action>
+			<effets_type>Effet</effets_type>
+			<description>Les énergies surnaturelles que manœuvre ce sort s'unissent au corps de l'individu désigné, lui accordant une quasi-invulnérabilité aux dégâts. En termes de jeu, il bénéficie d'une Seuil d'Invulnérabilité (voir Chapitre 14). </description>
+			<commentaire>Pas de commentaires</commentaire>
+			<source>CE ???</source>
+		</Sort>
+		<Sort Level="026">
+			<name>Créer Homoncule</name>
+			<initial>
+				<requirement>6</requirement>
+				<cost>60</cost>
+				<maintien>10</maintien>
+				<effets>1 Homoncule</effets>
+			</initial>
+			<intermediaire>
+				<requirement>9</requirement>
+				<cost>180</cost>
+				<maintien>20</maintien>
+				<effets>10 Homoncules</effets>
+			</intermediaire>
+			<avancee>
+				<requirement>12</requirement>
+				<cost>250</cost>
+				<maintien>25</maintien>
+				<effets>25 Homoncules</effets>
+			</avancee>
+			<arcane>
+				<requirement>15</requirement>
+				<cost>350</cost>
+				<maintien>35</maintien>
+				<effets>100 Homoncules</effets>
+			</arcane>
+			<maintien_type>2</maintien_type>
+			<action>ACTIVE</action>
+			<effets_type>Effet</effets_type>
+			<description>Les homoncules sont de petits élémentaires de magie que les sorciers utilisent pour de nombreuses tâches, allant de l'espionnage à l'entretien de leur maison. Ce sort crée un ou plusieurs êtres mystiques de niveau 0 sous le contrôle absolu du sorcier, en se servant des règles décrites dans le Chapitre 26. Il s'agit d'une créature d'Entre Mondes avec Gnose 5 mais, au vu de sa nature inférieure, qui est dirigée par des règles spéciales 
+1- Tout d'abord, ses caractéristiques ne peuvent pas être supérieures à 5, il ne peut avoir aucune compétence principale ou secondaire au-dessus de 50 et il ne peut pas posséder le Don mystique. 
+2· Ils subissent ensuite un malus de -2 à leur Taille et ne peut pas choisir Taille inhabituelle. 
+Chaque homoncule créé peut être distinct des autres.</description>
+			<commentaire>Pas de commentaires</commentaire>
+			<source>CE ???</source>
+		</Sort>
+		<Sort Level="028">
+			<name>Changement Mineur</name>
+			<initial>
+				<requirement>6</requirement>
+				<cost>60</cost>
+				<maintien>10</maintien>
+				<effets>RMys 80 / Présence Maximale 60</effets>
+			</initial>
+			<intermediaire>
+				<requirement>9</requirement>
+				<cost>90</cost>
+				<maintien>10</maintien>
+				<effets>RMys 100 / Présence Maximale 90</effets>
+			</intermediaire>
+			<avancee>
+				<requirement>12</requirement>
+				<cost>150</cost>
+				<maintien>15</maintien>
+				<effets>RMys 140 / Présence Maximale 120</effets>
+			</avancee>
+			<arcane>
+				<requirement>15</requirement>
+				<cost>250</cost>
+				<maintien>25</maintien>
+				<effets>RMys 180 / Présence Maximale 180</effets>
+			</arcane>
+			<maintien_type>2</maintien_type>
+			<action>ACTIVE</action>
+			<effets_type>Effet</effets_type>
+			<description>Ce sort permet d'altérer l'apparence d'un objet ou d'un être en modifiant sa forme. Le changement se limite à son aspect extérieur; l'objet ou l'être en question ne peut jamais perdre ses qualités ou sa nature originelle. En conséquence, une reluisante épée courte peut devenir vieille et rouillée, mais pas un objet différent, comme un bâton. Dans le cas des êtres vivants, on peut modifier leur aspect physique sans faire varier leur Taille de plus de deux points, ce qui permet de transformer, par exemple, un homme gros et laid en jeune homme beau et mince. La difficulté du test de RMys dépend du rang du sort. En ce qui concerne les objets, ils n'ont plus droit à une nouvelle Résistance une fois qu'ils sont affectés; les personnes quant à elles peuvent répéter ce test une fois par jour si elles désirent se libérer des effets de ce sort. Il est possible d'affecter plusieurs cibles, tant que la somme des Présences ne dépasse pas une valeur déterminée par le rang du sort.</description>
+			<commentaire>Pas de commentaires</commentaire>
+			<source>CE ???</source>
+		</Sort>
+		<Sort Level="030">
+			<name>Imiter</name>
+			<initial>
+				<requirement>6</requirement>
+				<cost>100</cost>
+				<maintien>5</maintien>
+				<effets>Présence maximale 30</effets>
+			</initial>
+			<intermediaire>
+				<requirement>9</requirement>
+				<cost>200</cost>
+				<maintien>10</maintien>
+				<effets>Présence maximale 80</effets>
+			</intermediaire>
+			<avancee>
+				<requirement>12</requirement>
+				<cost>300</cost>
+				<maintien>15</maintien>
+				<effets>Présence maximale 120</effets>
+			</avancee>
+			<arcane>
+				<requirement>15</requirement>
+				<cost>400</cost>
+				<maintien>20</maintien>
+				<effets>Présence maximale 160</effets>
+			</arcane>
+			<maintien_type>2</maintien_type>
+			<action>ACTIVE</action>
+			<effets_type>Effet</effets_type>
+			<description>Crée une copie exacte d'un objet inorganique déjà existant qui se trouve à portée du sorcier. Il se forme une imitation parfaite de l'original, avec toutes ses qualités, même surnaturelles. L'objet copié ne peut pas avoir une Présence supérieure à la valeur fixée par le rang. Ce sort n'a aucun effet sur les créatures animées par magie, mais fonctionne sur les créations mécaniques si elles ne possèdent pas d'âme.</description>
+			<commentaire>Pas de commentaires</commentaire>
+			<source>CE ???</source>
+		</Sort>
+		<Sort Level="032">
+			<name>Immunité</name>
+			<initial>
+				<requirement>6</requirement>
+				<cost>80</cost>
+				<maintien>10</maintien>
+				<effets>5 intensités</effets>
+			</initial>
+			<intermediaire>
+				<requirement>9</requirement>
+				<cost>180</cost>
+				<maintien>20</maintien>
+				<effets>15 intensités</effets>
+			</intermediaire>
+			<avancee>
+				<requirement>12</requirement>
+				<cost>240</cost>
+				<maintien>25</maintien>
+				<effets>25 intensités</effets>
+			</avancee>
+			<arcane>
+				<requirement>15</requirement>
+				<cost>300</cost>
+				<maintien>30</maintien>
+				<effets>35 intensités</effets>
+			</arcane>
+			<maintien_type>2</maintien_type>
+			<action>ACTIVE</action>
+			<effets_type>Effet</effets_type>
+			<description>Ce sort permet au sorcier, ou aux cibles qu'il a désignées, d'être immunisées à plusieurs intensités d'un type précis d'énergie, que ce soit le feu, le froid ou l'électricité. S'il subit une attaque basée sur un élément contre lequel il est immunisé, chaque intensité diminue de 5 points les Dégâts et accorde un bonus de +5 aux Résistances contre ses effets.</description>
+			<commentaire>Pas de commentaires</commentaire>
+			<source>CE ???</source>
+		</Sort>
+		<Sort Level="036">
+			<name>Réduction de dégâts</name>
+			<initial>
+				<requirement>8</requirement>
+				<cost>80</cost>
+				<maintien>0</maintien>
+				<effets>-40 aux dégâts de base de l’attaque</effets>
+			</initial>
+			<intermediaire>
+				<requirement>10</requirement>
+				<cost>120</cost>
+				<maintien>0</maintien>
+				<effets>-60 aux dégâts de base de l’attaque</effets>
+			</intermediaire>
+			<avancee>
+				<requirement>12</requirement>
+				<cost>160</cost>
+				<maintien>0</maintien>
+				<effets>-80 aux dégâts de base de l’attaque</effets>
+			</avancee>
+			<arcane>
+				<requirement>14</requirement>
+				<cost>240</cost>
+				<maintien>0</maintien>
+				<effets>-120 aux dégâts de base de l’attaque</effets>
+			</arcane>
+			<maintien_type>0</maintien_type>
+			<action>PASSIVE</action>
+			<effets_type>Automatique</effets_type>
+			<description>La magie de ce sort affecte la puissance d'une attaque en diminuant la force de l'impact. Il réduit les Dégâts d'une attaque. Si ces dégâts chutent en dessous de 0, l'attaque n'a aucun effet. Si, par exemple, ce sort est utilisé au rang de base contre une attaque de Dégâts 60, un coup infligé sera calculé comme si les Dégâts n'étaient que de 20 points.</description>
+			<commentaire>Pas de commentaires</commentaire>
+			<source>CE ???</source>
+		</Sort>
+		<Sort Level="038">
+			<name>Contrôle Physique</name>
+			<initial>
+				<requirement>6</requirement>
+				<cost>120</cost>
+				<maintien>25</maintien>
+				<effets>RMys 80</effets>
+			</initial>
+			<intermediaire>
+				<requirement>9</requirement>
+				<cost>180</cost>
+				<maintien>40</maintien>
+				<effets>RMys 120</effets>
+			</intermediaire>
+			<avancee>
+				<requirement>12</requirement>
+				<cost>240</cost>
+				<maintien>50</maintien>
+				<effets>RMys 140</effets>
+			</avancee>
+			<arcane>
+				<requirement>15</requirement>
+				<cost>300</cost>
+				<maintien>60</maintien>
+				<effets>RMys 180</effets>
+			</arcane>
+			<maintien_type>2</maintien_type>
+			<action>ACTIVE</action>
+			<effets_type>Animique</effets_type>
+			<description>Grâce à ce sort, un sorcier peut contrôler le corps d'un être comme s'il s'agissait d'une simple poupée. Comme ce sort n'accorde qu'un contrôle physique et pas mental, l'individu subjugué ne peut pas être forcé à utiliser ses compétences surnaturelles (magie, Ki, pouvoirs psychiques ...) de façon contraire à sa volonté, à la différence de ses compétences martiales. Pour résister au contrôle, la cible doit réussir un test de RMys. Elle a droit à une nouvelle Résistance par jour, ainsi que chaque fois que les ordres reçus vont complètement à l'encontre de son comportement habituel.</description>
+			<commentaire>Pas de commentaires</commentaire>
+			<source>CE ???</source>
+		</Sort>
+		<Sort Level="040">
+			<name>Acquérir Compétences</name>
+			<initial>
+				<requirement>6</requirement>
+				<cost>80</cost>
+				<maintien>5</maintien>
+				<effets>+50 à répartir</effets>
+			</initial>
+			<intermediaire>
+				<requirement>9</requirement>
+				<cost>180</cost>
+				<maintien>10</maintien>
+				<effets>+150 à répartir</effets>
+			</intermediaire>
+			<avancee>
+				<requirement>12</requirement>
+				<cost>280</cost>
+				<maintien>15</maintien>
+				<effets>+250 à répartir</effets>
+			</avancee>
+			<arcane>
+				<requirement>15</requirement>
+				<cost>350</cost>
+				<maintien>20</maintien>
+				<effets>+400 à répartir</effets>
+			</arcane>
+			<maintien_type>1</maintien_type>
+			<action>ACTIVE</action>
+			<effets_type>Effet</effets_type>
+			<description>Ce sort augmente temporairement les compétences secondaires d'un individu, lui accordant un bonus à répartir dans les compétences de son choix jusqu’à un maximum de 320, à l'exception de celles qui requièrent des connaissances.</description>
+			<commentaire>Pas de commentaires</commentaire>
+			<source>CE ???</source>
+		</Sort>
+		<Sort Level="042">
+			<name>Fusionner</name>
+			<initial>
+				<requirement>7</requirement>
+				<cost>140</cost>
+				<maintien>15</maintien>
+				<effets>Présence maximale 80 / RMys 80</effets>
+			</initial>
+			<intermediaire>
+				<requirement>9</requirement>
+				<cost>180</cost>
+				<maintien>20</maintien>
+				<effets>Présence maximale 100 / RMys 120</effets>
+			</intermediaire>
+			<avancee>
+				<requirement>12</requirement>
+				<cost>240</cost>
+				<maintien>25</maintien>
+				<effets>Présence maximale 150 / RMys 140</effets>
+			</avancee>
+			<arcane>
+				<requirement>15</requirement>
+				<cost>350</cost>
+				<maintien>30</maintien>
+				<effets>Présence maximale 200 / RMys 180</effets>
+			</arcane>
+			<maintien_type>1</maintien_type>
+			<action>ACTIVE</action>
+			<effets_type>Effet</effets_type>
+			<description>Ce sort unit deux êtres dans un corps unique, créant ainsi un nouvel individu possédant les caractéristiques et les compétences des deux. Le sorcier choisit les futures capacités prédominantes, sélectionnant celles qui lui conviennent le plus chez chacun des deux êtres. De cette façon, si un combattant et un mentaliste fusionnent, l'individu en résultant pourra avoir l'expérience du combat du guerrier, les capacités mentales du psy et les compétences secondaires les plus élevées des deux. Le contrôle du corps appartiendra à celui qui remporte un test opposé de Volonté, bien qu'il puisse conserver quelques traits typiques de la personnalité de l'autre individu. Les corps d'origine restent dans le même état que juste avant la fusion, et ils se séparent à la fin du sort, retrouvant leur forme et leur état originels. La mort de cette entité a pour conséquence la mort des deux êtres qui la composent. La somme des Présences des deux individus ne peut pas être supérieure à une valeur fixée par le rang du sort. Il est aussi possible de fusionner des personnes avec des objets; le MJ décide dans ce cas des avantages ou des capacités qu'il considère appropriées.</description>
+			<commentaire>Pas de commentaires</commentaire>
+			<source>CE ???</source>
+		</Sort>
+		<Sort Level="046">
+			<name>Créer Souvenirs</name>
+			<initial>
+				<requirement>7</requirement>
+				<cost>140</cost>
+				<maintien>0</maintien>
+				<effets>RMys / RPsy 100</effets>
+			</initial>
+			<intermediaire>
+				<requirement>9</requirement>
+				<cost>180</cost>
+				<maintien>0</maintien>
+				<effets>RMys / RPsy 120</effets>
+			</intermediaire>
+			<avancee>
+				<requirement>12</requirement>
+				<cost>240</cost>
+				<maintien>0</maintien>
+				<effets>RMys / RPsy 160</effets>
+			</avancee>
+			<arcane>
+				<requirement>15</requirement>
+				<cost>350</cost>
+				<maintien>0</maintien>
+				<effets>RMys / RPsy 200</effets>
+			</arcane>
+			<maintien_type>0</maintien_type>
+			<action>ACTIVE</action>
+			<effets_type>Animique</effets_type>
+			<description>Permet de créer des souvenirs nouveaux dans l'esprit d'une cible, sans forcément effacer les souvenirs antérieurs. Le plus souvent, le personnage affecté se sent légèrement confus, mais il est convaincu que tous ses souvenirs sont exacts, sauf si le sort affecte des souvenirs bien ancrés dans sa mémoire. Le sorcier peut déterminer quelles informations il compte introduire, sans se soucier de leur complexité ou de leur durée. Pour éviter l'effet de ce sort, la cible doit réussir un test de RMys ou RPsy. Bien que ce sort ne requière aucun maintien, l'individu affecté a droit à un nouveau test de Résistance s'il voit ou fait quelque chose qui puisse l'inciter à croire qu'il a été trompé.</description>
+			<commentaire>Pas de commentaires</commentaire>
+			<source>CE ???</source>
+		</Sort>
+		<Sort Level="048">
+			<name>Récupérer</name>
+			<initial>
+				<requirement>8</requirement>
+				<cost>250</cost>
+				<maintien>0</maintien>
+				<effets>500 Points de Vie</effets>
+			</initial>
+			<intermediaire>
+				<requirement>10</requirement>
+				<cost>300</cost>
+				<maintien>0</maintien>
+				<effets>750 Points de Vie</effets>
+			</intermediaire>
+			<avancee>
+				<requirement>12</requirement>
+				<cost>350</cost>
+				<maintien>0</maintien>
+				<effets>1 000 Points de Vie</effets>
+			</avancee>
+			<arcane>
+				<requirement>14</requirement>
+				<cost>400</cost>
+				<maintien>0</maintien>
+				<effets>1 500 Points de Vie</effets>
+			</arcane>
+			<maintien_type>0</maintien_type>
+			<action>ACTIVE</action>
+			<effets_type>Effet</effets_type>
+			<description>Ce sort restaure complètement la condition physique d'un individu, en lui soignant ses points de vie perdus et en faisant disparaître tous les malus physiques qu'il subissait, s'ils n'avaient pas pour origine des membres amputés ou des dégâts similaires. Ce sort ne permet pas de récupérer les points de Fatigue, ni n'annule les malus provoqués par des effets surnaturels.</description>
+			<commentaire>Pas de commentaires</commentaire>
+			<source>CE ???</source>
+		</Sort>
+		<Sort Level="050">
+			<name>Acquérir des Pouvoirs</name>
+			<initial>
+				<requirement>7</requirement>
+				<cost>100</cost>
+				<maintien>20</maintien>
+				<effets>100 PF</effets>
+			</initial>
+			<intermediaire>
+				<requirement>10</requirement>
+				<cost>200</cost>
+				<maintien>40</maintien>
+				<effets>200 PF</effets>
+			</intermediaire>
+			<avancee>
+				<requirement>13</requirement>
+				<cost>300</cost>
+				<maintien>50</maintien>
+				<effets>300 PF</effets>
+			</avancee>
+			<arcane>
+				<requirement>16</requirement>
+				<cost>400</cost>
+				<maintien>60</maintien>
+				<effets>400 PF / Gnose 30</effets>
+			</arcane>
+			<maintien_type>1</maintien_type>
+			<action>ACTIVE</action>
+			<effets_type>Effet</effets_type>
+			<description>Confère au sorcier, ou à celui qu'il désigne, la capacité d'acquérir des capacités de créatures surnaturelles. En termes de jeu, ce sort procure au personnage un certain nombre de PF supplémentaires pour obtenir n'importe lequel des Pouvoirs détaillés dans le Chapitre 26, comme s'il avait une Gnose de 25. Ces changements affectent temporairement sa forme physique. Si, par exemple, il acquérait Vol Naturel, il serait très logiquement doté de grandes ailes. Les effets de ce sort ne se cumulent pas et il ne peut affecter plus d'une fois en même temps un individu. </description>
+			<commentaire>Pas de commentaires</commentaire>
+			<source>CE ???</source>
+		</Sort>
+		<Sort Level="052">
+			<name>Créer Rejeton</name>
+			<initial>
+				<requirement>8</requirement>
+				<cost>80</cost>
+				<maintien>10</maintien>
+				<effets>Niveau 2</effets>
+			</initial>
+			<intermediaire>
+				<requirement>10</requirement>
+				<cost>120</cost>
+				<maintien>15</maintien>
+				<effets>Niveau 4</effets>
+			</intermediaire>
+			<avancee>
+				<requirement>12</requirement>
+				<cost>250</cost>
+				<maintien>25</maintien>
+				<effets>Niveau 8</effets>
+			</avancee>
+			<arcane>
+				<requirement>15</requirement>
+				<cost>500</cost>
+				<maintien>50</maintien>
+				<effets>Niveau 12</effets>
+			</arcane>
+			<maintien_type>1</maintien_type>
+			<action>ACTIVE</action>
+			<effets_type>Effet</effets_type>
+			<description>Ce sort crée un être magique ayant l'apparence de la vie, sous le contrôle total du sorcier. Il s'agit d'une créature d'Entre Mondes développée avec les règles décrites dans le Chapitre 26. Elle est de premier niveau et possède Gnose de 20. Ce sort ne permet pas de créer des créatures de niveau supérieur à celui du sorcier, car elles se basent sur sa présence spirituelle. Les rejetons n'ont pas la capacité de recevoir une âme et il n'est donc pas possible de donner vie de façon indépendante, à l'aide du sort Offrir une Âme, ni d'installer un esprit dans leur corps.</description>
+			<commentaire>Pas de commentaires</commentaire>
+			<source>CE ???</source>
+		</Sort>
+		<Sort Level="056">
+			<name>Aura de Protection</name>
+			<initial>
+				<requirement>6</requirement>
+				<cost>120</cost>
+				<maintien>10</maintien>
+				<effets>+20 à la résistance / 100 m de rayon</effets>
+			</initial>
+			<intermediaire>
+				<requirement>9</requirement>
+				<cost>180</cost>
+				<maintien>15</maintien>
+				<effets>+50 à la résistance / 500 m de rayon</effets>
+			</intermediaire>
+			<avancee>
+				<requirement>12</requirement>
+				<cost>240</cost>
+				<maintien>25</maintien>
+				<effets>+80 à la résistance / 1 km de rayon</effets>
+			</avancee>
+			<arcane>
+				<requirement>15</requirement>
+				<cost>350</cost>
+				<maintien>50</maintien>
+				<effets>+120 à la résistance / 10 km de rayon</effets>
+			</arcane>
+			<maintien_type>1</maintien_type>
+			<action>PASSIVE</action>
+			<effets_type>Effet</effets_type>
+			<description>Augmente les Résistances (RPhy, RPoi, RMal, RMys et RPsy, tous les individus désignés par le sorcier autour de lui. Les effets de ce sort ne se cumulent pas et il ne peut affecter plus d'une fois même temps un individu. </description>
+			<commentaire>Pas de commentaires</commentaire>
+			<source>CE ???</source>
+		</Sort>
+		<Sort Level="058">
+			<name>Suspendre l'Essence</name>
+			<initial>
+				<requirement>8</requirement>
+				<cost>150</cost>
+				<maintien>15</maintien>
+				<effets>RMys 100</effets>
+			</initial>
+			<intermediaire>
+				<requirement>10</requirement>
+				<cost>200</cost>
+				<maintien>20</maintien>
+				<effets>RMys 120</effets>
+			</intermediaire>
+			<avancee>
+				<requirement>12</requirement>
+				<cost>250</cost>
+				<maintien>25</maintien>
+				<effets>RMys 140</effets>
+			</avancee>
+			<arcane>
+				<requirement>15</requirement>
+				<cost>300</cost>
+				<maintien>30</maintien>
+				<effets>RMys 180</effets>
+			</arcane>
+			<maintien_type>1</maintien_type>
+			<action>ACTIVE</action>
+			<effets_type>Animique</effets_type>
+			<description>Comme son nom l'indique, ce sort suspend l'esprit d'un individu l'état où il se trouvait au moment du lancement du sort. A partir de cet instant, la cible ne réalise plus de nouveaux tests magiques ou psychiques et conserve la position mentale inaltérable dans laquelle elle se trouve. Elle ne peut plus être influencée par aucun état, autant positif que négatif. Si la cible désire résister à la suspension, elle doit réussir un test de RMys ou RPsy. En toute logique, une personne affectée par ce sort ne peut pas effectuer de test pour s'en libérer tant qu'il est maintenu.</description>
+			<commentaire>Pas de commentaires</commentaire>
+			<source>CE ???</source>
+		</Sort>
+		<Sort Level="060">
+			<name>Bouclier Parfait</name>
+			<initial>
+				<requirement>8</requirement>
+				<cost>150</cost>
+				<maintien>15</maintien>
+				<effets>Le bouclier possède 100 Points de Vie</effets>
+			</initial>
+			<intermediaire>
+				<requirement>10</requirement>
+				<cost>200</cost>
+				<maintien>20</maintien>
+				<effets>Le bouclier possède 250 Points de Vie</effets>
+			</intermediaire>
+			<avancee>
+				<requirement>13</requirement>
+				<cost>300</cost>
+				<maintien>30</maintien>
+				<effets>Le bouclier possède 500 Points de Vie</effets>
+			</avancee>
+			<arcane>
+				<requirement>16</requirement>
+				<cost>400</cost>
+				<maintien>40</maintien>
+				<effets>Le bouclier possède 1000 Points de Vie</effets>
+			</arcane>
+			<maintien_type>1</maintien_type>
+			<action>ACTIVE</action>
+			<effets_type>Defense</effets_type>
+			<description>Forme une barrière d'énergie qui protège contre toute source d'attaque. S'il n'est pas détruit à la fin d'un round, il récupère instantanément tous ses points de vie perdus.</description>
+			<commentaire>Pas de commentaires</commentaire>
+			<source>CE ???</source>
+		</Sort>
+		<Sort Level="062">
+			<name>Vitalité</name>
+			<initial>
+				<requirement>8</requirement>
+				<cost>150</cost>
+				<maintien>15</maintien>
+				<effets>+50 Points de Vie</effets>
+			</initial>
+			<intermediaire>
+				<requirement>10</requirement>
+				<cost>200</cost>
+				<maintien>20</maintien>
+				<effets>+75 Points de Vie</effets>
+			</intermediaire>
+			<avancee>
+				<requirement>13</requirement>
+				<cost>250</cost>
+				<maintien>25</maintien>
+				<effets>+100 Points de Vie</effets>
+			</avancee>
+			<arcane>
+				<requirement>16</requirement>
+				<cost>350</cost>
+				<maintien>35</maintien>
+				<effets>+150 Points de Vie</effets>
+			</arcane>
+			<maintien_type>2</maintien_type>
+			<action>ACTIVE</action>
+			<effets_type>Effet</effets_type>
+			<description>La magie crée un état de vitalité surnaturelle chez un individu, augmentant ainsi la valeur maximale de ses points de vie tant que le sort est maintenu. Ces effets ne se cumulent pas et il ne peut affecter plus d'une fois en même temps un individu. Les créatures à Encaissement multiplient cette valeur par 5.</description>
+			<commentaire>Pas de commentaires</commentaire>
+			<source>CE ???</source>
+		</Sort>
+		<Sort Level="066">
+			<name>Création complète</name>
+			<initial>
+				<requirement>8</requirement>
+				<cost>150</cost>
+				<maintien>15</maintien>
+				<effets>Présence maximale 50</effets>
+			</initial>
+			<intermediaire>
+				<requirement>10</requirement>
+				<cost>200</cost>
+				<maintien>20</maintien>
+				<effets>Présence maximale 80</effets>
+			</intermediaire>
+			<avancee>
+				<requirement>12</requirement>
+				<cost>300</cost>
+				<maintien>30</maintien>
+				<effets>Présence maximale 120</effets>
+			</avancee>
+			<arcane>
+				<requirement>14</requirement>
+				<cost>400</cost>
+				<maintien>40</maintien>
+				<effets>Présence maximale 150</effets>
+			</arcane>
+			<maintien_type>2</maintien_type>
+			<action>ACTIVE</action>
+			<effets_type>Effet</effets_type>
+			<description>Forme un objet dont la Présence ne peut pas excéder une valeur fixée par le rang du sort. La création doit se trouver dans un lieu logique en fonction de sa nature. Par exemple, il n'est pas possible de faire apparaître une petite montagne dans les airs, puis de la laisser tomber. La Présence de l'objet créé ne peut pas dépasser le double de la Présence du sorcier. Par conséquent, un personnage de niveau cinq avec une Présence de 50, pourrait au maximum concevoir des objets de Présence 100.</description>
+			<commentaire>Pas de commentaires</commentaire>
+			<source>CE ???</source>
+		</Sort>
+		<Sort Level="068">
+			<name>Renforcer la Magie</name>
+			<initial>
+				<requirement>8</requirement>
+				<cost>100</cost>
+				<maintien>10</maintien>
+				<effets>affecte les sorts de rang Initial</effets>
+			</initial>
+			<intermediaire>
+				<requirement>12</requirement>
+				<cost>200</cost>
+				<maintien>20</maintien>
+				<effets>affecte les sorts de rang Intermédiaire</effets>
+			</intermediaire>
+			<avancee>
+				<requirement>15</requirement>
+				<cost>300</cost>
+				<maintien>30</maintien>
+				<effets>affecte les sorts de rang Avancée</effets>
+			</avancee>
+			<arcane>
+				<requirement>18</requirement>
+				<cost>400</cost>
+				<maintien>40</maintien>
+				<effets>affecte les sorts de rang Arcane</effets>
+			</arcane>
+			<maintien_type>1</maintien_type>
+			<action>PASSIVE</action>
+			<effets_type>Effet</effets_type>
+			<description>Renforce la puissance d'un autre sort qui est soit lancé en même temps soit déjà maintenu. En termes de jeu, accorde au sort les bonus suivants :
++ 20 à la RMys
++50% aux dégâts de base / résistances aux dégâts additionnels (arrondi vers le haut au groupe de 5)
++20% aux valeurs numériques du sort (présence, intensité, portée, rayon d’effet, etc.)</description>
+			<commentaire>Pas de commentaires</commentaire>
+			<source>CE ???</source>
+		</Sort>
+		<Sort Level="070">
+			<name>Transmuter</name>
+			<initial>
+				<requirement>9</requirement>
+				<cost>250</cost>
+				<maintien>0</maintien>
+				<effets>RMys 120 / Présence maximale 50</effets>
+			</initial>
+			<intermediaire>
+				<requirement>12</requirement>
+				<cost>350</cost>
+				<maintien>0</maintien>
+				<effets>RMys 160 / Présence maximale 100</effets>
+			</intermediaire>
+			<avancee>
+				<requirement>15</requirement>
+				<cost>500</cost>
+				<maintien>0</maintien>
+				<effets>RMys 220 / Présence maximale 150</effets>
+			</avancee>
+			<arcane>
+				<requirement>18</requirement>
+				<cost>800</cost>
+				<maintien>0</maintien>
+				<effets>RMys 260 / Présence maximale 200</effets>
+			</arcane>
+			<maintien_type>0</maintien_type>
+			<action>Active</action>
+			<effets_type>Animique</effets_type>
+			<description>: Le sorcier transforme un objet inorganique en un autre objet différent, de puissance animique équivalente. Il peut ainsi modifier quelque chose, dont la Présence ne dépasse pas 50, en une autre chose de Présence égale ou inférieure. Si l'objet est surnaturel ou très puissant, il peut résister avec un test de RMys. Si la Présence transmutée dépasse la valeur fixée par le sort, il faut deux effets supplémentaires au lieu d'un pour augmenter de 5 points la valeur affectable maximale. </description>
+			<commentaire>Pas de commentaires</commentaire>
+			<source>CE ???</source>
+		</Sort>
 	</Livre>
 	<Livre Name="Destruction">
 	</Livre>	
