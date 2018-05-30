@@ -3982,6 +3982,138 @@ Ce sort peut aussi imposer de nouvelles règles à la réalité: altérer la gra
 		</Sort>
 	</Livre>
 	<Livre Name="Destruction">
+		<Sort Level="002">
+			<name>Fragilité</name>
+			<initial>
+				<requirement>5</requirement>
+				<cost>30</cost>
+				<maintien>5</maintien>
+				<effets>-2 en Solidité / Présence affectable maximale 30</effets>
+			</initial>
+			<intermediaire>
+				<requirement>8</requirement>
+				<cost>60</cost>
+				<maintien>10</maintien>
+				<effets>-4 en Solidité / Présence affectable maximale 60</effets>
+			</intermediaire>
+			<avancee>
+				<requirement>10</requirement>
+				<cost>120</cost>
+				<maintien>15</maintien>
+				<effets>-8 en Solidité / Présence affectable maximale 90</effets>
+			</avancee>
+			<arcane>
+				<requirement>12</requirement>
+				<cost>150</cost>
+				<maintien>15</maintien>
+				<effets>-12 en Solidité / Présence affectable maximale 120</effets>
+			</arcane>
+			<maintien_type>1</maintien_type>
+			<action>ACTIVE</action>
+			<effets_type>Effet</effets_type>
+			<description>Altère la Solidité d'un objet, en diminuant sa résistance et en le rendant cassant. Tout objet affecté perd automatiquement son Invulnérabilité et, dans le cas d'une arme ou d'une armure, réduit sa Solidité.</description>
+			<commentaire>Pas de commentaires</commentaire>
+			<source>CE ???</source>
+		</Sort>
+		<Sort Level="006">
+			<name>Fragilité</name>
+			<initial>
+				<requirement>5</requirement>
+				<cost>40</cost>
+				<maintien>0</maintien>
+				<effets>Présence maximale 20</effets>
+			</initial>
+			<intermediaire>
+				<requirement>8</requirement>
+				<cost>80</cost>
+				<maintien>0</maintien>
+				<effets>Présence maximale 40</effets>
+			</intermediaire>
+			<avancee>
+				<requirement>10</requirement>
+				<cost>120</cost>
+				<maintien>0</maintien>
+				<effets>Présence maximale 60</effets>
+			</avancee>
+			<arcane>
+				<requirement>12</requirement>
+				<cost>150</cost>
+				<maintien>0</maintien>
+				<effets>Présence maximale 80</effets>
+			</arcane>
+			<maintien_type>0</maintien_type>
+			<action>ACTIVE</action>
+			<effets_type>Effet</effets_type>
+			<description>Démantèle un objet formé de plusieurs pièces. Ce sort affecte uniquement les choses inanimées dont la présence ne dépasse pas une valeur fixée par le rang du sort.</description>
+			<commentaire>Pas de commentaires</commentaire>
+			<source>CE ???</source>
+		</Sort>
+		<Sort Level="008">
+			<name>Détruire les intensités</name>
+			<initial>
+				<requirement>5</requirement>
+				<cost>40</cost>
+				<maintien>0</maintien>
+				<effets>1 intensité / 100 RMys</effets>
+			</initial>
+			<intermediaire>
+				<requirement>8</requirement>
+				<cost>80</cost>
+				<maintien>0</maintien>
+				<effets>5 intensités / 120 RMys</effets>
+			</intermediaire>
+			<avancee>
+				<requirement>10</requirement>
+				<cost>120</cost>
+				<maintien>0</maintien>
+				<effets>10 intensités / 140 RMys</effets>
+			</avancee>
+			<arcane>
+				<requirement>12</requirement>
+				<cost>150</cost>
+				<maintien>0</maintien>
+				<effets>15 intensités / 160 RMys</effets>
+			</arcane>
+			<maintien_type>0</maintien_type>
+			<action>ACTIVE</action>
+			<effets_type>Effet</effets_type>
+			<description>Détruit une ou plusieurs intensités d'un des trois types d'énergie existant : le froid, le feu ou l'électricité.</description>
+			<commentaire>Pas de commentaires</commentaire>
+			<source>CE ???</source>
+		</Sort>
+		<Sort Level="010">
+			<name>Destruction Mineure</name>
+			<initial>
+				<requirement>6</requirement>
+				<cost>50</cost>
+				<maintien>0</maintien>
+				<effets>Présence maximale 20</effets>
+			</initial>
+			<intermediaire>
+				<requirement>9</requirement>
+				<cost>90</cost>
+				<maintien>0</maintien>
+				<effets>Présence maximale 40</effets>
+			</intermediaire>
+			<avancee>
+				<requirement>11</requirement>
+				<cost>140</cost>
+				<maintien>0</maintien>
+				<effets>Présence maximale 60</effets>
+			</avancee>
+			<arcane>
+				<requirement>13</requirement>
+				<cost>180</cost>
+				<maintien>0</maintien>
+				<effets>Présence maximale 80</effets>
+			</arcane>
+			<maintien_type>0</maintien_type>
+			<action>ACTIVE</action>
+			<effets_type>Effet</effets_type>
+			<description>Affecte l'essence d'un objet matériel sans vie, le détruisant complètement, du moment que sa Présence ne dépasse pas une valeur fixée par le rang du sort.</description>
+			<commentaire>Pas de commentaires</commentaire>
+			<source>CE ???</source>
+		</Sort>
 	</Livre>	
 	<Livre Name="Feu">
 	</Livre>	
