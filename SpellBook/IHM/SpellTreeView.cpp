@@ -2,6 +2,7 @@
 
 #include <QFile>
 #include <iostream>
+#include <QMessageBox>
 
 SpellTreeView::SpellTreeView(QWidget* parent_) : QTreeView(parent_),
     _readOnly(false),
@@ -72,14 +73,29 @@ void SpellTreeView::loadTreeData(QString xmlPath_)
 
 void SpellTreeView::addSpell(SpellView* spell_)
 {
-    //Vérifier si le Livre existe, sinon le créer
-    QDomNode book = this->model()->addBook(spell_->getBook());
+    if (spell_->getBook() == "" || spell_->getName() == "")
+    {
+        QMessageBox* msgBox = new QMessageBox();
+        msgBox->setIcon(QMessageBox::Warning);
+        msgBox->setMinimumSize(250, 150);
+        QString msg = "Impossible d'ajouter un sort sans les informations suivantes : ";
+        msg += "\n - Domaine\n - Nom\n";
+        msgBox->setText(msg);
+        msgBox->exec();
+        msgBox->deleteLater();
+    }
+    else
+    {
 
-    //Vérifier si le sort existe, si oui le modifier si non le créer
-    this->model()->addSpell(spell_, book);
+        //Vérifier si le Livre existe, sinon le créer
+        QDomNode book = this->model()->addBook(spell_->getBook());
 
-    //Trier l'arbre.
-    this->sort();
+        //Vérifier si le sort existe, si oui le modifier si non le créer
+        this->model()->addSpell(spell_, book);
+
+        //Trier l'arbre.
+        this->sort();
+    }
 }
 
 void SpellTreeView::sort()
@@ -116,6 +132,34 @@ void SpellTreeView::removeSpellFrom()
     if(this->model()->index(0,0,_indexCustomMenu).data().toString() == "name" && !isReadOnly())
     {
         this->model()->removeSpell(_indexCustomMenu);
+    }
+    else if(_indexCustomMenu.parent().data().toString() == "Grimoire" && !isReadOnly())
+    {
+        QMessageBox msgBox(this);
+        msgBox.setIcon(QMessageBox::Warning);
+        msgBox.setMinimumSize(250,150);
+        msgBox.setText("Le livre contient peut-être des sorts.");
+        msgBox.setInformativeText("Voulez-vous vraiment supprimer ce livre ?");
+        QPushButton *oui = msgBox.addButton("Confirmer", QMessageBox::AcceptRole);
+        QPushButton *cancel = msgBox.addButton("Annuler", QMessageBox::RejectRole);
+        msgBox.setDefaultButton(oui);
+        msgBox.exec();
+
+        if(msgBox.clickedButton() == (QAbstractButton*)oui)
+        {
+            // Oui was clicked
+            this->model()->removeBook(_indexCustomMenu);
+        }
+        else if(msgBox.clickedButton() == (QAbstractButton*)cancel)
+        {
+            // Cancel was clicked
+            return;
+        }
+        else
+        {
+            // should never be reached
+            return;
+        }
     }
 
     this->sort();

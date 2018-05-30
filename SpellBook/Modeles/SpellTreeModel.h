@@ -32,6 +32,7 @@ public:
     QDomNode addBook(const QString &name_);
     void addSpell(SpellView* spell_, QDomNode book_);
     void removeSpell(const QModelIndex &index_);
+    void removeBook(const QModelIndex &index_);
 
     void save(QString fileName_);
 

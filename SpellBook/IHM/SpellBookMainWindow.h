@@ -18,12 +18,14 @@ public:
     ~SpellBookMainWindow();
 
     void setTheme(QString styleSheet_);
+    SpellView *newSpellView(bool readOnly_);
     SpellView *addSpellView(SpellTreeView* treeView_, const QModelIndex& index_, bool readOnly_);
 
 signals:
 
 public slots:
 
+    void newSpellViewButton();
     void loadSpellPreview(const QModelIndex& index_);
     void addSpellViewExplorer(const QModelIndex &index_);
     void addSpellViewList(const QModelIndex &index_);

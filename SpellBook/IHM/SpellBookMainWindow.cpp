@@ -63,26 +63,33 @@ void SpellBookMainWindow::initToolBar()
     toolBar->setObjectName(SPELLBOOK_TOOLBAR_NAME);
 
     QAction* newSpellListAction = new QAction("Nouveau", this);
-    newSpellListAction->setStatusTip("Crée une nouvelle liste personalisée.");
+    newSpellListAction->setToolTip("Crée une nouvelle liste personalisée.");
 
     QAction* loadSpellListAction = new QAction("Ouvrir", this);
-    loadSpellListAction->setStatusTip("Ouvre une liste personalisée.");
+    loadSpellListAction->setToolTip("Ouvre une liste personalisée.");
 
     QAction* saveSpellListAction = new QAction("Enregistrer", this);
-    saveSpellListAction->setStatusTip("Sauvegarde la liste personnalisée");
+    saveSpellListAction->setToolTip("Sauvegarde la liste personnalisée");
 
     QAction* saveAsSpellListAction = new QAction("Enregistrer sous", this);
-    saveAsSpellListAction->setStatusTip("Sauvegarde la liste personnalisée");
+    saveAsSpellListAction->setToolTip("Sauvegarde la liste personnalisée");
+
+    QAction* newSpellViewAction = new QAction("Nouveau sort", this);
+    newSpellViewAction->setToolTip("Ajoute un onglet de création de sort.");
 
     toolBar->addAction(newSpellListAction);
     toolBar->addAction(loadSpellListAction);
     toolBar->addAction(saveSpellListAction);
     toolBar->addAction(saveAsSpellListAction);
+    toolBar->addSeparator();
+    toolBar->addAction(newSpellViewAction);
 
     QObject::connect(newSpellListAction, SIGNAL(triggered(bool)), this, SLOT(createSpellList()));
     QObject::connect(loadSpellListAction, SIGNAL(triggered(bool)), this, SLOT(loadSpellList()));
     QObject::connect(saveSpellListAction, SIGNAL(triggered(bool)), this, SLOT(saveSpellList()));
     QObject::connect(saveAsSpellListAction, SIGNAL(triggered(bool)), this, SLOT(saveAsSpellList()));
+
+    QObject::connect(newSpellViewAction, SIGNAL(triggered(bool)), this, SLOT(newSpellViewButton()));
 
 }
 
@@ -154,6 +161,20 @@ void SpellBookMainWindow::addSpellViewList(const QModelIndex &index_)
     addSpellView((SpellTreeView*)_spellList->widget(), index_, false);
 }
 
+void SpellBookMainWindow::newSpellViewButton()
+{
+    newSpellView(false);
+}
+
+SpellView* SpellBookMainWindow::newSpellView(bool readOnly_)
+{
+    SpellView* spellView = new SpellView(_centralWidget);
+    spellView->setReadOnly(readOnly_);
+    _centralWidget->addTab(spellView, "New");
+    QObject::connect(spellView, SIGNAL(addSpellButtonClicked()), this, SLOT(addSpellButton()));
+    return spellView;
+}
+
 SpellView* SpellBookMainWindow::addSpellView(SpellTreeView* treeView_, const QModelIndex &index_, bool readOnly_)
 {
     QAbstractItemModel* model = treeView_->model();
@@ -199,6 +220,8 @@ void SpellBookMainWindow::closeSpellView(const int &index_)
 void SpellBookMainWindow::createSpellList()
 {
     QMessageBox msgBox(this);
+    msgBox.setIcon(QMessageBox::Warning);
+    msgBox.setMinimumSize(250,150);
     msgBox.setText("Les données de la liste actuelle vont être remplacées.");
     msgBox.setInformativeText("Voulez-vous enregistrer la liste actuelle ?");
     QPushButton *save = msgBox.addButton("Enregistrer", QMessageBox::AcceptRole);
@@ -239,6 +262,8 @@ void SpellBookMainWindow::createSpellList()
 void SpellBookMainWindow::loadSpellList()
 {
     QMessageBox msgBox(this);
+    msgBox.setIcon(QMessageBox::Warning);
+    msgBox.setMinimumSize(250,150);
     msgBox.setText("Les données de la liste actuelle vont être remplacées.");
     msgBox.setInformativeText("Voulez-vous enregistrer la liste actuelle ?");
     QPushButton *save = msgBox.addButton("Enregistrer", QMessageBox::AcceptRole);
