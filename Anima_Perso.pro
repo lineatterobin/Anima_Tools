@@ -9,7 +9,7 @@ QT       += xml
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
-TARGET = Anima_Perso
+TARGET = Anima_Tools
 TEMPLATE = app
 
 SOURCES += \
