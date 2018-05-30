@@ -4,6 +4,7 @@
         <file alias="BLACK_CROSS">Ressources/Images/black_checkbox.png</file>
         <file alias="BLACK_CROSS_HOVER">Ressources/Images/black_checkbox_hover.png</file>
         <file alias="ANIMA_ICON">Ressources/Images/icon.png</file>
+        <file alias="ANIMA_ICON64">Ressources/Images/icon64.png</file>
     </qresource>
     <qresource prefix="/CSS">
         <file alias="THEME_ACCUEIL">Ressources/CSS/Accueil.qss</file>

@@ -17,7 +17,8 @@ MainWindow::MainWindow() : QMainWindow(),
         _styleSheet = QString::fromLatin1(file.readAll());
         setStyleSheet(_styleSheet);
 
-        setWindowIcon(QIcon(":/IMG/ANIMA_ICON"));
+        QIcon *icon = new QIcon(":/IMG/ANIMA_ICON64");
+        setWindowIcon(*icon);
 
         //On ferme le fichier
         file.close();
