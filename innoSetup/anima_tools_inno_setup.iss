@@ -2,7 +2,7 @@
 ; SEE THE DOCUMENTATION FOR DETAILS ON CREATING INNO SETUP SCRIPT FILES!
 
 #define MyAppName "Anima Tools"
-#define MyAppVersion "0_3"
+#define MyAppVersion "0_4"
 #define MyAppExeName "Anima_Tools.exe"
 
 [Setup]

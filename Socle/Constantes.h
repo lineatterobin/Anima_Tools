@@ -4,8 +4,8 @@
 #include <QString>
 #include <QStandardPaths>
 
-const QString VERSION = "0.3";
-const QString VERSION_LIBELLE = "AnimaTool v" + VERSION;
+const QString VERSION = "0.4";
+const QString VERSION_LIBELLE = "AnimaTools v" + VERSION;
 
 const int DEFAULT_WIDTH = 500;
 const int DEFAULT_HEIGHT = 200;
