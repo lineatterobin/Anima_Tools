@@ -31,6 +31,7 @@ include ($$PWD/Socle/Socle.pri)
 include ($$PWD/SpellBook/SpellBook.pri)
 include ($$PWD/Librairies/Librairies.pri)
 
+RC_FILE = $$PWD/animaTools.rc
 RESOURCES += $$PWD/Ressources.qrc
 
 HEADERS += \
