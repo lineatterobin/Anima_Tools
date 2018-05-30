@@ -5,6 +5,7 @@
 #include <QPainter>
 #include <QLabel>
 #include <QFile>
+#include <QIcon>
 
 MainWindow::MainWindow() : QMainWindow(),
     _spellBookWindow(NULL)
@@ -15,6 +16,8 @@ MainWindow::MainWindow() : QMainWindow(),
     {
         _styleSheet = QString::fromLatin1(file.readAll());
         setStyleSheet(_styleSheet);
+
+        setWindowIcon(QIcon(":/IMG/ANIMA_ICON"));
 
         //On ferme le fichier
         file.close();
