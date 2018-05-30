@@ -3908,7 +3908,7 @@ La séparation n'est pas perceptible de façon naturelle, pas même pour les per
 En général, personne n'a conscience de l'existence d'une telle barrière, même quand on tente de la traverser. Si quelqu'un essaie de passer de l'autre côté, il ressort d'un autre côté de la barrière en ignorant complètement ce qu'il y a derrière (il est même possible de faire demi-tour sans s'en apercevoir). Le transport n'est pas automatique la réalité s'adapte progressivement au lieu de sortie, de façon imperceptible (difficulté surhumaine en Vigilance). Par exemple on pourrait utiliser la Barrière sur une ile, pour la séparer du reste du monde. Ce lieu disparaîtrait de la vue de tous ; tous les bateaux qui naviguerait dans la zone ne verrait rien de plus que de l'eau et seraient immédiatement transporté dans un autre lieu pour continuer son trajet. La barrière n'a pas à être absolument parfaite. Le sorcier peu choisir de laisser des passages ou ouvertures délibérés, dans un sens ou dans les deux, permettant de traverser la barrière. Certaines conditions permettent à quelques personnes de la traverser.
 Pour commencer ces personnes doivent avoir une gnose supérieure à 25 et avoir conscience de l'existence et de la localisation de la barrière. Si elles remplissent ces conditions elles doivent réussir un test de RMys pour traverser la barrière. En cas d'échec elle ne peut refaire ce test qu'une fois par jour.
 Ce sort peut affecter un territoire dont la superficie ne dépasse pas une valeur fixée par le rang du sort ou s'entendre sur une longueur équivalente. Une fois lancée, la barrière demeure toujours au même endroit.
-</description>
+			</description>
 			<commentaire>Pas de commentaires</commentaire>
 			<source>CE ???</source>
 		</Sort>
@@ -4116,6 +4116,39 @@ Ce sort peut aussi imposer de nouvelles règles à la réalité: altérer la gra
 		</Sort>
 	</Livre>	
 	<Livre Name="Feu">
+		<Sort Level="002">
+			<name>Créer Feu</name>
+			<initial>
+				<requirement>5</requirement>
+				<cost>30</cost>
+				<maintien>5</maintien>
+				<effets>1 intensité de feu</effets>
+			</initial>
+			<intermediaire>
+				<requirement>8</requirement>
+				<cost>80</cost>
+				<maintien>10</maintien>
+				<effets>6 intensités de feu</effets>
+			</intermediaire>
+			<avancee>
+				<requirement>10</requirement>
+				<cost>100</cost>
+				<maintien>10</maintien>
+				<effets>8 intensités de feu</effets>
+			</avancee>
+			<arcane>
+				<requirement>12</requirement>
+				<cost>120</cost>
+				<maintien>15</maintien>
+				<effets>10 intensités de feu</effets>
+			</arcane>
+			<maintien_type>2</maintien_type>
+			<action>ACTIVE</action>
+			<effets_type>EFFET</effets_type>
+			<description>Crée une intensité de feu. Tant que ce sort est maintenu, la flamme continue à brûler même si elle n'a rien à consumer. Si elle est placée sur un support inflammable, elle continue à brûler normalement après la fin du sort.</description>
+			<commentaire>Pas de commentaires</commentaire>
+			<source>CE ???</source>
+		</Sort>
 	</Livre>	
 	<Livre Name="Eau">
 	</Livre>	
@@ -4157,5 +4190,5 @@ Ce sort peut aussi imposer de nouvelles règles à la réalité: altérer la gra
 	</Livre>	
 	<Livre Name="Accès Libre">
 	</Livre>	
-	
+
 </Biblio>
