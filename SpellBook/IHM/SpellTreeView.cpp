@@ -15,6 +15,7 @@ SpellTreeView::SpellTreeView(QWidget* parent_) : QTreeView(parent_),
     _contextMenu = new QMenu(this);
     this->setContextMenuPolicy(Qt::CustomContextMenu);
     connect(this, SIGNAL(customContextMenuRequested(QPoint)), this, SLOT(onCustomMenuRequest(QPoint)));
+    _contextMenu->addAction("Ouvrir", this, SLOT(openSpell()));
     _contextMenu->addAction("Ajouter au Grimoire", this, SLOT(addSpellTo()));
     _contextMenu->addAction("Retirer du Grimoire", this, SLOT(removeSpellFrom()));
 }
@@ -111,6 +112,11 @@ void SpellTreeView::onCustomMenuRequest(const QPoint &point_)
     QList<QAction*> actions = _contextMenu->actions();
     Q_FOREACH (QAction* action, actions)
     {
+        if(action->text() == "Ouvrir")
+        {
+            action->setEnabled(true);
+            action->setVisible(true);
+        }
         if(action->text() == "Ajouter au Grimoire")
         {
             action->setEnabled(this->isReadOnly());
@@ -174,6 +180,14 @@ void SpellTreeView::addSpellTo()
         spellView->loadData(_indexCustomMenu, this->model());
 
         _siblingSpellTree->addSpell(spellView);
+    }
+}
+
+void SpellTreeView::openSpell()
+{
+    if(this->model()->index(0,0,_indexCustomMenu).data().toString() == "name")
+    {
+        emit openRequest(_indexCustomMenu);
     }
 }
 

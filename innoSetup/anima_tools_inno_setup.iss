@@ -2,8 +2,8 @@
 ; SEE THE DOCUMENTATION FOR DETAILS ON CREATING INNO SETUP SCRIPT FILES!
 
 #define MyAppName "AnimaTools"
-#define MyAppVersion "0_4"
-#define MyAppExeName "Anima_Tools.exe"
+#define MyAppVersion "0_5"
+#define MyAppExeName "AnimaTools.exe"
 
 [Setup]
 ; NOTE: The value of AppId uniquely identifies this application.

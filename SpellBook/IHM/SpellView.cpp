@@ -56,6 +56,7 @@ SpellView::SpellView(QWidget *parent) : QWidget(parent),
     QFontMetrics a(_spellName->font());
     _spellName->setSizePolicy(QSizePolicy::Ignored, QSizePolicy::Fixed);
     _spellName->setMinimumWidth(50*a.averageCharWidth());
+    QObject::connect(_spellName, SIGNAL(textChanged(QString)), this, SLOT(updateTitle()));
 
     _spellBookLabel = new QLabel("Domaine : ", this);
     _spellBook = new QLineEdit(this);
@@ -469,6 +470,11 @@ void SpellView::loadData(const QModelIndex& index_, QAbstractItemModel* model_)
     child = model_->index(10,0,index_);
     _spellSource->setText(model_->index(0,0,child).data().toString());
 
+}
+
+void SpellView::updateTitle()
+{
+    emit nameChanged(this);
 }
 
 QString SpellView::getName()

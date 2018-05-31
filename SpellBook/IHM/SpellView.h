@@ -54,9 +54,13 @@ public:
     QString getAction();
 
 signals:
-    addSpellButtonClicked();
 
-public slots:
+    addSpellButtonClicked();
+    nameChanged(SpellView*);
+
+private slots:
+
+    void updateTitle();
 
 private:
 

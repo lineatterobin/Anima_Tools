@@ -18,8 +18,8 @@ public:
     ~SpellBookMainWindow();
 
     void setTheme(QString styleSheet_);
-    SpellView *newSpellView(bool readOnly_);
-    SpellView *addSpellView(SpellTreeView* treeView_, const QModelIndex& index_, bool readOnly_);
+    SpellView *newSpellView(const bool &readOnly_);
+    SpellView *addSpellView(SpellTreeView* treeView_, const QModelIndex& index_, const bool &readOnly_);
 
 signals:
 
@@ -37,6 +37,7 @@ public slots:
     void saveSpellList();
     void saveAsSpellList();
     void addSpellButton();
+    void updateTabName(SpellView* spellView);
 
 private:
 

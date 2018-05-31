@@ -4,6 +4,7 @@
 #include <QTreeView>
 #include <QMenu>
 #include <QAction>
+#include <QModelIndex>
 
 #include <SpellBook/Modeles/SpellTreeModel.h>
 #include <SpellBook/IHM/SpellView.h>
@@ -40,10 +41,14 @@ public:
 
     void sort();
 
+signals:
+    void openRequest(QModelIndex);
+
 public slots:
     void onCustomMenuRequest(const QPoint &point_);
     void removeSpellFrom();
     void addSpellTo();
+    void openSpell();
 
 private:
 

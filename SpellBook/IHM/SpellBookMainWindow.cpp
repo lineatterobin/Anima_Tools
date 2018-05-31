@@ -101,7 +101,7 @@ void SpellBookMainWindow::initCentralWidget()
     _centralWidget->setTabsClosable(true);
     setCentralWidget(_centralWidget);
     _spellPreview = new SpellView(_centralWidget);
-    _centralWidget->addTab(_spellPreview, "Preview");
+    _centralWidget->addTab(_spellPreview, "Aperçu");
     _centralWidget->setMinimumSize(_spellPreview->minimumSizeHint());
 }
 
@@ -135,14 +135,23 @@ void SpellBookMainWindow::initDockWidgets()
     spellTreeList->sort();
 
     spellTreeExplorer->setSiblingSpellTree(spellTreeList);
+
+    setTabPosition(Qt::LeftDockWidgetArea, QTabWidget::North);
+    setTabPosition(Qt::RightDockWidgetArea, QTabWidget::North);
+    setTabPosition(Qt::TopDockWidgetArea, QTabWidget::West);
+    setTabPosition(Qt::BottomDockWidgetArea, QTabWidget::West);
 }
 
 void SpellBookMainWindow::initConnections()
 {
-    QObject::connect(_spellExplorer->widget(), SIGNAL(clicked(QModelIndex)), this, SLOT(loadSpellPreview(QModelIndex)));
-    QObject::connect(_spellList->widget(), SIGNAL(clicked(QModelIndex)), this, SLOT(loadSpellPreview(QModelIndex)));
-    QObject::connect(_spellExplorer->widget(), SIGNAL(doubleClicked(QModelIndex)), this, SLOT(addSpellViewExplorer(QModelIndex)));
-    QObject::connect(_spellList->widget(), SIGNAL(doubleClicked(QModelIndex)), this, SLOT(addSpellViewList(QModelIndex)));
+    SpellTreeView* explorer = (SpellTreeView*)_spellExplorer->widget();
+    SpellTreeView* list = (SpellTreeView*)_spellList->widget();
+    QObject::connect(explorer->selectionModel(), SIGNAL(currentChanged(QModelIndex,QModelIndex)), this, SLOT(loadSpellPreview(QModelIndex)));
+    QObject::connect(list->selectionModel(), SIGNAL(currentChanged(QModelIndex,QModelIndex)), this, SLOT(loadSpellPreview(QModelIndex)));
+    QObject::connect(explorer, SIGNAL(doubleClicked(QModelIndex)), this, SLOT(addSpellViewExplorer(QModelIndex)));
+    QObject::connect(explorer, SIGNAL(openRequest(QModelIndex)), this, SLOT(addSpellViewExplorer(QModelIndex)));
+    QObject::connect(list, SIGNAL(doubleClicked(QModelIndex)), this, SLOT(addSpellViewList(QModelIndex)));
+    QObject::connect(list, SIGNAL(openRequest(QModelIndex)), this, SLOT(addSpellViewExplorer(QModelIndex)));
 
     QObject::connect(_spellPreview, SIGNAL(addSpellButtonClicked()), this, SLOT(addSpellButton()));
 
@@ -150,10 +159,25 @@ void SpellBookMainWindow::initConnections()
 
 }
 
+void SpellBookMainWindow::newSpellViewButton()
+{
+    newSpellView(false);
+}
+
+SpellView* SpellBookMainWindow::newSpellView(const bool& readOnly_)
+{
+    SpellView* spellView = new SpellView(_centralWidget);
+    spellView->setReadOnly(readOnly_);
+    _centralWidget->addTab(spellView, "Nouveau");
+    QObject::connect(spellView, SIGNAL(addSpellButtonClicked()), this, SLOT(addSpellButton()));
+    QObject::connect(spellView, SIGNAL(nameChanged(SpellView*)), this, SLOT(updateTabName(SpellView*)));
+    _centralWidget->setCurrentWidget(spellView);
+    return spellView;
+}
+
 void SpellBookMainWindow::addSpellViewExplorer(const QModelIndex &index_)
 {
     addSpellView((SpellTreeView*)_spellExplorer->widget(), index_, true);
-    //test d'ajout
 }
 
 void SpellBookMainWindow::addSpellViewList(const QModelIndex &index_)
@@ -161,21 +185,7 @@ void SpellBookMainWindow::addSpellViewList(const QModelIndex &index_)
     addSpellView((SpellTreeView*)_spellList->widget(), index_, false);
 }
 
-void SpellBookMainWindow::newSpellViewButton()
-{
-    newSpellView(false);
-}
-
-SpellView* SpellBookMainWindow::newSpellView(bool readOnly_)
-{
-    SpellView* spellView = new SpellView(_centralWidget);
-    spellView->setReadOnly(readOnly_);
-    _centralWidget->addTab(spellView, "New");
-    QObject::connect(spellView, SIGNAL(addSpellButtonClicked()), this, SLOT(addSpellButton()));
-    return spellView;
-}
-
-SpellView* SpellBookMainWindow::addSpellView(SpellTreeView* treeView_, const QModelIndex &index_, bool readOnly_)
+SpellView* SpellBookMainWindow::addSpellView(SpellTreeView* treeView_, const QModelIndex &index_, const bool& readOnly_)
 {
     QAbstractItemModel* model = treeView_->model();
     if(model->hasChildren(index_) && model->index(0,0,index_).data().toString() == "name")
@@ -185,6 +195,8 @@ SpellView* SpellBookMainWindow::addSpellView(SpellTreeView* treeView_, const QMo
         spellView->loadData(index_, model);
         _centralWidget->addTab(spellView, spellView->getName());
         QObject::connect(spellView, SIGNAL(addSpellButtonClicked()), this, SLOT(addSpellButton()));
+        QObject::connect(spellView, SIGNAL(nameChanged(SpellView*)), this, SLOT(updateTabName(SpellView*)));
+        _centralWidget->setCurrentWidget(spellView);
         return spellView;
     }
     return NULL;
@@ -331,4 +343,18 @@ void SpellBookMainWindow::addSpellButton()
 {
     SpellTreeView* treeList = (SpellTreeView*)_spellList->widget();
     treeList->addSpell((SpellView*)_centralWidget->currentWidget());
+}
+
+void SpellBookMainWindow::updateTabName(SpellView* spellView)
+{
+    int index = _centralWidget->indexOf(spellView);
+    QString name = spellView->getName();
+    if(name == "")
+    {
+        _centralWidget->setTabText(index, "Nouveau");
+    }
+    else
+    {
+        _centralWidget->setTabText(index, name);
+    }
 }
