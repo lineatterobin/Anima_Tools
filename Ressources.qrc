@@ -3,6 +3,8 @@
         <file alias="ANIMA_LOGO">Ressources/Images/Anima_RPG_Collection_Content_logo.png</file>
         <file alias="BLACK_CROSS">Ressources/Images/black_checkbox.png</file>
         <file alias="BLACK_CROSS_HOVER">Ressources/Images/black_checkbox_hover.png</file>
+        <file alias="DOWN_ARROW">Ressources/Images/down_arrow.png</file>
+        <file alias="UP_ARROW">Ressources/Images/up_arrow.png</file>
     </qresource>
     <qresource prefix="/CSS">
         <file alias="THEME_ACCUEIL">Ressources/CSS/Accueil.qss</file>

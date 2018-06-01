@@ -137,16 +137,20 @@ SpellView::SpellView(QWidget *parent) : QWidget(parent),
     {
         _spellAction->insertItem(i, QMetaEnum::fromType<SpellEnum::ActionTypes>().valueToKey(i));
     }
+    QFontMetrics act(_spellAction->font());
+    _spellAction->setMinimumWidth(15*act.averageCharWidth());
     _spellEffectType = new QComboBox(this);
     for(int i = 0; i < QMetaEnum::fromType<SpellEnum::EffectTypes>().keyCount(); ++i)
     {
         _spellEffectType->insertItem(i, QMetaEnum::fromType<SpellEnum::EffectTypes>().valueToKey(i));
     }
+    _spellEffectType->setMinimumWidth(30*act.averageCharWidth());
     _spellMaintenanceType = new QComboBox(this);
     for(int i = 0; i < QMetaEnum::fromType<SpellEnum::MaintenanceTypes>().keyCount(); ++i)
     {
         _spellMaintenanceType->insertItem(i, QMetaEnum::fromType<SpellEnum::MaintenanceTypes>().valueToKey(i));
     }
+    _spellMaintenanceType->setMinimumWidth(20*act.averageCharWidth());
 
     _spellSourceLabel = new QLabel("Source : ", this);
     _spellSource = new QLineEdit(this);

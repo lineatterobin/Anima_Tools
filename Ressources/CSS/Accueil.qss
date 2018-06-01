@@ -65,6 +65,93 @@ QToolButton:hover, QPushButton:hover
     border: 1px solid QLinearGradient( x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #91B5FF, stop: 1 #82A3E6);
 }
 
+/* QTreeView */
+/*QTreeView
+{
+    background-color: #373737 ou #4d4d4d
+}*/
+QTreeView, QListView
+{
+    border: 1px solid #696969;
+	font: 13px "unknown";
+    background-color: #373737;
+}
+QTreeView::item:selected, QListView::item:selected
+{
+    background: rgba(255,255,255,64);
+	font: 13px "unknown";
+    color: #E0E0E0;
+}
+QTreeView::item:hover, QListView::item:hover
+{
+    background: rgba(255,255,255,64);
+	font: 13px "unknown";
+    color: #E0E0E0;
+}
+
+/* ---------- QControl ------------*/
+QDateTimeEdit, QDateEdit, QTextEdit, QPlainTextEdit, QLineEdit, QComboBox, QSpinBox, QDoubleSpinBox
+{
+    color: #E0E0E0;
+    selection-background-color: #91B5FF;
+    background-color: #4d4d4d;
+    border-width: 1px;
+    border-color: #696969;
+    border-style: solid;
+}
+QDateTimeEdit:focus, QDateEdit:focus, QTextEdit:focus, QPlainTextEdit:focus, QLineEdit:focus, QComboBox:focus, QSpinBox:focus, QDoubleSpinBox:focus
+{
+    border: 1px solid QLinearGradient( x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #91B5FF, stop: 1 #82A3E6);
+}
+
+QComboBox:hover
+{
+    border: 1px solid QLinearGradient( x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #91B5FF, stop: 1 #82A3E6);
+}
+QComboBox QAbstractItemView
+{
+    selection-background-color: QLinearGradient( x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #91B5FF, stop: 1 #82A3E6);
+}
+QDateTimeEdit::up-button, QDateEdit::up-button, QComboBox::drop-down, QSpinBox::up-button, QDoubleSpinBox::up-button
+{
+     subcontrol-origin: padding;
+     subcontrol-position: top right;
+     width: 15px;
+     border-left-width: 0px;
+     border-left-color: darkgray;
+     border-left-style: solid;
+     border-top-right-radius: 3px;
+     border-bottom-right-radius: 3px;
+}
+QDateTimeEdit::down-button, QDateEdit::down-button, QSpinBox::down-button, QDoubleSpinBox::down-button
+{
+     subcontrol-origin: padding;
+     subcontrol-position: bottom right;
+     width: 15px;
+     border-left-width: 0px;
+     border-left-color: darkgray;
+     border-left-style: solid;
+     border-top-right-radius: 3px;
+     border-bottom-right-radius: 3px;
+}
+QComboBox::down-arrow
+{
+     image: url(:/IMG/DOWN_ARROW);
+}
+QDateTimeEdit::up-arrow, QDateEdit::up-arrow, QSpinBox::up-arrow, QDoubleSpinBox::up-arrow
+{
+     image: url(:/IMG/UP_ARROW);
+     width: 7px;
+     height: 7px;
+}
+QDateTimeEdit::down-arrow, QDateEdit::down-arrow,QSpinBox::down-arrow, QDoubleSpinBox::down-arrow
+{
+     image: url(:/IMG/DOWN_ARROW);
+     width: 7px;
+     height: 7px;
+}
+
+/*===================================== */
 
 QLabel#Version
 {
@@ -73,7 +160,7 @@ QLabel#Version
     font-size: 13px;
 }
 
-QLineEdit
+/*QLineEdit
 {
 	color : black;
 	font: 13px "unknown"
@@ -115,7 +202,7 @@ QTextEdit::disabled
 {
 	color: black;
 	font: 13px "unknown"
-}
+}*/
 
 QTabBar::close-button
 {
@@ -125,9 +212,4 @@ QTabBar::close-button
 QTabBar::close-button:hover
 {
 	image: url(:/IMG/BLACK_CROSS_HOVER);
-}
-
-QTreeView
-{
-	font: 13px "unknown"
 }
