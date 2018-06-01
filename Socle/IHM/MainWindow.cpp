@@ -23,14 +23,13 @@ MainWindow::MainWindow() : QMainWindow(),
         // Boutons
         _btnSpellBook= new QPushButton();
         _btnSpellBook->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
-        _btnSpellBook->setText("Spell Book Editor");
-        _btnSpellBook->setToolTip("Test");
-        _btnSpellBook->setObjectName("BTNTest");
+        _btnSpellBook->setText("Editeur de Grimoire");
 
         connect(_btnSpellBook, SIGNAL(pressed()), this, SLOT(lancerSpellBook()));
 
         // Grille de boutons
-        QWidget* mainWidget = new QWidget;
+        QWidget* mainWidget = new QWidget();
+        mainWidget->setObjectName("MainWidget");
         _buttonsLayout = new QGridLayout(mainWidget);
         _buttonsLayout->addWidget(_btnSpellBook, 0,7, Qt::AlignCenter);
 
@@ -81,6 +80,8 @@ void MainWindow::paintEvent(QPaintEvent *)
     // Titre
     QImage labelScaled = titre.scaledToWidth(2*width()/3, Qt::SmoothTransformation);
     painter.drawImage(0*width()/2 - 0*labelScaled.width()/2 , 0*height()/2 - 0*labelScaled.height()/2, labelScaled);
+
+
 
 }
 

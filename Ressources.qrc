@@ -6,6 +6,7 @@
     </qresource>
     <qresource prefix="/CSS">
         <file alias="THEME_ACCUEIL">Ressources/CSS/Accueil.qss</file>
+        <file alias="THEME_JOUR">Ressources/CSS/Jour.qss</file>
     </qresource>
     <qresource prefix="/DATA">
         <file alias="BOOK">Ressources/DATA/Books.xml</file>

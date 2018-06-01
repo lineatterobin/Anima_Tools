@@ -1,6 +1,79 @@
+/**
+* Gris sombre de base : #373737
+* Titre sombre : stop:0 #373737, stop: 0.5 #323232, stop:1 #373737
+* Contrôle IHM : #4d4d4d
+* Contrôle IHM texte : #E0E0E0
+* Bouton : stop: 0 #4d4d4d, stop: 1 #5d5d5d
+* Bouton pressed : stop: 0 #2d2d2d, stop: 0.1 #2b2b2b, stop: 0.5 #292929, stop: 0.9 #282828, stop: 1 #252525
+*
+* Blanc texte de base : #E0E0E0
+* texte disabled : #626262
+*
+* Bleu de base : 91B5FF
+* hover : stop: 0 #91B5FF, stop: 1 #82A3E6
+*
+*/
+
+/* -------  QWidget --------*/
+QWidget
+{
+    color: #A5A5A5;
+    background-color: #373737;
+}
+QWidget:disabled
+{
+    color: #626262;
+    background-color: #373737;
+    border-color: #404040;
+}
+QWidget#MainWidget
+{
+    color: #A5A5A5;
+	background-color: rgba(0,0,0,0);
+}
+
+QFrame
+{
+    border: 0px transparent #000000;
+}
+
+/* -------  QToolButton --------*/
+QToolButton
+{
+    color: white;
+    padding: 3px;
+    border-radius: 6;
+    font: bold;
+    font-size: 8px;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+QPushButton
+{
+    color: #E0E0E0;
+    background-color: QLinearGradient( x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #4d4d4d, stop: 1 #5d5d5d);
+    border-width: 1px;
+    border-color: #696969;
+    border-style: solid;
+    border-radius: 1px;
+    padding: 3px;
+    font-size: 12px;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+QToolButton:pressed, QPushButton:pressed
+{
+    background-color: QLinearGradient( x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #2d2d2d, stop: 0.1 #2b2b2b, stop: 0.5 #292929, stop: 0.9 #282828, stop: 1 #252525);
+}
+QToolButton:hover, QPushButton:hover
+{
+    border: 1px solid QLinearGradient( x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #91B5FF, stop: 1 #82A3E6);
+}
+
+
 QLabel#Version
 {
-    color: black;
+    color: #E0E0E0;
     font: bold;
     font-size: 13px;
 }
