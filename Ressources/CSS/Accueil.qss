@@ -32,11 +32,6 @@ QWidget#MainWidget
 	background-color: rgba(0,0,0,0);
 }
 
-QFrame
-{
-    border: 0px transparent #000000;
-}
-
 /* -------  QToolButton --------*/
 QToolButton
 {
