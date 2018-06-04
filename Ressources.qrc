@@ -5,10 +5,11 @@
         <file alias="BLACK_CROSS_HOVER">Ressources/Images/black_checkbox_hover.png</file>
         <file alias="DOWN_ARROW">Ressources/Images/down_arrow.png</file>
         <file alias="UP_ARROW">Ressources/Images/up_arrow.png</file>
+        <file alias="RIGHT_ARROW">Ressources/Images/right_arrow.png</file>
     </qresource>
     <qresource prefix="/CSS">
-        <file alias="THEME_NUIT">Ressources/CSS/Nuit.qss</file>
         <file alias="THEME_JOUR">Ressources/CSS/Jour.qss</file>
+        <file alias="THEME_NUIT">Ressources/CSS/Nuit.qss</file>
     </qresource>
     <qresource prefix="/DATA">
         <file alias="BOOK">Ressources/DATA/Books.xml</file>
