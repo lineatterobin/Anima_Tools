@@ -21,7 +21,13 @@ public:
     SpellView *newSpellView(const bool &readOnly_);
     SpellView *addSpellView(SpellTreeView* treeView_, const QModelIndex& index_, const bool &readOnly_);
 
+    void updateTheme(QString styleSheet_);
+
 signals:
+    /*!
+     * \brief changerThemeRequested : demande le changement du thème
+     */
+    void changerThemeRequested();
 
 public slots:
 

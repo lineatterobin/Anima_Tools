@@ -111,6 +111,18 @@ QTreeView::item:hover, QListView::item:hover
 	font: 13px "unknown";
     color: #E0E0E0;
 }
+QTreeView::branch:has-children:!has-siblings:closed,
+QTreeView::branch:closed:has-children:has-siblings {
+        border-image: none;
+        image: url(:/IMG/RIGHT_ARROW);
+}
+
+QTreeView::branch:open:has-children:!has-siblings,
+QTreeView::branch:open:has-children:has-siblings  {
+        border-image: none;
+		image: url(:/IMG/DOWN_ARROW);
+}
+
 
 /* ---------- QControl ------------*/
 QDateTimeEdit, QDateEdit, QTextEdit, QPlainTextEdit, QLineEdit, QComboBox, QSpinBox, QDoubleSpinBox

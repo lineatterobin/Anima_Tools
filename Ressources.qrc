@@ -8,6 +8,7 @@
         <file alias="RIGHT_ARROW">Ressources/Images/right_arrow.png</file>
         <file alias="CROSS">Ressources/Images/checkbox.png</file>
         <file alias="CROSS_HOVER">Ressources/Images/checkbox_hover.png</file>
+        <file alias="THEME">Ressources/Images/theme.png</file>
     </qresource>
     <qresource prefix="/CSS">
         <file alias="THEME_JOUR">Ressources/CSS/Jour.qss</file>

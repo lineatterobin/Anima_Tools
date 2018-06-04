@@ -7,6 +7,11 @@
 #include <QGridLayout>
 #include <QPushButton>
 
+enum Theme{
+    JOUR,
+    NUIT
+};
+
 class MainWindow : public QMainWindow
 {
     Q_OBJECT
@@ -32,10 +37,13 @@ private slots:
      * \brief lancerSpellBook : Lancement du module SpellBook
      */
     void lancerSpellBook();
+    void changerTheme();
 
 private:
 
     QString _styleSheet;
+
+    Theme _theme;
 
     /*!
      * \brief _buttonsLayout : grille de boutons
