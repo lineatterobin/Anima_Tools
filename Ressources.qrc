@@ -6,6 +6,8 @@
         <file alias="DOWN_ARROW">Ressources/Images/down_arrow.png</file>
         <file alias="UP_ARROW">Ressources/Images/up_arrow.png</file>
         <file alias="RIGHT_ARROW">Ressources/Images/right_arrow.png</file>
+        <file alias="CROSS">Ressources/Images/checkbox.png</file>
+        <file alias="CROSS_HOVER">Ressources/Images/checkbox_hover.png</file>
     </qresource>
     <qresource prefix="/CSS">
         <file alias="THEME_JOUR">Ressources/CSS/Jour.qss</file>

@@ -11,7 +11,7 @@ MainWindow::MainWindow() : QMainWindow(),
     _spellBookWindow(NULL)
 {
     // Chargement du style graphique.
-    QFile file(":/CSS/THEME_JOUR");
+    QFile file(":/CSS/THEME_NUIT");
     if(file.open(QFile::ReadOnly))
     {
         _styleSheet = QString::fromLatin1(file.readAll());
