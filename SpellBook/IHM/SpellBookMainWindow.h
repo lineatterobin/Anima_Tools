@@ -53,7 +53,9 @@ private:
 
     QTabWidget* _centralWidget;
     QDockWidget* _spellExplorer;
-    QDockWidget* _spellList;
+
+    QList<QDockWidget*>* _spellList;
+    //QDockWidget* _spellList;
 
     SpellView* _spellPreview;
 

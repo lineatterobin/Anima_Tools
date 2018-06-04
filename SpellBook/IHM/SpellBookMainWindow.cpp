@@ -27,7 +27,7 @@ SpellBookMainWindow::SpellBookMainWindow(QString styleSheet_) : QMainWindow(),
 
     initConnections();
 
-    setMinimumSize(_centralWidget->minimumSizeHint()+_spellExplorer->minimumSizeHint()+_spellList->minimumSizeHint());
+    setMinimumSize(_centralWidget->minimumSizeHint()+(_spellExplorer->minimumSizeHint()*2));
     setWindowState(Qt::WindowMinimized);
 }
 
@@ -46,7 +46,8 @@ SpellBookMainWindow::~SpellBookMainWindow()
     }
     if(_spellList != NULL)
     {
-        delete _spellList->widget();
+        qDeleteAll(*_spellList);
+        _spellList->clear();
         delete _spellList;
         _spellList = NULL;
     }
@@ -121,14 +122,16 @@ void SpellBookMainWindow::initDockWidgets()
     spellTreeExplorer->setReadOnly(true);
     spellTreeExplorer->sort();
 
-    _spellList = new QDockWidget(this);
-    SpellTreeView* spellTreeList = new SpellTreeView(_spellList);
-    _spellList->setWidget(spellTreeList);
-    _spellList->setObjectName(SPELLLIST);
-    _spellList->setWindowTitle(SPELLLIST);
-    _spellList->setAllowedAreas(Qt::LeftDockWidgetArea | Qt::RightDockWidgetArea);
+    _spellList = new QList<QDockWidget*>();
+    QDockWidget* spellListElt = new QDockWidget(this);
+    spellListElt->setObjectName("spellList_0");
+    SpellTreeView* spellTreeList = new SpellTreeView(spellListElt);
+    spellListElt->setWidget(spellTreeList);
+    spellListElt->setWindowTitle(spellListElt->objectName());
+    spellListElt->setAllowedAreas(Qt::LeftDockWidgetArea | Qt::RightDockWidgetArea);
     spellTreeList->setSizePolicy(QSizePolicy::MinimumExpanding, QSizePolicy::Expanding);
-    addDockWidget(Qt::RightDockWidgetArea, _spellList);
+    _spellList->append(spellListElt);
+    addDockWidget(Qt::RightDockWidgetArea, (_spellList->first()));
 
     spellTreeList->loadTreeData("");
     spellTreeList->setHeaderHidden(true);
@@ -145,7 +148,7 @@ void SpellBookMainWindow::initDockWidgets()
 void SpellBookMainWindow::initConnections()
 {
     SpellTreeView* explorer = (SpellTreeView*)_spellExplorer->widget();
-    SpellTreeView* list = (SpellTreeView*)_spellList->widget();
+    SpellTreeView* list = (SpellTreeView*)_spellList->first()->widget();
     QObject::connect(explorer->selectionModel(), SIGNAL(currentChanged(QModelIndex,QModelIndex)), this, SLOT(loadSpellPreview(QModelIndex)));
     QObject::connect(list->selectionModel(), SIGNAL(currentChanged(QModelIndex,QModelIndex)), this, SLOT(loadSpellPreview(QModelIndex)));
     QObject::connect(explorer, SIGNAL(doubleClicked(QModelIndex)), this, SLOT(addSpellViewExplorer(QModelIndex)));
@@ -182,7 +185,7 @@ void SpellBookMainWindow::addSpellViewExplorer(const QModelIndex &index_)
 
 void SpellBookMainWindow::addSpellViewList(const QModelIndex &index_)
 {
-    addSpellView((SpellTreeView*)_spellList->widget(), index_, false);
+    addSpellView((SpellTreeView*)_spellList->first()->widget(), index_, false);
 }
 
 SpellView* SpellBookMainWindow::addSpellView(SpellTreeView* treeView_, const QModelIndex &index_, const bool& readOnly_)
@@ -263,7 +266,7 @@ void SpellBookMainWindow::createSpellList()
         return;
     }
 
-    SpellTreeView* treeList = (SpellTreeView*)_spellList->widget();
+    SpellTreeView* treeList = (SpellTreeView*)_spellList->first()->widget();
     treeList->model()->deleteLater();
     treeList->loadTreeData("");
     treeList->setHeaderHidden(true);
@@ -307,7 +310,7 @@ void SpellBookMainWindow::loadSpellList()
 
     QString fileName = QFileDialog::getOpenFileName(this, "Ouvrir une liste personalisée", STD_DOCUMENT_PATH, "XML Files (*.xml)");
 
-    SpellTreeView* treeList = (SpellTreeView*)_spellList->widget();
+    SpellTreeView* treeList = (SpellTreeView*)_spellList->first()->widget();
     treeList->model()->deleteLater();
     treeList->loadTreeData(fileName);
     treeList->setHeaderHidden(true);
@@ -317,7 +320,7 @@ void SpellBookMainWindow::loadSpellList()
 
 void SpellBookMainWindow::saveSpellList()
 {
-    SpellTreeView* treeList = (SpellTreeView*)_spellList->widget();
+    SpellTreeView* treeList = (SpellTreeView*)_spellList->first()->widget();
     QString fileName;
     if(treeList->xmlPath() == "")
         fileName = QFileDialog::getSaveFileName(this, "Enregistrer la liste personalisée", STD_DOCUMENT_PATH, "XML Files (*.xml)");
@@ -330,7 +333,7 @@ void SpellBookMainWindow::saveSpellList()
 
 void SpellBookMainWindow::saveAsSpellList()
 {
-    SpellTreeView* treeList = (SpellTreeView*)_spellList->widget();
+    SpellTreeView* treeList = (SpellTreeView*)_spellList->first()->widget();
     QString fileName;
 
     fileName = QFileDialog::getSaveFileName(this, "Enregistrer la liste personalisée", STD_DOCUMENT_PATH, "XML Files (*.xml)");
@@ -341,7 +344,7 @@ void SpellBookMainWindow::saveAsSpellList()
 
 void SpellBookMainWindow::addSpellButton()
 {
-    SpellTreeView* treeList = (SpellTreeView*)_spellList->widget();
+    SpellTreeView* treeList = (SpellTreeView*)_spellList->first()->widget();
     treeList->addSpell((SpellView*)_centralWidget->currentWidget());
 }
 
