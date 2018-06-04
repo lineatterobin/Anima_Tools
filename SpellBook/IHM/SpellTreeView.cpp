@@ -16,7 +16,7 @@ SpellTreeView::SpellTreeView(QWidget* parent_) : QTreeView(parent_),
     this->setContextMenuPolicy(Qt::CustomContextMenu);
     connect(this, SIGNAL(customContextMenuRequested(QPoint)), this, SLOT(onCustomMenuRequest(QPoint)));
     _contextMenu->addAction("Ouvrir", this, SLOT(openSpell()));
-    _contextMenu->addAction("Ajouter au Grimoire", this, SLOT(addSpellTo()));
+    _contextMenu->addAction("Ajouter à...", this, SLOT(addSpellTo()));
     _contextMenu->addAction("Retirer du Grimoire", this, SLOT(removeSpellFrom()));
 }
 
@@ -174,6 +174,41 @@ void SpellTreeView::removeSpellFrom()
 
 void SpellTreeView::addSpellTo()
 {
+    if(_indexCustomMenu.parent().data().toString() == "Source" && !_siblingSpellTree->isReadOnly())
+    {
+        QMessageBox msgBox(this);
+        msgBox.setIcon(QMessageBox::Warning);
+        msgBox.setMinimumSize(250,150);
+        msgBox.setText("Vous avez demandé l'ajout d'un livre de sort.");
+        msgBox.setInformativeText("Voulez-vous vraiment ajouter l'ensemble des sorts de ce livre ?");
+        QPushButton *oui = msgBox.addButton("Confirmer", QMessageBox::AcceptRole);
+        QPushButton *cancel = msgBox.addButton("Annuler", QMessageBox::RejectRole);
+        msgBox.setDefaultButton(oui);
+        msgBox.exec();
+
+        if(msgBox.clickedButton() == (QAbstractButton*)oui)
+        {
+            // Oui was clicked
+            for(int i=0; i < this->model()->rowCount(_indexCustomMenu); ++i)
+            {
+                SpellView* spellView = new SpellView(this);
+                spellView->loadData(this->model()->index(i,0,_indexCustomMenu), this->model());
+
+                _siblingSpellTree->addSpell(spellView);
+            }
+        }
+        else if(msgBox.clickedButton() == (QAbstractButton*)cancel)
+        {
+            // Cancel was clicked
+            return;
+        }
+        else
+        {
+            // should never be reached
+            return;
+        }
+
+    }
     if(this->model()->index(0,0,_indexCustomMenu).data().toString() == "name" && !_siblingSpellTree->isReadOnly())
     {
         SpellView* spellView = new SpellView(this);

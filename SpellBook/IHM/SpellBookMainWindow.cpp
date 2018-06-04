@@ -108,20 +108,6 @@ void SpellBookMainWindow::initCentralWidget()
 
 void SpellBookMainWindow::initDockWidgets()
 {
-    _spellExplorer = new QDockWidget(this);
-    SpellTreeView* spellTreeExplorer = new SpellTreeView(_spellExplorer);
-    _spellExplorer->setWidget(spellTreeExplorer);
-    _spellExplorer->setObjectName(SPELLEXPLORER);
-    _spellExplorer->setWindowTitle(SPELLEXPLORER);
-    _spellExplorer->setAllowedAreas(Qt::LeftDockWidgetArea | Qt::RightDockWidgetArea);
-    spellTreeExplorer->setSizePolicy(QSizePolicy::MinimumExpanding, QSizePolicy::Expanding);
-    addDockWidget(Qt::LeftDockWidgetArea, _spellExplorer);
-
-    spellTreeExplorer->loadTreeData(":/DATA/BOOK");
-    spellTreeExplorer->setHeaderHidden(true);
-    spellTreeExplorer->setReadOnly(true);
-    spellTreeExplorer->sort();
-
     _spellList = new QList<QDockWidget*>();
     QDockWidget* spellListElt = new QDockWidget(this);
     spellListElt->setObjectName("spellList_0");
@@ -130,12 +116,37 @@ void SpellBookMainWindow::initDockWidgets()
     spellListElt->setWindowTitle(spellListElt->objectName());
     spellListElt->setAllowedAreas(Qt::LeftDockWidgetArea | Qt::RightDockWidgetArea);
     spellTreeList->setSizePolicy(QSizePolicy::MinimumExpanding, QSizePolicy::Expanding);
+    spellTreeList->setSelectionMode(QAbstractItemView::ExtendedSelection);
+    spellTreeList->setDragEnabled(true);
+    spellTreeList->viewport()->setAcceptDrops(true);
+    spellTreeList->setDropIndicatorShown(true);
+
     _spellList->append(spellListElt);
     addDockWidget(Qt::RightDockWidgetArea, (_spellList->first()));
 
     spellTreeList->loadTreeData("");
     spellTreeList->setHeaderHidden(true);
     spellTreeList->sort();
+
+
+    _spellExplorer = new QDockWidget(this);
+    SpellTreeView* spellTreeExplorer = new SpellTreeView(_spellExplorer);
+    _spellExplorer->setWidget(spellTreeExplorer);
+    _spellExplorer->setObjectName(SPELLEXPLORER);
+    _spellExplorer->setWindowTitle(SPELLEXPLORER);
+    _spellExplorer->setAllowedAreas(Qt::LeftDockWidgetArea | Qt::RightDockWidgetArea);
+    spellTreeExplorer->setSizePolicy(QSizePolicy::MinimumExpanding, QSizePolicy::Expanding);
+    spellTreeExplorer->setSelectionMode(QAbstractItemView::ExtendedSelection);
+    spellTreeExplorer->setDragEnabled(true);
+    spellTreeExplorer->viewport()->setAcceptDrops(true);
+    spellTreeExplorer->setDropIndicatorShown(true);
+
+    addDockWidget(Qt::LeftDockWidgetArea, _spellExplorer);
+
+    spellTreeExplorer->loadTreeData(":/DATA/BOOK");
+    spellTreeExplorer->setHeaderHidden(true);
+    spellTreeExplorer->setReadOnly(true);
+    spellTreeExplorer->sort();
 
     spellTreeExplorer->setSiblingSpellTree(spellTreeList);
 
