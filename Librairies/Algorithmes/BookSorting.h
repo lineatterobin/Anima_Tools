@@ -31,9 +31,18 @@ const QStringList BOOK_ORDER = { "Lumière",
                                  "Accès Libre"
                                };
 
+/*!
+ * \brief La classe BookSorting permet de trier les livres d'après un ordre spécifique.
+ */
 class BookSorting
 {
 public:
+    /*!
+     * \brief compareBooks compare deux livres
+     * \param book1_
+     * \param book2_
+     * \return entier positif, négatif ou nul suivant la comparaison.
+     */
     static int compareBooks(const QString &book1_, const QString &book2_);
 };
 

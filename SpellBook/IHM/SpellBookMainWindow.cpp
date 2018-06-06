@@ -4,6 +4,7 @@
 #include <QFileDialog>
 #include <iostream>
 #include <QMessageBox>
+#include <QToolButton>
 
 #include <Socle/Constantes.h>
 #include <SpellBook/Modeles/SpellTreeModel.h>
@@ -58,10 +59,10 @@ void SpellBookMainWindow::initToolBar()
     toolBar->setObjectName(SPELLBOOK_TOOLBAR_NAME);
 
     QAction* newSpellListAction = new QAction("Nouveau", this);
-    newSpellListAction->setToolTip("Crée une nouvelle liste personalisée.");
+    newSpellListAction->setToolTip("Crée une nouvelle liste personalisée");
 
     QAction* loadSpellListAction = new QAction("Ouvrir", this);
-    loadSpellListAction->setToolTip("Ouvre une liste personalisée.");
+    loadSpellListAction->setToolTip("Ouvre une liste personalisée");
 
     QAction* saveSpellListAction = new QAction("Enregistrer", this);
     saveSpellListAction->setToolTip("Sauvegarde la liste personnalisée");
@@ -70,7 +71,16 @@ void SpellBookMainWindow::initToolBar()
     saveAsSpellListAction->setToolTip("Sauvegarde la liste personnalisée");
 
     QAction* newSpellViewAction = new QAction("Nouveau sort", this);
-    newSpellViewAction->setToolTip("Ajoute un onglet de création de sort.");
+    newSpellViewAction->setToolTip("Ajoute un onglet de création de sort");
+
+    QToolButton* changeThemeBouton = new QToolButton(this);
+    changeThemeBouton->setToolButtonStyle(Qt::ToolButtonIconOnly);
+    changeThemeBouton->setIcon(QIcon(":/IMG/THEME"));
+    changeThemeBouton->setMaximumWidth(TOOL_BUTTON_MAXIMUM_WIDTH);
+    changeThemeBouton->setMinimumWidth(TOOL_BUTTON_MINIMUM_WIDTH);
+    changeThemeBouton->setIconSize(QSize(TOOL_BUTTON_ICON_SIZE, TOOL_BUTTON_ICON_SIZE));
+    changeThemeBouton->setToolTip("Active le mode Jour/Nuit");
+
 
     toolBar->addAction(newSpellListAction);
     toolBar->addAction(loadSpellListAction);
@@ -79,12 +89,22 @@ void SpellBookMainWindow::initToolBar()
     toolBar->addSeparator();
     toolBar->addAction(newSpellViewAction);
 
+    QWidget* spacerWidget = new QWidget(this);
+    spacerWidget->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
+    spacerWidget->setVisible(true);
+
+    toolBar->addWidget(spacerWidget);
+    toolBar->addWidget(changeThemeBouton);
+
+
     QObject::connect(newSpellListAction, SIGNAL(triggered(bool)), this, SLOT(createSpellList()));
     QObject::connect(loadSpellListAction, SIGNAL(triggered(bool)), this, SLOT(loadSpellList()));
     QObject::connect(saveSpellListAction, SIGNAL(triggered(bool)), this, SLOT(saveSpellList()));
     QObject::connect(saveAsSpellListAction, SIGNAL(triggered(bool)), this, SLOT(saveAsSpellList()));
 
     QObject::connect(newSpellViewAction, SIGNAL(triggered(bool)), this, SLOT(newSpellViewButton()));
+
+    QObject::connect(changeThemeBouton, SIGNAL(pressed()), this, SIGNAL(changerThemeRequested()));
 
 }
 
@@ -142,9 +162,7 @@ void SpellBookMainWindow::initDockWidgets()
     addDockWidget(Qt::RightDockWidgetArea, _spellList->at(1));
     addDockWidget(Qt::LeftDockWidgetArea, _spellList->at(0));
 
-
-
-
+    // Définition des positions des Tabs
     setTabPosition(Qt::LeftDockWidgetArea, QTabWidget::North);
     setTabPosition(Qt::RightDockWidgetArea, QTabWidget::North);
     setTabPosition(Qt::TopDockWidgetArea, QTabWidget::West);

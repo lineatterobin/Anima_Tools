@@ -17,6 +17,9 @@ const QString SPELLEXPLORER = "Source";
 const QString SPELLLIST= "Grimoire";
 
 const int TOOL_BUTTON_ICON_SIZE = 15;
+const int TOOL_BUTTON_MINIMUM_WIDTH = 70;
+const int TOOL_BUTTON_MAXIMUM_WIDTH = 70;
+
 
 const QString STD_DOCUMENT_PATH = QStandardPaths::standardLocations(QStandardPaths::DocumentsLocation).first();
 

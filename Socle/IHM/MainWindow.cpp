@@ -17,39 +17,40 @@ MainWindow::MainWindow() : QMainWindow(),
         _styleSheet = QString::fromLatin1(file.readAll());
         setStyleSheet(_styleSheet);
 
-        //On ferme le fichier
-        file.close();
-
-        // Boutons
-        _btnSpellBook= new QPushButton();
-        _btnSpellBook->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
-        _btnSpellBook->setText("Editeur de Grimoire");
-
-        connect(_btnSpellBook, SIGNAL(pressed()), this, SLOT(lancerSpellBook()));
-
-        // Grille de boutons
-        QWidget* mainWidget = new QWidget();
-        mainWidget->setObjectName("MainWidget");
-        _buttonsLayout = new QGridLayout(mainWidget);
-        _buttonsLayout->addWidget(_btnSpellBook, 0,7, Qt::AlignCenter);
-
-        // Version
-        QLabel* versionLabel = new QLabel(VERSION_LIBELLE, this);
-        versionLabel->setObjectName("Version");
-        _buttonsLayout->addWidget(versionLabel, 8, 0, Qt::AlignBottom);
-
-        // Création des lignes et colonnes de la grille de boutons
-        for(int i = 0; i < 9; i++)
-            _buttonsLayout->setColumnStretch(i, 1);
-        for(int i = 0; i < 9; i++)
-            _buttonsLayout->setRowStretch(i, 1);
-
-        // Ajout du Widget à la fenêtre principale.
-        setCentralWidget(mainWidget);
-
-        // Réglage de la taille de la fenêtre.
-        resize(DEFAULT_WIDTH, DEFAULT_HEIGHT);
+        _theme = Theme::JOUR;
     }
+    //On ferme le fichier
+    file.close();
+
+    // Boutons
+    _btnSpellBook= new QPushButton();
+    _btnSpellBook->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
+    _btnSpellBook->setText("Editeur de Grimoire");
+
+    connect(_btnSpellBook, SIGNAL(pressed()), this, SLOT(lancerSpellBook()));
+
+    // Grille de boutons
+    QWidget* mainWidget = new QWidget();
+    mainWidget->setObjectName("MainWidget");
+    _buttonsLayout = new QGridLayout(mainWidget);
+    _buttonsLayout->addWidget(_btnSpellBook, 0,7, Qt::AlignCenter);
+
+    // Version
+    QLabel* versionLabel = new QLabel(VERSION_LIBELLE, this);
+    versionLabel->setObjectName("Version");
+    _buttonsLayout->addWidget(versionLabel, 8, 0, Qt::AlignBottom);
+
+    // Création des lignes et colonnes de la grille de boutons
+    for(int i = 0; i < 9; i++)
+        _buttonsLayout->setColumnStretch(i, 1);
+    for(int i = 0; i < 9; i++)
+        _buttonsLayout->setRowStretch(i, 1);
+
+    // Ajout du Widget à la fenêtre principale.
+    setCentralWidget(mainWidget);
+
+    // Réglage de la taille de la fenêtre.
+    resize(DEFAULT_WIDTH, DEFAULT_HEIGHT);
 }
 
 MainWindow::~MainWindow()
@@ -63,7 +64,7 @@ MainWindow::~MainWindow()
 void MainWindow::closeEvent(QCloseEvent *)
 {
     if(_spellBookWindow != NULL)
-       _spellBookWindow->close();
+        _spellBookWindow->close();
 }
 
 void MainWindow::paintEvent(QPaintEvent *)
@@ -97,4 +98,38 @@ void MainWindow::lancerSpellBook()
     _spellBookWindow->raise();
     _spellBookWindow->activateWindow();
     _spellBookWindow->setWindowState(_spellBookWindow->windowState() & ~Qt::WindowMinimized);
+
+    connect(_spellBookWindow, SIGNAL(changerThemeRequested()), this, SLOT(changerTheme()));
+}
+
+void MainWindow::changerTheme()
+{
+    if (_theme == Theme::JOUR)
+    {
+        QFile file(":/CSS/THEME_NUIT");
+        if(file.open(QFile::ReadOnly))
+        {
+            _styleSheet = QString::fromLatin1(file.readAll());
+            setStyleSheet(_styleSheet);
+
+            _theme = Theme::NUIT;
+        }
+        file.close();
+    }
+    else
+    {
+        QFile file(":/CSS/THEME_JOUR");
+        if(file.open(QFile::ReadOnly))
+        {
+            _styleSheet = QString::fromLatin1(file.readAll());
+            setStyleSheet(_styleSheet);
+
+            _theme = Theme::JOUR;
+        }
+        file.close();
+    }
+
+    // On met à jour les modules s'ils existent.
+    if(_spellBookWindow != NULL)
+        _spellBookWindow->setTheme(_styleSheet);
 }

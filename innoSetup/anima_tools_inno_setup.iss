@@ -27,7 +27,7 @@ Name: "french"; MessagesFile: "compiler:Languages\French.isl"
 Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{cm:AdditionalIcons}"; Flags: unchecked
 
 [Files]
-Source: "..\..\build-Anima_Tools-Desktop_Qt_5_10_1_MinGW_32bit-Release\release\Anima_Tools.exe"; DestDir: "{app}"; Flags: ignoreversion
+Source: "..\..\build-Anima_Tools-Desktop_Qt_5_10_1_MinGW_32bit-Release\release\AnimaTools.exe"; DestDir: "{app}"; Flags: ignoreversion
 Source: "..\icon.ico"; DestDir: "{app}"; Flags: ignoreversion
 Source: "..\..\build-Anima_Tools-Desktop_Qt_5_10_1_MinGW_32bit-Release\release\D3Dcompiler_47.dll"; DestDir: "{app}"; Flags: ignoreversion
 Source: "..\..\build-Anima_Tools-Desktop_Qt_5_10_1_MinGW_32bit-Release\release\libEGL.dll"; DestDir: "{app}"; Flags: ignoreversion
