@@ -25,7 +25,7 @@ public:
     void setEnabled(const bool& value);
     void setReadOnly(const bool& value);
 
-    void loadData(const QModelIndex& index_, QAbstractItemModel* model_);
+    void loadData(QModelIndex index_, const QAbstractItemModel *model_);
 
     QString getName();
     int getLevel();

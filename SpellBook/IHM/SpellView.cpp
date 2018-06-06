@@ -371,7 +371,7 @@ void SpellView::setReadOnly(const bool& value)
         _spellAction->setEnabled(!value);
 }
 
-void SpellView::loadData(const QModelIndex& index_, QAbstractItemModel* model_)
+void SpellView::loadData(QModelIndex index_, const QAbstractItemModel* model_)
 {
     // Domaine
     QModelIndex parent = model_->parent(index_);

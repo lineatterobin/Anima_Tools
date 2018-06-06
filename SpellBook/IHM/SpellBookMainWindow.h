@@ -19,16 +19,16 @@ public:
 
     void setTheme(QString styleSheet_);
     SpellView *newSpellView(const bool &readOnly_);
-    SpellView *addSpellView(SpellTreeView* treeView_, const QModelIndex& index_, const bool &readOnly_);
+
+    QList<QDockWidget*> getList();
 
 signals:
 
 public slots:
 
     void newSpellViewButton();
-    void loadSpellPreview(const QModelIndex& index_);
-    void addSpellViewExplorer(const QModelIndex &index_);
-    void addSpellViewList(const QModelIndex &index_);
+    void loadSpellPreview(QModelIndex index_);
+    SpellView *addSpellView(QModelIndex index_);
 
     void closeSpellView(const int& index_);
 
@@ -52,10 +52,8 @@ private:
     void sortTreeSpellView(SpellTreeView* treeview_);
 
     QTabWidget* _centralWidget;
-    QDockWidget* _spellExplorer;
 
     QList<QDockWidget*>* _spellList;
-    //QDockWidget* _spellList;
 
     SpellView* _spellPreview;
 

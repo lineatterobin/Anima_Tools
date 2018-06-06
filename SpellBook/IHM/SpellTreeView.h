@@ -5,6 +5,7 @@
 #include <QMenu>
 #include <QAction>
 #include <QModelIndex>
+#include <QDockWidget>
 
 #include <SpellBook/Modeles/SpellTreeModel.h>
 #include <SpellBook/IHM/SpellView.h>
@@ -30,8 +31,6 @@ public:
     void setMaxDepth(const int &max_);
     int maxDepth();
 
-    void setSiblingSpellTree(SpellTreeView* treeView);
-
     SpellTreeModel* model();
 
     void setXmlPath(QString xmlPath_);
@@ -47,7 +46,7 @@ signals:
 public slots:
     void onCustomMenuRequest(const QPoint &point_);
     void removeSpellFrom();
-    void addSpellTo();
+    void addSpellTo(QAction *action_);
     void openSpell();
 
 private:
@@ -56,8 +55,6 @@ private:
     int _maxDepth;
     QMenu* _contextMenu;
     QModelIndex _indexCustomMenu;
-
-    SpellTreeView* _siblingSpellTree;
 
     QString _xmlPath;
 

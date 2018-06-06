@@ -3,20 +3,25 @@
 #include <QFile>
 #include <iostream>
 #include <QMessageBox>
+#include <SpellBook/IHM/SpellBookMainWindow.h>
 
 SpellTreeView::SpellTreeView(QWidget* parent_) : QTreeView(parent_),
     _readOnly(false),
     _maxDepth(2),
     _contextMenu(NULL),
     _indexCustomMenu(),
-    _siblingSpellTree(NULL),
     _xmlPath("")
 {
     _contextMenu = new QMenu(this);
     this->setContextMenuPolicy(Qt::CustomContextMenu);
     connect(this, SIGNAL(customContextMenuRequested(QPoint)), this, SLOT(onCustomMenuRequest(QPoint)));
+
+    QMenu* addMenu = new QMenu(this);
+    addMenu->setTitle("Ajouter à ...");
+    connect(addMenu, SIGNAL(triggered(QAction*)), this, SLOT(addSpellTo(QAction*)));
     _contextMenu->addAction("Ouvrir", this, SLOT(openSpell()));
-    _contextMenu->addAction("Ajouter à...", this, SLOT(addSpellTo()));
+    _contextMenu->addSeparator();
+    _contextMenu->addMenu(addMenu);
     _contextMenu->addAction("Retirer du Grimoire", this, SLOT(removeSpellFrom()));
 }
 
@@ -117,10 +122,30 @@ void SpellTreeView::onCustomMenuRequest(const QPoint &point_)
             action->setEnabled(true);
             action->setVisible(true);
         }
-        if(action->text() == "Ajouter au Grimoire")
+        if(action->text() == "Ajouter à ...")
         {
-            action->setEnabled(this->isReadOnly());
-            action->setVisible(this->isReadOnly());
+            action->setEnabled(true);
+            action->setVisible(true);
+            QMenu* submenu = action->menu();
+            submenu->clear();
+            SpellBookMainWindow* mainW = (SpellBookMainWindow*)this->parent()->parent();
+            QList<QDockWidget*> list = mainW->getList();
+            Q_FOREACH (QDockWidget* widget, list)
+            {
+                SpellTreeView* treeview = (SpellTreeView*)widget->widget();
+                if(!treeview->isReadOnly() && widget->objectName() != this->parent()->objectName())
+                {
+                    QAction *action = new QAction(widget->objectName());
+                    action->setData(list.indexOf(widget));
+                    submenu->addAction(action);
+                }
+            }
+            if(submenu->isEmpty())
+            {
+                QAction* action = new QAction("Vide");
+                action->setEnabled(false);
+                submenu->addAction(action);
+            }
         }
         if(action->text() == "Retirer du Grimoire")
         {
@@ -172,9 +197,12 @@ void SpellTreeView::removeSpellFrom()
 
 }
 
-void SpellTreeView::addSpellTo()
+void SpellTreeView::addSpellTo(QAction* action_)
 {
-    if(_indexCustomMenu.parent().data().toString() == "Source" && !_siblingSpellTree->isReadOnly())
+    SpellBookMainWindow* mainW = (SpellBookMainWindow*)this->parent()->parent();
+    QList<QDockWidget*> list = mainW->getList();
+    SpellTreeView* target_ = (SpellTreeView*)list.at(action_->data().toInt())->widget();
+    if(_indexCustomMenu.parent().data().toString() == "Source" && !target_->isReadOnly())
     {
         QMessageBox msgBox(this);
         msgBox.setIcon(QMessageBox::Warning);
@@ -194,7 +222,7 @@ void SpellTreeView::addSpellTo()
                 SpellView* spellView = new SpellView(this);
                 spellView->loadData(this->model()->index(i,0,_indexCustomMenu), this->model());
 
-                _siblingSpellTree->addSpell(spellView);
+                target_->addSpell(spellView);
             }
         }
         else if(msgBox.clickedButton() == (QAbstractButton*)cancel)
@@ -209,12 +237,12 @@ void SpellTreeView::addSpellTo()
         }
 
     }
-    if(this->model()->index(0,0,_indexCustomMenu).data().toString() == "name" && !_siblingSpellTree->isReadOnly())
+    if(this->model()->index(0,0,_indexCustomMenu).data().toString() == "name" && !target_->isReadOnly())
     {
         SpellView* spellView = new SpellView(this);
         spellView->loadData(_indexCustomMenu, this->model());
 
-        _siblingSpellTree->addSpell(spellView);
+        target_->addSpell(spellView);
     }
 }
 
@@ -244,11 +272,6 @@ void SpellTreeView::setMaxDepth(const int& max_)
 int SpellTreeView::maxDepth()
 {
     return _maxDepth;
-}
-
-void SpellTreeView::setSiblingSpellTree(SpellTreeView *treeView)
-{
-    _siblingSpellTree = treeView;
 }
 
 SpellTreeModel* SpellTreeView::model()

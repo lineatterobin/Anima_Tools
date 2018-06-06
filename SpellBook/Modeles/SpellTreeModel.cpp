@@ -398,10 +398,7 @@ void SpellTreeModel::addSpell(SpellView *spell_, QDomNode book_)
                 tmp.namedItem("effets").firstChild().setNodeValue(spell_->getEffectArcane());
 
                 // maintien_type
-                std::cout << spell_->getMaintenanceType() << std::endl;
-                std::cout << sort.namedItem("maintien_type").firstChild().nodeValue().toStdString() << std::endl;
                 sort.namedItem("maintien_type").firstChild().setNodeValue(QString::number(spell_->getMaintenanceType()));
-                std::cout << sort.namedItem("maintien_type").firstChild().nodeValue().toStdString() << std::endl;
 
                 // action
                 sort.namedItem("action").firstChild().setNodeValue(spell_->getAction());
