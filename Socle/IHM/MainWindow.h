@@ -37,6 +37,10 @@ private slots:
      * \brief lancerSpellBook : Lancement du module SpellBook
      */
     void lancerSpellBook();
+
+    /*!
+     * \brief changerTheme : Changement de thème (Jour/Nuit).
+     */
     void changerTheme();
 
 private:
@@ -45,9 +49,6 @@ private:
 
     Theme _theme;
 
-    /*!
-     * \brief _buttonsLayout : grille de boutons
-     */
     QGridLayout *_buttonsLayout;
 
     QPushButton *_btnSpellBook;

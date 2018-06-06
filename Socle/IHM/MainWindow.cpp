@@ -129,5 +129,7 @@ void MainWindow::changerTheme()
         file.close();
     }
 
-    _spellBookWindow->updateTheme(_styleSheet);
+    // On met à jour les modules s'ils existent.
+    if(_spellBookWindow != NULL)
+        _spellBookWindow->setTheme(_styleSheet);
 }

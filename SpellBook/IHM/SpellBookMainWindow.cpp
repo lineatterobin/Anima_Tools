@@ -128,6 +128,7 @@ void SpellBookMainWindow::initCentralWidget()
 
 void SpellBookMainWindow::initDockWidgets()
 {
+    //Liste de sorts source
     _spellExplorer = new QDockWidget(this);
     SpellTreeView* spellTreeExplorer = new SpellTreeView(_spellExplorer);
     _spellExplorer->setWidget(spellTreeExplorer);
@@ -142,6 +143,7 @@ void SpellBookMainWindow::initDockWidgets()
     spellTreeExplorer->setReadOnly(true);
     spellTreeExplorer->sort();
 
+    //Liste de sorts personalisée.
     _spellList = new QList<QDockWidget*>();
     QDockWidget* spellListElt = new QDockWidget(this);
     spellListElt->setObjectName("spellList_0");
@@ -157,8 +159,10 @@ void SpellBookMainWindow::initDockWidgets()
     spellTreeList->setHeaderHidden(true);
     spellTreeList->sort();
 
+    // Créer le lien entre les deux SpellTreeView. (Permet l'ajout de sort direct.)
     spellTreeExplorer->setSiblingSpellTree(spellTreeList);
 
+    // Définition des positions des Tabs
     setTabPosition(Qt::LeftDockWidgetArea, QTabWidget::North);
     setTabPosition(Qt::RightDockWidgetArea, QTabWidget::North);
     setTabPosition(Qt::TopDockWidgetArea, QTabWidget::West);
@@ -380,11 +384,4 @@ void SpellBookMainWindow::updateTabName(SpellView* spellView)
     {
         _centralWidget->setTabText(index, name);
     }
-}
-
-void SpellBookMainWindow::updateTheme(QString styleSheet_)
-{
-    //On applique la feuille de style à le fenêtre
-    setStyleSheet(styleSheet_);
-
 }
