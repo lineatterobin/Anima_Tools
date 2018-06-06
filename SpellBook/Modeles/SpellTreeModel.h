@@ -21,6 +21,7 @@ public:
                         int = Qt::DisplayRole) const override;
     QModelIndex index(int row, int column,
                       const QModelIndex &parent = QModelIndex()) const override;
+    QModelIndex root();
     QModelIndex parent(const QModelIndex &child) const override;
     int rowCount(const QModelIndex &parent = QModelIndex()) const override;
     int columnCount(const QModelIndex &parent = QModelIndex()) const override;
@@ -35,6 +36,8 @@ public:
     void removeBook(const QModelIndex &index_);
 
     void save(QString fileName_);
+
+
 
 private:
 

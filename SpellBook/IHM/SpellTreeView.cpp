@@ -61,6 +61,7 @@ void SpellTreeView::loadTreeData(QString xmlPath_)
                 SpellTreeModel *newModel = new SpellTreeModel(document, this);
                 this->setModel(newModel);
                 _xmlPath = xmlPath_;
+                this->parent()->setObjectName(this->model()->index(1,0).data().toString());
             }
             file.close();
         }
@@ -70,7 +71,7 @@ void SpellTreeView::loadTreeData(QString xmlPath_)
         QDomProcessingInstruction process = document.createProcessingInstruction("xml", "version=\"1.0\" encoding=\"ISO-8859-1\"");
         document.appendChild(process);
         QDomElement bibliotheque = document.createElement("Biblio");
-        bibliotheque.setAttribute("Name", "Grimoire");
+        bibliotheque.setAttribute("Name", this->parent()->objectName());
         document.appendChild(bibliotheque);
         SpellTreeModel *newModel = new SpellTreeModel(document, this);
         this->setModel(newModel);
@@ -164,7 +165,7 @@ void SpellTreeView::removeSpellFrom()
     {
         this->model()->removeSpell(_indexCustomMenu);
     }
-    else if(_indexCustomMenu.parent().data().toString() == "Grimoire" && !isReadOnly())
+    else if(!_indexCustomMenu.parent().parent().isValid() && !isReadOnly())
     {
         QMessageBox msgBox(this);
         msgBox.setIcon(QMessageBox::Warning);

@@ -5,13 +5,15 @@
 #include <iostream>
 #include <QMessageBox>
 #include <QToolButton>
+#include <QInputDialog>
 
 #include <Socle/Constantes.h>
 #include <SpellBook/Modeles/SpellTreeModel.h>
 
 SpellBookMainWindow::SpellBookMainWindow(QString styleSheet_) : QMainWindow(),
     _centralWidget(NULL),
-    _spellPreview(NULL)
+    _spellPreview(NULL),
+    _listCount(0)
 {
     setWindowTitle(SPELLBOOK_WINDOW_NAME);
     setTheme(styleSheet_);
@@ -125,7 +127,8 @@ void SpellBookMainWindow::initDockWidgets()
     _spellList = new QList<QDockWidget*>();
 
     QDockWidget* spellListElt = new QDockWidget(this);
-    spellListElt->setObjectName(SPELLLIST + "1");
+    spellListElt->setObjectName(SPELLLIST + QString::number(_listCount));
+    ++_listCount;
     SpellTreeView* spellTreeList = new SpellTreeView(spellListElt);
     spellListElt->setWidget(spellTreeList);
     spellListElt->setWindowTitle(spellListElt->objectName());
@@ -248,88 +251,66 @@ void SpellBookMainWindow::closeSpellView(const int &index_)
 
 void SpellBookMainWindow::createSpellList()
 {
-    QMessageBox msgBox(this);
-    msgBox.setIcon(QMessageBox::Warning);
-    msgBox.setMinimumSize(250,150);
-    msgBox.setText("Les données de la liste actuelle vont être remplacées.");
-    msgBox.setInformativeText("Voulez-vous enregistrer la liste actuelle ?");
-    QPushButton *save = msgBox.addButton("Enregistrer", QMessageBox::AcceptRole);
-    QPushButton *discard = msgBox.addButton("Ignorer", QMessageBox::DestructiveRole);
-    QPushButton *cancel = msgBox.addButton("Annuler", QMessageBox::RejectRole);
-    msgBox.setDefaultButton(save);
-    msgBox.exec();
+    bool ok;
+    // Ask for birth date as a string.
+    QString text = QInputDialog::getText(0, "Nouvelle liste", "Nom de la liste :", QLineEdit::Normal, "", &ok);
+    if (ok)
+    {
+        QDockWidget* spellListElt = new QDockWidget(this);
+        if(!text.isEmpty())
+            spellListElt->setObjectName(text);
+        else
+        {
+            spellListElt->setObjectName(SPELLLIST + QString::number(_listCount));
+            ++_listCount;
+        }
+        SpellTreeView* spellTreeList = new SpellTreeView(spellListElt);
+        spellListElt->setWidget(spellTreeList);
+        spellListElt->setWindowTitle(spellListElt->objectName());
+        spellListElt->setAllowedAreas(Qt::LeftDockWidgetArea | Qt::RightDockWidgetArea);
+        spellTreeList->setSizePolicy(QSizePolicy::MinimumExpanding, QSizePolicy::Expanding);
+        spellTreeList->setSelectionMode(QAbstractItemView::ExtendedSelection);
+        spellTreeList->setDragEnabled(true);
+        spellTreeList->viewport()->setAcceptDrops(true);
+        spellTreeList->setDropIndicatorShown(true);
 
-    if(msgBox.clickedButton() == (QAbstractButton*)save)
-    {
-        // Save was clicked
-        saveSpellList();
-    }
-    else if(msgBox.clickedButton() == (QAbstractButton*)discard)
-    {
-        // Don't Save was clicked
-        ;;
-    }
-    else if(msgBox.clickedButton() == (QAbstractButton*)cancel)
-    {
-        // Cancel was clicked
-        return;
+        spellTreeList->loadTreeData("");
+        spellTreeList->setHeaderHidden(true);
+        spellTreeList->sort();
+
+        _spellList->append(spellListElt);
+        addDockWidget(Qt::RightDockWidgetArea, spellListElt);
+        tabifyDockWidget(_spellList->at(1), spellListElt);
     }
     else
     {
-        // should never be reached
         return;
     }
-
-    SpellTreeView* treeList = (SpellTreeView*)_spellList->at(1)->widget();
-    treeList->model()->deleteLater();
-    treeList->loadTreeData("");
-    treeList->setHeaderHidden(true);
-    treeList->sort();
 
 }
 
 void SpellBookMainWindow::loadSpellList()
 {
-    QMessageBox msgBox(this);
-    msgBox.setIcon(QMessageBox::Warning);
-    msgBox.setMinimumSize(250,150);
-    msgBox.setText("Les données de la liste actuelle vont être remplacées.");
-    msgBox.setInformativeText("Voulez-vous enregistrer la liste actuelle ?");
-    QPushButton *save = msgBox.addButton("Enregistrer", QMessageBox::AcceptRole);
-    QPushButton *discard = msgBox.addButton("Ignorer", QMessageBox::DestructiveRole);
-    QPushButton *cancel = msgBox.addButton("Annuler", QMessageBox::RejectRole);
-    msgBox.setDefaultButton(save);
-    msgBox.exec();
-
-    if(msgBox.clickedButton() == (QAbstractButton*)save)
-    {
-        // Save was clicked
-        saveSpellList();
-    }
-    else if(msgBox.clickedButton() == (QAbstractButton*)discard)
-    {
-        // Don't Save was clicked
-        ;;
-    }
-    else if(msgBox.clickedButton() == (QAbstractButton*)cancel)
-    {
-        // Cancel was clicked
-        return;
-    }
-    else
-    {
-        // should never be reached
-        return;
-    }
-
     QString fileName = QFileDialog::getOpenFileName(this, "Ouvrir une liste personalisée", STD_DOCUMENT_PATH, "XML Files (*.xml)");
 
-    SpellTreeView* treeList = (SpellTreeView*)_spellList->at(1)->widget();
-    treeList->model()->deleteLater();
-    treeList->loadTreeData(fileName);
-    treeList->setHeaderHidden(true);
-    treeList->sort();
+    QDockWidget* spellListElt = new QDockWidget(this);
+    SpellTreeView* spellTreeList = new SpellTreeView(spellListElt);
+    spellListElt->setWidget(spellTreeList);
+    spellListElt->setAllowedAreas(Qt::LeftDockWidgetArea | Qt::RightDockWidgetArea);
+    spellTreeList->setSizePolicy(QSizePolicy::MinimumExpanding, QSizePolicy::Expanding);
+    spellTreeList->setSelectionMode(QAbstractItemView::ExtendedSelection);
+    spellTreeList->setDragEnabled(true);
+    spellTreeList->viewport()->setAcceptDrops(true);
+    spellTreeList->setDropIndicatorShown(true);
 
+    spellTreeList->loadTreeData(fileName);
+    spellTreeList->setHeaderHidden(true);
+    spellTreeList->sort();
+    spellListElt->setWindowTitle(spellListElt->objectName());
+
+    _spellList->append(spellListElt);
+    addDockWidget(Qt::RightDockWidgetArea, spellListElt);
+    tabifyDockWidget(_spellList->at(1), spellListElt);
 }
 
 void SpellBookMainWindow::saveSpellList()

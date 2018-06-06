@@ -123,6 +123,8 @@ private:
     QList<QDockWidget*>* _spellList;
     SpellView* _spellPreview;
 
+    int _listCount;
+
 };
 
 #endif // SPELLBOOKMAINWINDOW_H
