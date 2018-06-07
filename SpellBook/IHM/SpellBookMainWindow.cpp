@@ -132,7 +132,8 @@ void SpellBookMainWindow::initDockWidgets()
     SpellTreeView* spellTreeList = new SpellTreeView(spellListElt);
     spellListElt->setWidget(spellTreeList);
     spellListElt->setWindowTitle(spellListElt->objectName());
-    spellListElt->setAllowedAreas(Qt::LeftDockWidgetArea | Qt::RightDockWidgetArea);
+    spellListElt->setAllowedAreas(Qt::LeftDockWidgetArea);
+    spellListElt->setFeatures(QDockWidget::NoDockWidgetFeatures);
     spellTreeList->setSizePolicy(QSizePolicy::MinimumExpanding, QSizePolicy::Expanding);
     spellTreeList->setSelectionMode(QAbstractItemView::ExtendedSelection);
     spellTreeList->setDragEnabled(true);
@@ -148,7 +149,8 @@ void SpellBookMainWindow::initDockWidgets()
     spellExplorer->setWidget(spellTreeExplorer);
     spellExplorer->setObjectName(SPELLEXPLORER);
     spellExplorer->setWindowTitle(SPELLEXPLORER);
-    spellExplorer->setAllowedAreas(Qt::LeftDockWidgetArea | Qt::RightDockWidgetArea);
+    spellExplorer->setAllowedAreas(Qt::RightDockWidgetArea);
+    spellExplorer->setFeatures(QDockWidget::NoDockWidgetFeatures);
     spellTreeExplorer->setSizePolicy(QSizePolicy::MinimumExpanding, QSizePolicy::Expanding);
     spellTreeExplorer->setSelectionMode(QAbstractItemView::ExtendedSelection);
     spellTreeExplorer->setDragEnabled(true);
@@ -267,7 +269,8 @@ void SpellBookMainWindow::createSpellList()
         SpellTreeView* spellTreeList = new SpellTreeView(spellListElt);
         spellListElt->setWidget(spellTreeList);
         spellListElt->setWindowTitle(spellListElt->objectName());
-        spellListElt->setAllowedAreas(Qt::LeftDockWidgetArea | Qt::RightDockWidgetArea);
+        spellListElt->setAllowedAreas(Qt::LeftDockWidgetArea);
+        spellListElt->setFeatures(QDockWidget::NoDockWidgetFeatures);
         spellTreeList->setSizePolicy(QSizePolicy::MinimumExpanding, QSizePolicy::Expanding);
         spellTreeList->setSelectionMode(QAbstractItemView::ExtendedSelection);
         spellTreeList->setDragEnabled(true);
@@ -296,7 +299,8 @@ void SpellBookMainWindow::loadSpellList()
     QDockWidget* spellListElt = new QDockWidget(this);
     SpellTreeView* spellTreeList = new SpellTreeView(spellListElt);
     spellListElt->setWidget(spellTreeList);
-    spellListElt->setAllowedAreas(Qt::LeftDockWidgetArea | Qt::RightDockWidgetArea);
+    spellListElt->setAllowedAreas(Qt::LeftDockWidgetArea);
+    spellListElt->setFeatures(QDockWidget::NoDockWidgetFeatures);
     spellTreeList->setSizePolicy(QSizePolicy::MinimumExpanding, QSizePolicy::Expanding);
     spellTreeList->setSelectionMode(QAbstractItemView::ExtendedSelection);
     spellTreeList->setDragEnabled(true);
@@ -339,8 +343,8 @@ void SpellBookMainWindow::saveAsSpellList()
 
 void SpellBookMainWindow::addSpellButton()
 {
-    SpellTreeView* treeList = (SpellTreeView*)_spellList->at(1)->widget();
-    treeList->addSpell((SpellView*)_centralWidget->currentWidget());
+    //SpellTreeView* treeList = (SpellTreeView*)_spellList->at(1)->widget();
+    //treeList->addSpell((SpellView*)_centralWidget->currentWidget());
 }
 
 void SpellBookMainWindow::updateTabName(SpellView* spellView)

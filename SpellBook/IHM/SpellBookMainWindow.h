@@ -121,6 +121,7 @@ private:
 
     QTabWidget* _centralWidget;
     QList<QDockWidget*>* _spellList;
+    int _activeList;
     SpellView* _spellPreview;
 
     int _listCount;
