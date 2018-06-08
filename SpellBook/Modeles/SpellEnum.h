@@ -9,6 +9,11 @@ class SpellEnum : public QObject
     Q_OBJECT
 public:
 
+    enum TreeViewTypes {
+        SOURCE,
+        CUSTOM
+    }; Q_ENUM(TreeViewTypes) typedef enum TreeViewTypes TreeTypes;
+
     enum MaintenanceTypes {
         IMPOSSIBLE,
         CONTINUE,

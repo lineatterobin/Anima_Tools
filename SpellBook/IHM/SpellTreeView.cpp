@@ -129,12 +129,12 @@ void SpellTreeView::onCustomMenuRequest(const QPoint &point_)
             action->setVisible(true);
             QMenu* submenu = action->menu();
             submenu->clear();
-            SpellBookMainWindow* mainW = (SpellBookMainWindow*)this->parent()->parent();
-            QList<QDockWidget*> list = mainW->getList();
-            Q_FOREACH (QDockWidget* widget, list)
+            SpellBookMainWindow* mainW = (SpellBookMainWindow*)this->parent()->parent()->parent();
+            QList<SpellDockWidget*> list = mainW->getList();
+            Q_FOREACH (SpellDockWidget* widget, list)
             {
-                SpellTreeView* treeview = (SpellTreeView*)widget->widget();
-                if(!treeview->isReadOnly() && widget->objectName() != this->parent()->objectName())
+                SpellTreeView* treeview = widget->getTree();
+                if(!treeview->isReadOnly() && widget->objectName() != this->parent()->parent()->objectName())
                 {
                     QAction *action = new QAction(widget->objectName());
                     action->setData(list.indexOf(widget));
@@ -165,7 +165,7 @@ void SpellTreeView::removeSpellFrom()
     {
         this->model()->removeSpell(_indexCustomMenu);
     }
-    else if(!_indexCustomMenu.parent().parent().isValid() && !isReadOnly())
+    else if(this->model()->index(0,0,this->model()->index(0,0,_indexCustomMenu)).data().toString() == "name" && !isReadOnly())
     {
         QMessageBox msgBox(this);
         msgBox.setIcon(QMessageBox::Warning);
@@ -200,10 +200,10 @@ void SpellTreeView::removeSpellFrom()
 
 void SpellTreeView::addSpellTo(QAction* action_)
 {
-    SpellBookMainWindow* mainW = (SpellBookMainWindow*)this->parent()->parent();
-    QList<QDockWidget*> list = mainW->getList();
-    SpellTreeView* target_ = (SpellTreeView*)list.at(action_->data().toInt())->widget();
-    if(_indexCustomMenu.parent().data().toString() == "Source" && !target_->isReadOnly())
+    SpellBookMainWindow* mainW = (SpellBookMainWindow*)this->parent()->parent()->parent();
+    QList<SpellDockWidget*> list = mainW->getList();
+    SpellTreeView* target_ = list.at(action_->data().toInt())->getTree();
+    if(this->model()->index(0,0,this->model()->index(0,0,_indexCustomMenu)).data().toString() == "name" && !target_->isReadOnly())
     {
         QMessageBox msgBox(this);
         msgBox.setIcon(QMessageBox::Warning);

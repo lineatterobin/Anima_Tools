@@ -241,13 +241,13 @@ void SpellView::initForm()
     QVBoxLayout* spellLayoutCommentaire_1 = new QVBoxLayout;
     spellLayoutCommentaire_1->addWidget(_spellCommentaireLabel, 0, Qt::AlignLeft);
     spellLayoutCommentaire_1->addWidget(_spellCommentaire);
-    QVBoxLayout* spellLayoutCommentaire_2 = new QVBoxLayout;
-    QPushButton* addSpellButton = new QPushButton("Ajouter");
-    addSpellButton->setToolTip("Ajoute le sort à la liste personnalisée");
-    QObject::connect(addSpellButton, SIGNAL(pressed()), this, SIGNAL(addSpellButtonClicked()));
-    spellLayoutCommentaire_2->addWidget(addSpellButton, 0, Qt::AlignCenter);
+    //QVBoxLayout* spellLayoutCommentaire_2 = new QVBoxLayout;
+    //QPushButton* addSpellButton = new QPushButton("Ajouter");
+    //addSpellButton->setToolTip("Ajoute le sort à la liste personnalisée");
+    //QObject::connect(addSpellButton, SIGNAL(pressed()), this, SIGNAL(addSpellButtonClicked()));
+    //spellLayoutCommentaire_2->addWidget(addSpellButton, 0, Qt::AlignCenter);
     spellLayoutCommentaire->addLayout(spellLayoutCommentaire_1, 0);
-    spellLayoutCommentaire->addLayout(spellLayoutCommentaire_2, 0);
+    //spellLayoutCommentaire->addLayout(spellLayoutCommentaire_2, 0);
 
     //Assemblage final
     spellLayout->addLayout(spellLayout1,0);

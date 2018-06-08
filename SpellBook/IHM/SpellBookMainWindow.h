@@ -3,6 +3,7 @@
 
 #include <SpellBook/IHM/SpellView.h>
 #include <SpellBook/IHM/SpellTreeView.h>
+#include <SpellBook/IHM/SpellDockWidget.h>
 
 #include <QMainWindow>
 #include <QToolBar>
@@ -31,7 +32,7 @@ public:
     SpellView *newSpellView(const bool &readOnly_);
 
 
-    QList<QDockWidget*> getList();
+    QList<SpellDockWidget*> getList();
 
 signals:
     /*!
@@ -83,7 +84,7 @@ public slots:
     /*!
      * \brief addSpellButton : Ajoute le sort actuellement affiché à la liste personnalisée.
      */
-    void addSpellButton();
+    void addSpellButton(SpellTreeView *treeView_);
 
     /*!
      * \brief updateTabName : Met à jour le nom de la SpellView en entrée.
@@ -120,7 +121,7 @@ private:
     void sortTreeSpellView(SpellTreeView* treeview_);
 
     QTabWidget* _centralWidget;
-    QList<QDockWidget*>* _spellList;
+    QList<SpellDockWidget*>* _spellList;
     int _activeList;
     SpellView* _spellPreview;
 

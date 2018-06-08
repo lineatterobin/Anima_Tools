@@ -124,48 +124,53 @@ void SpellBookMainWindow::initCentralWidget()
 
 void SpellBookMainWindow::initDockWidgets()
 {
-    _spellList = new QList<QDockWidget*>();
+    _spellList = new QList<SpellDockWidget*>();
 
-    QDockWidget* spellListElt = new QDockWidget(this);
-    spellListElt->setObjectName(SPELLLIST + QString::number(_listCount));
+    //    SpellDockWidget* spellExplorer = new SpellDockWidget(this);
+    //    SpellTreeView* spellTreeExplorer = new SpellTreeView(spellExplorer);
+    //    spellExplorer->setWidget(spellTreeExplorer);
+    //    spellExplorer->setObjectName(SPELLEXPLORER);
+    //    spellExplorer->setWindowTitle(SPELLEXPLORER);
+    //    spellExplorer->setAllowedAreas(Qt::RightDockWidgetArea);
+    //    spellExplorer->setFeatures(QDockWidget::NoDockWidgetFeatures);
+    //    spellTreeExplorer->setSizePolicy(QSizePolicy::MinimumExpanding, QSizePolicy::Expanding);
+    //    spellTreeExplorer->setSelectionMode(QAbstractItemView::ExtendedSelection);
+    //    spellTreeExplorer->setDragEnabled(true);
+    //    spellTreeExplorer->viewport()->setAcceptDrops(true);
+    //    spellTreeExplorer->setDropIndicatorShown(true);
+
+    //    spellTreeExplorer->loadTreeData(":/DATA/BOOK");
+    //    spellTreeExplorer->setHeaderHidden(true);
+    //    spellTreeExplorer->setReadOnly(true);
+    //    spellTreeExplorer->sort();
+    SpellDockWidget* spellExplorer = new SpellDockWidget(this, _listCount, SpellEnum::SOURCE, ":/DATA/BOOK");
     ++_listCount;
-    SpellTreeView* spellTreeList = new SpellTreeView(spellListElt);
-    spellListElt->setWidget(spellTreeList);
-    spellListElt->setWindowTitle(spellListElt->objectName());
-    spellListElt->setAllowedAreas(Qt::LeftDockWidgetArea);
-    spellListElt->setFeatures(QDockWidget::NoDockWidgetFeatures);
-    spellTreeList->setSizePolicy(QSizePolicy::MinimumExpanding, QSizePolicy::Expanding);
-    spellTreeList->setSelectionMode(QAbstractItemView::ExtendedSelection);
-    spellTreeList->setDragEnabled(true);
-    spellTreeList->viewport()->setAcceptDrops(true);
-    spellTreeList->setDropIndicatorShown(true);
 
-    spellTreeList->loadTreeData("");
-    spellTreeList->setHeaderHidden(true);
-    spellTreeList->sort();
+    //    SpellDockWidget* spellListElt = new SpellDockWidget(this);
+    //    spellListElt->setObjectName(SPELLLIST + QString::number(_listCount));
 
-    QDockWidget* spellExplorer = new QDockWidget(this);
-    SpellTreeView* spellTreeExplorer = new SpellTreeView(spellExplorer);
-    spellExplorer->setWidget(spellTreeExplorer);
-    spellExplorer->setObjectName(SPELLEXPLORER);
-    spellExplorer->setWindowTitle(SPELLEXPLORER);
-    spellExplorer->setAllowedAreas(Qt::RightDockWidgetArea);
-    spellExplorer->setFeatures(QDockWidget::NoDockWidgetFeatures);
-    spellTreeExplorer->setSizePolicy(QSizePolicy::MinimumExpanding, QSizePolicy::Expanding);
-    spellTreeExplorer->setSelectionMode(QAbstractItemView::ExtendedSelection);
-    spellTreeExplorer->setDragEnabled(true);
-    spellTreeExplorer->viewport()->setAcceptDrops(true);
-    spellTreeExplorer->setDropIndicatorShown(true);
+    //    SpellTreeView* spellTreeList = new SpellTreeView(spellListElt);
+    //    spellListElt->setWidget(spellTreeList);
+    //    spellListElt->setWindowTitle(spellListElt->objectName());
+    //    spellListElt->setAllowedAreas(Qt::LeftDockWidgetArea);
+    //    spellListElt->setFeatures(QDockWidget::NoDockWidgetFeatures);
+    //    spellTreeList->setSizePolicy(QSizePolicy::MinimumExpanding, QSizePolicy::Expanding);
+    //    spellTreeList->setSelectionMode(QAbstractItemView::ExtendedSelection);
+    //    spellTreeList->setDragEnabled(true);
+    //    spellTreeList->viewport()->setAcceptDrops(true);
+    //    spellTreeList->setDropIndicatorShown(true);
 
-    spellTreeExplorer->loadTreeData(":/DATA/BOOK");
-    spellTreeExplorer->setHeaderHidden(true);
-    spellTreeExplorer->setReadOnly(true);
-    spellTreeExplorer->sort();
+    //    spellTreeList->loadTreeData("");
+    //    spellTreeList->setHeaderHidden(true);
+    //    spellTreeList->sort();
+    SpellDockWidget* spellListElt = new SpellDockWidget(this, _listCount, SpellEnum::CUSTOM, "");
+    QObject::connect(spellListElt, SIGNAL(addSpellButtonClicked(SpellTreeView*)), this, SLOT(addSpellButton(SpellTreeView*)));
+    ++_listCount;
 
     _spellList->append(spellExplorer);
     _spellList->append(spellListElt);
-    addDockWidget(Qt::RightDockWidgetArea, _spellList->at(1));
     addDockWidget(Qt::LeftDockWidgetArea, _spellList->at(0));
+    addDockWidget(Qt::RightDockWidgetArea, _spellList->at(1));
 
     // Définition des positions des Tabs
     setTabPosition(Qt::LeftDockWidgetArea, QTabWidget::North);
@@ -177,16 +182,14 @@ void SpellBookMainWindow::initDockWidgets()
 
 void SpellBookMainWindow::initConnections()
 {
-    SpellTreeView* explorer = (SpellTreeView*)_spellList->at(0)->widget();
-    SpellTreeView* list = (SpellTreeView*)_spellList->at(1)->widget();
+    SpellTreeView* explorer = _spellList->at(0)->getTree();
+    SpellTreeView* list = _spellList->at(1)->getTree();
     QObject::connect(explorer->selectionModel(), SIGNAL(currentChanged(QModelIndex,QModelIndex)), this, SLOT(loadSpellPreview(QModelIndex)));
     QObject::connect(list->selectionModel(), SIGNAL(currentChanged(QModelIndex,QModelIndex)), this, SLOT(loadSpellPreview(QModelIndex)));
     QObject::connect(explorer, SIGNAL(doubleClicked(QModelIndex)), this, SLOT(addSpellView(QModelIndex)));
     QObject::connect(explorer, SIGNAL(openRequest(QModelIndex)), this, SLOT(addSpellView(QModelIndex)));
     QObject::connect(list, SIGNAL(doubleClicked(QModelIndex)), this, SLOT(addSpellView(QModelIndex)));
     QObject::connect(list, SIGNAL(openRequest(QModelIndex)), this, SLOT(addSpellView(QModelIndex)));
-
-    QObject::connect(_spellPreview, SIGNAL(addSpellButtonClicked()), this, SLOT(addSpellButton()));
 
     QObject::connect(_centralWidget, SIGNAL(tabCloseRequested(int)), this, SLOT(closeSpellView(int)));
 
@@ -202,7 +205,6 @@ SpellView* SpellBookMainWindow::newSpellView(const bool& readOnly_)
     SpellView* spellView = new SpellView(_centralWidget);
     spellView->setReadOnly(readOnly_);
     _centralWidget->addTab(spellView, "Nouveau");
-    QObject::connect(spellView, SIGNAL(addSpellButtonClicked()), this, SLOT(addSpellButton()));
     QObject::connect(spellView, SIGNAL(nameChanged(SpellView*)), this, SLOT(updateTabName(SpellView*)));
     _centralWidget->setCurrentWidget(spellView);
     return spellView;
@@ -217,7 +219,6 @@ SpellView* SpellBookMainWindow::addSpellView(QModelIndex index_)
         spellView->setReadOnly(false);
         spellView->loadData(index_, model);
         _centralWidget->addTab(spellView, spellView->getName());
-        QObject::connect(spellView, SIGNAL(addSpellButtonClicked()), this, SLOT(addSpellButton()));
         QObject::connect(spellView, SIGNAL(nameChanged(SpellView*)), this, SLOT(updateTabName(SpellView*)));
         _centralWidget->setCurrentWidget(spellView);
         return spellView;
@@ -254,36 +255,32 @@ void SpellBookMainWindow::closeSpellView(const int &index_)
 void SpellBookMainWindow::createSpellList()
 {
     bool ok;
-    // Ask for birth date as a string.
     QString text = QInputDialog::getText(0, "Nouvelle liste", "Nom de la liste :", QLineEdit::Normal, "", &ok);
     if (ok)
     {
-        QDockWidget* spellListElt = new QDockWidget(this);
+        SpellDockWidget* spellListElt = new SpellDockWidget(this, _listCount);
+        ++_listCount;
         if(!text.isEmpty())
             spellListElt->setObjectName(text);
-        else
-        {
-            spellListElt->setObjectName(SPELLLIST + QString::number(_listCount));
-            ++_listCount;
-        }
-        SpellTreeView* spellTreeList = new SpellTreeView(spellListElt);
-        spellListElt->setWidget(spellTreeList);
+//        SpellTreeView* spellTreeList = new SpellTreeView(spellListElt);
+//        spellListElt->setWidget(spellTreeList);
         spellListElt->setWindowTitle(spellListElt->objectName());
-        spellListElt->setAllowedAreas(Qt::LeftDockWidgetArea);
-        spellListElt->setFeatures(QDockWidget::NoDockWidgetFeatures);
-        spellTreeList->setSizePolicy(QSizePolicy::MinimumExpanding, QSizePolicy::Expanding);
-        spellTreeList->setSelectionMode(QAbstractItemView::ExtendedSelection);
-        spellTreeList->setDragEnabled(true);
-        spellTreeList->viewport()->setAcceptDrops(true);
-        spellTreeList->setDropIndicatorShown(true);
+//        spellListElt->setAllowedAreas(Qt::LeftDockWidgetArea);
+//        spellListElt->setFeatures(QDockWidget::NoDockWidgetFeatures);
+//        spellTreeList->setSizePolicy(QSizePolicy::MinimumExpanding, QSizePolicy::Expanding);
+//        spellTreeList->setSelectionMode(QAbstractItemView::ExtendedSelection);
+//        spellTreeList->setDragEnabled(true);
+//        spellTreeList->viewport()->setAcceptDrops(true);
+//        spellTreeList->setDropIndicatorShown(true);
 
-        spellTreeList->loadTreeData("");
-        spellTreeList->setHeaderHidden(true);
-        spellTreeList->sort();
+//        spellTreeList->loadTreeData("");
+//        spellTreeList->setHeaderHidden(true);
+//        spellTreeList->sort();
 
         _spellList->append(spellListElt);
         addDockWidget(Qt::RightDockWidgetArea, spellListElt);
         tabifyDockWidget(_spellList->at(1), spellListElt);
+        QObject::connect(spellListElt, SIGNAL(addSpellButtonClicked(SpellTreeView*)), this, SLOT(addSpellButton(SpellTreeView*)));
     }
     else
     {
@@ -296,7 +293,7 @@ void SpellBookMainWindow::loadSpellList()
 {
     QString fileName = QFileDialog::getOpenFileName(this, "Ouvrir une liste personalisée", STD_DOCUMENT_PATH, "XML Files (*.xml)");
 
-    QDockWidget* spellListElt = new QDockWidget(this);
+    SpellDockWidget* spellListElt = new SpellDockWidget(this);
     SpellTreeView* spellTreeList = new SpellTreeView(spellListElt);
     spellListElt->setWidget(spellTreeList);
     spellListElt->setAllowedAreas(Qt::LeftDockWidgetArea);
@@ -319,7 +316,7 @@ void SpellBookMainWindow::loadSpellList()
 
 void SpellBookMainWindow::saveSpellList()
 {
-    SpellTreeView* treeList = (SpellTreeView*)_spellList->at(1)->widget();
+    SpellTreeView* treeList = _spellList->at(1)->getTree();
     QString fileName;
     if(treeList->xmlPath() == "")
         fileName = QFileDialog::getSaveFileName(this, "Enregistrer la liste personalisée", STD_DOCUMENT_PATH, "XML Files (*.xml)");
@@ -332,7 +329,7 @@ void SpellBookMainWindow::saveSpellList()
 
 void SpellBookMainWindow::saveAsSpellList()
 {
-    SpellTreeView* treeList = (SpellTreeView*)_spellList->at(1)->widget();
+    SpellTreeView* treeList = _spellList->at(1)->getTree();
     QString fileName;
 
     fileName = QFileDialog::getSaveFileName(this, "Enregistrer la liste personalisée", STD_DOCUMENT_PATH, "XML Files (*.xml)");
@@ -341,10 +338,9 @@ void SpellBookMainWindow::saveAsSpellList()
     treeList->setXmlPath(fileName);
 }
 
-void SpellBookMainWindow::addSpellButton()
+void SpellBookMainWindow::addSpellButton(SpellTreeView* treeView_)
 {
-    //SpellTreeView* treeList = (SpellTreeView*)_spellList->at(1)->widget();
-    //treeList->addSpell((SpellView*)_centralWidget->currentWidget());
+    treeView_->addSpell((SpellView*)_centralWidget->currentWidget());
 }
 
 void SpellBookMainWindow::updateTabName(SpellView* spellView)
@@ -361,7 +357,7 @@ void SpellBookMainWindow::updateTabName(SpellView* spellView)
     }
 }
 
-QList<QDockWidget*> SpellBookMainWindow::getList()
+QList<SpellDockWidget*> SpellBookMainWindow::getList()
 {
     return *_spellList;
 }
