@@ -66,11 +66,26 @@ void SpellBookMainWindow::initToolBar()
     QAction* loadSpellListAction = new QAction("Ouvrir", this);
     loadSpellListAction->setToolTip("Ouvre une liste personalisée");
 
-    QAction* saveSpellListAction = new QAction("Enregistrer", this);
-    saveSpellListAction->setToolTip("Sauvegarde la liste personnalisée");
+    _saveSpellListMenu = new QMenu("Enregistrer    ", this);
+    _saveSpellListMenu->setToolTip("Sauvegarde la liste personnalisée");
+    QObject::connect(_saveSpellListMenu, SIGNAL(aboutToShow()), this, SLOT(configSaveMenu()));
+    QToolButton* saveSpellListButton = new QToolButton(this);
+    saveSpellListButton->setToolButtonStyle(Qt::ToolButtonTextOnly);
+    saveSpellListButton->setText("Enregistrer    ");
+    saveSpellListButton->setToolTip("Sauvegarde la liste personnalisée");
+    saveSpellListButton->setPopupMode(QToolButton::InstantPopup);
+    saveSpellListButton->setMenu(_saveSpellListMenu);
 
-    QAction* saveAsSpellListAction = new QAction("Enregistrer sous", this);
-    saveAsSpellListAction->setToolTip("Sauvegarde la liste personnalisée");
+    _saveAsSpellListMenu = new QMenu("Enregistrer sous    ", this);
+    _saveAsSpellListMenu->setToolTip("Sauvegarde la liste personnalisée");
+    QObject::connect(_saveAsSpellListMenu, SIGNAL(aboutToShow()), this, SLOT(configSaveAsMenu()));
+    QObject::connect(_saveSpellListMenu, SIGNAL(triggered(QAction*)), this, SLOT(saveSpellList(QAction*)));
+    QToolButton* saveAsSpellListButton = new QToolButton(this);
+    saveAsSpellListButton->setToolButtonStyle(Qt::ToolButtonTextOnly);
+    saveAsSpellListButton->setText("Enregistrer sous    ");
+    saveAsSpellListButton->setToolTip("Sauvegarde la liste personnalisée");
+    saveAsSpellListButton->setPopupMode(QToolButton::InstantPopup);
+    saveAsSpellListButton->setMenu(_saveAsSpellListMenu);
 
     QAction* newSpellViewAction = new QAction("Nouveau sort", this);
     newSpellViewAction->setToolTip("Ajoute un onglet de création de sort");
@@ -86,8 +101,8 @@ void SpellBookMainWindow::initToolBar()
 
     toolBar->addAction(newSpellListAction);
     toolBar->addAction(loadSpellListAction);
-    toolBar->addAction(saveSpellListAction);
-    toolBar->addAction(saveAsSpellListAction);
+    toolBar->addWidget(saveSpellListButton);
+    toolBar->addWidget(saveAsSpellListButton);
     toolBar->addSeparator();
     toolBar->addAction(newSpellViewAction);
 
@@ -101,8 +116,6 @@ void SpellBookMainWindow::initToolBar()
 
     QObject::connect(newSpellListAction, SIGNAL(triggered(bool)), this, SLOT(createSpellList()));
     QObject::connect(loadSpellListAction, SIGNAL(triggered(bool)), this, SLOT(loadSpellList()));
-    QObject::connect(saveSpellListAction, SIGNAL(triggered(bool)), this, SLOT(saveSpellList()));
-    QObject::connect(saveAsSpellListAction, SIGNAL(triggered(bool)), this, SLOT(saveAsSpellList()));
 
     QObject::connect(newSpellViewAction, SIGNAL(triggered(bool)), this, SLOT(newSpellViewButton()));
 
@@ -259,9 +272,39 @@ void SpellBookMainWindow::loadSpellList()
     QObject::connect(spellListElt, SIGNAL(addSpellButtonClicked(SpellTreeView*)), this, SLOT(addSpellButton(SpellTreeView*)));
 }
 
-void SpellBookMainWindow::saveSpellList()
+void SpellBookMainWindow::configSaveMenu()
 {
-    SpellTreeView* treeList = _spellList->at(1)->getTree();
+    _saveSpellListMenu->clear();
+    Q_FOREACH (SpellDockWidget* widget, *_spellList)
+    {
+        SpellTreeView* treeview = widget->getTree();
+        if(!treeview->isReadOnly())
+        {
+            QAction *action = new QAction(widget->objectName());
+            action->setData(_spellList->indexOf(widget));
+            _saveSpellListMenu->addAction(action);
+        }
+    }
+}
+
+void SpellBookMainWindow::configSaveAsMenu()
+{
+    _saveAsSpellListMenu->clear();
+    Q_FOREACH (SpellDockWidget* widget, *_spellList)
+    {
+        SpellTreeView* treeview = widget->getTree();
+        if(!treeview->isReadOnly())
+        {
+            QAction *action = new QAction(widget->objectName());
+            action->setData(_spellList->indexOf(widget));
+            _saveAsSpellListMenu->addAction(action);
+        }
+    }
+}
+
+void SpellBookMainWindow::saveSpellList(QAction* action_)
+{
+    SpellTreeView* treeList = _spellList->at(action_->data().toInt())->getTree();
     QString fileName;
     if(treeList->xmlPath() == "")
         fileName = QFileDialog::getSaveFileName(this, "Enregistrer la liste personalisée", STD_DOCUMENT_PATH, "XML Files (*.xml)");
@@ -272,9 +315,9 @@ void SpellBookMainWindow::saveSpellList()
     treeList->setXmlPath(fileName);
 }
 
-void SpellBookMainWindow::saveAsSpellList()
+void SpellBookMainWindow::saveAsSpellList(QAction* action_)
 {
-    SpellTreeView* treeList = _spellList->at(1)->getTree();
+    SpellTreeView* treeList = _spellList->at(action_->data().toInt())->getTree();
     QString fileName;
 
     fileName = QFileDialog::getSaveFileName(this, "Enregistrer la liste personalisée", STD_DOCUMENT_PATH, "XML Files (*.xml)");

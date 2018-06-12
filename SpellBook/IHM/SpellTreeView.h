@@ -40,6 +40,10 @@ public:
 
     void sort();
 
+    bool isBiblio(const QModelIndex &index_);
+    bool isBook(const QModelIndex &index_);
+    bool isSpell(const QModelIndex &index_);
+
 signals:
     void openRequest(QModelIndex);
 
@@ -48,6 +52,8 @@ public slots:
     void removeSpellFrom();
     void addSpellTo(QAction *action_);
     void openSpell();
+    void renameBiblio();
+    void renameObject(const QString &name_);
 
 private:
 

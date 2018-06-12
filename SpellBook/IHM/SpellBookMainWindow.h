@@ -9,6 +9,7 @@
 #include <QToolBar>
 #include <QVBoxLayout>
 #include <QDockWidget>
+#include <QMenu>
 
 class SpellBookMainWindow : public QMainWindow
 {
@@ -72,14 +73,24 @@ public slots:
     void loadSpellList();
 
     /*!
+     * \brief configSaveMenu : génère le contenu du menu de sauvegarde.
+     */
+    void configSaveMenu();
+
+    /*!
+     * \brief configSaveMenu : génère le contenu du menu de sauvegarde.
+     */
+    void configSaveAsMenu();
+
+    /*!
      * \brief saveSpellList : Sauvegarde une liste personnalisée dans un fichier XML.
      */
-    void saveSpellList();
+    void saveSpellList(QAction *action_);
 
     /*!
      * \brief saveAsSpellList : Comme saveSpellList mais provoque systématiquement le choix d'un fichier de sortie.
      */
-    void saveAsSpellList();
+    void saveAsSpellList(QAction* action_);
 
     /*!
      * \brief addSpellButton : Ajoute le sort actuellement affiché à la liste personnalisée.
@@ -124,6 +135,8 @@ private:
     QList<SpellDockWidget*>* _spellList;
     int _activeList;
     SpellView* _spellPreview;
+    QMenu* _saveSpellListMenu;
+    QMenu* _saveAsSpellListMenu;
 
     int _listCount;
 

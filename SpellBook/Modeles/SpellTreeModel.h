@@ -4,8 +4,11 @@
 #include <QObject>
 #include <QAbstractItemModel>
 #include <QDomDocument>
+#include <QString>
+
 #include <Librairies/Modeles/DomItem.h>
 #include <SpellBook/IHM/SpellView.h>
+
 
 class SpellTreeModel : public QAbstractItemModel
 {
@@ -16,6 +19,7 @@ public:
     ~SpellTreeModel();
 
     QVariant data(const QModelIndex &index, int role) const override;
+    QVariant type(const QModelIndex &index) const;
     Qt::ItemFlags flags(const QModelIndex &index) const override;
     QVariant headerData(int, Qt::Orientation,
                         int = Qt::DisplayRole) const override;
@@ -34,10 +38,12 @@ public:
     void addSpell(SpellView* spell_, QDomNode book_);
     void removeSpell(const QModelIndex &index_);
     void removeBook(const QModelIndex &index_);
+    void rename(const QString &name_);
 
     void save(QString fileName_);
 
-
+signals:
+    nameBilioChanged(QString);
 
 private:
 

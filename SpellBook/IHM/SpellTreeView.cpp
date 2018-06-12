@@ -3,6 +3,8 @@
 #include <QFile>
 #include <iostream>
 #include <QMessageBox>
+#include <QInputDialog>
+
 #include <SpellBook/IHM/SpellBookMainWindow.h>
 
 SpellTreeView::SpellTreeView(QWidget* parent_) : QTreeView(parent_),
@@ -20,6 +22,7 @@ SpellTreeView::SpellTreeView(QWidget* parent_) : QTreeView(parent_),
     addMenu->setTitle("Ajouter à ...");
     connect(addMenu, SIGNAL(triggered(QAction*)), this, SLOT(addSpellTo(QAction*)));
     _contextMenu->addAction("Ouvrir", this, SLOT(openSpell()));
+    _contextMenu->addAction("Renommer", this, SLOT(renameBiblio()));
     _contextMenu->addSeparator();
     _contextMenu->addMenu(addMenu);
     _contextMenu->addAction("Retirer du Grimoire", this, SLOT(removeSpellFrom()));
@@ -54,11 +57,12 @@ void SpellTreeView::hideTreeSpellData(const QModelIndex& startIndex_, int curren
 void SpellTreeView::loadTreeData(QString xmlPath_)
 {
     QDomDocument document;
+    SpellTreeModel* newModel;
     if (!xmlPath_.isEmpty()) {
         QFile file(xmlPath_);
         if (file.open(QIODevice::ReadOnly)) {
             if (document.setContent(&file)) {
-                SpellTreeModel *newModel = new SpellTreeModel(document, this);
+                newModel = new SpellTreeModel(document, this);
                 this->setModel(newModel);
                 _xmlPath = xmlPath_;
                 this->parent()->setObjectName(this->model()->index(1,0).data().toString());
@@ -73,9 +77,10 @@ void SpellTreeView::loadTreeData(QString xmlPath_)
         QDomElement bibliotheque = document.createElement("Biblio");
         bibliotheque.setAttribute("Name", this->parent()->objectName());
         document.appendChild(bibliotheque);
-        SpellTreeModel *newModel = new SpellTreeModel(document, this);
+        newModel = new SpellTreeModel(document, this);
         this->setModel(newModel);
     }
+    QObject::connect(newModel, SIGNAL(nameBilioChanged(QString)), this, SLOT(renameObject(QString)));
 }
 
 void SpellTreeView::addSpell(SpellView* spell_)
@@ -123,6 +128,19 @@ void SpellTreeView::onCustomMenuRequest(const QPoint &point_)
             action->setEnabled(true);
             action->setVisible(true);
         }
+        if(action->text() == "Renommer")
+        {
+            if(isBiblio(_indexCustomMenu) && !this->isReadOnly())
+            {
+                action->setEnabled(true);
+                action->setVisible(true);
+            }
+            else
+            {
+                action->setEnabled(false);
+                action->setVisible(false);
+            }
+        }
         if(action->text() == "Ajouter à ...")
         {
             action->setEnabled(true);
@@ -161,11 +179,11 @@ void SpellTreeView::onCustomMenuRequest(const QPoint &point_)
 
 void SpellTreeView::removeSpellFrom()
 {
-    if(this->model()->index(0,0,_indexCustomMenu).data().toString() == "name" && !isReadOnly())
+    if(isSpell(_indexCustomMenu) && !isReadOnly())
     {
         this->model()->removeSpell(_indexCustomMenu);
     }
-    else if(this->model()->index(0,0,this->model()->index(0,0,_indexCustomMenu)).data().toString() == "name" && !isReadOnly())
+    else if(isBook(_indexCustomMenu) && !isReadOnly())
     {
         QMessageBox msgBox(this);
         msgBox.setIcon(QMessageBox::Warning);
@@ -203,7 +221,7 @@ void SpellTreeView::addSpellTo(QAction* action_)
     SpellBookMainWindow* mainW = (SpellBookMainWindow*)this->parent()->parent()->parent();
     QList<SpellDockWidget*> list = mainW->getList();
     SpellTreeView* target_ = list.at(action_->data().toInt())->getTree();
-    if(this->model()->index(0,0,this->model()->index(0,0,_indexCustomMenu)).data().toString() == "name" && !target_->isReadOnly())
+    if(isBook(_indexCustomMenu) && !target_->isReadOnly())
     {
         QMessageBox msgBox(this);
         msgBox.setIcon(QMessageBox::Warning);
@@ -238,7 +256,7 @@ void SpellTreeView::addSpellTo(QAction* action_)
         }
 
     }
-    if(this->model()->index(0,0,_indexCustomMenu).data().toString() == "name" && !target_->isReadOnly())
+    if(isSpell(_indexCustomMenu) && !target_->isReadOnly())
     {
         SpellView* spellView = new SpellView(this);
         spellView->loadData(_indexCustomMenu, this->model());
@@ -249,10 +267,39 @@ void SpellTreeView::addSpellTo(QAction* action_)
 
 void SpellTreeView::openSpell()
 {
-    if(this->model()->index(0,0,_indexCustomMenu).data().toString() == "name")
+    if(isSpell(_indexCustomMenu))
     {
         emit openRequest(_indexCustomMenu);
     }
+}
+
+void SpellTreeView::renameBiblio()
+{
+    bool ok;
+    QString text = QInputDialog::getText(0, "Renommer", "Nouveau nom :", QLineEdit::Normal, "", &ok);
+    if(ok)
+    {
+        if(text != "")
+        {
+            this->model()->rename(text);
+        }
+        else
+        {
+            QMessageBox* msgBox = new QMessageBox();
+            msgBox->setIcon(QMessageBox::Warning);
+            msgBox->setMinimumSize(250, 150);
+            QString msg = "Impossible de renommer avec un nom vide.";
+            msgBox->setText(msg);
+            msgBox->exec();
+            msgBox->deleteLater();
+            return;
+        }
+    }
+}
+
+void SpellTreeView::renameObject(const QString& name_)
+{
+    this->parent()->parent()->setObjectName(name_);
 }
 
 void SpellTreeView::setReadOnly(const bool& readOnly_)
@@ -288,4 +335,19 @@ void SpellTreeView::setXmlPath(QString xmlPath_)
 QString SpellTreeView::xmlPath()
 {
     return _xmlPath;
+}
+
+bool SpellTreeView::isBiblio(const QModelIndex& index_)
+{
+    return (this->model()->type(index_) == "Biblio");
+}
+
+bool SpellTreeView::isBook(const QModelIndex &index_)
+{
+    return (this->model()->type(index_) == "Livre");
+}
+
+bool SpellTreeView::isSpell(const QModelIndex &index_)
+{
+    return (this->model()->type(index_) == "Sort");
 }

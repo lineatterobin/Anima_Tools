@@ -125,6 +125,17 @@ QVariant SpellTreeModel::data(const QModelIndex &index, int role) const
     }
 }
 
+QVariant SpellTreeModel::type(const QModelIndex &index) const
+{
+    if (!index.isValid())
+        return QVariant();
+
+    DomItem *item = static_cast<DomItem*>(index.internalPointer());
+
+    QDomNode node = item->node();
+    return node.nodeName();
+}
+
 void SpellTreeModel::sort()
 {
     sortBooks();
@@ -466,4 +477,11 @@ void SpellTreeModel::save(QString fileName_)
 
 
     file.close();
+}
+
+void SpellTreeModel::rename(const QString& name_)
+{
+    QDomElement biblio = _domDocument.namedItem("Biblio").toElement();
+    biblio.setAttribute("Name", name_);
+    emit nameBilioChanged(name_);
 }
