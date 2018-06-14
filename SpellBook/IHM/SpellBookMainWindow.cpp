@@ -15,6 +15,7 @@ SpellBookMainWindow::SpellBookMainWindow(QString styleSheet_) : QMainWindow(),
 {
     setWindowTitle(SPELLBOOK_WINDOW_NAME);
     setTheme(styleSheet_);
+    setContextMenuPolicy(Qt::NoContextMenu);
 
     QPixmap pixmap(":/IMG/ANIMA_LOGO");
     QIcon icon(pixmap);
@@ -139,12 +140,15 @@ void SpellBookMainWindow::initDockWidgets()
 
     SpellDockWidget* spellExplorer = new SpellDockWidget(this, SpellEnum::SOURCE, ":/DATA/BOOK");
 
-    SpellDockWidget* spellListElt = new SpellDockWidget(this, SpellEnum::CUSTOM, "");
-    QObject::connect(spellListElt, SIGNAL(addSpellButtonClicked(SpellTreeView*)), this, SLOT(addSpellButton(SpellTreeView*)));
-
-    SpellDockWidget* spellFake = new SpellDockWidget(this, SpellEnum::CUSTOM, "");
+    SpellDockWidget* spellFake = new SpellDockWidget(".", this);
     spellFake->setVisible(false);
     spellFake->setEnabled(false);
+    spellFake->setFeatures(QDockWidget::NoDockWidgetFeatures);
+    spellFake->getTree()->setReadOnly(true);
+
+    SpellDockWidget* spellListElt = new SpellDockWidget(this, SpellEnum::CUSTOM, "");
+    QObject::connect(spellListElt, SIGNAL(addSpellButtonClicked(SpellTreeView*)), this, SLOT(addSpellButton(SpellTreeView*)));
+    QObject::connect(spellListElt, SIGNAL(closeRequest(SpellDockWidget*)), this, SLOT(closeSpellDock(SpellDockWidget*)));
 
     _spellList->append(spellExplorer);
     _spellList->append(spellFake);
@@ -273,6 +277,7 @@ void SpellBookMainWindow::createSpellList()
         addDockWidget(Qt::RightDockWidgetArea, spellListElt);
         tabifyDockWidget(_spellList->at(1), spellListElt);
         QObject::connect(spellListElt, SIGNAL(addSpellButtonClicked(SpellTreeView*)), this, SLOT(addSpellButton(SpellTreeView*)));
+        QObject::connect(spellListElt, SIGNAL(closeRequest(SpellDockWidget*)), this, SLOT(closeSpellDock(SpellDockWidget*)));
 
         spellListElt->show();
         spellListElt->raise();
@@ -312,6 +317,7 @@ void SpellBookMainWindow::loadSpellList()
     addDockWidget(Qt::RightDockWidgetArea, spellListElt);
     tabifyDockWidget(_spellList->at(1), spellListElt);
     QObject::connect(spellListElt, SIGNAL(addSpellButtonClicked(SpellTreeView*)), this, SLOT(addSpellButton(SpellTreeView*)));
+    QObject::connect(spellListElt, SIGNAL(closeRequest(SpellDockWidget*)), this, SLOT(closeSpellDock(SpellDockWidget*)));
 
     spellListElt->show();
     spellListElt->raise();
@@ -374,6 +380,12 @@ void SpellBookMainWindow::saveAsSpellList(QAction* action_)
 void SpellBookMainWindow::addSpellButton(SpellTreeView* treeView_)
 {
     treeView_->addSpell((SpellView*)_centralWidget->currentWidget());
+}
+
+void SpellBookMainWindow::closeSpellDock(SpellDockWidget *dockWidget_)
+{
+    SpellDockWidget* toDelete = _spellList->takeAt(_spellList->indexOf(dockWidget_));
+    delete toDelete;
 }
 
 void SpellBookMainWindow::updateTabName(SpellView* spellView)

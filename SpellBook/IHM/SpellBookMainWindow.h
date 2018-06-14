@@ -99,6 +99,8 @@ public slots:
      */
     void addSpellButton(SpellTreeView *treeView_);
 
+    void closeSpellDock(SpellDockWidget* dockWidget_);
+
     /*!
      * \brief updateTabName : Met à jour le nom de la SpellView en entrée.
      * \param spellView

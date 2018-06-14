@@ -3,6 +3,7 @@
 
 #include <QDockWidget>
 #include <QString>
+#include <QCloseEvent>
 
 #include <SpellBook/Modeles/SpellEnum.h>
 #include <SpellBook/IHM/SpellTreeView.h>
@@ -20,12 +21,16 @@ public:
 
 signals:
     addSpellButtonClicked(SpellTreeView*);
+    closeRequest(SpellDockWidget*);
 
 private slots:
     void addSpellButtonClickedAction();
     void refreshFileNameLabel();
     void fileNameLabelModified();
     void fileNameLabelSaved();
+
+protected:
+    void closeEvent(QCloseEvent *event_);
 
 private:
     QLabel* _fileNameLabel;

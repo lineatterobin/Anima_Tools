@@ -29,7 +29,6 @@ SpellDockWidget::SpellDockWidget(QWidget *parent, SpellEnum::TreeTypes type_, QS
         }
         this->setObjectName(SPELLLIST + QString::number(listCount));
         setAllowedAreas(Qt::RightDockWidgetArea | Qt::LeftDockWidgetArea);
-        //setFeatures(QDockWidget::NoDockWidgetFeatures);
         _treeView->loadTreeData(data_);
         setWindowTitle(this->objectName());
         _treeView->setHeaderHidden(true);
@@ -60,9 +59,8 @@ SpellDockWidget::SpellDockWidget(QWidget *parent, SpellEnum::TreeTypes type_, QS
             ++listCount;
         }
         this->setObjectName(SPELLEXPLORER + QString::number(listCount));
-        //setWindowTitle(this->objectName());
         setAllowedAreas(Qt::LeftDockWidgetArea | Qt::RightDockWidgetArea);
-        //setFeatures(QDockWidget::NoDockWidgetFeatures);
+        setFeatures(QDockWidget::DockWidgetMovable | QDockWidget::DockWidgetFloatable);
         _treeView->loadTreeData(data_);
         _treeView->setHeaderHidden(true);
         _treeView->sort();
@@ -112,6 +110,19 @@ void SpellDockWidget::fileNameLabelModified()
 void SpellDockWidget::fileNameLabelSaved()
 {
     _fileNameLabel->setText(_fileNameLabel->text().remove("*"));
+}
+
+void SpellDockWidget::closeEvent(QCloseEvent *event_)
+{
+    if(event_->type() == QEvent::Close)
+    {
+        emit closeRequest(this);
+    }
+    else
+    {
+        event_->accept();
+    }
+
 }
 
 QLabel *SpellDockWidget::getFileNameLabel() const
