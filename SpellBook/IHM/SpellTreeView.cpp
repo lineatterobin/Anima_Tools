@@ -104,6 +104,7 @@ void SpellTreeView::addSpell(SpellView* spell_)
 
         //Vérifier si le sort existe, si oui le modifier si non le créer
         this->model()->addSpell(spell_, book);
+        emit dataChanged();
 
         //Trier l'arbre.
         this->sort();
@@ -199,6 +200,7 @@ void SpellTreeView::removeSpellFrom()
         {
             // Oui was clicked
             this->model()->removeBook(_indexCustomMenu);
+            emit dataChanged();
         }
         else if(msgBox.clickedButton() == (QAbstractButton*)cancel)
         {
@@ -276,12 +278,25 @@ void SpellTreeView::openSpell()
 void SpellTreeView::renameBiblio()
 {
     bool ok;
+    SpellBookMainWindow* mainW = (SpellBookMainWindow*)this->parent()->parent()->parent();
     QString text = QInputDialog::getText(0, "Renommer", "Nouveau nom :", QLineEdit::Normal, "", &ok);
     if(ok)
     {
-        if(text != "")
+        if(mainW->spellListExist(text) != -1)
+        {
+                QMessageBox* msgBox = new QMessageBox();
+                msgBox->setIcon(QMessageBox::Warning);
+                msgBox->setMinimumSize(250, 150);
+                QString msg = "Une liste nommée \"" + text + "\" existe déjà.";
+                msgBox->setText(msg);
+                msgBox->exec();
+                msgBox->deleteLater();
+                return;
+        }
+        else if(text != "")
         {
             this->model()->rename(text);
+            emit dataChanged();
         }
         else
         {
@@ -330,6 +345,7 @@ SpellTreeModel* SpellTreeView::model()
 void SpellTreeView::setXmlPath(QString xmlPath_)
 {
     _xmlPath = xmlPath_;
+    emit pathChanged();
 }
 
 QString SpellTreeView::xmlPath()

@@ -473,10 +473,8 @@ void SpellTreeModel::save(QString fileName_)
     QTextStream stream(&file);
     stream << _domDocument.toString();
 
-    std::cout << _domDocument.toString().toStdString() << std::endl;
-
-
     file.close();
+    emit saved();
 }
 
 void SpellTreeModel::rename(const QString& name_)

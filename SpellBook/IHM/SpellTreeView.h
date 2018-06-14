@@ -46,6 +46,8 @@ public:
 
 signals:
     void openRequest(QModelIndex);
+    void pathChanged();
+    void dataChanged();
 
 public slots:
     void onCustomMenuRequest(const QPoint &point_);

@@ -2,7 +2,6 @@
 
 #include <QFile>
 #include <QFileDialog>
-#include <iostream>
 #include <QMessageBox>
 #include <QToolButton>
 #include <QInputDialog>
@@ -12,8 +11,7 @@
 
 SpellBookMainWindow::SpellBookMainWindow(QString styleSheet_) : QMainWindow(),
     _centralWidget(NULL),
-    _spellPreview(NULL),
-    _listCount(0)
+    _spellPreview(NULL)
 {
     setWindowTitle(SPELLBOOK_WINDOW_NAME);
     setTheme(styleSheet_);
@@ -139,17 +137,22 @@ void SpellBookMainWindow::initDockWidgets()
 {
     _spellList = new QList<SpellDockWidget*>();
 
-    SpellDockWidget* spellExplorer = new SpellDockWidget(this, _listCount, SpellEnum::SOURCE, ":/DATA/BOOK");
-    ++_listCount;
+    SpellDockWidget* spellExplorer = new SpellDockWidget(this, SpellEnum::SOURCE, ":/DATA/BOOK");
 
-    SpellDockWidget* spellListElt = new SpellDockWidget(this, _listCount, SpellEnum::CUSTOM, "");
+    SpellDockWidget* spellListElt = new SpellDockWidget(this, SpellEnum::CUSTOM, "");
     QObject::connect(spellListElt, SIGNAL(addSpellButtonClicked(SpellTreeView*)), this, SLOT(addSpellButton(SpellTreeView*)));
-    ++_listCount;
+
+    SpellDockWidget* spellFake = new SpellDockWidget(this, SpellEnum::CUSTOM, "");
+    spellFake->setVisible(false);
+    spellFake->setEnabled(false);
 
     _spellList->append(spellExplorer);
+    _spellList->append(spellFake);
     _spellList->append(spellListElt);
     addDockWidget(Qt::LeftDockWidgetArea, _spellList->at(0));
     addDockWidget(Qt::RightDockWidgetArea, _spellList->at(1));
+    addDockWidget(Qt::RightDockWidgetArea, _spellList->at(2));
+    tabifyDockWidget(_spellList->at(1), _spellList->at(2));
 
     // Définition des positions des Tabs
     setTabPosition(Qt::LeftDockWidgetArea, QTabWidget::North);
@@ -172,6 +175,16 @@ void SpellBookMainWindow::initConnections()
 
     QObject::connect(_centralWidget, SIGNAL(tabCloseRequested(int)), this, SLOT(closeSpellView(int)));
 
+}
+
+int SpellBookMainWindow::spellListExist(const QString &name_)
+{
+    Q_FOREACH (SpellDockWidget* widget, *_spellList)
+    {
+        if(widget->objectName() == name_)
+            return _spellList->indexOf(widget);
+    }
+    return -1;
 }
 
 void SpellBookMainWindow::newSpellViewButton()
@@ -237,10 +250,21 @@ void SpellBookMainWindow::createSpellList()
     QString text = QInputDialog::getText(0, "Nouvelle liste", "Nom de la liste :", QLineEdit::Normal, "", &ok);
     if (ok)
     {
-        SpellDockWidget* spellListElt = new SpellDockWidget(this, _listCount);
-        ++_listCount;
+        SpellDockWidget* spellListElt = new SpellDockWidget(text, this);
         if(!text.isEmpty())
         {
+            if(spellListExist(text) != -1)
+            {
+                    QMessageBox* msgBox = new QMessageBox();
+                    msgBox->setIcon(QMessageBox::Warning);
+                    msgBox->setMinimumSize(250, 150);
+                    QString msg = "Une liste nommée \"" + text + "\" existe déjà.";
+                    msgBox->setText(msg);
+                    msgBox->exec();
+                    msgBox->deleteLater();
+                    spellListElt->deleteLater();
+                    return;
+            }
             spellListElt->setObjectName(text);
         }
         spellListElt->setWindowTitle(spellListElt->objectName());
@@ -249,6 +273,9 @@ void SpellBookMainWindow::createSpellList()
         addDockWidget(Qt::RightDockWidgetArea, spellListElt);
         tabifyDockWidget(_spellList->at(1), spellListElt);
         QObject::connect(spellListElt, SIGNAL(addSpellButtonClicked(SpellTreeView*)), this, SLOT(addSpellButton(SpellTreeView*)));
+
+        spellListElt->show();
+        spellListElt->raise();
     }
     else
     {
@@ -261,8 +288,23 @@ void SpellBookMainWindow::loadSpellList()
 {
     QString fileName = QFileDialog::getOpenFileName(this, "Ouvrir une liste personalisée", STD_DOCUMENT_PATH, "XML Files (*.xml)");
 
-    SpellDockWidget* spellListElt = new SpellDockWidget(this, _listCount, SpellEnum::CUSTOM, fileName);
-    ++_listCount;
+    if(fileName == "")
+        return;
+
+    SpellDockWidget* spellListElt = new SpellDockWidget(this, SpellEnum::CUSTOM, fileName);
+
+    if(spellListExist(spellListElt->objectName()) != -1)
+    {
+            QMessageBox* msgBox = new QMessageBox();
+            msgBox->setIcon(QMessageBox::Warning);
+            msgBox->setMinimumSize(250, 150);
+            QString msg = "Une liste nommée \"" + spellListElt->objectName() + "\" existe déjà.";
+            msgBox->setText(msg);
+            msgBox->exec();
+            msgBox->deleteLater();
+            spellListElt->deleteLater();
+            return;
+    }
 
     spellListElt->setWindowTitle(spellListElt->objectName());
 
@@ -270,6 +312,9 @@ void SpellBookMainWindow::loadSpellList()
     addDockWidget(Qt::RightDockWidgetArea, spellListElt);
     tabifyDockWidget(_spellList->at(1), spellListElt);
     QObject::connect(spellListElt, SIGNAL(addSpellButtonClicked(SpellTreeView*)), this, SLOT(addSpellButton(SpellTreeView*)));
+
+    spellListElt->show();
+    spellListElt->raise();
 }
 
 void SpellBookMainWindow::configSaveMenu()

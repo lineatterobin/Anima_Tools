@@ -44,6 +44,7 @@ public:
 
 signals:
     nameBilioChanged(QString);
+    saved();
 
 private:
 

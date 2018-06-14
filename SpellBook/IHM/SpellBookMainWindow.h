@@ -10,6 +10,7 @@
 #include <QVBoxLayout>
 #include <QDockWidget>
 #include <QMenu>
+#include <QString>
 
 class SpellBookMainWindow : public QMainWindow
 {
@@ -32,6 +33,7 @@ public:
      */
     SpellView *newSpellView(const bool &readOnly_);
 
+    int spellListExist(const QString& name_);
 
     QList<SpellDockWidget*> getList();
 
@@ -137,8 +139,6 @@ private:
     SpellView* _spellPreview;
     QMenu* _saveSpellListMenu;
     QMenu* _saveAsSpellListMenu;
-
-    int _listCount;
 
 };
 
