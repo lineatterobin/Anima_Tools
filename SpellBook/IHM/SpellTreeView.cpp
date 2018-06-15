@@ -57,11 +57,14 @@ void SpellTreeView::hideTreeSpellData(const QModelIndex& startIndex_, int curren
 void SpellTreeView::loadTreeData(QString xmlPath_)
 {
     QDomDocument document;
-    SpellTreeModel* newModel;
-    if (!xmlPath_.isEmpty()) {
+    SpellTreeModel* newModel = NULL;
+    if (!xmlPath_.isEmpty())
+    {
         QFile file(xmlPath_);
-        if (file.open(QIODevice::ReadOnly)) {
-            if (document.setContent(&file)) {
+        if (file.open(QIODevice::ReadOnly))
+        {
+            if (document.setContent(&file))
+            {
                 newModel = new SpellTreeModel(document, this);
                 this->setModel(newModel);
                 _xmlPath = xmlPath_;

@@ -27,21 +27,21 @@ Name: "french"; MessagesFile: "compiler:Languages\French.isl"
 Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{cm:AdditionalIcons}"; Flags: unchecked
 
 [Files]
-Source: "..\..\build-Anima_Tools-Desktop_Qt_5_10_1_MinGW_32bit-Release\release\AnimaTools.exe"; DestDir: "{app}"; Flags: ignoreversion
+Source: "..\..\build-Anima_Tools-Desktop_Qt_5_11_0_MinGW_32bit-Release\release\AnimaTools.exe"; DestDir: "{app}"; Flags: ignoreversion
 Source: "..\icon.ico"; DestDir: "{app}"; Flags: ignoreversion
-Source: "..\..\build-Anima_Tools-Desktop_Qt_5_10_1_MinGW_32bit-Release\release\D3Dcompiler_47.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "..\..\build-Anima_Tools-Desktop_Qt_5_10_1_MinGW_32bit-Release\release\libEGL.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "..\..\build-Anima_Tools-Desktop_Qt_5_10_1_MinGW_32bit-Release\release\libgcc_s_dw2-1.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "..\..\build-Anima_Tools-Desktop_Qt_5_10_1_MinGW_32bit-Release\release\libGLESV2.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "..\..\build-Anima_Tools-Desktop_Qt_5_10_1_MinGW_32bit-Release\release\libstdc++-6.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "..\..\build-Anima_Tools-Desktop_Qt_5_10_1_MinGW_32bit-Release\release\libwinpthread-1.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "..\..\build-Anima_Tools-Desktop_Qt_5_10_1_MinGW_32bit-Release\release\opengl32sw.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "..\..\build-Anima_Tools-Desktop_Qt_5_10_1_MinGW_32bit-Release\release\Qt5Core.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "..\..\build-Anima_Tools-Desktop_Qt_5_10_1_MinGW_32bit-Release\release\Qt5Gui.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "..\..\build-Anima_Tools-Desktop_Qt_5_10_1_MinGW_32bit-Release\release\Qt5Svg.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "..\..\build-Anima_Tools-Desktop_Qt_5_10_1_MinGW_32bit-Release\release\Qt5Widgets.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "..\..\build-Anima_Tools-Desktop_Qt_5_10_1_MinGW_32bit-Release\release\Qt5Xml.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "..\..\build-Anima_Tools-Desktop_Qt_5_10_1_MinGW_32bit-Release\release\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
+Source: "..\..\build-Anima_Tools-Desktop_Qt_5_11_0_MinGW_32bit-Release\release\D3Dcompiler_47.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "..\..\build-Anima_Tools-Desktop_Qt_5_11_0_MinGW_32bit-Release\release\libEGL.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "..\..\build-Anima_Tools-Desktop_Qt_5_11_0_MinGW_32bit-Release\release\libgcc_s_dw2-1.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "..\..\build-Anima_Tools-Desktop_Qt_5_11_0_MinGW_32bit-Release\release\libGLESV2.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "..\..\build-Anima_Tools-Desktop_Qt_5_11_0_MinGW_32bit-Release\release\libstdc++-6.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "..\..\build-Anima_Tools-Desktop_Qt_5_11_0_MinGW_32bit-Release\release\libwinpthread-1.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "..\..\build-Anima_Tools-Desktop_Qt_5_11_0_MinGW_32bit-Release\release\opengl32sw.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "..\..\build-Anima_Tools-Desktop_Qt_5_11_0_MinGW_32bit-Release\release\Qt5Core.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "..\..\build-Anima_Tools-Desktop_Qt_5_11_0_MinGW_32bit-Release\release\Qt5Gui.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "..\..\build-Anima_Tools-Desktop_Qt_5_11_0_MinGW_32bit-Release\release\Qt5Svg.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "..\..\build-Anima_Tools-Desktop_Qt_5_11_0_MinGW_32bit-Release\release\Qt5Widgets.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "..\..\build-Anima_Tools-Desktop_Qt_5_11_0_MinGW_32bit-Release\release\Qt5Xml.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "..\..\build-Anima_Tools-Desktop_Qt_5_11_0_MinGW_32bit-Release\release\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 
 [Icons]
