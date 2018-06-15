@@ -17,10 +17,6 @@ SpellBookMainWindow::SpellBookMainWindow(QString styleSheet_) : QMainWindow(),
     setTheme(styleSheet_);
     setContextMenuPolicy(Qt::NoContextMenu);
 
-    QPixmap pixmap(":/IMG/ANIMA_LOGO");
-    QIcon icon(pixmap);
-    setWindowIcon(icon);
-
     initCentralWidget();
 
     initDockWidgets();

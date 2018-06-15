@@ -2,6 +2,7 @@
 #define MAINWINDOW_H
 
 #include <SpellBook/IHM/spellbookmainwindow.h>
+#include <KTC/IHM/KTCMainWindow.h>
 
 #include <QMainWindow>
 #include <QGridLayout>
@@ -34,9 +35,14 @@ protected:
 
 private slots:
     /*!
-     * \brief lancerSpellBook : Lancement du module SpellBook
+     * \brief lancerSpellBook : Lancement du module SpellBook.
      */
     void lancerSpellBook();
+
+    /*!
+     * \brief lancerKTC: Lancement du module KiTechCreator.
+     */
+    void lancerKTC();
 
     /*!
      * \brief changerTheme : Changement de thème (Jour/Nuit).
@@ -49,11 +55,8 @@ private:
 
     Theme _theme;
 
-    QGridLayout *_buttonsLayout;
-
-    QPushButton *_btnSpellBook;
-
     SpellBookMainWindow *_spellBookWindow;
+    KTCMainWindow *_ktcMainWindow;
 
 };
 

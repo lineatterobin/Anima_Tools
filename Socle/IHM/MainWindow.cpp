@@ -8,7 +8,8 @@
 #include <QIcon>
 
 MainWindow::MainWindow() : QMainWindow(),
-    _spellBookWindow(NULL)
+    _spellBookWindow(NULL),
+    _ktcMainWindow(NULL)
 {
     // Chargement du style graphique.
     QFile file(":/CSS/THEME_JOUR");
@@ -23,28 +24,34 @@ MainWindow::MainWindow() : QMainWindow(),
     file.close();
 
     // Boutons
-    _btnSpellBook= new QPushButton();
-    _btnSpellBook->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
-    _btnSpellBook->setText("Editeur de Grimoire");
+    QPushButton* btnSpellBook= new QPushButton();
+    btnSpellBook->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
+    btnSpellBook->setText(SPELLBOOK_WINDOW_NAME);
 
-    connect(_btnSpellBook, SIGNAL(pressed()), this, SLOT(lancerSpellBook()));
+    QPushButton* btnKTC = new QPushButton(this);
+    btnKTC->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
+    btnKTC->setText(KTC_WINDOW_NAME);
+
+    connect(btnSpellBook, SIGNAL(pressed()), this, SLOT(lancerSpellBook()));
+    connect(btnKTC, SIGNAL(pressed()), this, SLOT(lancerKTC()));
 
     // Grille de boutons
     QWidget* mainWidget = new QWidget();
     mainWidget->setObjectName("MainWidget");
-    _buttonsLayout = new QGridLayout(mainWidget);
-    _buttonsLayout->addWidget(_btnSpellBook, 0,7, Qt::AlignCenter);
+    QGridLayout* buttonsLayout = new QGridLayout(mainWidget);
+    buttonsLayout->addWidget(btnSpellBook, 0,7, Qt::AlignLeft);
+    buttonsLayout->addWidget(btnKTC, 2,7, Qt::AlignLeft);
 
     // Version
     QLabel* versionLabel = new QLabel(VERSION_LIBELLE, this);
     versionLabel->setObjectName("Version");
-    _buttonsLayout->addWidget(versionLabel, 8, 0, Qt::AlignBottom);
+    buttonsLayout->addWidget(versionLabel, 8, 0, Qt::AlignBottom);
 
     // Création des lignes et colonnes de la grille de boutons
     for(int i = 0; i < 9; i++)
-        _buttonsLayout->setColumnStretch(i, 1);
+        buttonsLayout->setColumnStretch(i, 1);
     for(int i = 0; i < 9; i++)
-        _buttonsLayout->setRowStretch(i, 1);
+        buttonsLayout->setRowStretch(i, 1);
 
     // Ajout du Widget à la fenêtre principale.
     setCentralWidget(mainWidget);
@@ -59,12 +66,18 @@ MainWindow::~MainWindow()
     {
         delete _spellBookWindow;
     }
+    if(_ktcMainWindow != NULL)
+    {
+        delete _ktcMainWindow;
+    }
 }
 
 void MainWindow::closeEvent(QCloseEvent *)
 {
     if(_spellBookWindow != NULL)
         _spellBookWindow->close();
+    if(_ktcMainWindow != NULL)
+        _ktcMainWindow->close();
 }
 
 void MainWindow::paintEvent(QPaintEvent *)
@@ -102,6 +115,22 @@ void MainWindow::lancerSpellBook()
     connect(_spellBookWindow, SIGNAL(changerThemeRequested()), this, SLOT(changerTheme()));
 }
 
+void MainWindow::lancerKTC()
+{
+    if(_ktcMainWindow == NULL || _ktcMainWindow->isHidden())
+    {
+        delete _ktcMainWindow;
+        _ktcMainWindow = new KTCMainWindow(_styleSheet);
+        _ktcMainWindow->show();
+    }
+
+    _ktcMainWindow->raise();
+    _ktcMainWindow->activateWindow();
+    _ktcMainWindow->setWindowState(_ktcMainWindow->windowState() & ~Qt::WindowMinimized);
+
+    connect(_ktcMainWindow, SIGNAL(changerThemeRequested()), this, SLOT(changerTheme()));
+}
+
 void MainWindow::changerTheme()
 {
     if (_theme == Theme::JOUR)
@@ -132,4 +161,6 @@ void MainWindow::changerTheme()
     // On met à jour les modules s'ils existent.
     if(_spellBookWindow != NULL)
         _spellBookWindow->setTheme(_styleSheet);
+    if(_ktcMainWindow != NULL)
+        _ktcMainWindow->setTheme(_styleSheet);
 }
