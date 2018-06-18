@@ -29,7 +29,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 include ($$PWD/Socle/Socle.pri)
 include ($$PWD/SpellBook/SpellBook.pri)
 include ($$PWD/Librairies/Librairies.pri)
-include ($$PWD/KTC/KiTechCreator.pri)
+include ($$PWD/KiTechCreator/KiTechCreator.pri)
 
 RC_FILE = $$PWD/animaTools.rc
 RESOURCES += $$PWD/Ressources.qrc
