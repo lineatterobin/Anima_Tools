@@ -18,41 +18,17 @@ public:
     int di() const;
     void setDi(int di);
 
-    int kiAGI() const;
-    void setKiAGI(int kiAGI);
+    KiTechniqueFrequency freq() const;
+    void setFreq(const KiTechniqueFrequency &freq);
 
-    int kiDEX() const;
-    void setKiDEX(int kiDEX);
+    KiTechniqueType type() const;
+    void setType(const KiTechniqueType &type);
 
-    int kiCON() const;
-    void setKiCON(int kiCON);
+    bool combinable() const;
+    void setCombinable(bool combinable);
 
-    int kiFOR() const;
-    void setKiFOR(int kiFOR);
-
-    int kiPOU() const;
-    void setKiPOU(int kiPOU);
-
-    int kiWIL() const;
-    void setKiWIL(int kiWIL);
-
-    int kiExtraAGI() const;
-    void setKiExtraAGI(int kiExtraAGI);
-
-    int kiExtraDEX() const;
-    void setKiExtraDEX(int kiExtraDEX);
-
-    int kiExtraCON() const;
-    void setKiExtraCON(int kiExtraCON);
-
-    int kiExtraFOR() const;
-    void setKiExtraFOR(int kiExtraFOR);
-
-    int kiExtraPOU() const;
-    void setKiExtraPOU(int kiExtraPOU);
-
-    int kiExtraWIL() const;
-    void setKiExtraWIL(int kiExtraWIL);
+    MaintenanceType maintenanceType() const;
+    void setMaintenanceType(const MaintenanceType &maintenanceType);
 
     KiEffect effetP() const;
     void setEffetP(const KiEffect &effetP);
@@ -60,64 +36,42 @@ public:
     QList<KiEffect> effetsS() const;
     void setEffetsS(const QList<KiEffect> &effetsS);
 
-    MaintenanceType maintenanceType() const;
-    void setMaintenanceType(const MaintenanceType &maintenanceType);
+    void addEffetS(const KiEffect &effetS_);
+    void removeEffetS(const int &index_);
+
+    QMap<CaracKi, int> kiCost() const;
+    void setKiCost(const QMap<CaracKi, int> &kiCost);
+
+    QMap<CaracKi, int> kiExtraCost() const;
+    void setKiExtraCost(const QMap<CaracKi, int> &kiExtraCost);
 
     ReductionType reductionType() const;
     void setReductionType(const ReductionType &reductionType);
 
-    int redAGI() const;
-    void setRedAGI(int redAGI);
-
-    int redDEX() const;
-    void setRedDEX(int redDEX);
-
-    int redCON() const;
-    void setRedCON(int redCON);
-
-    int redFOR() const;
-    void setRedFOR(int redFOR);
-
-    int redPOU() const;
-    void setRedPOU(int redPOU);
-
-    int redWIL() const;
-    void setRedWIL(int redWIL);
+    QMap<CaracKi, int> kiRed() const;
+    void setKiRed(const QMap<CaracKi, int> &kiRed);
 
 signals:
+    void effectSecAsChanged();
 
 public slots:
 
 private:
     int _level;
     int _di;
-
-    int _kiAGI;
-    int _kiDEX;
-    int _kiCON;
-    int _kiFOR;
-    int _kiPOU;
-    int _kiWIL;
-    int _kiExtraAGI;
-    int _kiExtraDEX;
-    int _kiExtraCON;
-    int _kiExtraFOR;
-    int _kiExtraPOU;
-    int _kiExtraWIL;
+    KiTechniqueFrequency _freq;
+    KiTechniqueType _type;
+    bool _combinable;
+    MaintenanceType _maintenanceType;
 
     KiEffect _effetP;
     QList<KiEffect> _effetsS;
 
-    MaintenanceType _maintenanceType;
+    QMap<CaracKi,int> _kiCost;
+    QMap<CaracKi,int> _kiExtraCost;
+
     ReductionType _reductionType;
-
-    int _redAGI;
-    int _redDEX;
-    int _redCON;
-    int _redFOR;
-    int _redPOU;
-    int _redWIL;
-
+    QMap<CaracKi, int> _kiRed;
 };
 
 #endif // KITECHNIQUE_H

@@ -25,124 +25,44 @@ void KiTechnique::setDi(int di)
     _di = di;
 }
 
-int KiTechnique::kiAGI() const
+KiTechniqueFrequency KiTechnique::freq() const
 {
-    return _kiAGI;
+    return _freq;
 }
 
-void KiTechnique::setKiAGI(int kiAGI)
+void KiTechnique::setFreq(const KiTechniqueFrequency &freq)
 {
-    _kiAGI = kiAGI;
+    _freq = freq;
 }
 
-int KiTechnique::kiDEX() const
+KiTechniqueType KiTechnique::type() const
 {
-    return _kiDEX;
+    return _type;
 }
 
-void KiTechnique::setKiDEX(int kiDEX)
+void KiTechnique::setType(const KiTechniqueType &type)
 {
-    _kiDEX = kiDEX;
+    _type = type;
 }
 
-int KiTechnique::kiCON() const
+bool KiTechnique::combinable() const
 {
-    return _kiCON;
+    return _combinable;
 }
 
-void KiTechnique::setKiCON(int kiCON)
+void KiTechnique::setCombinable(bool combinable)
 {
-    _kiCON = kiCON;
+    _combinable = combinable;
 }
 
-int KiTechnique::kiFOR() const
+MaintenanceType KiTechnique::maintenanceType() const
 {
-    return _kiFOR;
+    return _maintenanceType;
 }
 
-void KiTechnique::setKiFOR(int kiFOR)
+void KiTechnique::setMaintenanceType(const MaintenanceType &maintenanceType)
 {
-    _kiFOR = kiFOR;
-}
-
-int KiTechnique::kiPOU() const
-{
-    return _kiPOU;
-}
-
-void KiTechnique::setKiPOU(int kiPOU)
-{
-    _kiPOU = kiPOU;
-}
-
-int KiTechnique::kiWIL() const
-{
-    return _kiWIL;
-}
-
-void KiTechnique::setKiWIL(int kiWIL)
-{
-    _kiWIL = kiWIL;
-}
-
-int KiTechnique::kiExtraAGI() const
-{
-    return _kiExtraAGI;
-}
-
-void KiTechnique::setKiExtraAGI(int kiExtraAGI)
-{
-    _kiExtraAGI = kiExtraAGI;
-}
-
-int KiTechnique::kiExtraDEX() const
-{
-    return _kiExtraDEX;
-}
-
-void KiTechnique::setKiExtraDEX(int kiExtraDEX)
-{
-    _kiExtraDEX = kiExtraDEX;
-}
-
-int KiTechnique::kiExtraCON() const
-{
-    return _kiExtraCON;
-}
-
-void KiTechnique::setKiExtraCON(int kiExtraCON)
-{
-    _kiExtraCON = kiExtraCON;
-}
-
-int KiTechnique::kiExtraFOR() const
-{
-    return _kiExtraFOR;
-}
-
-void KiTechnique::setKiExtraFOR(int kiExtraFOR)
-{
-    _kiExtraFOR = kiExtraFOR;
-}
-
-int KiTechnique::kiExtraPOU() const
-{
-    return _kiExtraPOU;
-}
-
-void KiTechnique::setKiExtraPOU(int kiExtraPOU)
-{
-    _kiExtraPOU = kiExtraPOU;
-}
-
-int KiTechnique::kiExtraWIL() const
-{
-    return _kiExtraWIL;
-}
-
-void KiTechnique::setKiExtraWIL(int kiExtraWIL)
-{
-    _kiExtraWIL = kiExtraWIL;
+    _maintenanceType = maintenanceType;
 }
 
 KiEffect KiTechnique::effetP() const
@@ -163,16 +83,39 @@ QList<KiEffect> KiTechnique::effetsS() const
 void KiTechnique::setEffetsS(const QList<KiEffect> &effetsS)
 {
     _effetsS = effetsS;
+    emit effectSecAsChanged();
 }
 
-MaintenanceType KiTechnique::maintenanceType() const
+void KiTechnique::addEffetS(const KiEffect &effetS_)
 {
-    return _maintenanceType;
+    _effetsS.append(effetS_);
+    emit effectSecAsChanged();
 }
 
-void KiTechnique::setMaintenanceType(const MaintenanceType &maintenanceType)
+void KiTechnique::removeEffetS(const int &index_)
 {
-    _maintenanceType = maintenanceType;
+    _effetsS.removeAt(index_);
+    emit effectSecAsChanged();
+}
+
+QMap<CaracKi, int> KiTechnique::kiCost() const
+{
+    return _kiCost;
+}
+
+void KiTechnique::setKiCost(const QMap<CaracKi, int> &kiCost)
+{
+    _kiCost = kiCost;
+}
+
+QMap<CaracKi, int> KiTechnique::kiExtraCost() const
+{
+    return _kiExtraCost;
+}
+
+void KiTechnique::setKiExtraCost(const QMap<CaracKi, int> &kiExtraCost)
+{
+    _kiExtraCost = kiExtraCost;
 }
 
 ReductionType KiTechnique::reductionType() const
@@ -185,62 +128,12 @@ void KiTechnique::setReductionType(const ReductionType &reductionType)
     _reductionType = reductionType;
 }
 
-int KiTechnique::redAGI() const
+QMap<CaracKi, int> KiTechnique::kiRed() const
 {
-    return _redAGI;
+    return _kiRed;
 }
 
-void KiTechnique::setRedAGI(int redAGI)
+void KiTechnique::setKiRed(const QMap<CaracKi, int> &kiRed)
 {
-    _redAGI = redAGI;
-}
-
-int KiTechnique::redDEX() const
-{
-    return _redDEX;
-}
-
-void KiTechnique::setRedDEX(int redDEX)
-{
-    _redDEX = redDEX;
-}
-
-int KiTechnique::redCON() const
-{
-    return _redCON;
-}
-
-void KiTechnique::setRedCON(int redCON)
-{
-    _redCON = redCON;
-}
-
-int KiTechnique::redFOR() const
-{
-    return _redFOR;
-}
-
-void KiTechnique::setRedFOR(int redFOR)
-{
-    _redFOR = redFOR;
-}
-
-int KiTechnique::redPOU() const
-{
-    return _redPOU;
-}
-
-void KiTechnique::setRedPOU(int redPOU)
-{
-    _redPOU = redPOU;
-}
-
-int KiTechnique::redWIL() const
-{
-    return _redWIL;
-}
-
-void KiTechnique::setRedWIL(int redWIL)
-{
-    _redWIL = redWIL;
+    _kiRed = kiRed;
 }

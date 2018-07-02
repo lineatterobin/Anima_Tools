@@ -1,16 +1,23 @@
 #ifndef KIEFFECT_H
 #define KIEFFECT_H
 
+#include <QMap>
+#include <KiTechCreator/Modeles/KiTechEnum.h>
+
 class KiEffect
 {
 public:
     KiEffect();
 
-    bool secondaire() const;
-    void setSecondaire(bool secondaire);
-
 private:
-    bool _secondaire;
+    int _cost;
+    int _extraCost;
+    MaintenanceType _maintenanceType;
+
+    CaracKi _caracPrimaire;
+    QMap<CaracKi,int> _caracCoef;
+    QMap<CaracKi,int> _caracCost;
+    QMap<CaracKi,int> _caracExtraCost;
 };
 
 #endif // KIEFFECT_H
