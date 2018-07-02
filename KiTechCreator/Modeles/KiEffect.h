@@ -1,17 +1,16 @@
 #ifndef KIEFFECT_H
 #define KIEFFECT_H
 
-#include <QObject>
-
-class KiEffect : public QObject
+class KiEffect
 {
-    Q_OBJECT
 public:
-    explicit KiEffect(QObject *parent = nullptr);
+    KiEffect();
 
-signals:
+    bool secondaire() const;
+    void setSecondaire(bool secondaire);
 
-public slots:
+private:
+    bool _secondaire;
 };
 
 #endif // KIEFFECT_H

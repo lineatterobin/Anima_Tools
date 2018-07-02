@@ -1,18 +1,16 @@
 #ifndef KITECHENUM_H
 #define KITECHENUM_H
 
-#include <QObject>
-#include <QString>
-
-class KiTechEnum : public QObject
-{
-    Q_OBJECT
-public:
-
-    enum MaintenanceTypes {
-       AUCUN,
-       MAINTIEN,
-       SOUTIEN
-    }; Q_ENUM(MaintenanceTypes) typedef enum MaintenanceTypes MTypes;
+enum class MaintenanceType {
+   AUCUN,
+   MAINTIEN,
+   SOUTIEN
 };
+
+enum class ReductionType {
+    AUCUNE,
+    KI,
+    DI
+};
+
 #endif // KITECHENUM_H

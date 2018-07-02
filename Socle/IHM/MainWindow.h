@@ -2,7 +2,7 @@
 #define MAINWINDOW_H
 
 #include <SpellBook/IHM/spellbookmainwindow.h>
-#include <KTC/IHM/KTCMainWindow.h>
+#include <KiTechCreator/IHM/KTCMainWindow.h>
 
 #include <QMainWindow>
 #include <QGridLayout>
