@@ -27,8 +27,8 @@ public:
     bool combinable() const;
     void setCombinable(bool combinable);
 
-    MaintenanceType maintenanceType() const;
-    void setMaintenanceType(const MaintenanceType &maintenanceType);
+    KiMaintenanceType maintenanceType() const;
+    void setMaintenanceType(const KiMaintenanceType &maintenanceType);
 
     KiEffect effetP() const;
     void setEffetP(const KiEffect &effetP);
@@ -45,8 +45,8 @@ public:
     QMap<CaracKi, int> kiExtraCost() const;
     void setKiExtraCost(const QMap<CaracKi, int> &kiExtraCost);
 
-    ReductionType reductionType() const;
-    void setReductionType(const ReductionType &reductionType);
+    KiReductionType reductionType() const;
+    void setReductionType(const KiReductionType &reductionType);
 
     QMap<CaracKi, int> kiRed() const;
     void setKiRed(const QMap<CaracKi, int> &kiRed);
@@ -62,7 +62,7 @@ private:
     KiTechniqueFrequency _freq;
     KiTechniqueType _type;
     bool _combinable;
-    MaintenanceType _maintenanceType;
+    KiMaintenanceType _maintenanceType;
 
     KiEffect _effetP;
     QList<KiEffect> _effetsS;
@@ -70,7 +70,7 @@ private:
     QMap<CaracKi,int> _kiCost;
     QMap<CaracKi,int> _kiExtraCost;
 
-    ReductionType _reductionType;
+    KiReductionType _reductionType;
     QMap<CaracKi, int> _kiRed;
 };
 

@@ -4,6 +4,10 @@
 #include <QWidget>
 #include <QLabel>
 #include <QLineEdit>
+#include <QCheckBox>
+#include <QComboBox>
+
+#include <KiTechCreator/Modeles/KiTechEnum.h>
 
 class TechniqueWidget : public QWidget
 {
@@ -21,8 +25,13 @@ private:
     QLineEdit* _name;
     QLabel* _levelLabel;
     QLineEdit* _level;
-    QLabel* _mkCostLabel;
-    QLineEdit* _mkCost;
+    QLabel* _diCostLabel;
+    QLineEdit* _diCost;
+    QLabel* _typeLabel;
+    QLineEdit* _type;
+
+    QCheckBox* _combinable;
+    QComboBox* _maintenanceType;
 
 };
 

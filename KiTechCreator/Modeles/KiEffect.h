@@ -12,7 +12,7 @@ public:
 private:
     int _cost;
     int _extraCost;
-    MaintenanceType _maintenanceType;
+    KiMaintenanceType _maintenanceType;
 
     CaracKi _caracPrimaire;
     QMap<CaracKi,int> _caracCoef;

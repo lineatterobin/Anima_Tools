@@ -1,6 +1,8 @@
 #ifndef KITECHENUM_H
 #define KITECHENUM_H
 
+#include <QObject>
+
 enum class KiTechniqueFrequency {
    ACTION,
    TURN,
@@ -14,13 +16,13 @@ enum class KiTechniqueType {
     VARIABLE
 };
 
-enum class MaintenanceType {
+enum class KiMaintenanceType {
    AUCUN,
    MAINTIEN,
    SOUTIEN
 };
 
-enum class ReductionType {
+enum class KiReductionType {
     AUCUNE,
     KI,
     DI

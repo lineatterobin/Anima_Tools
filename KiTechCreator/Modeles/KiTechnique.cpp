@@ -55,12 +55,12 @@ void KiTechnique::setCombinable(bool combinable)
     _combinable = combinable;
 }
 
-MaintenanceType KiTechnique::maintenanceType() const
+KiMaintenanceType KiTechnique::maintenanceType() const
 {
     return _maintenanceType;
 }
 
-void KiTechnique::setMaintenanceType(const MaintenanceType &maintenanceType)
+void KiTechnique::setMaintenanceType(const KiMaintenanceType &maintenanceType)
 {
     _maintenanceType = maintenanceType;
 }
@@ -118,12 +118,12 @@ void KiTechnique::setKiExtraCost(const QMap<CaracKi, int> &kiExtraCost)
     _kiExtraCost = kiExtraCost;
 }
 
-ReductionType KiTechnique::reductionType() const
+KiReductionType KiTechnique::reductionType() const
 {
     return _reductionType;
 }
 
-void KiTechnique::setReductionType(const ReductionType &reductionType)
+void KiTechnique::setReductionType(const KiReductionType &reductionType)
 {
     _reductionType = reductionType;
 }
