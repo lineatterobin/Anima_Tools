@@ -169,7 +169,7 @@ void SpellBookMainWindow::initDockWidgets()
 void SpellBookMainWindow::initConnections()
 {
     SpellTreeView* explorer = _spellList->at(0)->getTree();
-    SpellTreeView* list = _spellList->at(1)->getTree();
+    SpellTreeView* list = _spellList->at(2)->getTree();
     QObject::connect(explorer->selectionModel(), SIGNAL(currentChanged(QModelIndex,QModelIndex)), this, SLOT(loadSpellPreview(QModelIndex)));
     QObject::connect(list->selectionModel(), SIGNAL(currentChanged(QModelIndex,QModelIndex)), this, SLOT(loadSpellPreview(QModelIndex)));
     QObject::connect(explorer, SIGNAL(doubleClicked(QModelIndex)), this, SLOT(addSpellView(QModelIndex)));
