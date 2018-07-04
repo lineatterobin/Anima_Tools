@@ -24,39 +24,33 @@ SpellView::SpellView(QWidget *parent) : QWidget(parent),
     _spellEffectTypeLabel(NULL),
     _spellEffectLabel(NULL),
     _spellActionLabel(NULL),
-    _spellName(NULL),
-    _spellLevel(NULL),
     _spellBook(NULL),
-    _spellDescription(NULL),
-    _spellCostInitial(NULL),
-    _spellCostIntermediaire(NULL),
-    _spellCostAvancee(NULL),
-    _spellCostArcane(NULL),
+    _spellLevel(NULL),
+    _spellName(NULL),
+    _spellAction(NULL),
+    _spellEffectType(NULL),
+    _spellMaintenanceType(NULL),
     _spellRequirementInitial(NULL),
     _spellRequirementIntermediaire(NULL),
     _spellRequirementAvancee(NULL),
     _spellRequirementArcane(NULL),
+    _spellCostInitial(NULL),
+    _spellCostIntermediaire(NULL),
+    _spellCostAvancee(NULL),
+    _spellCostArcane(NULL),
     _spellMaintenanceInitial(NULL),
     _spellMaintenanceIntermediaire(NULL),
     _spellMaintenanceAvancee(NULL),
     _spellMaintenanceArcane(NULL),
-    _spellMaintenanceType(NULL),
-    _spellCommentaire(NULL),
-    _spellSource(NULL),
-    _spellEffectType(NULL),
     _spellEffectInitial(NULL),
     _spellEffectIntermediaire(NULL),
     _spellEffectAvancee(NULL),
     _spellEffectArcane(NULL),
-    _spellAction(NULL)
+    _spellDescription(NULL),
+    _spellSource(NULL),
+    _spellCommentaire(NULL)
 {
 
-    _spellNameLabel = new QLabel("Nom : ", this);
-    _spellName = new QLineEdit(this);
-    QFontMetrics a(_spellName->font());
-    _spellName->setSizePolicy(QSizePolicy::Ignored, QSizePolicy::Fixed);
-    _spellName->setMinimumWidth(50*a.averageCharWidth());
-    QObject::connect(_spellName, SIGNAL(textChanged(QString)), this, SLOT(updateTitle()));
 
     _spellBookLabel = new QLabel("Domaine : ", this);
     _spellBook = new QLineEdit(this);
@@ -70,64 +64,11 @@ SpellView::SpellView(QWidget *parent) : QWidget(parent),
     _spellLevel->setMinimum(2);
     _spellLevel->setSingleStep(2);
 
-    _spellDescriptionLabel = new QLabel("Description : ", this);
-    _spellDescription = new QTextEdit(this);
-    _spellDescription->setSizePolicy(QSizePolicy::MinimumExpanding, QSizePolicy::MinimumExpanding);
-
-    _spellInitialLabel = new QLabel("Initial", this);
-    _spellIntermediaireLabel = new QLabel("Intermédiaire", this);
-    _spellAvanceeLabel = new QLabel("Avancée", this);
-    _spellArcaneLabel = new QLabel("Arcane", this);
-    _spellCostLabel = new QLabel("Coût", this);
-    _spellRequirementLabel = new QLabel("Intel. Requis", this);
-    _spellMaintenanceLabel = new QLabel("Maintien", this);
-    _spellEffectLabel = new QLabel("Effets", this);
-    _spellCostInitial = new QSpinBox(this);
-    QFontMetrics c(_spellCostInitial->font());
-    _spellCostInitial->setMaximum(99999);
-    _spellCostInitial->setFixedWidth(12*c.averageCharWidth());
-    _spellCostIntermediaire = new QSpinBox(this);
-    _spellCostIntermediaire->setMaximum(99999);
-    _spellCostIntermediaire->setFixedWidth(12*c.averageCharWidth());
-    _spellCostAvancee = new QSpinBox(this);
-    _spellCostAvancee->setMaximum(99999);
-    _spellCostAvancee->setFixedWidth(12*c.averageCharWidth());
-    _spellCostArcane = new QSpinBox(this);
-    _spellCostArcane->setMaximum(99999);
-    _spellCostArcane->setFixedWidth(12*c.averageCharWidth());
-    _spellRequirementInitial = new QSpinBox(this);
-    _spellRequirementInitial->setFixedWidth(12*c.averageCharWidth());
-    _spellRequirementIntermediaire = new QSpinBox(this);
-    _spellRequirementIntermediaire->setFixedWidth(12*c.averageCharWidth());
-    _spellRequirementAvancee = new QSpinBox(this);
-    _spellRequirementAvancee->setFixedWidth(12*c.averageCharWidth());
-    _spellRequirementArcane = new QSpinBox(this);
-    _spellRequirementArcane->setFixedWidth(12*c.averageCharWidth());
-    _spellMaintenanceInitial = new QSpinBox(this);
-    _spellMaintenanceInitial->setFixedWidth(12*c.averageCharWidth());
-    _spellMaintenanceIntermediaire = new QSpinBox(this);
-    _spellMaintenanceIntermediaire->setFixedWidth(12*c.averageCharWidth());
-    _spellMaintenanceAvancee = new QSpinBox(this);
-    _spellMaintenanceAvancee->setFixedWidth(12*c.averageCharWidth());
-    _spellMaintenanceArcane = new QSpinBox(this);
-    _spellMaintenanceArcane->setFixedWidth(12*c.averageCharWidth());
-    _spellEffectInitial = new QTextEdit(this);
-    _spellEffectInitial->setSizePolicy(QSizePolicy::MinimumExpanding, QSizePolicy::Fixed);
-    QFontMetrics m(_spellEffectInitial->font());
-    _spellEffectInitial->setMaximumHeight(5*m.lineSpacing());
-    _spellEffectInitial->setMinimumWidth(20*m.averageCharWidth());
-    _spellEffectIntermediaire= new QTextEdit(this);
-    _spellEffectIntermediaire->setMaximumHeight(5*m.lineSpacing());
-    _spellEffectIntermediaire->setMinimumWidth(20*m.averageCharWidth());
-    _spellEffectIntermediaire->setSizePolicy(QSizePolicy::MinimumExpanding, QSizePolicy::Fixed);
-    _spellEffectAvancee = new QTextEdit(this);
-    _spellEffectAvancee->setMaximumHeight(5*m.lineSpacing());
-    _spellEffectAvancee->setMinimumWidth(20*m.averageCharWidth());
-    _spellEffectAvancee->setSizePolicy(QSizePolicy::MinimumExpanding, QSizePolicy::Fixed);
-    _spellEffectArcane = new QTextEdit(this);
-    _spellEffectArcane->setMaximumHeight(5*m.lineSpacing());
-    _spellEffectArcane->setMinimumWidth(20*m.averageCharWidth());
-    _spellEffectArcane->setSizePolicy(QSizePolicy::MinimumExpanding, QSizePolicy::Fixed);
+    _spellNameLabel = new QLabel("Nom : ", this);
+    _spellName = new QLineEdit(this);
+    _spellName->setSizePolicy(QSizePolicy::Ignored, QSizePolicy::Fixed);
+    _spellName->setMinimumWidth(50*b.averageCharWidth());
+    QObject::connect(_spellName, SIGNAL(textChanged(QString)), this, SLOT(updateTitle()));
 
     _spellActionLabel = new QLabel("Action : ", this);
     _spellEffectTypeLabel = new QLabel("Effet : ", this);
@@ -152,6 +93,62 @@ SpellView::SpellView(QWidget *parent) : QWidget(parent),
     }
     _spellMaintenanceType->setMinimumWidth(20*act.averageCharWidth());
 
+    _spellInitialLabel = new QLabel("Initial", this);
+    _spellIntermediaireLabel = new QLabel("Intermédiaire", this);
+    _spellAvanceeLabel = new QLabel("Avancée", this);
+    _spellArcaneLabel = new QLabel("Arcane", this);
+    _spellCostLabel = new QLabel("Coût", this);
+    _spellRequirementLabel = new QLabel("Intel. Requis", this);
+    _spellMaintenanceLabel = new QLabel("Maintien", this);
+    _spellEffectLabel = new QLabel("Effets", this);
+    _spellRequirementInitial = new QSpinBox(this);
+    _spellRequirementInitial->setFixedWidth(12*b.averageCharWidth());
+    _spellRequirementIntermediaire = new QSpinBox(this);
+    _spellRequirementIntermediaire->setFixedWidth(12*b.averageCharWidth());
+    _spellRequirementAvancee = new QSpinBox(this);
+    _spellRequirementAvancee->setFixedWidth(12*b.averageCharWidth());
+    _spellRequirementArcane = new QSpinBox(this);
+    _spellRequirementArcane->setFixedWidth(12*b.averageCharWidth());
+    _spellCostInitial = new QSpinBox(this);
+    _spellCostInitial->setMaximum(99999);
+    _spellCostInitial->setFixedWidth(12*b.averageCharWidth());
+    _spellCostIntermediaire = new QSpinBox(this);
+    _spellCostIntermediaire->setMaximum(99999);
+    _spellCostIntermediaire->setFixedWidth(12*b.averageCharWidth());
+    _spellCostAvancee = new QSpinBox(this);
+    _spellCostAvancee->setMaximum(99999);
+    _spellCostAvancee->setFixedWidth(12*b.averageCharWidth());
+    _spellCostArcane = new QSpinBox(this);
+    _spellCostArcane->setMaximum(99999);
+    _spellCostArcane->setFixedWidth(12*b.averageCharWidth());
+    _spellMaintenanceInitial = new QSpinBox(this);
+    _spellMaintenanceInitial->setFixedWidth(12*b.averageCharWidth());
+    _spellMaintenanceIntermediaire = new QSpinBox(this);
+    _spellMaintenanceIntermediaire->setFixedWidth(12*b.averageCharWidth());
+    _spellMaintenanceAvancee = new QSpinBox(this);
+    _spellMaintenanceAvancee->setFixedWidth(12*b.averageCharWidth());
+    _spellMaintenanceArcane = new QSpinBox(this);
+    _spellMaintenanceArcane->setFixedWidth(12*b.averageCharWidth());
+    _spellEffectInitial = new QTextEdit(this);
+    _spellEffectInitial->setSizePolicy(QSizePolicy::MinimumExpanding, QSizePolicy::Fixed);
+    _spellEffectInitial->setMaximumHeight(5*b.lineSpacing());
+    _spellEffectInitial->setMinimumWidth(20*b.averageCharWidth());
+    _spellEffectIntermediaire= new QTextEdit(this);
+    _spellEffectIntermediaire->setMaximumHeight(5*b.lineSpacing());
+    _spellEffectIntermediaire->setMinimumWidth(20*b.averageCharWidth());
+    _spellEffectIntermediaire->setSizePolicy(QSizePolicy::MinimumExpanding, QSizePolicy::Fixed);
+    _spellEffectAvancee = new QTextEdit(this);
+    _spellEffectAvancee->setMaximumHeight(5*b.lineSpacing());
+    _spellEffectAvancee->setMinimumWidth(20*b.averageCharWidth());
+    _spellEffectAvancee->setSizePolicy(QSizePolicy::MinimumExpanding, QSizePolicy::Fixed);
+    _spellEffectArcane = new QTextEdit(this);
+    _spellEffectArcane->setMaximumHeight(5*b.lineSpacing());
+    _spellEffectArcane->setMinimumWidth(20*b.averageCharWidth());
+    _spellEffectArcane->setSizePolicy(QSizePolicy::MinimumExpanding, QSizePolicy::Fixed);
+
+    _spellDescriptionLabel = new QLabel("Description : ", this);
+    _spellDescription = new QTextEdit(this);
+    _spellDescription->setSizePolicy(QSizePolicy::MinimumExpanding, QSizePolicy::MinimumExpanding);
     _spellSourceLabel = new QLabel("Source : ", this);
     _spellSource = new QLineEdit(this);
     _spellCommentaireLabel = new QLabel("Commetaires : ", this);

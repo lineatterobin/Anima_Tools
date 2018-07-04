@@ -86,31 +86,31 @@ private:
     QLabel* _spellActionLabel;
 
     // Champs
-    QLineEdit* _spellName;
-    QSpinBox* _spellLevel;
     QLineEdit* _spellBook;
-    QTextEdit* _spellDescription;
-    QSpinBox* _spellCostInitial;
-    QSpinBox* _spellCostIntermediaire;
-    QSpinBox* _spellCostAvancee;
-    QSpinBox* _spellCostArcane;
+    QSpinBox* _spellLevel;
+    QLineEdit* _spellName;
+    QComboBox* _spellAction;
+    QComboBox* _spellEffectType;
+    QComboBox* _spellMaintenanceType;
     QSpinBox* _spellRequirementInitial;
     QSpinBox* _spellRequirementIntermediaire;
     QSpinBox* _spellRequirementAvancee;
     QSpinBox* _spellRequirementArcane;
+    QSpinBox* _spellCostInitial;
+    QSpinBox* _spellCostIntermediaire;
+    QSpinBox* _spellCostAvancee;
+    QSpinBox* _spellCostArcane;
     QSpinBox* _spellMaintenanceInitial;
     QSpinBox* _spellMaintenanceIntermediaire;
     QSpinBox* _spellMaintenanceAvancee;
     QSpinBox* _spellMaintenanceArcane;
-    QComboBox* _spellMaintenanceType;
-    QTextEdit* _spellCommentaire;
-    QLineEdit* _spellSource;
-    QComboBox* _spellEffectType;
     QTextEdit* _spellEffectInitial;
     QTextEdit* _spellEffectIntermediaire;
     QTextEdit* _spellEffectAvancee;
     QTextEdit* _spellEffectArcane;
-    QComboBox* _spellAction;
+    QTextEdit* _spellDescription;
+    QLineEdit* _spellSource;
+    QTextEdit* _spellCommentaire;
 
 };
 
