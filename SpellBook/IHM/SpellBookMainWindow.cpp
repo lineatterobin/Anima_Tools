@@ -279,6 +279,11 @@ void SpellBookMainWindow::createSpellList()
         QObject::connect(spellListElt, SIGNAL(addSpellButtonClicked(SpellTreeView*)), this, SLOT(addSpellButton(SpellTreeView*)));
         QObject::connect(spellListElt, SIGNAL(closeRequest(SpellDockWidget*)), this, SLOT(closeSpellDock(SpellDockWidget*)));
 
+        SpellTreeView* tree = spellListElt->getTree();
+        QObject::connect(tree, SIGNAL(doubleClicked(QModelIndex)), this, SLOT(addSpellView(QModelIndex)));
+        QObject::connect(tree, SIGNAL(openRequest(QModelIndex)), this, SLOT(addSpellView(QModelIndex)));
+        QObject::connect(tree->selectionModel(), SIGNAL(currentChanged(QModelIndex,QModelIndex)), this, SLOT(loadSpellPreview(QModelIndex)));
+
         spellListElt->show();
         spellListElt->raise();
     }
@@ -318,6 +323,11 @@ void SpellBookMainWindow::loadSpellList()
     tabifyDockWidget(_spellList->at(1), spellListElt);
     QObject::connect(spellListElt, SIGNAL(addSpellButtonClicked(SpellTreeView*)), this, SLOT(addSpellButton(SpellTreeView*)));
     QObject::connect(spellListElt, SIGNAL(closeRequest(SpellDockWidget*)), this, SLOT(closeSpellDock(SpellDockWidget*)));
+
+    SpellTreeView* tree = spellListElt->getTree();
+    QObject::connect(tree, SIGNAL(doubleClicked(QModelIndex)), this, SLOT(addSpellView(QModelIndex)));
+    QObject::connect(tree, SIGNAL(openRequest(QModelIndex)), this, SLOT(addSpellView(QModelIndex)));
+    QObject::connect(tree->selectionModel(), SIGNAL(currentChanged(QModelIndex,QModelIndex)), this, SLOT(loadSpellPreview(QModelIndex)));
 
     spellListElt->show();
     spellListElt->raise();
