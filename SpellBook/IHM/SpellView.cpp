@@ -122,12 +122,16 @@ SpellView::SpellView(QWidget *parent) : QWidget(parent),
     _spellCostArcane->setMaximum(99999);
     _spellCostArcane->setFixedWidth(12*b.averageCharWidth());
     _spellMaintenanceInitial = new QSpinBox(this);
+    _spellMaintenanceInitial->setMaximum(99999);
     _spellMaintenanceInitial->setFixedWidth(12*b.averageCharWidth());
     _spellMaintenanceIntermediaire = new QSpinBox(this);
+    _spellMaintenanceIntermediaire->setMaximum(99999);
     _spellMaintenanceIntermediaire->setFixedWidth(12*b.averageCharWidth());
     _spellMaintenanceAvancee = new QSpinBox(this);
+    _spellMaintenanceAvancee->setMaximum(99999);
     _spellMaintenanceAvancee->setFixedWidth(12*b.averageCharWidth());
     _spellMaintenanceArcane = new QSpinBox(this);
+    _spellMaintenanceArcane->setMaximum(99999);
     _spellMaintenanceArcane->setFixedWidth(12*b.averageCharWidth());
     _spellEffectInitial = new QTextEdit(this);
     _spellEffectInitial->setSizePolicy(QSizePolicy::MinimumExpanding, QSizePolicy::Fixed);

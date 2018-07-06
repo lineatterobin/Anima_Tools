@@ -4010,13 +4010,13 @@ Ce sort peut aussi imposer de nouvelles règles à la réalité: altérer la gra
 			</arcane>
 			<maintien_type>1</maintien_type>
 			<action>ACTIVE</action>
-			<effets_type>Effet</effets_type>
+			<effets_type>EFFET</effets_type>
 			<description>Altère la Solidité d'un objet, en diminuant sa résistance et en le rendant cassant. Tout objet affecté perd automatiquement son Invulnérabilité et, dans le cas d'une arme ou d'une armure, réduit sa Solidité.</description>
 			<commentaire>Pas de commentaires</commentaire>
 			<source>CE ???</source>
 		</Sort>
 		<Sort Level="006">
-			<name>Fragilité</name>
+			<name>Démanteler</name>
 			<initial>
 				<requirement>5</requirement>
 				<cost>40</cost>
@@ -4043,7 +4043,7 @@ Ce sort peut aussi imposer de nouvelles règles à la réalité: altérer la gra
 			</arcane>
 			<maintien_type>0</maintien_type>
 			<action>ACTIVE</action>
-			<effets_type>Effet</effets_type>
+			<effets_type>EFFET</effets_type>
 			<description>Démantèle un objet formé de plusieurs pièces. Ce sort affecte uniquement les choses inanimées dont la présence ne dépasse pas une valeur fixée par le rang du sort.</description>
 			<commentaire>Pas de commentaires</commentaire>
 			<source>CE ???</source>
@@ -4076,7 +4076,7 @@ Ce sort peut aussi imposer de nouvelles règles à la réalité: altérer la gra
 			</arcane>
 			<maintien_type>0</maintien_type>
 			<action>ACTIVE</action>
-			<effets_type>Effet</effets_type>
+			<effets_type>EFFET</effets_type>
 			<description>Détruit une ou plusieurs intensités d'un des trois types d'énergie existant : le froid, le feu ou l'électricité.</description>
 			<commentaire>Pas de commentaires</commentaire>
 			<source>CE ???</source>
@@ -4109,10 +4109,1200 @@ Ce sort peut aussi imposer de nouvelles règles à la réalité: altérer la gra
 			</arcane>
 			<maintien_type>0</maintien_type>
 			<action>ACTIVE</action>
-			<effets_type>Effet</effets_type>
+			<effets_type>EFFET</effets_type>
 			<description>Affecte l'essence d'un objet matériel sans vie, le détruisant complètement, du moment que sa Présence ne dépasse pas une valeur fixée par le rang du sort.</description>
 			<commentaire>Pas de commentaires</commentaire>
 			<source>CE ???</source>
+		</Sort>
+		<Sort Level="012">
+			<name>Sphère de destruction</name>
+			<initial>
+				<requirement>5</requirement>
+				<cost>30</cost>
+				<maintien>0</maintien>
+				<effets>Réalise une attaque.	</effets>
+			</initial>
+			<intermediaire>
+				<requirement>8</requirement>
+				<cost>60</cost>
+				<maintien>0</maintien>
+				<effets>Réalise 3 attaques</effets>
+			</intermediaire>
+			<avancee>
+				<requirement>10</requirement>
+				<cost>100</cost>
+				<maintien>0</maintien>
+				<effets>Réalise 5 attaques</effets>
+			</avancee>
+			<arcane>
+				<requirement>13</requirement>
+				<cost>150</cost>
+				<maintien>0</maintien>
+				<effets>Réalise 7 attaques</effets>
+			</arcane>
+			<maintien_type>0</maintien_type>
+			<action>ACTIVE</action>
+			<effets_type>ATTAQUE</effets_type>
+			<description>Projette plusieurs décharges d'énergies magiques. L'attaque se fait sur le Mode Energie et les dégâts sont de 30 points. Chaque sphère peut attaquer des cibles différentes mais dans ce cas, chacune doit être désignée au lancement du sort, avant de lancer les dés.</description>
+			<commentaire/>
+			<source>CE</source>
+		</Sort>
+		<Sort Level="016">
+			<name>Augmenter Faiblesse</name>
+			<initial>
+				<requirement>6</requirement>
+				<cost>50</cost>
+				<maintien>5</maintien>
+				<effets>RMys 120</effets>
+			</initial>
+			<intermediaire>
+				<requirement>8</requirement>
+				<cost>80</cost>
+				<maintien>10</maintien>
+				<effets>RMys 140</effets>
+			</intermediaire>
+			<avancee>
+				<requirement>10</requirement>
+				<cost>120</cost>
+				<maintien>15</maintien>
+				<effets>RMys 160</effets>
+			</avancee>
+			<arcane>
+				<requirement>12</requirement>
+				<cost>150</cost>
+				<maintien>15</maintien>
+				<effets>RMys 200</effets>
+			</arcane>
+			<maintien_type>2</maintien_type>
+			<action>ACTIVE</action>
+			<effets_type>ANIMIQUE</effets_type>
+			<description>Ce sort trouve les points faibles d'un individu et les augmente surnaturellement. En termes de jeu, il double tous les malus que subit un personnage à cause d'une quelconque vulnérabilité. Par exemple, un élémentaire vulnérable à la lumière subit le quadruple des dégâts des attaques lumineuses, au lieu du double, tandis qu'un personnage vulnérable aux poisons réduit sa RPoi au quart plutôt qu'à la moitié. La cible peut effectuer un test de RMys pour éviter ce sort, mais ne peut refaire ce test qu'à chaque fois que sa faiblesse l'affecte à nouveau. </description>
+			<commentaire/>
+			<source>CE</source>
+		</Sort>
+		<Sort Level="018">
+			<name>Destruction de Magie</name>
+			<initial>
+				<requirement>6</requirement>
+				<cost>60</cost>
+				<maintien>0</maintien>
+				<effets>Valeur Zéonique 50</effets>
+			</initial>
+			<intermediaire>
+				<requirement>9</requirement>
+				<cost>150</cost>
+				<maintien>0</maintien>
+				<effets>Valeur Zéonique 120</effets>
+			</intermediaire>
+			<avancee>
+				<requirement>12</requirement>
+				<cost>300</cost>
+				<maintien>0</maintien>
+				<effets>Valeur Zéonique 200</effets>
+			</avancee>
+			<arcane>
+				<requirement>16</requirement>
+				<cost>500</cost>
+				<maintien>0</maintien>
+				<effets>Valeur Zéonique 350</effets>
+			</arcane>
+			<maintien_type>0</maintien_type>
+			<action>PASSIVE</action>
+			<effets_type>EFFET</effets_type>
+			<description>Détruit un sortilège dont la valeur Zéonique n'est pas supérieure à une valeur fixée par le rang du sort. Comme Destruction de Magie est un sort passif, il peut être utilisé pour annuler tout sort lancé durant le même round que lui.</description>
+			<commentaire/>
+			<source>CE</source>
+		</Sort>
+		<Sort Level="020">
+			<name>Aggraver les Dégâts</name>
+			<initial>
+				<requirement>6</requirement>
+				<cost>60</cost>
+				<maintien>0</maintien>
+				<effets>+30 aux Dégâts</effets>
+			</initial>
+			<intermediaire>
+				<requirement>9</requirement>
+				<cost>100</cost>
+				<maintien>0</maintien>
+				<effets>+50 aux Dégâts</effets>
+			</intermediaire>
+			<avancee>
+				<requirement>12</requirement>
+				<cost>150</cost>
+				<maintien>0</maintien>
+				<effets>+90 aux Dégâts</effets>
+			</avancee>
+			<arcane>
+				<requirement>15</requirement>
+				<cost>220</cost>
+				<maintien>0</maintien>
+				<effets>+120 aux Dégâts</effets>
+			</arcane>
+			<maintien_type>0</maintien_type>
+			<action>PASSIVE</action>
+			<effets_type>EFFET</effets_type>
+			<description>Augmente les Dégâts que produit une attaque, quelle qu'en soit le type, physique ou surnaturelle. Par conséquent, si un combattant frappe avec une arme de dégâts 60, un sorcier peut augmenter ses Dégâts à 90 avec ce sort. Comme il s'agit d'un sortilège passif, il doit être exécuté avant de lancer les dés pour calculer l'attaque et la défense des adversaires.</description>
+			<commentaire/>
+			<source>CE</source>
+		</Sort>
+		<Sort Level="022">
+			<name>Destruction de Matrices</name>
+			<initial>
+				<requirement>6</requirement>
+				<cost>80</cost>
+				<maintien>0</maintien>
+				<effets>Difficulté Moyenne (80)</effets>
+			</initial>
+			<intermediaire>
+				<requirement>9</requirement>
+				<cost>140</cost>
+				<maintien>0</maintien>
+				<effets>Difficulté Très Difficile (140)</effets>
+			</intermediaire>
+			<avancee>
+				<requirement>12</requirement>
+				<cost>240</cost>
+				<maintien>0</maintien>
+				<effets>Difficulté Quasiment Impossible (240)</effets>
+			</avancee>
+			<arcane>
+				<requirement>16</requirement>
+				<cost>320</cost>
+				<maintien>0</maintien>
+				<effets>Difficulté Surhumaine (320)</effets>
+			</arcane>
+			<maintien_type>0</maintien_type>
+			<action>PASSIVE</action>
+			<effets_type>EFFET</effets_type>
+			<description>Ce sort défait les énergies matricielles d'un pouvoir psychique dont le test de Talent n'a pas dépassé pas une difficulté fixée par le rang du sort. Comme Destruction de Matrices est un sort passif, il peut être utilisé pour annuler tout pouvoir psychique utilisé durant le même round que lui. </description>
+			<commentaire/>
+			<source>CE</source>
+		</Sort>
+		<Sort Level="026">
+			<name>Blesser</name>
+			<initial>
+				<requirement>6</requirement>
+				<cost>80</cost>
+				<maintien>0</maintien>
+				<effets>20% de Points de Vie actuels / RMys 120</effets>
+			</initial>
+			<intermediaire>
+				<requirement>9</requirement>
+				<cost>120</cost>
+				<maintien>0</maintien>
+				<effets>40% de Points de Vie actuels / RMys 140</effets>
+			</intermediaire>
+			<avancee>
+				<requirement>12</requirement>
+				<cost>180</cost>
+				<maintien>0</maintien>
+				<effets>60% de Points de Vie actuels / RMys 160</effets>
+			</avancee>
+			<arcane>
+				<requirement>15</requirement>
+				<cost>300</cost>
+				<maintien>0</maintien>
+				<effets>80% de Points de Vie actuels / RMys 200</effets>
+			</arcane>
+			<maintien_type>0</maintien_type>
+			<action>ACTIVE</action>
+			<effets_type>ANIMIQUE</effets_type>
+			<description>Blesser affecte la condition physique d'un individu, en réduisant son état de santé actuel. Il produit des blessures et des dégâts équivalant un pourcentage des PV actuels de la cible (et pas à son total de PV). Il faut réussir un test de RMys pour résister à ce sort.</description>
+			<commentaire/>
+			<source>CE</source>
+		</Sort>
+		<Sort Level="028">
+			<name>Destruction de Ki</name>
+			<initial>
+				<requirement>6</requirement>
+				<cost>80</cost>
+				<maintien>0</maintien>
+				<effets>RMys 140</effets>
+			</initial>
+			<intermediaire>
+				<requirement>9</requirement>
+				<cost>140</cost>
+				<maintien>0</maintien>
+				<effets>RMys 160</effets>
+			</intermediaire>
+			<avancee>
+				<requirement>12</requirement>
+				<cost>220</cost>
+				<maintien>0</maintien>
+				<effets>RMys 180</effets>
+			</avancee>
+			<arcane>
+				<requirement>15</requirement>
+				<cost>300</cost>
+				<maintien>0</maintien>
+				<effets>RMys 220</effets>
+			</arcane>
+			<maintien_type>0</maintien_type>
+			<action>ACTIVE</action>
+			<effets_type>ANIMIQUE</effets_type>
+			<description>La magie que libère ce sort s'introduit dans l'âme d'un individu et défait la réserve de Ki dont il dispose. La cible doit réussir un test de RMys sous peine de perdre une quantité de points de Ki égale à la marge d'échec de ce test. Le sorcier choisit l'ordre et la répartition des points perdus entre chaque caractéristique. </description>
+			<commentaire/>
+			<source>CE</source>
+		</Sort>
+		<Sort Level="030">
+			<name>Infliger Dégâts</name>
+			<initial>
+				<requirement>6</requirement>
+				<cost>80</cost>
+				<maintien>0</maintien>
+				<effets>50 points de dégâts / RMys 120</effets>
+			</initial>
+			<intermediaire>
+				<requirement>9</requirement>
+				<cost>120</cost>
+				<maintien>0</maintien>
+				<effets>100 points de dégâts / RMys 140</effets>
+			</intermediaire>
+			<avancee>
+				<requirement>12</requirement>
+				<cost>180</cost>
+				<maintien>0</maintien>
+				<effets>180 points de dégâts / RMys 160</effets>
+			</avancee>
+			<arcane>
+				<requirement>15</requirement>
+				<cost>300</cost>
+				<maintien>0</maintien>
+				<effets>250 points de dégâts / RMys 200</effets>
+			</arcane>
+			<maintien_type>0</maintien_type>
+			<action>ACTIVE</action>
+			<effets_type>ANIMIQUE</effets_type>
+			<description>Grâce à ce sort, un sorcier inflige automatiquement une blessure sur le corps d'un individu. Si la cible ne réussit pas un test de RMys, elle subit immédiatement une certaine quantité de dégâts effectifs. Les créatures à Encaissement multiplient cette valeur par leur multiple d'encaissement. </description>
+			<commentaire/>
+			<source>CE</source>
+		</Sort>
+		<Sort Level="032">
+			<name>Destruction de Sens</name>
+			<initial>
+				<requirement>8</requirement>
+				<cost>100</cost>
+				<maintien>5</maintien>
+				<effets>RMys 100</effets>
+			</initial>
+			<intermediaire>
+				<requirement>10</requirement>
+				<cost>140</cost>
+				<maintien>10</maintien>
+				<effets>RMys 120</effets>
+			</intermediaire>
+			<avancee>
+				<requirement>12</requirement>
+				<cost>200</cost>
+				<maintien>15</maintien>
+				<effets>RMys 140</effets>
+			</avancee>
+			<arcane>
+				<requirement>15</requirement>
+				<cost>280</cost>
+				<maintien>15</maintien>
+				<effets>RMys 180</effets>
+			</arcane>
+			<maintien_type>1</maintien_type>
+			<action>ACTIVE</action>
+			<effets_type>ANIMIQUE</effets_type>
+			<description>Le sorcier annihile les sens d'un individu, si celui-ci échoue à un test de RMys. Le sorcier peut décider des sens qu'il affecte. </description>
+			<commentaire/>
+			<source>CE</source>
+		</Sort>
+		<Sort Level="036">
+			<name>Décharge</name>
+			<initial>
+				<requirement>6</requirement>
+				<cost>80</cost>
+				<maintien>0</maintien>
+				<effets>Dégâts 100</effets>
+			</initial>
+			<intermediaire>
+				<requirement>9</requirement>
+				<cost>140</cost>
+				<maintien>0</maintien>
+				<effets>Dégâts 150</effets>
+			</intermediaire>
+			<avancee>
+				<requirement>12</requirement>
+				<cost>220</cost>
+				<maintien>0</maintien>
+				<effets>Dégâts 200</effets>
+			</avancee>
+			<arcane>
+				<requirement>15</requirement>
+				<cost>300</cost>
+				<maintien>0</maintien>
+				<effets>Dégâts 250</effets>
+			</arcane>
+			<maintien_type>0</maintien_type>
+			<action>ACTIVE</action>
+			<effets_type>ATTAQUE</effets_type>
+			<description>Projette une décharge mystique. L'attaque est effectuée sur le Mode énergie.</description>
+			<commentaire/>
+			<source>CE</source>
+		</Sort>
+		<Sort Level="038">
+			<name>Délier les Liens</name>
+			<initial>
+				<requirement>8</requirement>
+				<cost>80</cost>
+				<maintien>0</maintien>
+				<effets>RMys 120</effets>
+			</initial>
+			<intermediaire>
+				<requirement>10</requirement>
+				<cost>160</cost>
+				<maintien>0</maintien>
+				<effets>RMys 140</effets>
+			</intermediaire>
+			<avancee>
+				<requirement>13</requirement>
+				<cost>240</cost>
+				<maintien>0</maintien>
+				<effets>RMys 160</effets>
+			</avancee>
+			<arcane>
+				<requirement>16</requirement>
+				<cost>300</cost>
+				<maintien>0</maintien>
+				<effets>RMys 200</effets>
+			</arcane>
+			<maintien_type>0</maintien_type>
+			<action>ACTIVE</action>
+			<effets_type>ANIMIQUE</effets_type>
+			<description>Grâce à ce sort, le sorcier défait les liens qui permettent aux invocateurs de dominer leurs créatures. Ce sort peut être indifféremment utilisé sur la créature ou sur celui qui la contrôle; quoi qu'il en soit, le créateur du lien doit effectuer le test de Résistance. Si le sort est lancé sur la créature, il n'affecte que le lien en lui-même; lancé sur l'invocateur, le sort rompt un lien de contrôle supplémentaire par tranche de 10 points de marge d'échec sur un test de RMys.</description>
+			<commentaire/>
+			<source>CE</source>
+		</Sort>
+		<Sort Level="040">
+			<name>Détruire les Résistances</name>
+			<initial>
+				<requirement>7</requirement>
+				<cost>80</cost>
+				<maintien>10</maintien>
+				<effets>RMys 120</effets>
+			</initial>
+			<intermediaire>
+				<requirement>9</requirement>
+				<cost>160</cost>
+				<maintien>20</maintien>
+				<effets>RMys 160</effets>
+			</intermediaire>
+			<avancee>
+				<requirement>12</requirement>
+				<cost>240</cost>
+				<maintien>25</maintien>
+				<effets>RMys 200</effets>
+			</avancee>
+			<arcane>
+				<requirement>15</requirement>
+				<cost>300</cost>
+				<maintien>30</maintien>
+				<effets>RMys 240</effets>
+			</arcane>
+			<maintien_type>1</maintien_type>
+			<action>ACTIVE</action>
+			<effets_type>ANIMIQUE</effets_type>
+			<description>La cible de ce sort diminue toutes ses Résistances d'une valeur égale à sa marge d'échec sur un test de RMys.</description>
+			<commentaire/>
+			<source>CE</source>
+		</Sort>
+		<Sort Level="042">
+			<name>Annuler les États</name>
+			<initial>
+				<requirement>7</requirement>
+				<cost>120</cost>
+				<maintien>0</maintien>
+				<effets>RMys 120 / Présence maximale 120</effets>
+			</initial>
+			<intermediaire>
+				<requirement>10</requirement>
+				<cost>180</cost>
+				<maintien>0</maintien>
+				<effets>RMys 140 / Présence maximale 200</effets>
+			</intermediaire>
+			<avancee>
+				<requirement>12</requirement>
+				<cost>240</cost>
+				<maintien>0</maintien>
+				<effets>RMys 160 / Présence maximale 300</effets>
+			</avancee>
+			<arcane>
+				<requirement>15</requirement>
+				<cost>300</cost>
+				<maintien>0</maintien>
+				<effets>RMys 200 / Présence maximale 400</effets>
+			</arcane>
+			<maintien_type>0</maintien_type>
+			<action>ACTIVE</action>
+			<effets_type>EFFET</effets_type>
+			<description>Ce sort annule immédiatement tous les états décrits dans le Chapitre 14, ou d'autres états équivalents. Il peut affecter autant de personnes que le souhaite le sorcier, tant que la somme de leurs Présences ne dépasse pas une valeur fixée par le rang du sort. Ce sort ne peut pas annuler les malus aux actions provoqués par un Critique. Si une cible désire résister, elle doit réussir un test de RMys.</description>
+			<commentaire/>
+			<source>CE</source>
+		</Sort>
+		<Sort Level="046">
+			<name>Dôme de Destruction</name>
+			<initial>
+				<requirement>7</requirement>
+				<cost>100</cost>
+				<maintien>0</maintien>
+				<effets>10 m de rayon / Dégâts de base 80</effets>
+			</initial>
+			<intermediaire>
+				<requirement>10</requirement>
+				<cost>180</cost>
+				<maintien>0</maintien>
+				<effets>50 m de rayon / Dégâts de base 120</effets>
+			</intermediaire>
+			<avancee>
+				<requirement>12</requirement>
+				<cost>240</cost>
+				<maintien>0</maintien>
+				<effets>100 m de rayon / Dégâts de base 160</effets>
+			</avancee>
+			<arcane>
+				<requirement>15</requirement>
+				<cost>300</cost>
+				<maintien>0</maintien>
+				<effets>150 m de rayon / Dégâts de base 200</effets>
+			</arcane>
+			<maintien_type>0</maintien_type>
+			<action>ACTIVE</action>
+			<effets_type>ATTAQUE</effets_type>
+			<description>Ce sort libère un dôme d'énergie surnaturelle, qui explose sur une zone de rayon déterminé par le rang du sort. Il n'est pas possible de choisir ses cibles dans la zone d'effet. L'attaque est effectuée sur le Mode énergie.</description>
+			<commentaire/>
+			<source>CE</source>
+		</Sort>
+		<Sort Level="048">
+			<name>Zone de Pourrissement</name>
+			<initial>
+				<requirement>7</requirement>
+				<cost>140</cost>
+				<maintien>15</maintien>
+				<effets>10 m de rayon / RMys 100</effets>
+			</initial>
+			<intermediaire>
+				<requirement>9</requirement>
+				<cost>180</cost>
+				<maintien>20</maintien>
+				<effets>30 m de rayon / RMys 120</effets>
+			</intermediaire>
+			<avancee>
+				<requirement>12</requirement>
+				<cost>240</cost>
+				<maintien>25</maintien>
+				<effets>60 m de rayon / RMys 160</effets>
+			</avancee>
+			<arcane>
+				<requirement>15</requirement>
+				<cost>300</cost>
+				<maintien>30</maintien>
+				<effets>100 m de rayon / RMys 200</effets>
+			</arcane>
+			<maintien_type>1</maintien_type>
+			<action>ACTIVE</action>
+			<effets_type>AUTOMATIQUE</effets_type>
+			<description>Ce sort enchante une zone fixe dont le rayon dépend du rang du sort, à l'intérieur de laquelle toute forme de vie commence à pourrir et à se désagréger à un rythme accéléré. Tout être se trouvant au milieu de la zone de pourrissement perd 10% de ses PY totaux s'il échoue à un test de RMys. Il faut effectuer un nouveau test pour chaque round où une cible reste dans la zone, que le précédent ait été réussi ou pas. Le simple fait de se trouver dans la zone de pourrissement force toute personne à effectuer ce test.</description>
+			<commentaire/>
+			<source>CE</source>
+		</Sort>
+		<Sort Level="050">
+			<name>Aura de Destruction</name>
+			<initial>
+				<requirement>8</requirement>
+				<cost>150</cost>
+				<maintien>15</maintien>
+				<effets>RMys 80 / Présence maximale 60 / 1 m de diamètre</effets>
+			</initial>
+			<intermediaire>
+				<requirement>10</requirement>
+				<cost>200</cost>
+				<maintien>20</maintien>
+				<effets>RMys 100 / Présence maximale 90 / 5 m de diamètre</effets>
+			</intermediaire>
+			<avancee>
+				<requirement>12</requirement>
+				<cost>250</cost>
+				<maintien>25</maintien>
+				<effets>RMys 120 / Présence maximale 120 / 15 m de diamètre</effets>
+			</avancee>
+			<arcane>
+				<requirement>15</requirement>
+				<cost>350</cost>
+				<maintien>30</maintien>
+				<effets>RMys 150 / Présence maximale 150 / 25 m de diamètre</effets>
+			</arcane>
+			<maintien_type>2</maintien_type>
+			<action>ACTIVE</action>
+			<effets_type>EFFET</effets_type>
+			<description>Enchante un objet ou un lieu de manière à créer autour de lui une aura de magie détruisant tout ce qui entre à son contact. Tout ce qui touche cet objet ou ce lieu doit réussir un test de RMys contre 80 sous peine de perdre une quantité de PV égale à sa marge d'échec. La Présence maximale de l'objet affecté ne peut pas dépasser une valeur fixée par le rang du sort. Cependant, même si celui-ci est de grande dimension, l'aura ne s'étend pas au-delà d&#x2019;une distance déterminée par le rang du sort. Les effets de ce sort touchent même le sorcier.</description>
+			<commentaire/>
+			<source>CE</source>
+		</Sort>
+		<Sort Level="052">
+			<name>Détruire les Souvenirs</name>
+			<initial>
+				<requirement>7</requirement>
+				<cost>140</cost>
+				<maintien>0</maintien>
+				<effets>RMys ou RPsy 100</effets>
+			</initial>
+			<intermediaire>
+				<requirement>9</requirement>
+				<cost>180</cost>
+				<maintien>0</maintien>
+				<effets>RMys ou RPsy 120</effets>
+			</intermediaire>
+			<avancee>
+				<requirement>12</requirement>
+				<cost>240</cost>
+				<maintien>0</maintien>
+				<effets>RMys ou RPsy 160</effets>
+			</avancee>
+			<arcane>
+				<requirement>15</requirement>
+				<cost>300</cost>
+				<maintien>0</maintien>
+				<effets>RMys ou RPsy 200</effets>
+			</arcane>
+			<maintien_type>0</maintien_type>
+			<action>ACTIVE</action>
+			<effets_type>ANIMIQUE</effets_type>
+			<description>Affecte les souvenirs d'un individu, lui faisant ainsi oublier tout ce que désire le sorcier. Ce sort n'influe pas sur les compétences d'un personnage. Il faut réussir un test de RMys ou RPsy pour en éviter les effets.</description>
+			<commentaire/>
+			<source>CE</source>
+		</Sort>
+		<Sort Level="056">
+			<name>Bloquer l'Apprentissage</name>
+			<initial>
+				<requirement>7</requirement>
+				<cost>80</cost>
+				<maintien>15</maintien>
+				<effets>RMys 120</effets>
+			</initial>
+			<intermediaire>
+				<requirement>9</requirement>
+				<cost>180</cost>
+				<maintien>20</maintien>
+				<effets>RMys 160</effets>
+			</intermediaire>
+			<avancee>
+				<requirement>12</requirement>
+				<cost>300</cost>
+				<maintien>25</maintien>
+				<effets>RMys 200</effets>
+			</avancee>
+			<arcane>
+				<requirement>15</requirement>
+				<cost>500</cost>
+				<maintien>30</maintien>
+				<effets>RMys 240</effets>
+			</arcane>
+			<maintien_type>2</maintien_type>
+			<action>ACTIVE</action>
+			<effets_type>EFFET</effets_type>
+			<description>Ce sort bloque la capacité d'apprentissage d'un individu, l'empêchant complètement d'évoluer ou d'acquérir de nouvelles connaissances. Quand une personne se trouve sous l'effet de ce sort, il ne peut plus acquérir de nouveaux points d'expérience ni développer aucune de ses compétences ou aucun de ses pouvoirs. Pour éviter les effets de ce sort, il faut réussir un test de RMys contre 120. On ne peut effectuer ce test qu'une fois par jour.</description>
+			<commentaire/>
+			<source>CE</source>
+		</Sort>
+		<Sort Level="058">
+			<name>Nier</name>
+			<initial>
+				<requirement>7</requirement>
+				<cost>100</cost>
+				<maintien>10</maintien>
+				<effets>RMys 120</effets>
+			</initial>
+			<intermediaire>
+				<requirement>10</requirement>
+				<cost>180</cost>
+				<maintien>15</maintien>
+				<effets>RMys 160</effets>
+			</intermediaire>
+			<avancee>
+				<requirement>13</requirement>
+				<cost>240</cost>
+				<maintien>25</maintien>
+				<effets>RMys 200</effets>
+			</avancee>
+			<arcane>
+				<requirement>16</requirement>
+				<cost>300</cost>
+				<maintien>30</maintien>
+				<effets>RMys 240</effets>
+			</arcane>
+			<maintien_type>1</maintien_type>
+			<action>ACTIVE</action>
+			<effets_type>ANIMIQUE</effets_type>
+			<description>Le sorcier met un veto sur une action précise que compte accomplir un individu, l'empêchant ainsi de la faire ou même de la mener à son terme. Ce sort ne permet d'annuler que les actions actives. Pour y résister, il faut réussir un test de RMys.</description>
+			<commentaire/>
+			<source>CE</source>
+		</Sort>
+		<Sort Level="060">
+			<name>Détruire les Pouvoirs</name>
+			<initial>
+				<requirement>7</requirement>
+				<cost>140</cost>
+				<maintien>15</maintien>
+				<effets>RMys 120</effets>
+			</initial>
+			<intermediaire>
+				<requirement>9</requirement>
+				<cost>180</cost>
+				<maintien>20</maintien>
+				<effets>RMys 140</effets>
+			</intermediaire>
+			<avancee>
+				<requirement>12</requirement>
+				<cost>240</cost>
+				<maintien>25</maintien>
+				<effets>RMys 180</effets>
+			</avancee>
+			<arcane>
+				<requirement>15</requirement>
+				<cost>300</cost>
+				<maintien>30</maintien>
+				<effets>RMys 220</effets>
+			</arcane>
+			<maintien_type>2</maintien_type>
+			<action>ACTIVE</action>
+			<effets_type>ANIMIQUE</effets_type>
+			<description>Si un individu est affecté par ce sort, il perd automatiquement la capacité d'utiliser toutes ses capacités surnaturelles. Ce sort bloque les pouvoirs magiques, psychiques ou de puissance intérieure du Ki que possède la cible. Les créatures mystiques perdent aussi tous leurs pouvoirs (mais pas leurs Capacités Primordiales). Il faut réussir un test de RMys pour éviter les effets de ce sort. </description>
+			<commentaire/>
+			<source>CE</source>
+		</Sort>
+		<Sort Level="062">
+			<name>Décharge Majeure</name>
+			<initial>
+				<requirement>8</requirement>
+				<cost>150</cost>
+				<maintien>0</maintien>
+				<effets>Dégâts de base 150</effets>
+			</initial>
+			<intermediaire>
+				<requirement>10</requirement>
+				<cost>300</cost>
+				<maintien>0</maintien>
+				<effets>Dégâts de base 300</effets>
+			</intermediaire>
+			<avancee>
+				<requirement>13</requirement>
+				<cost>450</cost>
+				<maintien>0</maintien>
+				<effets>Dégâts de base 450</effets>
+			</avancee>
+			<arcane>
+				<requirement>16</requirement>
+				<cost>600</cost>
+				<maintien>0</maintien>
+				<effets>Dégâts de base 600</effets>
+			</arcane>
+			<maintien_type>0</maintien_type>
+			<action>ACTIVE</action>
+			<effets_type>ATTAQUE</effets_type>
+			<description>Projette une puissante décharge surnaturelle. L'attaque est effectuée sur le Mode Énergie. </description>
+			<commentaire/>
+			<source>CE</source>
+		</Sort>
+		<Sort Level="066">
+			<name>Détruire la Volonté</name>
+			<initial>
+				<requirement>8</requirement>
+				<cost>160</cost>
+				<maintien>20</maintien>
+				<effets>RMys 120 / 10 m de rayon</effets>
+			</initial>
+			<intermediaire>
+				<requirement>10</requirement>
+				<cost>200</cost>
+				<maintien>20</maintien>
+				<effets>RMys 140 / 25 m de rayon</effets>
+			</intermediaire>
+			<avancee>
+				<requirement>13</requirement>
+				<cost>240</cost>
+				<maintien>25</maintien>
+				<effets>RMys 160 / 50 m de rayon</effets>
+			</avancee>
+			<arcane>
+				<requirement>16</requirement>
+				<cost>280</cost>
+				<maintien>30</maintien>
+				<effets>RMys 180 / 100 m de rayon</effets>
+			</arcane>
+			<maintien_type>1</maintien_type>
+			<action>ACTIVE</action>
+			<effets_type>ANIMIQUE</effets_type>
+			<description>Ce sort affecte une zone de rayon déterminé par le rang du sort, à l'intérieur de laquelle tout individu échouant à un test de RMys perd automatiquement la capacité de prendre des décisions. Quand une personne se trouve sous l'influence de ce sort, elle ne peut entreprendre aucune action active, ni se déplacer, sauf en cas d'extrême nécessité.</description>
+			<commentaire/>
+			<source>CE</source>
+		</Sort>
+		<Sort Level="068">
+			<name>Zone de Faiblesse</name>
+			<initial>
+				<requirement>9</requirement>
+				<cost>200</cost>
+				<maintien>20</maintien>
+				<effets>25 m de rayon / RMys 140</effets>
+			</initial>
+			<intermediaire>
+				<requirement>12</requirement>
+				<cost>300</cost>
+				<maintien>30</maintien>
+				<effets>100 m de rayon / RMys 160</effets>
+			</intermediaire>
+			<avancee>
+				<requirement>14</requirement>
+				<cost>400</cost>
+				<maintien>40</maintien>
+				<effets>250 m de rayon / RMys 180</effets>
+			</avancee>
+			<arcane>
+				<requirement>16</requirement>
+				<cost>500</cost>
+				<maintien>50</maintien>
+				<effets>500 m de rayon / RMys 200</effets>
+			</arcane>
+			<maintien_type>2</maintien_type>
+			<action>ACTIVE</action>
+			<effets_type>AUTOMATIQUE</effets_type>
+			<description>Ce sort permet au sorcier d'affaiblir les fibres de la réalité même à l'intérieur d'une zone déterminée; tout ce qui se trouve à l'intérieur de cette zone devient fragile et vulnérable. Tous les dégâts infligés à l'intérieur de cette zone sont automatiquement doublés et les personnages subissent des Critiques comme si tout leur corps était un point vulnérable. Les bâtisses et les édifices perdent automatiquement leur Invulnérabilité et les objets avec Solidité (comme les armes et les armures) subissent un malus de -5 à cette valeur. La zone affectée s'étend sur un rayon fixé par le rang du sort et reste fixée au lieu où le sort a été lancé. Tout être vivant peut en éviter les effets en réussissant un test de RMys. Être à l'intérieur de la Zone de Faiblesse suffit pour en subir les effets, qui ne cessent qu'en la quittant. On ne peut· effectuer qu'un seul test de Résistance par jour pour résister aux effets de ce sort. </description>
+			<commentaire/>
+			<source>CE</source>
+		</Sort>
+		<Sort Level="070">
+			<name>Essence de Destruction</name>
+			<initial>
+				<requirement>9</requirement>
+				<cost>150</cost>
+				<maintien>15</maintien>
+				<effets>Dégâts égaux à la marge d&#x2019;échec </effets>
+			</initial>
+			<intermediaire>
+				<requirement>12</requirement>
+				<cost>200</cost>
+				<maintien>20</maintien>
+				<effets>Comme Initial, plus un malus à toutes les équivalent à la marge d&#x2019;échec</effets>
+			</intermediaire>
+			<avancee>
+				<requirement>14</requirement>
+				<cost>250</cost>
+				<maintien>25</maintien>
+				<effets>Dégâts égaux au double de la marge d&#x2019;échec, et malus égal à la marge d&#x2019;échec</effets>
+			</avancee>
+			<arcane>
+				<requirement>16</requirement>
+				<cost>300</cost>
+				<maintien>30</maintien>
+				<effets>Dégâts et malus égaux au double de la marge d&#x2019;échec </effets>
+			</arcane>
+			<maintien_type>1</maintien_type>
+			<action>ACTIVE</action>
+			<effets_type>EFFET</effets_type>
+			<description>Le sorcier altère la matière d'un objet, la transformant en une forme de pure énergie destructrice, capable de dévorer tout ce qui entre en contact avec elle. Tant que l'objet ciblé se trouve dans cet état, il ne peut être blessé que par les attaques pouvant affecter le surnaturel. Tout ce qui entre en contact avec lui doit réussir un test de RMys contre le double de sa Présence, sous peine de perdre une quantité de PV équivalant à la marge d'échec.</description>
+			<commentaire/>
+			<source>CE</source>
+		</Sort>
+		<Sort Level="072">
+			<name>Mort</name>
+			<initial>
+				<requirement>10</requirement>
+				<cost>200</cost>
+				<maintien>0</maintien>
+				<effets>RMys ou RPhy 120</effets>
+			</initial>
+			<intermediaire>
+				<requirement>12</requirement>
+				<cost>250</cost>
+				<maintien>0</maintien>
+				<effets>RMys ou RPhy 140</effets>
+			</intermediaire>
+			<avancee>
+				<requirement>14</requirement>
+				<cost>300</cost>
+				<maintien>0</maintien>
+				<effets>RMys ou RPhy 160</effets>
+			</avancee>
+			<arcane>
+				<requirement>16</requirement>
+				<cost>350</cost>
+				<maintien>0</maintien>
+				<effets>RMys ou RPhy 180</effets>
+			</arcane>
+			<maintien_type>0</maintien_type>
+			<action>ACTIVE</action>
+			<effets_type>ANIMIQUE</effets_type>
+			<description>Le sorcier a la capacité de provoquer la mort d'un être vivant, en séparant son âme de son corps. Le pouvoir de ce sort est si puissant qu'il peut même tuer des êtres Animiques ou des créatures nécromantiques, en les transformant en simples âmes défuntes ou en les détruisant complètement. Pour résister aux effets de ce sort terrifiant, il faut réussir un test de RMys ou RPhy.</description>
+			<commentaire/>
+			<source>CE</source>
+		</Sort>
+		<Sort Level="076">
+			<name>Zone Dévorante</name>
+			<initial>
+				<requirement>9</requirement>
+				<cost>250</cost>
+				<maintien>25</maintien>
+				<effets>RMys ou RPhy 140 / 500 m de rayon</effets>
+			</initial>
+			<intermediaire>
+				<requirement>12</requirement>
+				<cost>360</cost>
+				<maintien>40</maintien>
+				<effets>RMys ou RPhy 195 / 6 000 m de rayon </effets>
+			</intermediaire>
+			<avancee>
+				<requirement>15</requirement>
+				<cost>450</cost>
+				<maintien>45</maintien>
+				<effets>RMys ou RPhy 240 / 10 500 m de rayon</effets>
+			</avancee>
+			<arcane>
+				<requirement>17</requirement>
+				<cost>600</cost>
+				<maintien>55</maintien>
+				<effets>RMys ou RPhy 270 / 13 500 m de rayon</effets>
+			</arcane>
+			<maintien_type>2</maintien_type>
+			<action>ACTIVE</action>
+			<effets_type>AUTOMATIQUE</effets_type>
+			<description>La Zone Dévorante s'étend en arrachant l'essence de tout ce qu'elle rencontre sur son chemin et en la consumant lentement, comme un vide mortel. Progressivement, les choses que ce sort atteint s'affaiblissent jusqu'à se décomposer, que ce soient des objets matériels ou des êtres vivants. Pour chaque journée à l'intérieur de la zone, il faut réussir un test de RMys ou RPhy, sous peine de perdre temporairement 5 points de Présence. Si la Présence est réduite à 0, la chose ou l'être se décompose, ne laissant quasiment rien derrière lui. En ce qui concerne les êtres vivants, ils subissent en plus un malus à toutes les actions, équivalant à deux fois les points de Présence perdus. Les dégâts spirituels sont récupérés au rythme de cinq points par jour, dès que l'objet ou l'être se trouve à l'extérieur de la zone. Elle fait effet sur une zone de rayon déterminé par le rang du sort et reste fixée à l'endroit où ce dernier a été lancé.</description>
+			<commentaire/>
+			<source>CE</source>
+		</Sort>
+		<Sort Level="078">
+			<name>Détruire les Capacités</name>
+			<initial>
+				<requirement>8</requirement>
+				<cost>150</cost>
+				<maintien>0</maintien>
+				<effets>-50 PF / RMys 120</effets>
+			</initial>
+			<intermediaire>
+				<requirement>10</requirement>
+				<cost>250</cost>
+				<maintien>0</maintien>
+				<effets>-100 PF / RMys 160</effets>
+			</intermediaire>
+			<avancee>
+				<requirement>12</requirement>
+				<cost>350</cost>
+				<maintien>0</maintien>
+				<effets>-150 PF / RMys 200</effets>
+			</avancee>
+			<arcane>
+				<requirement>15</requirement>
+				<cost>500</cost>
+				<maintien>0</maintien>
+				<effets>-200 PF / RMys 240</effets>
+			</arcane>
+			<maintien_type>0</maintien_type>
+			<action>ACTIVE</action>
+			<effets_type>ANIMIQUE</effets_type>
+			<description>Ce sort détruit une part des compétences ou des pouvoirs d'un individu, pour toujours. Le sorcier peut librement réduire les PF du personnage affecté et choisir de quelles compétences ou capacité lui soutirer. Il pourrait par exemple réduire de 30 PF la compétence Attaque et des 20 PF restants une compétence secondaire. Il est aussi possible d'utiliser ce sort pour détruire les capacités surnaturelles des créatures mystiques, en prenant comme référence la valeur en PF indiquée dans le Chapitre 26. Détruire les Capacités permet aussi de faire disparaître les avantages choisis avec les Points de Création, au prix de 100 PF par point. Il faut réussir un test de RMys pour éviter ces effets. </description>
+			<commentaire/>
+			<source>CE</source>
+		</Sort>
+		<Sort Level="080">
+			<name>Couper de l'Existence</name>
+			<initial>
+				<requirement>12</requirement>
+				<cost>250</cost>
+				<maintien>0</maintien>
+				<effets>RMys 120 / 10 m de longueur</effets>
+			</initial>
+			<intermediaire>
+				<requirement>14</requirement>
+				<cost>500</cost>
+				<maintien>0</maintien>
+				<effets>RMys 160 / 100 m de longueur</effets>
+			</intermediaire>
+			<avancee>
+				<requirement>16</requirement>
+				<cost>600</cost>
+				<maintien>0</maintien>
+				<effets>RMys 200 / 250 m de longueur</effets>
+			</avancee>
+			<arcane>
+				<requirement>18</requirement>
+				<cost>800</cost>
+				<maintien>0</maintien>
+				<effets>RMys 240 / 1 km de longueur</effets>
+			</arcane>
+			<maintien_type>0</maintien_type>
+			<action>ACTIVE</action>
+			<effets_type>ANIMIQUE</effets_type>
+			<description>Le sorcier s'avère capable de couper la réalité, comme s'il maniait une lame de vide annihilant tout ce qui se trouve sur son chemin. Il peut de cette façon détruire physiquement et spirituellement toute chose et tout être entrant en contact avec le sort sans qu'ils ne laissent aucune trace de leur existence. Le sort permet de couper une ligne dont la longueur est fixée par le rang du sort ou de concentrer toute sa puissance sur un seul point, détruisant complètement tout ce qu'il touche et qui ne parvient pas à réussir le test de Résistance requis. Bien qu'il s'agisse d'un sort animique, la coupure de la réalité est parfaitement visible, même pour ceux qui ne peuvent pas voir la magie. Les choses ou individus coupés de l'existence par ce sortilège sont complètement détruits et ne retournent pas au flux des âmes. Le test de RMys pour résister à ces effets se fait contre la difficulté indiquée par le rang du sort; toutefois, si le sort cible un point unique, la difficulté augmente de +20.</description>
+			<commentaire/>
+			<source>CE</source>
+		</Sort>
+		<Sort Level="082">
+			<name>Pluie de Destruction</name>
+			<initial>
+				<requirement>10</requirement>
+				<cost>250</cost>
+				<maintien>0</maintien>
+				<effets>Dégâts 200 / RMys 140 / 50 m de rayon</effets>
+			</initial>
+			<intermediaire>
+				<requirement>13</requirement>
+				<cost>350</cost>
+				<maintien>0</maintien>
+				<effets>Dégâts 250 / RMys 180 / 150 m de rayon</effets>
+			</intermediaire>
+			<avancee>
+				<requirement>15</requirement>
+				<cost>450</cost>
+				<maintien>0</maintien>
+				<effets>Dégâts 300 / RMys 220 / 500 m de rayon</effets>
+			</avancee>
+			<arcane>
+				<requirement>17</requirement>
+				<cost>600</cost>
+				<maintien>0</maintien>
+				<effets>Dégâts 400 / RMys 260 / 1 km de rayon</effets>
+			</arcane>
+			<maintien_type>0</maintien_type>
+			<action>ACTIVE</action>
+			<effets_type>ATTAQUE</effets_type>
+			<description>Déchaîne une tempête de décharges sélectives qui détruisent uniquement les cibles désignées par le sorcier, sur une zone de rayon déterminée par le rang du sort. Les Dégâts de ce sort sont fixés par le rang du sort et l'attaque se fait sur le Mode Énergie. De plus, si une décharge touche une cible et inflige des dégâts, celle-ci doit réussir un test de RMys sous peine de perdre autant de points de vie que sa marge d'échec.</description>
+			<commentaire/>
+			<source>CE</source>
+		</Sort>
+		<Sort Level="086">
+			<name>Destruction de Zone</name>
+			<initial>
+				<requirement>10</requirement>
+				<cost>200</cost>
+				<maintien>0</maintien>
+				<effets>-50 à la valeur Zéonique / n&#x2019;affecte que les sorts de rang Initial</effets>
+			</initial>
+			<intermediaire>
+				<requirement>12</requirement>
+				<cost>400</cost>
+				<maintien>0</maintien>
+				<effets>-150 à la valeur Zéonique / n&#x2019;affecte que les sorts de rang Intermédiaire</effets>
+			</intermediaire>
+			<avancee>
+				<requirement>14</requirement>
+				<cost>600</cost>
+				<maintien>0</maintien>
+				<effets>-250 à la valeur Zéonique / n&#x2019;affecte que les sorts de rang Avancée</effets>
+			</avancee>
+			<arcane>
+				<requirement>16</requirement>
+				<cost>700</cost>
+				<maintien>0</maintien>
+				<effets>-350 à la valeur Zéonique / n&#x2019;affecte que les sorts de rang Arcane</effets>
+			</arcane>
+			<maintien_type>0</maintien_type>
+			<action>ACTIVE</action>
+			<effets_type>EFFET</effets_type>
+			<description>Ce sort, qui affecte directement l'essence même de la magie, peut dissiper le pouvoir d'un autre sortilège actif, en diminuant automatiquement sa valeur Zéonique. Si le sort réduit descend au-dessous de son coût de base, il disparaît.</description>
+			<commentaire/>
+			<source>CE</source>
+		</Sort>
+		<Sort Level="088">
+			<name>Rejeter des Cieux</name>
+			<initial>
+				<requirement>12</requirement>
+				<cost>300</cost>
+				<maintien>15</maintien>
+				<effets>-5 de Gnose / RMys 120</effets>
+			</initial>
+			<intermediaire>
+				<requirement>14</requirement>
+				<cost>600</cost>
+				<maintien>30</maintien>
+				<effets>-10 de Gnose / RMys 160</effets>
+			</intermediaire>
+			<avancee>
+				<requirement>16</requirement>
+				<cost>1000</cost>
+				<maintien>50</maintien>
+				<effets>-15 de Gnose / RMys 200</effets>
+			</avancee>
+			<arcane>
+				<requirement>18</requirement>
+				<cost>2000</cost>
+				<maintien>100</maintien>
+				<effets>-20 de Gnose / RMys 260</effets>
+			</arcane>
+			<maintien_type>2</maintien_type>
+			<action>ACTIVE</action>
+			<effets_type>EFFET</effets_type>
+			<description>Ce sort soutire la présence divine d'un être, le dépossède de sa propre essence, et le transforme temporairement en être terrestre. En termes de jeu, la créature affectée par le sort réduit la valeur de sa Gnose. Cette réduction affecte les pouvoirs et les capacités de l'être qui dépendent de la Gnose, et il ne pourra pas les utiliser durant tout ce temps. Pour éviter ce sort, il faut réussir un test de RMys. Il n'est pas possible de refaire ce test de Résistance tant que ce sort fait effet.</description>
+			<commentaire/>
+			<source>CE</source>
+		</Sort>
+		<Sort Level="090">
+			<name>Vide</name>
+			<initial>
+				<requirement>12</requirement>
+				<cost>250</cost>
+				<maintien>25</maintien>
+				<effets>5 m de rayon / 50 m de distance / RMys &amp; RPhy 120</effets>
+			</initial>
+			<intermediaire>
+				<requirement>14</requirement>
+				<cost>350</cost>
+				<maintien>40</maintien>
+				<effets>15 m de rayon / 500 m de distance / RMys &amp; RPhy 160</effets>
+			</intermediaire>
+			<avancee>
+				<requirement>16</requirement>
+				<cost>500</cost>
+				<maintien>45</maintien>
+				<effets>25 m de rayon / 1 km de distance / RMys &amp; RPhy 200</effets>
+			</avancee>
+			<arcane>
+				<requirement>18</requirement>
+				<cost>800</cost>
+				<maintien>55</maintien>
+				<effets>50 m de rayon / 3 km de distance / RMys &amp; RPhy 240</effets>
+			</arcane>
+			<maintien_type>1</maintien_type>
+			<action>ACTIVE</action>
+			<effets_type>EFFET</effets_type>
+			<description>Ce sort crée une sphère de vide absolu qui, comme un trou noir, absorbe en elle toute la matière physique et spirituelle qui se trouve autour d'elle la décomposant totalement. Cette sphère a une taille maximale dont le rayon dépend du rang du sort et doit être placée dans un espace ouvert fixée en ce lieu jusqu'au moment où elle disparaîtra. Une fois créée, elle commence à absorber tout ce qui se trouve en deçà d&#x2019;une distance fixée par le rang du sort. La puissance d'attraction du sort équivaut à une Force de 14 et tout ce qui échoue à un test opposé de Force est attiré à l'intérieur à une vitesse de 10 mètres par point de marge d'échec. Le vide se révèle si puissant que tout ce qui entre en contact avec la sphère s'affaiblit jusqu'à disparaître. Une chose ou un être doit réussir deux tests de Résistance distincts par round passé à l'intérieur de la sphère tous deux contre la même difficulté : un de RMys sous peine de perdre autant de points de Zéon que la marge d'échec, et un autre de RPhy sous peine de perdre autant de PV que la marge d'échec. Quand un personnage se retrouve privé de Zéon, il commence à perdre un point permanent de sa caractéristique de Pouvoir pour chaque 100 points de Zéon qu'il devrait perdre. Si sa caractéristique est réduite à 0 ou qu'il meurt à la suite de la perte des points de vie, tout son être sera englouti par le vide. Bien que le sorcier ne soit pas soumis à la force de succion de la sphère. Il subit les effets du vide s'il entre en contact avec son noyau.</description>
+			<commentaire/>
+			<source>CE</source>
+		</Sort>
+		<Sort Level="092">
+			<name>Destruction Majeure</name>
+			<initial>
+				<requirement>12</requirement>
+				<cost>350</cost>
+				<maintien>0</maintien>
+				<effets>Présence maximale 100</effets>
+			</initial>
+			<intermediaire>
+				<requirement>14</requirement>
+				<cost>600</cost>
+				<maintien>0</maintien>
+				<effets>Présence maximale 160</effets>
+			</intermediaire>
+			<avancee>
+				<requirement>16</requirement>
+				<cost>900</cost>
+				<maintien>0</maintien>
+				<effets>Présence maximale 200</effets>
+			</avancee>
+			<arcane>
+				<requirement>18</requirement>
+				<cost>1500</cost>
+				<maintien>0</maintien>
+				<effets>Présence maximale 240</effets>
+			</arcane>
+			<maintien_type>0</maintien_type>
+			<action>ACTIVE</action>
+			<effets_type>EFFET</effets_type>
+			<description>Permet de détruire une partie du monde matériel à grande échelle, en désintégrant même les structures importantes, comme des cités entières ou de vastes régions. Elle peut affecter n'importe quel nombre de choses inorganiques, tant que la somme de leurs Présences ne dépasse pas une valeur fixée par le sort. </description>
+			<commentaire/>
+			<source>CE</source>
+		</Sort>
+		<Sort Level="096">
+			<name>Détruire les Âmes</name>
+			<initial>
+				<requirement>13</requirement>
+				<cost>500</cost>
+				<maintien>0</maintien>
+				<effets>RMys 100 / 5 km de rayon</effets>
+			</initial>
+			<intermediaire>
+				<requirement>15</requirement>
+				<cost>800</cost>
+				<maintien>0</maintien>
+				<effets>RMys 140 / 50 km de rayon</effets>
+			</intermediaire>
+			<avancee>
+				<requirement>17</requirement>
+				<cost>1500</cost>
+				<maintien>0</maintien>
+				<effets>RMys 180 / 250 km de rayon</effets>
+			</avancee>
+			<arcane>
+				<requirement>19</requirement>
+				<cost>2500</cost>
+				<maintien>0</maintien>
+				<effets>RMys 220 / 1 000 km de rayon</effets>
+			</arcane>
+			<maintien_type>0</maintien_type>
+			<action>ACTIVE</action>
+			<effets_type>AUTOMATIQUE</effets_type>
+			<description>Le pouvoir que déchaîne la destruction des âmes annihile la matière spirituelle qui se trouve autour du sorcier, en mettant fin à l'existence de tout ce qui ne peut en surmonter les effets. Tout individu se trouvant dans un rayon déterminé par le rang du sort autour du point où se déchaîne ce dernier doit automatiquement réussir un test de RMys, sous peine que son âme se décompose totalement et qu'il ne meure immédiatement.</description>
+			<commentaire/>
+			<source>CE</source>
+		</Sort>
+		<Sort Level="098">
+			<name>Chaos</name>
+			<initial>
+				<requirement>14</requirement>
+				<cost>700</cost>
+				<maintien>70</maintien>
+				<effets>100 km de rayon / affecte une gnose max de 10</effets>
+			</initial>
+			<intermediaire>
+				<requirement>16</requirement>
+				<cost>1200</cost>
+				<maintien>80</maintien>
+				<effets>1 000 km de rayon / affecte une gnose max de 20</effets>
+			</intermediaire>
+			<avancee>
+				<requirement>18</requirement>
+				<cost>2000</cost>
+				<maintien>90</maintien>
+				<effets>10 000 km de rayon / affecte une gnose max de 30</effets>
+			</avancee>
+			<arcane>
+				<requirement>20</requirement>
+				<cost>5000</cost>
+				<maintien>100</maintien>
+				<effets>affecte toute la création / affecte une gnose max de 40</effets>
+			</arcane>
+			<maintien_type>2</maintien_type>
+			<action>ACTIVE</action>
+			<effets_type>AUTOMATIQUE</effets_type>
+			<description>Il s'agit d'un sort de puissance quasi insurmontable puisqu'il peut ébranler les piliers même de la réalité. Quand il le déchaîne, le sorcier désagrège lentement l'ordre du monde, altère l'équilibre de toute chose d'une façon complètement imprévue. A l&#x2019;intérieur d'une zone de chaos, rien ne fonctionne comme il faudrait et tous les évènements se déroulent de façon incohérente et non naturelle. Voici quelques exemples: le chaos pourrait affecter la gravité, rendant les choses légères comme une plume à certains moments, et lourdes comme le plomb à d'autres. Le chaos pourrait aussi provoquer des bourrasques gelées à quelques mètres de rafales et vagues de chaleur étouffante. Mais ce sort n'attaque pas seulement les éléments naturels, car il influence aussi les sentiments et les réactions des personnes : des couples se haïssent jusqu'à la mort, des ennemis irréconciliables décident de faire la paix. Il peut même affecter le passage du temps, qui fluctue plus ou moins vite (même si cela ne permet de retourner dans le passé). En fait, le Chaos peut affecter quasiment n'importe quel aspect de la réalité. 
+Le sorcier peut décider quel aspect précis de l'existence il souhaite altérer ou, au contraire la transformer en entier. Ce sort ne lui accorde aucun contrôle sur ce qui a été changé et donc le résultat et le devenir des événements devient, comme le nom l'indique complètement chaotique. 
+La zone de Chaos dépend du rang du sort, et reste fixé au lieu où ce dernier a été lancé. Il influe donc automatiquement sur tous les individus de Gnose inférieure ou égale à une valeur déterminée par le rang du sort.</description>
+			<commentaire/>
+			<source>CE</source>
+		</Sort>
+		<Sort Level="100">
+			<name>Désintégrer</name>
+			<initial>
+				<requirement>17</requirement>
+				<cost>1000</cost>
+				<maintien>0</maintien>
+				<effets>RMys 140</effets>
+			</initial>
+			<intermediaire>
+				<requirement>18</requirement>
+				<cost>2500</cost>
+				<maintien>0</maintien>
+				<effets>RMys 160</effets>
+			</intermediaire>
+			<avancee>
+				<requirement>19</requirement>
+				<cost>5000</cost>
+				<maintien>0</maintien>
+				<effets>RMys 200</effets>
+			</avancee>
+			<arcane>
+				<requirement>20</requirement>
+				<cost>10000</cost>
+				<maintien>0</maintien>
+				<effets>RMys 240</effets>
+			</arcane>
+			<maintien_type>0</maintien_type>
+			<action>ACTIVE</action>
+			<effets_type>AUTOMATIQUE</effets_type>
+			<description>Ce sort permet au sorcier de choisir un aspect de l'existence, aussi complexe qu'une cité ou une race, ou aussi simple qu'un individu, et de le faire purement et simplement disparaître. L'élément désintégré est effacé de la réalité avec toutes les conséquences que cela implique, afin qu'il n'ait jamais existé. Aucune personne qui le connaissait ne se souviendra de lui; tous les événements dans lesquels il a joué un rôle seront modifiés comme s'il n'avait pas été présent, allant même jusqu'à ressusciter ceux qui sont morts par sa faute (tant que ces âmes n'ont pas été détruites). Seules les entités avec une Gnose supérieure à 40 sauront ce qui s'est passé. Il est possible d'éviter cet effet en réussissant un test de RMys, même si l'effet concerne une multitude de cibles ou d'individus différents. Pour savoir qui doit effectuer ce test, il faut prendre le personnage qui possède la plus grande Résistance à ce moment précis. Les éléments du passé ne peuvent pas être effacés, ce sort affecte uniquement les choses existant au moment présent.</description>
+			<commentaire/>
+			<source>CE</source>
 		</Sort>
 	</Livre>	
 	<Livre Name="Feu">
