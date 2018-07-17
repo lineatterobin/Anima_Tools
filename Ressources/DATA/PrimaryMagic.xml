@@ -5349,36 +5349,5 @@ La zone de Chaos dépend du rang du sort, et reste fixé au lieu où ce dernier 
 	<Livre Name="Essence">
 	</Livre>	
         <Livre Name="Nécromancie">
-	</Livre>	
-<!---	<Livre Name="Chaos">
-	</Livre>	
-	<Livre Name="Guerre">
-	</Livre>	
-	<Livre Name="Literae">
-	</Livre>	
-	<Livre Name="Mort">
-	</Livre>	
-	<Livre Name="Musique">
-	</Livre>	
-	<Livre Name="Noblesse">
-	</Livre>	
-	<Livre Name="Paix">
-	</Livre>	
-	<Livre Name="Péché">
-	</Livre>	
-	<Livre Name="Connaissance">
-	</Livre>	
-	<Livre Name="Sang">
-	</Livre>	
-	<Livre Name="Songes">
-	</Livre>	
-	<Livre Name="Temps">
-	</Livre>	
-	<Livre Name="Seuil">
-	</Livre>	
-	<Livre Name="Vide">
-	</Livre>	
-	<Livre Name="Accès Libre">
-	</Livre>	
--->
+        </Livre>
 </Biblio>

@@ -138,7 +138,9 @@ void SpellBookMainWindow::initDockWidgets()
 {
     _spellList = new QList<SpellDockWidget*>();
 
-    SpellDockWidget* spellExplorer = new SpellDockWidget(this, SpellEnum::SOURCE, ":/DATA/BOOK");
+    SpellDockWidget* spellPrimaryExplorer = new SpellDockWidget(this, SpellEnum::SOURCE, ":/DATA/PRIMARY_BOOK");
+    SpellDockWidget* spellSecondaryExplorer = new SpellDockWidget(this, SpellEnum::SOURCE, ":/DATA/SECONDARY_BOOK");
+    SpellDockWidget* spellFreeExplorer = new SpellDockWidget(this, SpellEnum::SOURCE, ":/DATA/FREE_BOOK");
 
     SpellDockWidget* spellFake = new SpellDockWidget(".", this);
     spellFake->setVisible(false);
@@ -150,13 +152,19 @@ void SpellBookMainWindow::initDockWidgets()
     QObject::connect(spellListElt, SIGNAL(addSpellButtonClicked(SpellTreeView*)), this, SLOT(addSpellButton(SpellTreeView*)));
     QObject::connect(spellListElt, SIGNAL(closeRequest(SpellDockWidget*)), this, SLOT(closeSpellDock(SpellDockWidget*)));
 
-    _spellList->append(spellExplorer);
+    _spellList->append(spellPrimaryExplorer);
+    _spellList->append(spellSecondaryExplorer);
+    _spellList->append(spellFreeExplorer);
     _spellList->append(spellFake);
     _spellList->append(spellListElt);
     addDockWidget(Qt::LeftDockWidgetArea, _spellList->at(0));
-    addDockWidget(Qt::RightDockWidgetArea, _spellList->at(1));
-    addDockWidget(Qt::RightDockWidgetArea, _spellList->at(2));
-    tabifyDockWidget(_spellList->at(1), _spellList->at(2));
+    addDockWidget(Qt::LeftDockWidgetArea, _spellList->at(1));
+    addDockWidget(Qt::LeftDockWidgetArea, _spellList->at(2));
+    addDockWidget(Qt::RightDockWidgetArea, _spellList->at(3));
+    addDockWidget(Qt::RightDockWidgetArea, _spellList->at(4));
+    tabifyDockWidget(_spellList->at(3), _spellList->at(4));
+    tabifyDockWidget(_spellList->at(0), _spellList->at(1));
+    tabifyDockWidget(_spellList->at(0), _spellList->at(2));
 
     // Définition des positions des Tabs
     setTabPosition(Qt::LeftDockWidgetArea, QTabWidget::North);
@@ -168,12 +176,20 @@ void SpellBookMainWindow::initDockWidgets()
 
 void SpellBookMainWindow::initConnections()
 {
-    SpellTreeView* explorer = _spellList->at(0)->getTree();
-    SpellTreeView* list = _spellList->at(2)->getTree();
-    QObject::connect(explorer->selectionModel(), SIGNAL(currentChanged(QModelIndex,QModelIndex)), this, SLOT(loadSpellPreview(QModelIndex)));
+    SpellTreeView* primaryExplorer = _spellList->at(0)->getTree();
+    SpellTreeView* secondaryExplorer = _spellList->at(1)->getTree();
+    SpellTreeView* freeExplorer = _spellList->at(2)->getTree();
+    SpellTreeView* list = _spellList->at(4)->getTree();
+    QObject::connect(primaryExplorer->selectionModel(), SIGNAL(currentChanged(QModelIndex,QModelIndex)), this, SLOT(loadSpellPreview(QModelIndex)));
+    QObject::connect(primaryExplorer, SIGNAL(doubleClicked(QModelIndex)), this, SLOT(addSpellView(QModelIndex)));
+    QObject::connect(primaryExplorer, SIGNAL(openRequest(QModelIndex)), this, SLOT(addSpellView(QModelIndex)));
+    QObject::connect(secondaryExplorer->selectionModel(), SIGNAL(currentChanged(QModelIndex,QModelIndex)), this, SLOT(loadSpellPreview(QModelIndex)));
+    QObject::connect(secondaryExplorer, SIGNAL(doubleClicked(QModelIndex)), this, SLOT(addSpellView(QModelIndex)));
+    QObject::connect(secondaryExplorer, SIGNAL(openRequest(QModelIndex)), this, SLOT(addSpellView(QModelIndex)));
+    QObject::connect(freeExplorer->selectionModel(), SIGNAL(currentChanged(QModelIndex,QModelIndex)), this, SLOT(loadSpellPreview(QModelIndex)));
+    QObject::connect(freeExplorer, SIGNAL(doubleClicked(QModelIndex)), this, SLOT(addSpellView(QModelIndex)));
+    QObject::connect(freeExplorer, SIGNAL(openRequest(QModelIndex)), this, SLOT(addSpellView(QModelIndex)));
     QObject::connect(list->selectionModel(), SIGNAL(currentChanged(QModelIndex,QModelIndex)), this, SLOT(loadSpellPreview(QModelIndex)));
-    QObject::connect(explorer, SIGNAL(doubleClicked(QModelIndex)), this, SLOT(addSpellView(QModelIndex)));
-    QObject::connect(explorer, SIGNAL(openRequest(QModelIndex)), this, SLOT(addSpellView(QModelIndex)));
     QObject::connect(list, SIGNAL(doubleClicked(QModelIndex)), this, SLOT(addSpellView(QModelIndex)));
     QObject::connect(list, SIGNAL(openRequest(QModelIndex)), this, SLOT(addSpellView(QModelIndex)));
 
@@ -275,7 +291,7 @@ void SpellBookMainWindow::createSpellList()
 
         _spellList->append(spellListElt);
         addDockWidget(Qt::RightDockWidgetArea, spellListElt);
-        tabifyDockWidget(_spellList->at(1), spellListElt);
+        tabifyDockWidget(_spellList->at(3), spellListElt);
         QObject::connect(spellListElt, SIGNAL(addSpellButtonClicked(SpellTreeView*)), this, SLOT(addSpellButton(SpellTreeView*)));
         QObject::connect(spellListElt, SIGNAL(closeRequest(SpellDockWidget*)), this, SLOT(closeSpellDock(SpellDockWidget*)));
 
@@ -320,7 +336,7 @@ void SpellBookMainWindow::loadSpellList()
 
     _spellList->append(spellListElt);
     addDockWidget(Qt::RightDockWidgetArea, spellListElt);
-    tabifyDockWidget(_spellList->at(1), spellListElt);
+    tabifyDockWidget(_spellList->at(3), spellListElt);
     QObject::connect(spellListElt, SIGNAL(addSpellButtonClicked(SpellTreeView*)), this, SLOT(addSpellButton(SpellTreeView*)));
     QObject::connect(spellListElt, SIGNAL(closeRequest(SpellDockWidget*)), this, SLOT(closeSpellDock(SpellDockWidget*)));
 
