@@ -15,6 +15,6 @@
         <file alias="THEME_NUIT">Ressources/CSS/Nuit.qss</file>
     </qresource>
     <qresource prefix="/DATA">
-        <file alias="BOOK">Ressources/DATA/Books.xml</file>
+        <file alias="BOOK">Ressources/DATA/PrimaryMagic.xml</file>
     </qresource>
 </RCC>

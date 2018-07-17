@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Biblio Name="Source">
+<Biblio Name="Magie Principale">
 	<Livre Name="Lumière">
 		<Sort Level="002">
 			<name>Créer Lumière</name>
@@ -5348,9 +5348,9 @@ La zone de Chaos dépend du rang du sort, et reste fixé au lieu où ce dernier 
 	</Livre>	
 	<Livre Name="Essence">
 	</Livre>	
-	<Livre Name="Nécromancie">
+        <Livre Name="Nécromancie">
 	</Livre>	
-	<Livre Name="Chaos">
+<!---	<Livre Name="Chaos">
 	</Livre>	
 	<Livre Name="Guerre">
 	</Livre>	
@@ -5380,5 +5380,5 @@ La zone de Chaos dépend du rang du sort, et reste fixé au lieu où ce dernier 
 	</Livre>	
 	<Livre Name="Accès Libre">
 	</Livre>	
-
+-->
 </Biblio>
