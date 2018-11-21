@@ -8,7 +8,7 @@
 #include <QIcon>
 
 MainWindow::MainWindow() : QMainWindow(),
-    _spellBookWindow(NULL)
+    _spellBookWindow(nullptr)
 {
     // Chargement du style graphique.
     QFile file(":/CSS/THEME_JOUR");
@@ -29,11 +29,18 @@ MainWindow::MainWindow() : QMainWindow(),
 
     connect(_btnSpellBook, SIGNAL(pressed()), this, SLOT(lancerSpellBook()));
 
+    _btnPartyManager= new QPushButton();
+    _btnPartyManager->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
+    _btnPartyManager->setText("Gestionnaire de groupe");
+
+    connect(_btnPartyManager, SIGNAL(pressed()), this, SLOT(lancerPartyManager()));
+
     // Grille de boutons
     QWidget* mainWidget = new QWidget();
     mainWidget->setObjectName("MainWidget");
     _buttonsLayout = new QGridLayout(mainWidget);
     _buttonsLayout->addWidget(_btnSpellBook, 0,7, Qt::AlignCenter);
+    _buttonsLayout->addWidget(_btnPartyManager, 1,7, Qt::AlignCenter);
 
     // Version
     QLabel* versionLabel = new QLabel(VERSION_LIBELLE, this);
@@ -55,7 +62,7 @@ MainWindow::MainWindow() : QMainWindow(),
 
 MainWindow::~MainWindow()
 {
-    if(_spellBookWindow != NULL)
+    if(_spellBookWindow != nullptr)
     {
         delete _spellBookWindow;
     }
@@ -63,7 +70,7 @@ MainWindow::~MainWindow()
 
 void MainWindow::closeEvent(QCloseEvent *)
 {
-    if(_spellBookWindow != NULL)
+    if(_spellBookWindow != nullptr)
         _spellBookWindow->close();
 }
 
@@ -82,13 +89,11 @@ void MainWindow::paintEvent(QPaintEvent *)
     QImage labelScaled = titre.scaledToWidth(2*width()/3, Qt::SmoothTransformation);
     painter.drawImage(0*width()/2 - 0*labelScaled.width()/2 , 0*height()/2 - 0*labelScaled.height()/2, labelScaled);
 
-
-
 }
 
 void MainWindow::lancerSpellBook()
 {
-    if(_spellBookWindow == NULL || _spellBookWindow->isHidden())
+    if(_spellBookWindow == nullptr || _spellBookWindow->isHidden())
     {
         delete _spellBookWindow;
         _spellBookWindow = new SpellBookMainWindow(_styleSheet);
@@ -100,6 +105,22 @@ void MainWindow::lancerSpellBook()
     _spellBookWindow->setWindowState(_spellBookWindow->windowState() & ~Qt::WindowMinimized);
 
     connect(_spellBookWindow, SIGNAL(changerThemeRequested()), this, SLOT(changerTheme()));
+}
+
+void MainWindow::lancerPartyManager()
+{
+    if(_partyManagerWindow == nullptr || _partyManagerWindow->isHidden())
+    {
+        delete _partyManagerWindow;
+        _partyManagerWindow = new PartyManagerMainWindow(_styleSheet);
+        _partyManagerWindow->show();
+    }
+
+    _partyManagerWindow->raise();
+    _partyManagerWindow->activateWindow();
+    _partyManagerWindow->setWindowState(_partyManagerWindow->windowState() & ~Qt::WindowMinimized);
+
+    connect(_partyManagerWindow, SIGNAL(changerThemeRequested()), this, SLOT(changerTheme()));
 }
 
 void MainWindow::changerTheme()
@@ -130,6 +151,6 @@ void MainWindow::changerTheme()
     }
 
     // On met à jour les modules s'ils existent.
-    if(_spellBookWindow != NULL)
+    if(_spellBookWindow != nullptr)
         _spellBookWindow->setTheme(_styleSheet);
 }

@@ -2,6 +2,7 @@
 #define MAINWINDOW_H
 
 #include <SpellBook/IHM/spellbookmainwindow.h>
+#include <PartyManager/IHM/PartyManagerMainWindow.h>
 
 #include <QMainWindow>
 #include <QGridLayout>
@@ -19,24 +20,29 @@ class MainWindow : public QMainWindow
 public:
     //Constructeur et Destructeur
     MainWindow();
-    ~MainWindow();
+    ~MainWindow() override;
 
 protected:
     /*!
      * \brief closeEvent
      */
-    void closeEvent(QCloseEvent *);
+    void closeEvent(QCloseEvent *) override;
     /*!
      * \brief paintEvent : Gestion redessin
      * \param e Event de redessin
      */
-    void paintEvent(QPaintEvent *) Q_DECL_OVERRIDE;
+    void paintEvent(QPaintEvent *) override;
 
 private slots:
     /*!
      * \brief lancerSpellBook : Lancement du module SpellBook
      */
     void lancerSpellBook();
+
+    /*!
+     * \brief lancerPartyManager : Lancement du module PartyManager
+     */
+    void lancerPartyManager();
 
     /*!
      * \brief changerTheme : Changement de thème (Jour/Nuit).
@@ -53,7 +59,11 @@ private:
 
     QPushButton *_btnSpellBook;
 
+    QPushButton *_btnPartyManager;
+
     SpellBookMainWindow *_spellBookWindow;
+
+    PartyManagerMainWindow *_partyManagerWindow;
 
 };
 

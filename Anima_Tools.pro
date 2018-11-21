@@ -29,6 +29,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 include ($$PWD/Socle/Socle.pri)
 include ($$PWD/SpellBook/SpellBook.pri)
 include ($$PWD/Librairies/Librairies.pri)
+include ($$PWD/PartyManager/PartyManager.pri)
 
 RC_FILE = $$PWD/animaTools.rc
 RESOURCES += $$PWD/Ressources.qrc
