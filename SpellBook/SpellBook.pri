@@ -3,7 +3,8 @@ SOURCES += \
     $$PWD/IHM/SpellView.cpp \
     $$PWD/Modeles/SpellTreeModel.cpp \
     $$PWD/IHM/SpellTreeView.cpp \
-    $$PWD/IHM/SpellDockWidget.cpp
+    $$PWD/IHM/SpellDockWidget.cpp \
+    $$PWD/Services/Algorithmes/BookSorting.cpp
 
 
 
@@ -13,5 +14,6 @@ HEADERS += \
     $$PWD/Modeles/SpellEnum.h \
     $$PWD/Modeles/SpellTreeModel.h \
     $$PWD/IHM/SpellTreeView.h \
-    $$PWD/IHM/SpellDockWidget.h
+    $$PWD/IHM/SpellDockWidget.h \
+    $$PWD/Services/Algorithmes/BookSorting.h
 

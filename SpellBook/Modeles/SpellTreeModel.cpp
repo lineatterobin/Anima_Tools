@@ -5,7 +5,7 @@
 #include <QMessageBox>
 #include <iostream>
 
-#include <Librairies/Algorithmes/BookSorting.h>
+#include <SpellBook/Services/Algorithmes/BookSorting.h>
 
 SpellTreeModel::SpellTreeModel(QDomDocument document, QObject *parent)
     : QAbstractItemModel(parent), _domDocument(document)
@@ -26,7 +26,7 @@ int SpellTreeModel::columnCount(const QModelIndex &/*parent*/) const
 Qt::ItemFlags SpellTreeModel::flags(const QModelIndex &index) const
 {
     if (!index.isValid())
-        return 0;
+        return nullptr;
 
     return QAbstractItemModel::flags(index);
 }
@@ -36,8 +36,7 @@ QVariant SpellTreeModel::headerData(int, Qt::Orientation, int) const
     return QVariant();
 }
 
-QModelIndex SpellTreeModel::index(int row, int column, const QModelIndex &parent)
-const
+QModelIndex SpellTreeModel::index(int row, int column, const QModelIndex &parent) const
 {
     if (!hasIndex(row, column, parent))
         return QModelIndex();

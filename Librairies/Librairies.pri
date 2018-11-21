@@ -1,7 +1,5 @@
 SOURCES += \
-    $$PWD/Modeles/DomItem.cpp \ 
-    $$PWD/Algorithmes/BookSorting.cpp
+    $$PWD/Modeles/DomItem.cpp
 
 HEADERS += \
-    $$PWD/Modeles/DomItem.h \ 
-    $$PWD/Algorithmes/BookSorting.h
+    $$PWD/Modeles/DomItem.h

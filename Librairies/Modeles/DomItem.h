@@ -16,7 +16,7 @@ public:
      * \param row : Place parmis ses items frères.
      * \param parent : Item parent.
      */
-    DomItem(QDomNode &node, int row, DomItem *parent = 0);
+    DomItem(QDomNode &node, int row, DomItem *parent = nullptr);
 
     /*!
      * \brief ~DomItem : Destructeur
