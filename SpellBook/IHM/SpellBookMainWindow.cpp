@@ -10,8 +10,8 @@
 #include <SpellBook/Modeles/SpellTreeModel.h>
 
 SpellBookMainWindow::SpellBookMainWindow(QString styleSheet_) : QMainWindow(),
-    _centralWidget(NULL),
-    _spellPreview(NULL)
+    _centralWidget(nullptr),
+    _spellPreview(nullptr)
 {
     setWindowTitle(SPELLBOOK_WINDOW_NAME);
     setTheme(styleSheet_);
@@ -35,17 +35,17 @@ SpellBookMainWindow::SpellBookMainWindow(QString styleSheet_) : QMainWindow(),
 
 SpellBookMainWindow::~SpellBookMainWindow()
 {
-    if(_centralWidget != NULL)
+    if(_centralWidget != nullptr)
     {
         delete _centralWidget;
-        _centralWidget = NULL;
+        _centralWidget = nullptr;
     }
-    if(_spellList != NULL)
+    if(_spellList != nullptr)
     {
         qDeleteAll(*_spellList);
         _spellList->clear();
         delete _spellList;
-        _spellList = NULL;
+        _spellList = nullptr;
     }
 }
 
@@ -235,7 +235,7 @@ SpellView* SpellBookMainWindow::addSpellView(QModelIndex index_)
         _centralWidget->setCurrentWidget(spellView);
         return spellView;
     }
-    return NULL;
+    return nullptr;
 }
 
 void SpellBookMainWindow::loadSpellPreview(QModelIndex index_)
@@ -267,7 +267,7 @@ void SpellBookMainWindow::closeSpellView(const int &index_)
 void SpellBookMainWindow::createSpellList()
 {
     bool ok;
-    QString text = QInputDialog::getText(0, "Nouvelle liste", "Nom de la liste :", QLineEdit::Normal, "", &ok);
+    QString text = QInputDialog::getText(nullptr, "Nouvelle liste", "Nom de la liste :", QLineEdit::Normal, "", &ok);
     if (ok)
     {
         SpellDockWidget* spellListElt = new SpellDockWidget(text, this);
@@ -405,7 +405,7 @@ void SpellBookMainWindow::saveAsSpellList(QAction* action_)
 
 void SpellBookMainWindow::addSpellButton(SpellTreeView* treeView_)
 {
-    treeView_->addSpell((SpellView*)_centralWidget->currentWidget());
+    treeView_->addSpell(static_cast<SpellView*>(_centralWidget->currentWidget()));
 }
 
 void SpellBookMainWindow::closeSpellDock(SpellDockWidget *dockWidget_)

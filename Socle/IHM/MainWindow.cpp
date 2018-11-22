@@ -8,7 +8,8 @@
 #include <QIcon>
 
 MainWindow::MainWindow() : QMainWindow(),
-    _spellBookWindow(nullptr)
+    _spellBookWindow(nullptr),
+    _partyManagerWindow(nullptr)
 {
     // Chargement du style graphique.
     QFile file(":/CSS/THEME_JOUR");
@@ -153,4 +154,6 @@ void MainWindow::changerTheme()
     // On met à jour les modules s'ils existent.
     if(_spellBookWindow != nullptr)
         _spellBookWindow->setTheme(_styleSheet);
+    if(_partyManagerWindow != nullptr)
+        _partyManagerWindow->setTheme(_styleSheet);
 }
