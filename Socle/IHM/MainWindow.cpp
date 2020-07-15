@@ -8,7 +8,7 @@
 #include <QIcon>
 
 MainWindow::MainWindow() : QMainWindow(),
-    _spellBookWindow(NULL)
+    _spellBookWindow(nullptr)
 {
     // Chargement du style graphique.
     QFile file(":/CSS/THEME_JOUR");
@@ -55,7 +55,7 @@ MainWindow::MainWindow() : QMainWindow(),
 
 MainWindow::~MainWindow()
 {
-    if(_spellBookWindow != NULL)
+    if(_spellBookWindow != nullptr)
     {
         delete _spellBookWindow;
     }
@@ -63,7 +63,7 @@ MainWindow::~MainWindow()
 
 void MainWindow::closeEvent(QCloseEvent *)
 {
-    if(_spellBookWindow != NULL)
+    if(_spellBookWindow != nullptr)
         _spellBookWindow->close();
 }
 
@@ -88,7 +88,7 @@ void MainWindow::paintEvent(QPaintEvent *)
 
 void MainWindow::lancerSpellBook()
 {
-    if(_spellBookWindow == NULL || _spellBookWindow->isHidden())
+    if(_spellBookWindow == nullptr || _spellBookWindow->isHidden())
     {
         delete _spellBookWindow;
         _spellBookWindow = new SpellBookMainWindow(_styleSheet);
@@ -130,6 +130,6 @@ void MainWindow::changerTheme()
     }
 
     // On met à jour les modules s'ils existent.
-    if(_spellBookWindow != NULL)
+    if(_spellBookWindow != nullptr)
         _spellBookWindow->setTheme(_styleSheet);
 }
